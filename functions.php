@@ -27,7 +27,7 @@
  */
 	
     if(!defined('SIDEBAR_WIDTH')){
-        define('SIDEBAR_WIDTH', 'yui-t4' );
+        define('SIDEBAR_WIDTH', 'yui-t5' );
     }
 
 
@@ -50,7 +50,7 @@
         define('HEADER_IMAGE_HEIGHT', 198);//auto or 999px
     }
     if(!defined('SHOW_HEADER_IMAGE')){
-        define('SHOW_HEADER_IMAGE',false);
+        define('SHOW_HEADER_IMAGE',true);
     }
     add_action( 'widgets_init', 'obandes_widgets_init' );
 
@@ -67,9 +67,12 @@
         ',
           'widget_id' => 'default',
           'widget_name' => 'default',
-          'text' => "1"));
+      
+	      'text' => "1"));
     }
 
+//page exstra sidebar show
+	$rsidebar_show = true;	
 /** 
  *
  * editor-style.css 
@@ -150,13 +153,7 @@ if(!function_exists("register_obandes_menus")){
 	}
 }
 
-/**
- *
- *
- *
- *
- *
- */
+
 
    register_nav_menus( array(
         'primary' => __( 'Primary Navigation', 'obandes' ),
@@ -174,24 +171,12 @@ add_filter( 'wp_page_menu_args', 'obandes_page_menu_args' );
 }
 
 
-/**
- *
- *
- *
- *
- *
- */
+
  
 add_custom_background();
 
 
-/**
- *
- *
- *
- *
- *
- */
+
 if(function_exists('add_theme_support')) {
     add_theme_support('automatic-feed-links');
 	add_theme_support( 'post-thumbnails' );
@@ -200,26 +185,12 @@ if(function_exists('add_theme_support')) {
 	
 }
 
-//set_post_thumbnail_size( 48, 48, true );
 
-/**
- *
- *
- *
- *
- *
- */
 if(!isset($content_width)){
-	//$content_width = "600";
+	$content_width = content_width();
 }
 
-/**
- *
- *
- *
- *
- *
- */
+
 load_textdomain( 'obandes', get_template_directory().'/languages/'.get_locale().'.mo' );
 
 
@@ -243,13 +214,7 @@ if (!function_exists('obandes_posted_on')) {
 
 }
 
-/**
- *
- *
- *
- *
- *
- */
+
 
 function obandes_title(){
 	/*
@@ -265,22 +230,16 @@ function obandes_title(){
 	// Add the blog description for the home/front page.
 	$site_description = get_bloginfo( 'description', 'display' );
 	if ( $site_description && ( is_home() || is_front_page() ) )
-		echo " | $site_description";
+		echo '|' .$site_description;
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 )
-		echo ' | ' . sprintf( __( 'Page %s', 'twentyten' ), max( $paged, $page ) );
+		echo '|' . sprintf( __( 'Page %s', 'twentyten' ), max( $paged, $page ) );
 
 }
 
 
-/**
- *
- *
- *
- *
- *
- */
+
 add_action('init', 'obandes_init');
 
 function obandes_init() {
@@ -296,12 +255,13 @@ function obandes_init() {
 	wp_enqueue_script('yui-css');
 	wp_register_script('yui', get_template_directory_uri().'/yui.js', array('yui-css'), '0.1');
 	wp_enqueue_script('yui');
-	
+
 	wp_register_script('obandes', get_template_directory_uri().'/obandes.js', array('jquery'), '0.1');
 	wp_enqueue_script('obandes');
 	
 	}
 }
+
 
 
 register_default_headers( array(
@@ -339,38 +299,37 @@ if ( ! function_exists( 'twentyten_admin_header_style' ) ){
 	}
 }
 
-    add_filter('body_class','add_body_class');
+add_filter('body_class','add_body_class');
 	
 if (!function_exists('add_body_class')) {
+
 function add_body_class($class) {
 
     /**
-     * body class add　lang
+     * body class add lang
      *
-     *　example
+     * example
      *
-     *　$classes= array('class1'、'class2');
+     * $classes= array('class1','class2');
      *
      */
     $lang = WPLANG;
     $classes= array($lang);
-
-     $classes= array_merge($classes,$class);
-
-        global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
+	$classes= array_merge($classes,$class);
+	global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
 
 
-    switch(true){
+	switch(true){
 
         case($is_lynx):
-             $classes[] = 'lynx';
+			$classes[] = 'lynx';
         break;
         case($is_gecko):
-            $classes[]  = 'gecko';
+            $classes[] = 'gecko';
         break;
         case($is_IE):
-            preg_match(" |(MSIE )([0-9])(\.) |si",$_SERVER['HTTP_USER_AGENT'],$regs);
-            $classes[]      = 'ie'.$regs[2];
+            preg_match(" |(MSIE )([0-9])(\.)|si",$_SERVER['HTTP_USER_AGENT'],$regs);
+            $classes[] = 'ie'.$regs[2];
         break;
         case($is_opera):
              $classes[] = 'opera';
@@ -393,9 +352,10 @@ function add_body_class($class) {
         }
 
     return $classes;
+	}
 }
 
-}
+
 
 function content_width(){
 
@@ -478,7 +438,6 @@ if(DOCUMENT_WIDTH == 'doc'){
 return $content_width;
 
 }
-
 
 function document_width(){
 	global $content_width;

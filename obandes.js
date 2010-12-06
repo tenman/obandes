@@ -1,8 +1,8 @@
 
-jQuery(function($){
+function horizontal(){
 var class_list = [];
 var uniq = {};
-        $('div[class^="horizon"]').each(function(){
+        jQuery('div[class^="horizon"]').each(function(){
                 var class_name = this.className;
 
                 if(!uniq[class_name]){
@@ -10,14 +10,19 @@ var uniq = {};
                         class_list.push(this.className);
                 }
         });
-        $(class_list).each(function(i){
+        jQuery(class_list).each(function(i){
 
-          $('div[class="'+ this + '"]').wrap('<td class="' + this + '"></td>');
-          $('td[class="'+ this + '"]').wrapAll('<table border="0" width="100%" id="' + this + '" summary="layout table"><tr></tr></table>');
+          jQuery('div[class="'+ this + '"]').wrap('<td class="' + this + '"></td>');
+          jQuery('td[class="'+ this + '"]').wrapAll('<table border="0" width="100%" id="' + this + '" summary="layout table"><tr></tr></table>');
 
-        $('td[class="'+ this + '"]:first').addClass("menu");
-        $('td[class="'+ this + '"]:last').addClass("aside");
-        $('table[class="'+ this + '"]').addClass("DOM");
+        jQuery('td[class="'+ this + '"]:first').addClass("col1");
+        jQuery('td[class="'+ this + '"]:last').addClass("last");		
+		jQuery('td[class="'+ this + '"]:nth-child(2)').addClass("col2");
+		jQuery('td[class="'+ this + '"]:nth-child(3)').addClass("col3");
+		jQuery('td[class="'+ this + '"]:nth-child(4)').addClass("col4");
+		jQuery('td[class="'+ this + '"]:nth-child(5)').addClass("col5");
+
+        jQuery('table[class="'+ this + '"]').addClass("DOM");
 
         });
 
@@ -42,4 +47,6 @@ var uniq = {};
             jQuery('div.'+target).toggle("slow");
 
         });
-})();
+		/* for ie8*/
+		jQuery('.entry-content img').removeAttr("height");
+}

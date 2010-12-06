@@ -1,6 +1,6 @@
 /*   
 Theme Name: obandes
-Theme URI: http://www.tenman.info/obandes
+Theme URI: http://www.tenman.info/wp3/obandes/
 Description: extend basic template
 Author: tenman akio
 Author URI: http://www.tenman.info/wp3/
@@ -40,6 +40,67 @@ a:active,a:focus {
 }
 
 
+body{
+
+font-family:Arial, Helvetica, sans-serif;
+line-height:1.5;
+
+}
+
+p{
+margin:0.5em 0;
+
+}
+body blockquote{
+margin:1em 4.4em;
+padding:.5em;
+border-left:3px solid #ccc;
+}
+
+cite { 
+	font-style: normal;
+	text-decoration: underline;
+	font-style:italic;
+}
+
+body ul,body ol,body dl{
+	margin-left:4.4em;	
+
+}
+body ul li{
+	list-style-type:none;
+	margin:0.5em 0;
+}
+body ol li{
+	list-style-type:decimal;
+	margin:0.5em 0;
+
+}
+dl dt{
+	margin:.5em 0;
+}
+table{
+	margin:1em auto;
+	max-width:100%;
+}
+
+pre,tt,kbd{
+	font-family:"Courier New", Courier, mono;
+}
+i,em{
+	font-style:itaric;
+	font-weight:400;
+	}
+
+abbr{
+	font-weight:bold;
+	font-family:"Times New Roman", Times, serif;
+
+}
+textaraa{
+width:100%;
+
+}
 .font10 {
 	font-size:77%;
 }
@@ -80,6 +141,74 @@ a:active,a:focus {
 	font-size:197%;
 }
 
+/* headding */
+h1,
+h1 a,
+.h1 a,
+#site-title{
+	font-size:174%;
+	}
+h2,
+h2 a,
+.h2 a{
+	font-size:167%;
+	}
+h3,
+h3 a,
+.h3 a{
+	font-size:161.6%;
+	}
+h4,
+h4 a,
+.h4 a{
+	font-size:123.1%;
+	}
+h5,
+h5 a,
+.h5 a{
+	font-size:116%;
+	}
+h6,
+h6 a,
+.h6 a{
+	font-size:108%;
+	}
+
+/* headding */
+.ja h1,
+.ja h1 a,
+.ja .h1 a,
+.ja #site-title{
+	font-size:174%;
+	}
+.ja h2,
+.ja h2 a,
+.ja .h2 a{
+	font-size:123.1%;
+	}
+.ja h3,
+.ja h3 a,
+.ja .h3 a{
+	font-size:116%;
+	}
+.ja h4,
+.ja h4 a,
+.ja .h4 a{
+	font-size:108%;
+	}
+.ja h5,
+.ja h5 a,
+.ja .h5 a{
+	font-size:100%;
+	}
+.ja h6,
+.ja h6 a,
+.ja .h6 a{
+	font-size:93%;
+	}
+
+
+
 h1,
 h2,
 h3,
@@ -96,7 +225,7 @@ h6,
 	overflow:hidden;
 	line-height:1.5;
 	margin:.5em 0;
-	
+	font-family:"Times New Roman", Times, serif;	
 }
 
 h1 a,
@@ -503,10 +632,12 @@ div.aligncenter {
 
 .alignleft {
    float: left;
+   margin:0 0.5em 0.5em 0;
 }
 
 .alignright {
    float: right;
+   margin:0.5em;
 }
 
 .wp-caption {
@@ -658,14 +789,24 @@ dl.my_tags dt {
 .entry-utility{text-align:right;}
 
 /* images*/
+
 .entry-content img{
-	max-width:100%;height:auto;
+	max-width:100%;
+	height:auto;
 	}
+.ie8 .entry-content img{
+	
+	}
+
 .entry-content .size-thumbnail{
 
 	margin:1em;
 	padding:1em;
 	border:1px solid #ccc;
+}
+.entry-content object,.entry-content embed{
+
+	max-width:100%!important;
 }
 .chrome .entry-content .size-thumbnail,
 .gecko .entry-content .size-thumbnail{
@@ -733,7 +874,12 @@ ul.index li{
 	border-right:1px solid #aaf;
 	padding-left:10px;
 }
-
+input#author,
+input#email,
+input#url,
+.comment-form-comment label{
+display:block;
+}
 
 
 /*<!--next page--> page link*/
@@ -759,14 +905,14 @@ ul.index li{
 	}
 td.horizon-footer-widget,
 td.horizon-gallery,
-td.horizon-blog{
+{
 	vertical-align:top;
 	}
 td.horizon-gallery.menu,
-td.horizon-blog.menu{
+.category-blog.menu{
 	width:160px;
 	}
-td.horizon-blog.menu li{
+.category-blog.menu li{
 	list-style:none;
 	line-height:2em;
 	}
@@ -779,16 +925,33 @@ td.horizon-blog.menu li{
 
 
 }	
-	
-td.horizon-footer-widget li{
+#footer-widget-area div{
+
+border:0 solid #ccc;
+}
+#footer-widget-area ul{
+
+margin:0.3em;
+padding:0;
+}
+#footer-widget-area li{
 
 	list-style:none;
 	text-align:left;
 }
+#footer-widget-area td{
+
+width:24%;
+vertical-align:top;
+}
+
+	
+
 address,
 #site-generator	{
 text-align:right;
 color:#999999;
+margin:0;
 }
 #site-generator a,
 address a{
@@ -796,3 +959,24 @@ color:#999999;
 font-size:small;
 text-decoration:none;
 }
+
+
+.col1{
+background:#cfc;
+}
+.col2{
+background:#fcc;
+}
+.col3{
+background:#ccf;
+}
+.col4{
+background:#ffc;
+}
+.col5{
+background:#cff;
+}
+.last{
+background:#dcf;
+}
+

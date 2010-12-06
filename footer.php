@@ -23,7 +23,7 @@
 ?>
 
 			<address>
-				theme: <a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+			 <a href="<?php echo esc_url( __('http://www.tenman.info/wp/obandes/', 'obandes') ); ?>" rel="home"><?php printf( __('Theme: %s', 'obandes'), 'obandes' ); ?></a>
 			</address><!-- #site-info -->
 
 			<div id="site-generator">
@@ -43,7 +43,11 @@
 
 	wp_footer();
 ?>
+
+
 </footer>
 </div>
 </body>
 </html>
+
+

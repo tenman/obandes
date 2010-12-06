@@ -6,7 +6,8 @@
  * @subpackage obandes
  * @since obandes 0.1
  */
-?><?php ob_end_clean();?>
+
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -23,8 +24,10 @@
 <title><?php obandes_title();?></title>
 <?php wp_head();?>
 <link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_directory_uri().'/style.css'; ?>" />
+
 </head>
-<body <?php body_class(); ?>>
+</head>
+<body <?php body_class(); ?> onload="horizontal()">
 <div id="<?php echo DOCUMENT_WIDTH; ?>" class="<?php echo SIDEBAR_WIDTH;?>">
 <?php $heading_elememt = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
 
