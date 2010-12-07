@@ -6,7 +6,8 @@
  * @subpackage obandes
  * @since obandes 0.1
  */
-?><?php ob_end_clean();?>
+
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -23,8 +24,41 @@
 <title><?php obandes_title();?></title>
 <?php wp_head();?>
 <link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_directory_uri().'/style.css'; ?>" />
+<?php
+/**
+ * insert into embed style ,javascript script and embed tags from custom field
+ *
+ *
+ */
+if (is_single() || is_page()) {
+
+ while (have_posts()) : the_post();
+
+    $css = get_post_meta($post->ID, 'css', true);
+    if (!empty($css)) { ?>
+<style type="text/css">
+    /*<![CDATA[*/
+    <?php echo $css; ?>
+    /*]]>*/
+        </style>
+<?php }
+    $javascript = get_post_meta($post->ID, 'javascript', true);
+    if (!empty($javascript)) { ?>
+<script type="text/javascript">
+        /*<![CDATA[*/
+        <?php echo $javascript; ?>
+        /*]]>*/
+        </script>
+<?php }
+    $meta = get_post_meta($post->ID, 'meta', true);
+    if (!empty($meta)) { ?>
+<?php echo $meta; ?>
+<?php }
+endwhile;
+}
+?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> onLoad="horizontal()">
 <div id="<?php echo DOCUMENT_WIDTH; ?>" class="<?php echo SIDEBAR_WIDTH;?>">
 <?php $heading_elememt = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
 

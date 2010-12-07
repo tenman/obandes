@@ -52,13 +52,13 @@ if ( get_the_author_meta( 'description' ) ) : ?>
       <dt>
         <?php _e("displayname",'obandes');?>
       </dt>
-      <dd>　<?php echo $curauth->user_displayname; ?></dd>
+      <dd><?php echo $curauth->user_displayname; ?></dd>
       <?php } //!empty($curauth->user_displayname) ?>
       <?php if(!empty($curauth->user_description)){ ?>
       <dt>
         <?php _e("description",'obandes');?>
       </dt>
-      <dd>　<?php echo $curauth->user_description; ?></dd>
+      <dd><?php echo $curauth->user_description; ?></dd>
       <?php } //!empty($curauth->user_description) ?>
     </dl>
     <br style="clear:both;" />
@@ -110,7 +110,7 @@ if ( get_the_author_meta( 'description' ) ) : ?>
 <?php if(is_single()){
 
 /**
- *　when Single page
+ * when Single page
  *
  *
  *
@@ -140,7 +140,7 @@ echo "<!--cat ".$cat."-->";
             case ('blog'):
 
 /**
- *  category blog
+ * category blog
  *
  *
  *
@@ -148,35 +148,39 @@ echo "<!--cat ".$cat."-->";
  */
 ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
+<div class="yui-gf">
 
-	<div class="horizon-blog">
-	  <ul class="entry-meta">
-		<li class="published">
-		  <?php the_time(get_option('date_format')) ?>
-		</li>
-		<li>
-		  <?php _e('Category:');?>
-		  <?php the_category(' ') ?>
-		</li>
-		<li>
-		  <?php _e('Tags:');?>
-		  <?php the_tags(); ?>
-		</li>
-		<li>
-		  <?php _e('Auther:');?>
-		  <?php the_author(); ?>
-		</li>
-		<li>
-		  <?php comments_popup_link( __( 'Leave a comment', 'obandes' ), __( '1 Comment', 'obandes' ), __( '% Comments', 'obandes' ) ); ?>
-		</li>
-		<li><?php if ( function_exists('the_shortlink') ) the_shortlink( __('Permalink'), __('bookmark it?'), ' · ' );?></li>
-		
-		  <li><?php edit_post_link('Edit', '', '  '); ?></li>
-	  </ul>
+	<div class="yui-u first">
+	
+		  <ul class="entry-meta">
+			<li class="published">
+			  <?php the_time(get_option('date_format')) ?>
+			</li>
+			<li>
+			  <?php _e('Category:');?>
+			  <?php the_category(' ') ?>
+			</li>
+			<li>
+			  <?php _e('Tags:');?>
+			  <?php the_tags(); ?>
+			</li>
+			<li>
+			  <?php _e('Auther:');?>
+			  <?php the_author(); ?>
+			</li>
+			<li>
+			  <?php comments_popup_link( __( 'Leave a comment', 'obandes' ), __( '1 Comment', 'obandes' ), __( '% Comments', 'obandes' ) ); ?>
+			</li>
+			<li><?php if ( function_exists('the_shortlink') ) the_shortlink( __('Permalink', 'obandes'), __('bookmark it?', 'obandes'), '.' );?></li>
+			
+			  <li><?php edit_post_link('Edit', '', ' '); ?></li>
+		  </ul>
 	</div>
+	
 
-	  <div class="horizon-blog">
-	  <div class="entry-content">
+
+
+	 <div class="entry-content yui-u">
 		<h2 class="entry-title  clearfix h2"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>">
 		  <?php the_title(); ?>
 		  </a></h2>
@@ -186,8 +190,10 @@ echo "<!--cat ".$cat."-->";
 		</div>
 		  <?php comments_template( '', true ); ?>
 	</div>
-	  </div>
+
 </div>
+</div>
+
 <?php
 
             break;
@@ -217,6 +223,10 @@ echo "<!--cat ".$cat."-->";
       <?php the_content( '' ); ?>
     </div>
     <br style="clear:both;" />
+	<?php
+	$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image', 'orderby' => 'menu_order', 'order' => 'ASC', 'numberposts' => 999 ) );
+
+                    $total_images = count( $images );?>
     <p style="margin:1em;"><em><?php printf( __( 'This gallery contains <a %1$s>%2$s photos</a>.', 'obandes' ),'href="' . get_permalink() .$attachment_page. '/" title="' . sprintf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark"',$total_images); ?></em></p>
   </div>
   <!-- .entry-content -->
@@ -229,9 +239,6 @@ echo "<!--cat ".$cat."-->";
 <?php
 
             break;
-
-
-
 
             default:
 
@@ -292,7 +299,7 @@ echo "<!--cat ".$cat."-->";
 <?php }else{
 
 /**
- *　list post
+ * list post
  *
  *
  *
@@ -315,8 +322,6 @@ echo "<!--cat ".$cat."-->";
 ?>	
 	
   </div>
-      
-
 
       <div class="entry-content clearfix">
         <?php the_excerpt();?>

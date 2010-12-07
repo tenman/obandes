@@ -7,9 +7,7 @@
  * @subpackage obandes
  * @since obandes 0.1
  */
-?>
-<?php
-     get_header();?>
+get_header();?>
 <!--<?php echo basename(__FILE__,'.php');?>[<?php echo basename(dirname(__FILE__));?>]-->
 <div id="yui-main">
   <div class="yui-b" >
@@ -21,7 +19,6 @@
         <div class="entry page">
           <div id="post-<?php the_ID(); ?>">
             <h2 class="h2 entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-
             <p style="margin-left:25px;" class="entry-date"><small><?php the_time(get_option('date_format')) ?>&nbsp;<?php the_author() ?></small></p>
 
 <div style="entry-content clearfix">
@@ -32,7 +29,7 @@
             </div>
 <br style="clear:both;" />
 
-            <p class="postmetadata"><?php the_category(', ') ?>&nbsp;<?php edit_post_link('Edit', '', '  '); ?></p>
+            <p class="postmetadata"><?php the_category(', ') ?>&nbsp;<?php edit_post_link('Edit', '', ' '); ?></p>
 
 
 
@@ -60,33 +57,23 @@
 
         <?php else : ?>
         <div class="entry">
-          <div id="not-found">
-            <h2 class="h2">Not Found</h2>
-            <p>ご指定のページが見当たりません<br />
-              <small>Sorry, but you are looking for something that isn't here. </small></p>
+                 <div id="not-found">
+            <h2 class="h2"><?php _e("Not Found","Raindrops"); ?></h2>
+            <p><br />
+              <small><?php _e("Sorry, but you are looking for something that isn't here.","Raindrops");?></small></p>
           </div>
         </div>
         <?php endif; ?>
       </div>
-      <!-- navigation 1 -->
-      <div class="yui-u">
-        <!--rsidebar start-->
-        <?php if($rsidebar_show){get_sidebar('2');} ?>
-        <!--rsidebar end-->
-      </div>
-      <!--yui-u end-->
+
     </div>
   </div>
   <!--main-->
 </div>
 <!--sidebar-->
-<!-- navigation 2 -->
 <div class="yui-b" >
-  <!--lsidebar start-->
   <?php get_sidebar('1'); ?>
-  <!--lsidebar end-->
 </div>
-<!-- navigation 2 -->
 <!--sidebar-->
 </div>
 
