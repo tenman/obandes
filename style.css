@@ -4,6 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description: extend basic template
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
+
 Version: 0.21
 
 Tags:white, two-columns,right-sidebar ,fixed-width ,flexible-width, custom-colors, threaded-comments, sticky-post, translation-ready
@@ -809,6 +810,10 @@ dl.my_tags dt {
 
 	max-width:100%!important;
 }
+.entry-content object,.entry-content embed{
+
+	max-width:100%!important;
+}
 .chrome .entry-content .size-thumbnail,
 .gecko .entry-content .size-thumbnail{
 
@@ -910,12 +915,21 @@ td.horizon-gallery,
 {
 	vertical-align:top;
 	}
+<<<<<<< HEAD
 td.horizon-gallery.col1,
 .category-blog.col1{
+=======
+td.horizon-gallery.menu,
+.category-blog.menu{
+>>>>>>> 5e20f23d61f54e10b96abeab72c17f6a3ae3d132
 	width:160px;
 	background:#fff;
 	}
+<<<<<<< HEAD
 .category-blog.col1 li{
+=======
+.category-blog.menu li{
+>>>>>>> 5e20f23d61f54e10b96abeab72c17f6a3ae3d132
 	list-style:none;
 	line-height:2em;
 	}
@@ -964,6 +978,7 @@ text-decoration:none;
 }
 
 
+<<<<<<< HEAD
 td.horizon-header.col1,
 td.horizon-footer-widget.col1{
 background:rgba(204,255,204,0.9);
@@ -986,3 +1001,24 @@ td.horizon-header.last,
 td.horizon-footer-widget.last{
 background:rgba(221, 204, 255,0.9);
 }
+=======
+.col1{
+background:#cfc;
+}
+.col2{
+background:#fcc;
+}
+.col3{
+background:#ccf;
+}
+.col4{
+background:#ffc;
+}
+.col5{
+background:#cff;
+}
+.last{
+background:#dcf;
+}
+
+>>>>>>> 5e20f23d61f54e10b96abeab72c17f6a3ae3d132
