@@ -1,0 +1,541 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title> obandes 0.1 - Japanese / JAPAN - Poedit Export </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body bgcolor='#FFFFFF'>
+<h1> obandes 0.1 : Japanese / JAPAN</h1>
+<table align=center border=1 cellspacing=2 cellpadding=4>
+<tr><th colspan=2>情報</th></tr>
+<tr><td>プロジェクトの名前とバージョン:</td><td>obandes 0.1</td></tr>
+<tr><td>言語:</td><td>Japanese</td></tr>
+<tr><td>国または地域:</td><td>JAPAN</td></tr>
+<tr><td>翻訳チーム:</td><td>obandes</td></tr>
+<tr><td>翻訳チームのメールアドレス:</td><td><a href="mailto:a.tenman@gmail.com">a.tenman@gmail.com</a></td></tr>
+<tr><td>文字符号化法:</td><td>UTF-8</td></tr>
+</table>
+38 % translated, 39 strings (24 fuzzy, 0 bad tokens, 0 not translated)
+<table border=1 cellspacing=2 cellpadding=4>
+<tr>
+<th>
+原文
+</th>
+<th>
+対訳
+</th>
+</th>
+<th>
+注記
+</th>
+</tr>
+<tr bgcolor='#FFFFFF'>
+<td>
+&lt;span class=\"meta-nav\"&gt;&amp;larr;&lt;/span&gt; Older Comments
+</td>
+<td>
+&lt;span class=\"meta-nav\"&gt;&amp;larr;&lt;/span&gt; 古いコメント
+</td>
+<td>
+<font size="-1">
+ 
+</font>
+</td>
+</tr>
+<tr bgcolor='#F2F2F2'>
+<td>
+Newer Comments &lt;span class=\"meta-nav\"&gt;&amp;rarr;&lt;/span&gt;
+</td>
+<td>
+新しいコメント &lt;span class=\"meta-nav\"&gt;&amp;rarr;&lt;/span&gt;
+</td>
+<td>
+<font size="-1">
+ 
+</font>
+</td>
+</tr>
+<tr bgcolor='#FFFFFF'>
+<td>
+http://www.tenman.info/wp/obandes/
+</td>
+<td>
+http://www.tenman.info/wp/obandes/
+</td>
+<td>
+<font size="-1">
+ 
+</font>
+</td>
+</tr>
+<tr bgcolor='#E7E4B7'>
+<td>
+Theme: %s
+</td>
+<td>
+%1$s テーマを更新中 (%2$d/%3$d)
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#F4F1C1'>
+<td>
+http://wordpress.org/
+</td>
+<td>
+http://ja.wordpress.org/
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#E7E4B7'>
+<td>
+Proudly powered by %s.
+</td>
+<td>
+Proudly powered by %s.
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#F4F1C1'>
+<td>
+Default Sidebar
+</td>
+<td>
+左サイドバー
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#F2F2F2'>
+<td>
+Main Column Wiget Area
+</td>
+<td>
+メインウィジェット
+</td>
+<td>
+<font size="-1">
+ 
+</font>
+</td>
+</tr>
+<tr bgcolor='#F4F1C1'>
+<td>
+The main colmun widget area
+</td>
+<td>
+フッターウィジェットエリア1
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#E7E4B7'>
+<td>
+First Footer Widget Area
+</td>
+<td>
+フッターウィジェットエリア1
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#F4F1C1'>
+<td>
+The first footer widget area
+</td>
+<td>
+フッターウィジェットエリア1
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#E7E4B7'>
+<td>
+Second Footer Widget Area
+</td>
+<td>
+フッターウィジェットエリア2
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#F4F1C1'>
+<td>
+The second footer widget area
+</td>
+<td>
+フッターウィジェットエリア2
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#E7E4B7'>
+<td>
+Third Footer Widget Area
+</td>
+<td>
+フッターウィジェットエリア3
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#F4F1C1'>
+<td>
+The third footer widget area
+</td>
+<td>
+フッターウィジェットエリア3
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#E7E4B7'>
+<td>
+Fourth Footer Widget Area
+</td>
+<td>
+フッターウィジェットエリア4
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#F4F1C1'>
+<td>
+The fourth footer widget area
+</td>
+<td>
+フッターウィジェットエリア4
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#E7E4B7'>
+<td>
+Primary Navigation
+</td>
+<td>
+メインナビゲーション
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#FFFFFF'>
+<td>
+&lt;span class=\"%1$s\"&gt;Posted on&lt;/span&gt; %2$s &lt;span class=\"meta-sep\"&gt;by&lt;/span&gt; %3$s
+</td>
+<td>
+&lt;span class=\"%1$s\"&gt;Posted on&lt;/span&gt; %2$s &lt;span class=\"meta-sep\"&gt;by&lt;/span&gt; %3$s
+</td>
+<td>
+<font size="-1">
+ 
+</font>
+</td>
+</tr>
+<tr bgcolor='#E7E4B7'>
+<td>
+Page %s
+</td>
+<td>
+ページ %s
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#FFFFFF'>
+<td>
+obandes
+</td>
+<td>
+obandes
+</td>
+<td>
+<font size="-1">
+ 
+</font>
+</td>
+</tr>
+<tr bgcolor='#F2F2F2'>
+<td>
+This entry was posted in %1$s and tagged %2$s. Bookmark the &lt;a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\"&gt;permalink&lt;/a&gt;.
+</td>
+<td>
+This entry was posted in %1$s and tagged %2$s. Bookmark the &lt;a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\"&gt;permalink&lt;/a&gt;.
+</td>
+<td>
+<font size="-1">
+ 
+</font>
+</td>
+</tr>
+<tr bgcolor='#FFFFFF'>
+<td>
+This entry was posted in %1$s. Bookmark the &lt;a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\"&gt;permalink&lt;/a&gt;.
+</td>
+<td>
+カテゴリー: %1$s &amp;nbsp; &lt;a href=\"%3$s\" title=\"%4$s へのパーマリンク\" rel=\"bookmark\"&gt;パーマリンク&lt;/a&gt;
+</td>
+<td>
+<font size="-1">
+ 
+</font>
+</td>
+</tr>
+<tr bgcolor='#F2F2F2'>
+<td>
+Bookmark the &lt;a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\"&gt;permalink&lt;/a&gt;.
+</td>
+<td>
+ブックマーク用 &lt;a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\"&gt;パーマリンク&lt;/a&gt;.
+</td>
+<td>
+<font size="-1">
+ 
+</font>
+</td>
+</tr>
+<tr bgcolor='#F4F1C1'>
+<td>
+About %s
+</td>
+<td>
+%s の紹介
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#E7E4B7'>
+<td>
+Posts by %s
+</td>
+<td>
+%s による投稿
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#FFFFFF'>
+<td>
+&lt;span class=\"meta-nav\"&gt;&amp;larr;&lt;/span&gt; Older posts
+</td>
+<td>
+&lt;span class=\"meta-nav\"&gt;&amp;larr;&lt;/span&gt; 古いコメント
+</td>
+<td>
+<font size="-1">
+ 
+</font>
+</td>
+</tr>
+<tr bgcolor='#F2F2F2'>
+<td>
+Newer posts &lt;span class=\"meta-nav\"&gt;&amp;rarr;&lt;/span&gt;
+</td>
+<td>
+新しいコメント&lt;span class=\"meta-nav\"&gt;&amp;rarr;&lt;/span&gt;
+</td>
+<td>
+<font size="-1">
+ 
+</font>
+</td>
+</tr>
+<tr bgcolor='#F4F1C1'>
+<td>
+Leave a comment
+</td>
+<td>
+コメントする
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#E7E4B7'>
+<td>
+1 Comment
+</td>
+<td>
+1件のコメント
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#F4F1C1'>
+<td>
+% Comments
+</td>
+<td>
+%件のコメント
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#E7E4B7'>
+<td>
+Permalink
+</td>
+<td>
+パーマリンク:
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#F4F1C1'>
+<td>
+bookmark it?
+</td>
+<td>
+ゴミ箱に移動する: %s
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#F2F2F2'>
+<td>
+Read the rest of this entry &amp;raquo;
+</td>
+<td>
+Read the rest of this entry &amp;raquo;
+</td>
+<td>
+<font size="-1">
+ 
+</font>
+</td>
+</tr>
+<tr bgcolor='#F4F1C1'>
+<td>
+Pages:
+</td>
+<td>
+ページ:
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#F2F2F2'>
+<td>
+This gallery contains &lt;a %1$s&gt;%2$s photos&lt;/a&gt;.
+</td>
+<td>
+このギャラリには &lt;a %1$s&gt;%2$s　枚の写真があります&lt;/a&gt;.
+</td>
+<td>
+<font size="-1">
+ 
+</font>
+</td>
+</tr>
+<tr bgcolor='#F4F1C1'>
+<td>
+Edit
+</td>
+<td>
+編集
+</td>
+<td>
+<font size="-1">
+自動翻訳&lt;BR&gt;未確定文字列&lt;BR&gt;
+</font>
+</td>
+</tr>
+<tr bgcolor='#F2F2F2'>
+<td>
+Continue&amp;nbsp;reading&amp;nbsp;&lt;span class=\"meta-nav\"&gt;&amp;rarr;&lt;/span&gt;
+</td>
+<td>
+続きを読む&amp;nbsp;&lt;span class=\"meta-nav\"&gt;&amp;rarr;&lt;/span&gt;
+</td>
+<td>
+<font size="-1">
+ 
+</font>
+</td>
+</tr>
+<tr bgcolor='#FFFFFF'>
+<td>
+&lt;span class=\"time-diff\"&gt;(Passage of %s)&lt;/span&gt;
+</td>
+<td>
+&lt;span class=\"time-diff\"&gt;( %s　経過)&lt;/span&gt;
+</td>
+<td>
+<font size="-1">
+ 
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>
