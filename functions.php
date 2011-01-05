@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  *
  * #doc - 750px centered (good for 800x600)
  * #doc2 - 950px centered (good for 1024x768)
@@ -13,7 +13,7 @@
     if(!defined('DOCUMENT_WIDTH')){
         define('DOCUMENT_WIDTH', 'doc2' );
     }
-	
+
 /**
  *
  *
@@ -25,7 +25,7 @@
  * .yui-t6 - Two columns, narrow on right, 300px
  *
  */
-	
+
     if(!defined('SIDEBAR_WIDTH')){
         define('SIDEBAR_WIDTH', 'yui-t5' );
     }
@@ -37,8 +37,8 @@
     if(!defined('HEADER_TEXTCOLOR')){
         define('HEADER_TEXTCOLOR', 'ffffff');
     }
-	
-	
+
+
     if(!defined('HEADER_IMAGE')){
         define('HEADER_IMAGE', '%s/images/headers/wp3.jpg');
     }
@@ -67,15 +67,15 @@
         ',
           'widget_id' => 'default',
           'widget_name' => 'default',
-      
-	      'text' => "1"));
+
+          'text' => "1"));
     }
 
 //page exstra sidebar show
-	$rsidebar_show = true;	
-/** 
+    $rsidebar_show = true;
+/**
  *
- * editor-style.css 
+ * editor-style.css
  *
  *
  *
@@ -93,64 +93,64 @@
 
 if(!function_exists("register_obandes_menus")){
 
-	add_action( 'init', 'register_obandes_menus' );
-	
-	function register_obandes_menus() {
-	// Area 1, located at the top of the sidebar.
-	register_sidebar( array(
-		'name' => __( 'Main Column Wiget Area', 'obandes' ),
-		'id' => 'sidebar-1',
-		'description' => __( 'The main colmun widget area', 'obandes' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-		
-	// Area 3, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'First Footer Widget Area', 'twentyten' ),
-		'id' => 'first-footer-widget-area',
-		'description' => __( 'The first footer widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+    add_action( 'init', 'register_obandes_menus' );
 
-	// Area 4, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Second Footer Widget Area', 'twentyten' ),
-		'id' => 'second-footer-widget-area',
-		'description' => __( 'The second footer widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+    function register_obandes_menus() {
+    // Area 1, located at the top of the sidebar.
+    register_sidebar( array(
+        'name' => __( 'Main Column Wiget Area', 'obandes' ),
+        'id' => 'sidebar-1',
+        'description' => __( 'The main colmun widget area', 'obandes' ),
+        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+        'after_widget' => '</li>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
 
-	// Area 5, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Third Footer Widget Area', 'twentyten' ),
-		'id' => 'third-footer-widget-area',
-		'description' => __( 'The third footer widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+    // Area 3, located in the footer. Empty by default.
+    register_sidebar( array(
+        'name' => __( 'First Footer Widget Area', 'twentyten' ),
+        'id' => 'first-footer-widget-area',
+        'description' => __( 'The first footer widget area', 'twentyten' ),
+        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+        'after_widget' => '</li>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
 
-	// Area 6, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Fourth Footer Widget Area', 'twentyten' ),
-		'id' => 'fourth-footer-widget-area',
-		'description' => __( 'The fourth footer widget area', 'twentyten' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-	}
+    // Area 4, located in the footer. Empty by default.
+    register_sidebar( array(
+        'name' => __( 'Second Footer Widget Area', 'twentyten' ),
+        'id' => 'second-footer-widget-area',
+        'description' => __( 'The second footer widget area', 'twentyten' ),
+        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+        'after_widget' => '</li>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+
+    // Area 5, located in the footer. Empty by default.
+    register_sidebar( array(
+        'name' => __( 'Third Footer Widget Area', 'twentyten' ),
+        'id' => 'third-footer-widget-area',
+        'description' => __( 'The third footer widget area', 'twentyten' ),
+        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+        'after_widget' => '</li>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+
+    // Area 6, located in the footer. Empty by default.
+    register_sidebar( array(
+        'name' => __( 'Fourth Footer Widget Area', 'twentyten' ),
+        'id' => 'fourth-footer-widget-area',
+        'description' => __( 'The fourth footer widget area', 'twentyten' ),
+        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+        'after_widget' => '</li>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+    }
 }
 
 
@@ -163,8 +163,8 @@ if(!function_exists("register_obandes_menus")){
 
 if(!function_exists("obandes_page_menu_args")){
 function obandes_page_menu_args( $args ) {
-	$args['show_home'] = true;
-	return $args;
+    $args['show_home'] = true;
+    return $args;
 }
 add_filter( 'wp_page_menu_args', 'obandes_page_menu_args' );
 
@@ -172,22 +172,22 @@ add_filter( 'wp_page_menu_args', 'obandes_page_menu_args' );
 
 
 
- 
+
 add_custom_background();
 
 
 
 if(function_exists('add_theme_support')) {
     add_theme_support('automatic-feed-links');
-	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
+    add_theme_support( 'post-thumbnails' );
+    set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
 
-	
+
 }
 
 
 if(!isset($content_width)){
-	$content_width = content_width();
+    $content_width = content_width();
 }
 
 
@@ -217,24 +217,24 @@ if (!function_exists('obandes_posted_on')) {
 
 
 function obandes_title(){
-	/*
-	 * Print the <title> tag based on what is being viewed.
-	 */
-	global $page, $paged;
+    /*
+     * Print the <title> tag based on what is being viewed.
+     */
+    global $page, $paged;
 
-	wp_title( '|', true, 'right' );
+    wp_title( '|', true, 'right' );
 
-	// Add the blog name.
-	bloginfo( 'name' );
+    // Add the blog name.
+    bloginfo( 'name' );
 
-	// Add the blog description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
-		echo '|' .$site_description;
+    // Add the blog description for the home/front page.
+    $site_description = get_bloginfo( 'description', 'display' );
+    if ( $site_description && ( is_home() || is_front_page() ) )
+        echo '|' .$site_description;
 
-	// Add a page number if necessary:
-	if ( $paged >= 2 || $page >= 2 )
-		echo '|' . sprintf( __( 'Page %s', 'twentyten' ), max( $paged, $page ) );
+    // Add a page number if necessary:
+    if ( $paged >= 2 || $page >= 2 )
+        echo '|' . sprintf( __( 'Page %s', 'twentyten' ), max( $paged, $page ) );
 
 }
 
@@ -243,23 +243,23 @@ function obandes_title(){
 add_action('init', 'obandes_init');
 
 function obandes_init() {
-	if (!is_admin()) {
-	
-	wp_register_style('html5reset', 'http://html5resetcss.googlecode.com/files/html5-reset-1.4.css',false,'1.4');
-	wp_enqueue_style( 'html5reset');
-	
-	/*wp_register_style('Tangerine', 'http://fonts.googleapis.com/css?family=Tangerine',false,'0.1');
-	wp_enqueue_style( 'Tangerine');*/
+    if (!is_admin()) {
 
-	wp_register_script('yui-css','http://yui.yahooapis.com/2.8.0r4/build/yuiloader/yuiloader-min.js',false,'2.8.0r4');
-	wp_enqueue_script('yui-css');
-	wp_register_script('yui', get_template_directory_uri().'/yui.js', array('yui-css'), '0.1');
-	wp_enqueue_script('yui');
+    wp_register_style('html5reset', 'http://html5resetcss.googlecode.com/files/html5-reset-1.4.css',false,'1.4');
+    wp_enqueue_style( 'html5reset');
 
-	wp_register_script('obandes', get_template_directory_uri().'/obandes.js', array('jquery'), '0.1');
-	wp_enqueue_script('obandes');
-	
-	}
+    /*wp_register_style('Tangerine', 'http://fonts.googleapis.com/css?family=Tangerine',false,'0.1');
+    wp_enqueue_style( 'Tangerine');*/
+
+    wp_register_script('yui-css','http://yui.yahooapis.com/2.8.0r4/build/yuiloader/yuiloader-min.js',false,'2.8.0r4');
+    wp_enqueue_script('yui-css');
+    wp_register_script('yui', get_template_directory_uri().'/yui.js', array('yui-css'), '0.1');
+    wp_enqueue_script('yui');
+
+    wp_register_script('obandes', get_template_directory_uri().'/obandes.js', array('jquery'), '0.1');
+    wp_enqueue_script('obandes');
+
+    }
 }
 
 
@@ -275,32 +275,32 @@ register_default_headers( array(
 
 ) );
 
-add_custom_image_header( '', 'twentyten_admin_header_style' ); 
- 
+add_custom_image_header( '', 'twentyten_admin_header_style' );
+
 if ( ! function_exists( 'twentyten_admin_header_style' ) ){
 
-	function twentyten_admin_header_style() {
-	?>
-		<style type="text/css">
-		/* Shows the same border as on front end */
-		#headimg {
-			border-bottom: 1px solid #000000;
-			border-top: 4px solid #000000;
-		}
-		
-		/* If NO_HEADER_TEXT is false, you can style here the header text preview */
-		#headimg #name {
-		}
-		
-		#headimg #desc {
-		}
-		</style>
-	<?php
-	}
+    function twentyten_admin_header_style() {
+    ?>
+        <style type="text/css">
+        /* Shows the same border as on front end */
+        #headimg {
+            border-bottom: 1px solid #000000;
+            border-top: 4px solid #000000;
+        }
+
+        /* If NO_HEADER_TEXT is false, you can style here the header text preview */
+        #headimg #name {
+        }
+
+        #headimg #desc {
+        }
+        </style>
+    <?php
+    }
 }
 
 add_filter('body_class','add_body_class');
-	
+
 if (!function_exists('add_body_class')) {
 
 function add_body_class($class) {
@@ -315,14 +315,14 @@ function add_body_class($class) {
      */
     $lang = WPLANG;
     $classes= array($lang);
-	$classes= array_merge($classes,$class);
-	global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
+    $classes= array_merge($classes,$class);
+    global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
 
 
-	switch(true){
+    switch(true){
 
         case($is_lynx):
-			$classes[] = 'lynx';
+            $classes[] = 'lynx';
         break;
         case($is_gecko):
             $classes[] = 'gecko';
@@ -352,87 +352,87 @@ function add_body_class($class) {
         }
 
     return $classes;
-	}
+    }
 }
 
 
 
 function content_width(){
 
-	$adjust = 16;
-	$default = 400;
+    $adjust = 16;
+    $default = 400;
 
 if(DOCUMENT_WIDTH == 'doc'){
-	$w = 750;
-	$adjust = 16;
-	if(SIDEBAR_WIDTH == 'yui-t1'){
-		$content_width = $w - 160 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t2'){
-		$content_width = $w - 180 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t3'){
-		$content_width = $w - 300 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t4'){
-		$content_width = $w - 180 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t5'){
-		$content_width = $w - 240 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t6'){
-		$content_width = $w - 300 - $adjust;
-	}else{
-		$content_width = $default;
-	}
+    $w = 750;
+    $adjust = 16;
+    if(SIDEBAR_WIDTH == 'yui-t1'){
+        $content_width = $w - 160 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t2'){
+        $content_width = $w - 180 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t3'){
+        $content_width = $w - 300 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t4'){
+        $content_width = $w - 180 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t5'){
+        $content_width = $w - 240 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t6'){
+        $content_width = $w - 300 - $adjust;
+    }else{
+        $content_width = $default;
+    }
 }elseif(DOCUMENT_WIDTH == 'doc2'){
-	$w = 950;
-		$adjust = 16;
-	if(SIDEBAR_WIDTH == 'yui-t1'){
-		$content_width = $w - 160 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t2'){
-		$content_width = $w - 180 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t3'){
-		$content_width = $w - 300 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t4'){
-		$content_width = $w - 180 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t5'){
-		$content_width = $w - 240 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t6'){
-		$content_width = $w - 300 - $adjust;
-	}else{
-		$content_width = $default;
-	}
+    $w = 950;
+        $adjust = 16;
+    if(SIDEBAR_WIDTH == 'yui-t1'){
+        $content_width = $w - 160 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t2'){
+        $content_width = $w - 180 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t3'){
+        $content_width = $w - 300 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t4'){
+        $content_width = $w - 180 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t5'){
+        $content_width = $w - 240 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t6'){
+        $content_width = $w - 300 - $adjust;
+    }else{
+        $content_width = $default;
+    }
 }elseif(DOCUMENT_WIDTH == 'doc3'){
-	$w = 750;
-	if(SIDEBAR_WIDTH == 'yui-t1'){
-		$content_width = $w - 160 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t2'){
-		$content_width = $w - 180 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t3'){
-		$content_width = $w - 300 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t4'){
-		$content_width = $w - 180 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t5'){
-		$content_width = $w - 240 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t6'){
-		$content_width = $w - 300 - $adjust;
-	}else{
-		$content_width = $default;
-	}
+    $w = 750;
+    if(SIDEBAR_WIDTH == 'yui-t1'){
+        $content_width = $w - 160 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t2'){
+        $content_width = $w - 180 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t3'){
+        $content_width = $w - 300 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t4'){
+        $content_width = $w - 180 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t5'){
+        $content_width = $w - 240 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t6'){
+        $content_width = $w - 300 - $adjust;
+    }else{
+        $content_width = $default;
+    }
 }elseif(DOCUMENT_WIDTH == 'doc4'){
-	$w = 974;
-	$adjust = 16;
-	if(SIDEBAR_WIDTH == 'yui-t1'){
-		$content_width = $w - 160 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t2'){
-		$content_width = $w - 180 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t3'){
-		$content_width = $w - 300 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t4'){
-		$content_width = $w - 180 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t5'){
-		$content_width = $w - 240 - $adjust;
-	}elseif(SIDEBAR_WIDTH == 'yui-t6'){
-		$content_width = $w - 300 - $adjust;
-	}else{
-		$content_width = $default;
-	}
+    $w = 974;
+    $adjust = 16;
+    if(SIDEBAR_WIDTH == 'yui-t1'){
+        $content_width = $w - 160 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t2'){
+        $content_width = $w - 180 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t3'){
+        $content_width = $w - 300 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t4'){
+        $content_width = $w - 180 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t5'){
+        $content_width = $w - 240 - $adjust;
+    }elseif(SIDEBAR_WIDTH == 'yui-t6'){
+        $content_width = $w - 300 - $adjust;
+    }else{
+        $content_width = $default;
+    }
 }
 
 return $content_width;
@@ -440,30 +440,30 @@ return $content_width;
 }
 
 function document_width(){
-	global $content_width;
-	
-	switch(DOCUMENT_WIDTH){
-	
-	case('doc'):
-	
-		$result = 750;
-	break;
-	case('doc2'):
-	
-		$result = 950;
-	break;
-	case('doc4'):
-	
-		$result = 974;
-	break;
-	default:
-	
-		$result = $content_width;
-	
-	break;
-	
-	
-	}
+    global $content_width;
+
+    switch(DOCUMENT_WIDTH){
+
+    case('doc'):
+
+        $result = 750;
+    break;
+    case('doc2'):
+
+        $result = 950;
+    break;
+    case('doc4'):
+
+        $result = 974;
+    break;
+    default:
+
+        $result = $content_width;
+
+    break;
+
+
+    }
 return $result;
 }
 
@@ -496,24 +496,75 @@ global $post;
 $images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image', 'orderby' => 'menu_order', 'order' => 'ASC', 'numberposts' => 10 ) );
 
                     $total_images = count( $images );
-						
-	$result = '<div class="horizon-gallery">';
- 
-	if(isset($images)){
-		foreach($images as $image){
-		
-		
-		$result .= '<a class="size-thumbnail" href="'.get_permalink() .$image->post_title.'/">'.wp_get_attachment_image( $image->ID, 'thumbnail' ).' </a>';
-		
-		}
-	}else{
-	return false;
-	
-	}
 
-	return $result.'</div>';
+    $result = '<div class="horizon-gallery">';
 
-	}
+    if(isset($images)){
+        foreach($images as $image){
 
 
+        $result .= '<a class="size-thumbnail" href="'.get_permalink() .$image->post_title.'/">'.wp_get_attachment_image( $image->ID, 'thumbnail' ).' </a>';
+
+        }
+    }else{
+    return false;
+
+    }
+
+    return $result.'</div>';
+
+    }
+
+if (!function_exists('obandes_comment')) {
+
+
+    function obandes_comment( $comment, $args, $depth ) {
+
+        $GLOBALS['comment'] = $comment; ?>
+        <?php if ( '' == $comment->comment_type ) : ?>
+
+
+        <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+            <div id="comment-<?php comment_ID(); ?>">
+            <div class="comment-author vcard">
+             <div style="width:40px;float-left">
+                <?php echo get_avatar( $comment, 32 ); ?>
+            </div>
+                <div style="overflow:hidden;*width:100%;padding-left:1em;" class="clearfix">
+
+                <?php printf( __( '%s <span class="says">says:</span>', 'obandes' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
+                </div>
+            </div><!-- .comment-author .vcard -->
+
+            <?php if ( $comment->comment_approved == '0' ) : ?>
+            <div style="overflow:hidden;*width:100%;padding-left:1em;" class="clearfix">
+                <em><?php _e( 'Your comment is awaiting moderation.', 'obandes' ); ?></em>
+                <br />
+                </div>
+            <?php endif; ?>
+
+            <div class="comment-meta commentmetadata clearfix" style="overflow:hidden;*width:100%;padding-left:1em;"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+                <?php
+                    /* translators: 1: date, 2: time */
+                    printf( __( '%1$s at %2$s', 'obandes' ), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)', 'obandes' ), ' ' );
+                ?>
+            </div><!-- .comment-meta .commentmetadata -->
+
+            <div class="comment-body"><?php comment_text(); ?></div>
+
+            <div class="reply">
+                <?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+            </div><!-- .reply -->
+
+        </div><!-- #comment-##  -->
+
+        <?php else : ?>
+
+        <li class="post pingback">
+            <p><?php _e( 'Pingback:', 'obandes' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'obandes'), ' ' ); ?></p>
+
+        <?php endif;
+    }
+
+}
 ?>
