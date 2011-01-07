@@ -50,7 +50,7 @@
         define('HEADER_IMAGE_HEIGHT', 198);//auto or 999px
     }
     if(!defined('SHOW_HEADER_IMAGE')){
-        define('SHOW_HEADER_IMAGE',true);
+        define('SHOW_HEADER_IMAGE',false);
     }
     add_action( 'widgets_init', 'obandes_widgets_init' );
 
@@ -72,7 +72,7 @@
     }
 
 //page exstra sidebar show
-    $rsidebar_show = true;
+    $rsidebar_show = false;
 /**
  *
  * editor-style.css
@@ -527,7 +527,7 @@ if (!function_exists('obandes_comment')) {
         <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
             <div id="comment-<?php comment_ID(); ?>">
             <div class="comment-author vcard">
-             <div style="width:40px;float-left">
+             <div style="width:40px;float:left">
                 <?php echo get_avatar( $comment, 32 ); ?>
             </div>
                 <div style="overflow:hidden;*width:100%;padding-left:1em;" class="clearfix">
@@ -550,7 +550,7 @@ if (!function_exists('obandes_comment')) {
                 ?>
             </div><!-- .comment-meta .commentmetadata -->
 
-            <div class="comment-body"><?php comment_text(); ?></div>
+            <div class="comment-body clearfix" ><?php comment_text(); ?></div>
 
             <div class="reply">
                 <?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>

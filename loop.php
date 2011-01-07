@@ -61,7 +61,7 @@ if ( get_the_author_meta( 'description' ) ) : ?>
       <dd><?php echo $curauth->user_description; ?></dd>
       <?php } //!empty($curauth->user_description) ?>
     </dl>
-    <div class="clear"></div>
+   <div class="clear"></div>
   </div>
 </div>
 <h2 class="h2"> <?php echo sprintf(__("Posts by %s",'obandes'),$curauth->nickname);?> </h2>
@@ -166,7 +166,8 @@ echo "<!--cat ".$cat."-->";
             </li>
             <li>
               <?php _e('Auther:');?>
-              <?php the_author(); ?>
+               <?php  echo sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s"   rel="vcard:url">%2$s</a></span>',
+                get_author_posts_url( get_the_author_meta( 'ID' ) ), get_the_author() );?>
             </li>
             <li>
               <?php comments_popup_link( __( 'Leave a comment', 'obandes' ), __( '1 Comment', 'obandes' ), __( '% Comments', 'obandes' ) ); ?>
@@ -186,7 +187,7 @@ echo "<!--cat ".$cat."-->";
           </a></h2>
         <div class="entry-content clearfix">
           <?php the_content(__('Read the rest of this entry &raquo;', 'obandes')) ?>
-          <div class="clear"></div>
+            <div class="clear"></div>
           <?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'obandes' ), 'after' => '</div>' ) ); ?>
         </div>
           <?php comments_template( '', true ); ?>
@@ -223,12 +224,9 @@ echo "<!--cat ".$cat."-->";
     <div class="horizon-gallery">
       <?php the_content( '' ); ?>
     </div>
-   <div class="clear"></div>
-    <?php
-    $images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image', 'orderby' => 'menu_order', 'order' => 'ASC', 'numberposts' => 999 ) );
+    <div class="clear"></div>
 
-                    $total_images = count( $images );?>
-    <p style="margin:1em;"><em><?php printf( __( 'This gallery contains <a %1$s>%2$s photos</a>.', 'obandes' ),'href="' . get_permalink() .$attachment_page. '/" title="' . sprintf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark"',$total_images); ?></em></p>
+
   </div>
   <!-- .entry-content -->
   <div class="entry-utility">
@@ -236,6 +234,7 @@ echo "<!--cat ".$cat."-->";
       <?php edit_post_link( __( 'Edit', 'obandes' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
   </div>
   <!-- #entry-utility -->
+  <?php comments_template( '', true ); ?>
 </div>
 <?php
 
@@ -263,9 +262,8 @@ echo "<!--cat ".$cat."-->";
   <?php if ( is_archive() || is_search() ) : // Only display Excerpts for archives & search ?>
   <div class="entry-summary">
     <?php the_excerpt( __( 'Continue&nbsp;reading&nbsp;<span class="meta-nav">&rarr;</span>', 'obandes' ) ); ?>
-
-
   </div>
+
   <!-- .entry-summary -->
   <?php else : ?>
   <div class="entry-content clearfix">
@@ -324,11 +322,10 @@ echo "<!--cat ".$cat."-->";
 ?>
 
   </div>
-
       <div class="entry-content clearfix">
-        <?php  the_content(); //the_excerpt();?>
+        <?php  the_excerpt();?>
         </div>
-        <div class="clear"></div>
+    <div class="clear"></div>
         <div class="entry-utility">
   <?php obandes_posted_in();?>
       <?php edit_post_link( __( 'Edit', 'obandes' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
