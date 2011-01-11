@@ -83,6 +83,17 @@
 
  add_editor_style();
 
+
+/**
+ * embed css , javascript , meta from custom field
+ *
+ * field name css, javascript, meta
+ *
+ *
+ */
+
+add_filter("wp_head","tmn_embed_meta",'99');
+
 /**
  * navibar
  *
@@ -567,4 +578,57 @@ if (!function_exists('obandes_comment')) {
     }
 
 }
+
+
+
+
+    function tmn_embed_meta($content){
+        $result = "";
+        global $post;
+
+    /**
+     * insert into embed style ,javascript script and embed tags from custom field
+     *
+     *
+     */
+        if (is_single() || is_page()) {
+
+            if(have_posts()){
+
+             while (have_posts()) : the_post();
+
+                $css = get_post_meta($post->ID, 'css', true);
+                if (!empty($css)) {
+                $result .= '<style type="text/css">';
+                $result .= "\n/*<![CDATA[*/\n";
+                $result .=  $css;
+                $result .= "\n/*]]>*/\n";
+                $result .= "</style>";
+                }
+
+                $javascript = get_post_meta($post->ID, 'javascript', true);
+                if (!empty($javascript)) {
+                $result .= '<script type="text/javascript">';
+                $result .= "\n/*<![CDATA[*/\n";
+                $result .= $javascript;
+                $result .= "\n/*]]>*/\n";
+                $result .= "</script>";
+                }
+                $meta = get_post_meta($post->ID, 'meta', true);
+                if (!empty($meta)) {
+                $result .= $meta;
+                }
+              endwhile;
+            }else{
+
+
+            }
+        }
+        echo $result;
+
+        return $content;
+    }
+
+
+
 ?>

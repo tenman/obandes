@@ -24,44 +24,9 @@ if(isset($current_blog)){
 <?php if ( is_singular() && get_option( 'thread_comments' ) )
         wp_enqueue_script( 'comment-reply' );?>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<title>
-<?php obandes_title();?>
-</title>
-<?php wp_head();?>
+<title><?php obandes_title();?></title>
 <link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_directory_uri().'/style.css'; ?>" />
-<?php
-/**
- * insert into embed style ,javascript script and embed tags from custom field
- *
- *
- */
-if (is_single() || is_page()) {
-
- while (have_posts()) : the_post();
-
-    $css = get_post_meta($post->ID, 'css', true);
-    if (!empty($css)) { ?>
-<style type="text/css">
-    /*<![CDATA[*/
-    <?php echo $css; ?>
-    /*]]>*/
-        </style>
-<?php }
-    $javascript = get_post_meta($post->ID, 'javascript', true);
-    if (!empty($javascript)) { ?>
-<script type="text/javascript">
-        /*<![CDATA[*/
-        <?php echo $javascript; ?>
-        /*]]>*/
-        </script>
-<?php }
-    $meta = get_post_meta($post->ID, 'meta', true);
-    if (!empty($meta)) { ?>
-<?php echo $meta; ?>
-<?php }
-endwhile;
-}
-?>
+<?php wp_head();?>
 </head>
 <body <?php body_class($this_blog); ?> onLoad="horizontal()">
 <div id="<?php echo DOCUMENT_WIDTH; ?>" class="<?php echo SIDEBAR_WIDTH;?>">
