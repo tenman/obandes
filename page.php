@@ -19,12 +19,11 @@ get_header();?>
         <?php while (have_posts()) : the_post(); ?>
         <div class="entry page hpage">
           <div id="post-<?php the_ID(); ?>">
-            <h2 class="h2 title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>">
-              <?php the_title(); ?>
-              </a></h2>
+            <h2 class="h2 title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
 
             <div style="entry-content clearfix">
               <?php the_content('Read the rest of this entry &raquo;'); ?>
+              <div class="clear"></div>
             </div>
             <div class="clear"></div>
                  <p class="page-meta">
@@ -36,17 +35,14 @@ get_header();?>
             <div class="linkpage clearfix">
               <?php wp_link_pages('before=<p class="pagenate">&after=</p>&next_or_number=number&pagelink=<span>%</span>'); ?>
             </div>
-            <br style="clear:both;" />
-            <p class="postmetadata">
-              <?php the_category(', ') ?>
-              &nbsp;
-              <?php edit_post_link('Edit', '', ' '); ?>
-            </p>
+           <div class="clear"></div>
+            <p class="postmetadata"><?php the_category(', ') ?>&nbsp;<?php edit_post_link('Edit', '', ' '); ?></p>
             <?php comments_template( '', true ); ?>
           </div>
         </div>
         <?php endwhile; ?>
         <?php if ( $wp_query->max_num_pages > 1 ) : ?>
+
         <div id="nav-below" class="clearfix"> <span class="nav-previous">
           <?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'obandes' ) ); ?>
           </span> <span class="nav-next">

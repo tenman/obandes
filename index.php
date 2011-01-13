@@ -14,7 +14,7 @@
   <div class="yui-b" >
     <section>
       <?php get_template_part( 'loop', 'default' );?>
-      <br style="clear:both" />
+      <div class="clear"></div>
     </section>
   </div>
 </article>

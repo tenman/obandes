@@ -120,9 +120,9 @@ if(!function_exists("register_obandes_menus")){
 
     // Area 3, located in the footer. Empty by default.
     register_sidebar( array(
-        'name' => __( 'First Footer Widget Area', 'twentyten' ),
+        'name' => __( 'First Footer Widget Area', 'obandes' ),
         'id' => 'first-footer-widget-area',
-        'description' => __( 'The first footer widget area', 'twentyten' ),
+        'description' => __( 'The first footer widget area', 'obandes' ),
         'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
         'after_widget' => '</li>',
         'before_title' => '<h3 class="widget-title">',
@@ -131,9 +131,9 @@ if(!function_exists("register_obandes_menus")){
 
     // Area 4, located in the footer. Empty by default.
     register_sidebar( array(
-        'name' => __( 'Second Footer Widget Area', 'twentyten' ),
+        'name' => __( 'Second Footer Widget Area', 'obandes' ),
         'id' => 'second-footer-widget-area',
-        'description' => __( 'The second footer widget area', 'twentyten' ),
+        'description' => __( 'The second footer widget area', 'obandes' ),
         'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
         'after_widget' => '</li>',
         'before_title' => '<h3 class="widget-title">',
@@ -142,9 +142,9 @@ if(!function_exists("register_obandes_menus")){
 
     // Area 5, located in the footer. Empty by default.
     register_sidebar( array(
-        'name' => __( 'Third Footer Widget Area', 'twentyten' ),
+        'name' => __( 'Third Footer Widget Area', 'obandes' ),
         'id' => 'third-footer-widget-area',
-        'description' => __( 'The third footer widget area', 'twentyten' ),
+        'description' => __( 'The third footer widget area', 'obandes' ),
         'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
         'after_widget' => '</li>',
         'before_title' => '<h3 class="widget-title">',
@@ -153,9 +153,9 @@ if(!function_exists("register_obandes_menus")){
 
     // Area 6, located in the footer. Empty by default.
     register_sidebar( array(
-        'name' => __( 'Fourth Footer Widget Area', 'twentyten' ),
+        'name' => __( 'Fourth Footer Widget Area', 'obandes' ),
         'id' => 'fourth-footer-widget-area',
-        'description' => __( 'The fourth footer widget area', 'twentyten' ),
+        'description' => __( 'The fourth footer widget area', 'obandes' ),
         'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
         'after_widget' => '</li>',
         'before_title' => '<h3 class="widget-title">',
@@ -245,7 +245,7 @@ function obandes_title(){
 
     // Add a page number if necessary:
     if ( $paged >= 2 || $page >= 2 )
-        echo '|' . sprintf( __( 'Page %s', 'twentyten' ), max( $paged, $page ) );
+        echo '|' . sprintf( __( 'Page %s', 'obandes' ), max( $paged, $page ) );
 
 }
 
@@ -286,11 +286,11 @@ register_default_headers( array(
 
 ) );
 
-add_custom_image_header( '', 'twentyten_admin_header_style' );
+add_custom_image_header( '', 'obandes_admin_header_style' );
 
-if ( ! function_exists( 'twentyten_admin_header_style' ) ){
+if ( ! function_exists( 'obandes_admin_header_style' ) ){
 
-    function twentyten_admin_header_style() {
+    function obandes_admin_header_style() {
     ?>
         <style type="text/css">
         /* Shows the same border as on front end */

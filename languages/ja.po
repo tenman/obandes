@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obandes 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-11 15:47+0900\n"
+"POT-Creation-Date: 2011-01-13 11:50+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Akio Tenman <akio@tenman.info>\n"
 "Language-Team: obandes <a.tenman@gmail.com>\n"
@@ -161,16 +161,16 @@ msgid "Posts by %s"
 msgstr "%s による投稿"
 
 #: obandes/loop.php:80
-#: obandes/loop.php:293
-#: obandes/loop.php:342
-#: obandes/page.php:51
+#: obandes/loop.php:284
+#: obandes/loop.php:326
+#: obandes/page.php:47
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> 古いコメント"
 
 #: obandes/loop.php:82
-#: obandes/loop.php:295
-#: obandes/loop.php:344
-#: obandes/page.php:53
+#: obandes/loop.php:285
+#: obandes/loop.php:326
+#: obandes/page.php:49
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "新しいコメント<span class=\"meta-nav\">&rarr;</span>"
 
@@ -204,24 +204,24 @@ msgid "Read the rest of this entry &raquo;"
 msgstr "Read the rest of this entry &raquo;"
 
 #: obandes/loop.php:191
-#: obandes/loop.php:272
+#: obandes/loop.php:266
 #, fuzzy
 msgid "Pages:"
 msgstr "ページ:"
 
-#: obandes/loop.php:234
-#: obandes/loop.php:283
-#: obandes/loop.php:331
+#: obandes/loop.php:230
+#: obandes/loop.php:274
+#: obandes/loop.php:315
 #, fuzzy
 msgid "Edit"
 msgstr "編集"
 
+#: obandes/loop.php:258
 #: obandes/loop.php:264
-#: obandes/loop.php:270
 msgid "Continue&nbsp;reading&nbsp;<span class=\"meta-nav\">&rarr;</span>"
 msgstr "続きを読む&nbsp;<span class=\"meta-nav\">&rarr;</span>"
 
-#: obandes/loop.php:321
+#: obandes/loop.php:305
 #, php-format
 msgid "<span class=\"time-diff\">(Passage of %s)</span>"
 msgstr "<span class=\"time-diff\">( %s　経過)</span>"
