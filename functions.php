@@ -50,7 +50,7 @@
         define('HEADER_IMAGE_HEIGHT', 198);//auto or 999px
     }
     if(!defined('SHOW_HEADER_IMAGE')){
-        define('SHOW_HEADER_IMAGE',false);
+        define('SHOW_HEADER_IMAGE',true);
     }
     add_action( 'widgets_init', 'obandes_widgets_init' );
 
