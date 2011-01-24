@@ -16,14 +16,14 @@ var uniq = {};
           jQuery('td[class="'+ this + '"]').wrapAll('<table border="0" width="100%" id="' + this + '" summary="layout table"><tr></tr></table>');
 
         jQuery('td[class="'+ this + '"]:first').addClass("col1");
-        jQuery('td[class="'+ this + '"]:last').addClass("last");		
-		jQuery('td[class="'+ this + '"]:nth-child(2)').addClass("col2");
-		jQuery('td[class="'+ this + '"]:nth-child(3)').addClass("col3");
-		jQuery('td[class="'+ this + '"]:nth-child(4)').addClass("col4");
-		jQuery('td[class="'+ this + '"]:nth-child(5)').addClass("col5");
+        jQuery('td[class="'+ this + '"]:last').addClass("last");
+        jQuery('td[class="'+ this + '"]:nth-child(2)').addClass("col2");
+        jQuery('td[class="'+ this + '"]:nth-child(3)').addClass("col3");
+        jQuery('td[class="'+ this + '"]:nth-child(4)').addClass("col4");
+        jQuery('td[class="'+ this + '"]:nth-child(5)').addClass("col5");
 
         jQuery('table[class="'+ this + '"]').addClass("DOM");
-
+        jQuery("td").css({'border':'1px solid #ccc'});
         });
 
 
@@ -47,6 +47,6 @@ var uniq = {};
             jQuery('div.'+target).toggle("slow");
 
         });
-		/* for ie8*/
-		jQuery('.entry-content img').removeAttr("height");
+        /* for ie8*/
+        jQuery('.entry-content img').removeAttr("height");
 }
