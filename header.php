@@ -26,6 +26,12 @@ if(isset($current_blog)){
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <title><?php obandes_title();?></title>
 <link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_directory_uri().'/style.css'; ?>" />
+<?php  
+if(get_option( 'obandes_css' ) !== ""){
+
+echo str_replace(array("\n","\r","\t"),"",'<style type="text/css">'.get_option( 'obandes_css' ).'</style>'."\n");
+
+}?>
 <?php wp_head();?>
 </head>
 <body <?php body_class($this_blog); ?> onLoad="horizontal()">

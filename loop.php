@@ -157,15 +157,15 @@ echo "<!--cat ".$cat."-->";
               <?php the_time(get_option('date_format')) ?>
             </li>
             <li>
-              <?php _e('Category:');?>
+              <?php _e('Category:','obandes');?>
               <?php the_category(' ') ?>
             </li>
             <li>
-              <?php _e('Tags:');?>
+              <?php _e('Tags:','obandes');?>
               <?php the_tags(); ?>
             </li>
             <li>
-              <?php _e('Auther:');?>
+              <?php _e('Auther:','obandes');?>
                <?php  echo sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s"   rel="vcard:url">%2$s</a></span>',
                 get_author_posts_url( get_the_author_meta( 'ID' ) ), get_the_author() );?>
             </li>

@@ -1,11 +1,10 @@
 /*   
 Theme Name: obandes
 Theme URI: http://www.tenman.info/wp3/obandes/
-Description: extend basic template It is possible to change freely by using Yahoo User Interface Framework though it is a basic theme in the layout. 
-AdminPanel was omitted. The setting is useful for a revokable person in functions.php. 
+Description: extend basic template
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 0.30
+Version: 0.25
 Tags:white, two-columns,right-sidebar ,fixed-width ,flexible-width, custom-colors, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -1074,25 +1073,3 @@ body.page .nocomments{
 	display:none;
 }
 
-.widget_tag_cloud a{
-	display:inline;
-	}
-.widget_tag_cloud a:hover{
-	background:none;
-	}
-.yui-ge .yui-u, .yui-gf div.first {
-	width:auto;
-}
-.yui-ge > div.yui-u, div.yui-gf > div.yui-u.first {
-	width: 24%;
-}
-.yui-ge > div.first, div.yui-gf div.yui-u {
-	width:74.2%;
-}
-div.yui-gc > div.first.yui-u, div.yui-gd .yui-u {
-	width: 66%;
-}
-div.yui-gc div.yui-u, div.yui-gd .yui-u.first,.yui-gb >div.yui-u.first,.yui-gb >div.yui-u{
-	width: 32%;
-}
-.yui-g{width:100%!important;}
