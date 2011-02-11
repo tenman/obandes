@@ -55,7 +55,7 @@
           'text' => "1"));
     }
     if(!defined('TMN_USE_LIST_EXCERPT')){
-        define("TMN_USE_LIST_EXCERPT",false);
+        define("TMN_USE_LIST_EXCERPT",true);
     }
 /**
  * editor-style.css
@@ -64,11 +64,97 @@
 /**
  * admin panel and pages
  */
+/**
+ * horizon class demo colors
+ */
+$css_preset =<<< CSS_PRESET
+html{
+
+
+}
+#doc,
+#doc2,
+#doc3,
+#doc4,
+#doc-custom{
+    padding:10px;
+    border:1px solid #fff;
+    background:rgba(204,204,204,0.4);
+
+
+}
+
+header img{
+    margin-top:6px;
+    border:1px solid #000;
+
+}
+footer{
+    padding-bottom:1em;
+}
+
+#access ul ul > a {
+    border-bottom:3px solid #fff;
+    color: #555;
+}
+
+table#horizon-header{
+    border:1px solid #fff;
+}
+table#horizon-header{
+
+-moz-box-shadow: 1px 1px 3px #555;
+-webkit-box-shadow: 1px 1px 3px #555;
+
+}
+
+
+td.horizon-header.col1,
+td.horizon-footer-widget.col1{
+    background:rgba(204,255,204,0.9);
+}
+td.horizon-header.col2,
+td.horizon-footer-widget.col2{
+    background:#fcc;
+    background:rgba(255,204,204,0.9);
+}
+td.horizon-header.col3,
+td.horizon-footer-widget.col3{
+    background:rgba(204,204,255,0.9);
+}
+td.horizon-header.col4,
+td.horizon-footer-widget.col4{
+    background:rgba(255,255,204,0.9);
+}
+td.horizon-header.last,
+td.horizon-footer-widget.last{
+    background:rgba(221, 204, 255,0.9);
+}
+.color{
+    background:#fcc;
+}
+.color1{
+    background:#fcc;
+}
+.color2{
+    background:#cfc;
+}
+.color3{
+    background:#ccc;
+}
+.chrome .color1,.gecko .color1{
+    background: rgba(255, 0, 0, 0.2);
+}
+.ie .color1{
+    background: #fcc;
+}
+CSS_PRESET;
+
     $obandes_base_setting =array(
             array('option_id' =>'null',
             'blog_id' => 0 ,
             'option_name' => "obandes_css",
-            'option_value' => "/* welcome obandes CSS setting */\n\n/*for example*/\n.h1 a{\n\tcolor:#333;\n}",
+            'option_value' => "/* welcome obandes CSS setting */\n\n/*for example*/\n$css_preset\n",
             'autoload'=>'yes',
             'title'=> __('Base Color for Automatic Arrangement','obandes'),
             'excerpt1'=>'',
