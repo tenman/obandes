@@ -1,7 +1,6 @@
 <?php
+
 /**
- *
- *
  * #doc - 750px centered (good for 800x600)
  * #doc2 - 950px centered (good for 1024x768)
  * #doc3 - 100% fluid (good for everybody)
@@ -13,8 +12,6 @@
         define('DOCUMENT_WIDTH', 'doc2' );
     }
 /**
- *
- *
  * .yui-t1 - Two columns, narrow on left, 160px
  * .yui-t2 - Two columns, narrow on left, 180px
  * .yui-t3 - Two columns, narrow on left, 300px
@@ -60,22 +57,12 @@
     if(!defined('TMN_USE_LIST_EXCERPT')){
         define("TMN_USE_LIST_EXCERPT",false);
     }
-//page exstra sidebar show
-    $rsidebar_show = false;
 /**
- *
  * editor-style.css
- *
- *
- *
  */
      add_editor_style();
 /**
  * admin panel and pages
- *
- *
- *
- *
  */
     $obandes_base_setting =array(
             array('option_id' =>'null',
@@ -127,10 +114,6 @@
     ) );
 /**
  * navibar
- *
- *
- *
- *
  */
     if(!function_exists("register_obandes_menus")){
         add_action( 'init', 'register_obandes_menus' );
@@ -218,11 +201,15 @@
         if ( $site_description && ( is_home() || is_front_page() ) )
             echo "&nbsp;|&nbsp;" .$site_description;
         // Add a page number if necessary:
-        if ( $paged >= 2 || $page >= 2 )
+        if ( $paged >= 2 || $page >= 2 ){
             echo "&nbsp;|&nbsp;" . sprintf( __( 'Page %s', 'obandes' ), max( $paged, $page ) );
+        }
     }
     function obandes_init() {
-        if (!is_admin()) {
+
+        $page = basename($_SERVER['REQUEST_URI']);
+
+        if (!is_admin() and !preg_match("|^wp-login\.php|si",$page)) {
         wp_register_style('html5reset', 'http://html5resetcss.googlecode.com/files/html5-reset-1.4.css',false,'1.4');
         wp_enqueue_style( 'html5reset');
         /*wp_register_style('Tangerine', 'http://fonts.googleapis.com/css?family=Tangerine',false,'0.1');
@@ -256,14 +243,14 @@
     if (!function_exists('obandes_add_body_class')) {
         function obandes_add_body_class($class) {
 
-        /**
-         * body class add lang
-         *
-         * example
-         *
-         * $classes= array('class1','class2');
-         *
-         */
+/**
+ * body class add lang
+ *
+ * example
+ *
+ * $classes= array('class1','class2');
+ *
+ */
 
             $lang = WPLANG;
             $classes= array($lang);
@@ -480,8 +467,6 @@
         global $post;
     /**
      * insert into embed style ,javascript script and embed tags from custom field
-     *
-     *
      */
         if (is_single() || is_page()) {
             if(have_posts()){
@@ -593,8 +578,14 @@
         if(isset($_GET['page']) and $obandes_query == $_GET['page']){
         $result = "<h2 class=\"h2\">".__('CSS links').'</h2>';
         $result .= "<ul>";
-        $result .= '<li><a href="http://www.tenman.info/wp3/obandes/quick-start-obandes/">obandes Quick Start</a></li>';
-        $result .= '<li><a href="http://www.tenman.info/csstidy/css_optimiser.php">CSS Tidy</a></li>';
+        $result .= sprintf('<li><a href="%s" title="%s">%s</a></li>',
+                    esc_url("http://www.tenman.info/wp3/obandes/quick-start-obandes/"),
+                    esc_attr(__("obandes Quick Start",'obandes')),
+                    esc_html(__("obandes Quick Start",'obandes')));
+        $result .= sprintf('<li><a href="%s" title="%s"></a>%2$s</li>',
+                    esc_url("http://www.tenman.info/csstidy/css_optimiser.php"),
+                    esc_attr(__("CSS Tidy",'obandes')),
+                    esc_html(__("CSS Tidy",'obandes')));
         $result .= "</ul>\n";
             return apply_filters("obandes_help",$result);
         }else{

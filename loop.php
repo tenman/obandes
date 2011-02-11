@@ -197,6 +197,25 @@
 <?php } ?>
 
 <?php /* end conditional Single*/ }else{//list post e.g. index ?>
+<?php
+if(is_search()){
+    $page_title = __("Search Archives",'obandes');
+}elseif(is_tag()){
+    $page_title = __("Tag Archives",'obandes');
+}elseif(is_category()){
+    $page_title = __("Category Archives",'obandes');
+}elseif ( is_archive() ){
+    $page_title = __("Blog Archives",'obande');
+}else{
+    $page_title = "";
+}
+
+if(!empty($page_title)){
+printf('<div class="h1" id="archives-title">%s</div>',esc_html($page_title));
+}
+?>
+
+
 <ul class="index">
   <?php while (have_posts()) : the_post(); ?>
   <li>

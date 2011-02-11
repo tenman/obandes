@@ -23,10 +23,6 @@ http://developer.yahoo.com/yui/fonts/
 ------------------------------------------------------*/
 /**
  * elements
- *
- *
- *
- *
  */
 a{
 	outline: none; 
@@ -104,10 +100,6 @@ td a{
 	}
 /**
  * font size
- *
- *
- *
- *
  */
 
 .font10 {
@@ -143,15 +135,12 @@ td a{
 
 /**
  * heading
- *
- *
- *
- *
  */
 h1,
 h1 a,
 .h1 a,
-#site-title{
+#site-title,
+{
 	font-size:174%;
 	}
 h2,
@@ -263,15 +252,11 @@ li h2{
 
 /**
  * header
- *
- *
- *
- *
  */
 
 
 header{
-    padding:10px 0;
+    padding:0;
 	
 	}
 header img{
@@ -280,27 +265,20 @@ margin-bottom:1em;
 .form{
     text-align:right;
 	}
-
+#archives-title{
+	font-weight:700;
+	font-size:30px;
+	font-family:Arial, Helvetica, sans-serif;
+}
 /**
  * article section
- *
- *
- *
- *
  */
 
 article,section,nav {
     display:block;
 	}
-
-   
-
-
 /**
  * nav link style
- *
- *
- *
  */
 nav {
 
@@ -346,15 +324,8 @@ nav li a:hover {
     background-color: #eef;
     color: #555;
 	}
-
-
-
 /**
  * horizontal menubar
- *
- *
- *
- *
  */
 
 #access {
@@ -574,10 +545,6 @@ background:#ccc;
 
 /**
  * WordPress 
- *
- *
- *
- *
  */
 
 .aligncenter,
@@ -628,10 +595,6 @@ div.aligncenter {
 .nav-next{float:right;}
 /**
  * data list
- *
- *
- *
- *
  */
 
 dl {
@@ -682,18 +645,8 @@ dl.my_tags dt {
 	clear:both;
 	width:25%;
 }
-
-
-
-
-
-
 /**
  * entry
- *
- *
- *
- *
  */
 
 .home .hentry{
@@ -764,13 +717,7 @@ dl.my_tags dt {
 }
 /**
  * images
- *
- *
- *
- *
  */
-
-
 .entry-content img{
 	max-width:100%;
 	height:auto;
@@ -818,10 +765,6 @@ ul.index li{
 
 /**
  * footer
- *
- *
- *
- *
  */
 	
 #footer-widget-area div{
@@ -855,12 +798,42 @@ address a{
 
 /**
  * horizon class demo colors
- *
- *
- *
- *
  */
-/*
+html{
+	
+
+}
+body{
+	border:1px solid #fff;
+	background:rgba(204,204,204,0.4);
+	
+
+}
+header img{
+	margin-top:6px;
+	border:1px solid #000;
+
+}
+footer{
+	padding-bottom:1em;
+}
+
+#access ul ul > a {
+	border-bottom:3px solid #fff;
+	color: #555;
+}
+
+table#horizon-header{
+	border:1px solid #fff;
+}
+table#horizon-header,body{
+
+-moz-box-shadow: 1px 1px 3px #555;
+-webkit-box-shadow: 1px 1px 3px #555;
+
+}
+
+
 td.horizon-header.col1,
 td.horizon-footer-widget.col1{
 	background:rgba(204,255,204,0.9);
@@ -900,7 +873,7 @@ td.horizon-footer-widget.last{
 .ie .color1{
 	background: #fcc;
 }
-*/
+
 /**
  * wp nextpage link
  *
@@ -946,13 +919,12 @@ td.horizon-footer-widget.last{
 	padding:.5em;
 }
 /**
- * comment
- *
- *
- *
- *
+ * comment pingback
  */
+.pingback{
+	list-style-type:none;
 
+}
 #comments{
 	margin:0 auto;
 	width:80%;
@@ -995,10 +967,6 @@ input#url,
 
 /**
  * Utility
- *
- *
- *
- *
  */
 
 .clearfix:after {
@@ -1031,10 +999,6 @@ input#url,
 
 /**
  * DOM
- *
- *
- *
- *
  */
 #horizon-blog th,
 #horizon-blog td,

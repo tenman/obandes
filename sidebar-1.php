@@ -11,7 +11,7 @@
 <nav class="yui-b" id="toc">
   <ul>
     <?php if ( function_exists('dynamic_sidebar') && dynamic_sidebar('sidebar-1') ) : else : ?>
-    <?php wp_list_pages('title_li=<h2 class="h2">Pages</h2>' ); ?>
+    <?php wp_list_pages('title_li=<h2 class="h2">'.__('Pages','obandes').'</h2>' ); ?>
     <li>
       <h2 class="h2">Archives</h2>
       <ul>
@@ -22,7 +22,7 @@
     <?php /* If this is the frontpage */ if ( is_home() || is_page() ) { ?>
     <?php wp_list_bookmarks(); ?>
     <li>
-      <h2 class="h2">Meta</h2>
+      <h2 class="h2"><?php _e("Meta",'obandes');?></h2>
       <ul>
         <?php wp_register(); ?>
         <li>
