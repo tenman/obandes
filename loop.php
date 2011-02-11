@@ -8,12 +8,11 @@
  * @since obandes 0.1
  */
  ?>
-<?php if(is_author()){  ?>
+<?php if(is_author()){  //end conditional is_author() ?>
 
 <div id="author-infomation" <?php post_class('clearfix'); ?>>
   <?php $curauth = get_userdata(intval($author)); ?>
-  <?php
-if ( get_the_author_meta( 'description' ) ) : ?>
+  <?php if ( get_the_author_meta( 'description' ) ) : ?>
   <dl class="<?php echo basename(__FILE__,'.php');?> <?php echo basename(dirname(__FILE__));?>">
     <dt style="border:none;"><?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'obandes_author_bio_avatar_size', 60 ) ); ?><br />
       <?php printf( __( 'About %s', 'obandes' ), get_the_author() ); ?></dt>
@@ -65,34 +64,19 @@ if ( get_the_author_meta( 'description' ) ) : ?>
   </div>
 </div>
 <h2 class="h2"> <?php echo sprintf(__("Posts by %s",'obandes'),$curauth->nickname);?> </h2>
-<?php } ?>
-<?php
-/**
- * Display navigation to next/previous pages when applicable
- *
- *
- *
- *
- */
+<?php } //end conditional is_author() ?>
 
- if ( $wp_query->max_num_pages > 1 ) : ?>
+
+<?php if ( $wp_query->max_num_pages > 1 ){ // Display navigation to next/previous pages when applicable  ?>
 <div id="nav-above" class="clearfix"> <span class="nav-previous">
   <?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'obandes' ) ); ?>
   </span> <span class="nav-next">
   <?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'obandes' ) ); ?>
   </span> </div>
 <!-- #nav-above -->
-<?php endif; ?>
-<?php
+<?php } //end #nav-above?>
 
-/**
- * 404not found
- *
- *
- *
- *
- */
- if ( ! have_posts() ) : ?>
+<?php if ( ! have_posts() ) { //404not found ?>
 <div id="post-0" class="post error404 not-found">
   <h1 class="entry-title h1">
     <?php _e( 'Not Found', 'obandes' ); ?>
@@ -103,55 +87,28 @@ if ( get_the_author_meta( 'description' ) ) : ?>
     </p>
     <?php get_search_form(); ?>
   </div>
-  <!-- .entry-content -->
 </div>
-<!-- #post-0 -->
-<?php endif; ?>
-<?php if(is_single()){
+<?php } //end 404 not found ?>
 
-/**
- * when Single page
- *
- *
- *
- *
- */
-?>
-<?php while (have_posts()) : the_post(); ?>
+<?php if(is_single()){  //conditional Single ?>
+
+<?php while (have_posts()){ the_post(); //start loop Single ?>
 <?php
-
-if ( in_category( "blog" )){
-    $cat = "blog";
-}elseif ( in_category( "gallery" )){
-    $cat = "gallery";
-
-
-}else{
     $cat = "default";
+    if ( in_category( "blog" )){    $cat = "blog";      }
+    if ( in_category( "gallery" )){ $cat = "gallery";   }
 
-}
-
-echo "<!--cat ".$cat."-->";
+    if(WP_DEBUG == true){
+        echo '<!--Single Category '.$cat.' start-->';
+    }
 ?>
-<?php
+<?php switch($cat){
 
-    switch($cat){
+            case ('blog'):// in category blog ?>
 
-            case ('blog'):
-
-/**
- * category blog
- *
- *
- *
- *
- */
-?>
 <div id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
 <div class="yui-gf">
-
     <div class="yui-u first">
-
           <ul class="entry-meta">
             <li class="published">
               <?php the_time(get_option('date_format')) ?>
@@ -174,17 +131,11 @@ echo "<!--cat ".$cat."-->";
             </li>
             <li><?php if ( function_exists('the_shortlink') ) the_shortlink( __('Permalink', 'obandes'), __('bookmark it?', 'obandes'), '.' );?></li>
 
-              <li><?php edit_post_link('Edit', '', ' '); ?></li>
+              <?php edit_post_link('Edit', '<li>', '</li>'); ?>
           </ul>
     </div>
-
-
-
-
      <div class="entry-content yui-u">
-
-        <h2 class="entry-title  clearfix h2"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
-
+  <h2 class="entry-title h2"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
         <div class="entry-content clearfix">
           <?php the_content(__('Read the rest of this entry &raquo;', 'obandes')) ?>
             <div class="clear"></div>
@@ -192,31 +143,16 @@ echo "<!--cat ".$cat."-->";
         </div>
           <?php comments_template( '', true ); ?>
     </div>
-
 </div>
 </div>
 
-<?php
+<?php  break;//end in category blog ?>
 
-            break;
+<?php  case("gallery")://in category gallery ?>
 
-
-/**
- * category gallery
- *
- *
- *
- *
- */
-
-            case("gallery"):
-?>
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
   <h2 class="entry-title h2"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-
   <div class="entry-meta"><?php obandes_posted_on(); ?></div>
-
   <div class="entry-content">
     <?php echo obandes_gallery_list();?>
     <div class="horizon-gallery">
@@ -232,44 +168,19 @@ echo "<!--cat ".$cat."-->";
   <!-- #entry-utility -->
   <?php comments_template( '', true ); ?>
 </div>
-<?php
+<?php  break;//end in category gallery ?>
 
-            break;
+<?php default:  //single page not in special category e.g. blog,gallery   ?>
 
-            default:
-
-/**
- * other single page
- *
- *
- *
- *
- */
-
-            ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
   <h2 class="h2 entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-
   <div class="entry-meta"><?php obandes_posted_on(); ?></div>
-  <?php if ( is_archive() || is_search() ) : // Only display Excerpts for archives & search ?>
-
-  <div class="entry-summary">
-    <?php the_excerpt( __( 'Continue&nbsp;reading&nbsp;<span class="meta-nav">&rarr;</span>', 'obandes' ) ); ?>
-  </div>
-
-  <?php else : ?>
-
   <div class="entry-content clearfix">
     <?php the_content( __( 'Continue&nbsp;reading&nbsp;<span class="meta-nav">&rarr;</span>', 'obandes' ) ); ?>
     <div class="clear"></div>
     <?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'obandes' ), 'after' => '</div>' ) ); ?>
   </div>
      <div class="clear"></div>
-
-  <?php endif;?>
-
-
   <div class="entry-utility"><?php obandes_posted_in();?>
     <?php edit_post_link( __( 'Edit', 'obandes' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
   </div>
@@ -277,24 +188,15 @@ echo "<!--cat ".$cat."-->";
 </div>
 <!-- #post-<?php the_ID(); ?> -->
 <?php }?>
-<?php endwhile; ?>
+<?php }     //end while loop Single ?>
 
-<?php if ( $wp_query->max_num_pages > 1 ) : ?>
+<?php if ( $wp_query->max_num_pages > 1 ){ ?>
 <div id="nav-below" class="clearfix">
 <span class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'obandes' ) ); ?></span>
 <span class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'obandes' ) ); ?></span></div>
-<!-- #nav-above -->
-<?php endif; ?>
-<?php }else{
-/**
- * list post
- *
- *
- *
- *
- */
-?>
-<!-- not single-->
+<?php } ?>
+
+<?php /* end conditional Single*/ }else{//list post e.g. index ?>
 <ul class="index">
   <?php while (have_posts()) : the_post(); ?>
   <li>
@@ -305,11 +207,16 @@ echo "<!--cat ".$cat."-->";
         <?php obandes_posted_on(); ?><?php echo sprintf( __( '<span class="time-diff">(Passage of %s)</span>', 'obandes' ), human_time_diff(get_the_time('U'),time()) );?>
        </div>
       <div class="entry-content clearfix">
-        <?php  the_excerpt();?>
+        <?php
+
+        if(TMN_USE_LIST_EXCERPT == true){
+            the_excerpt();
+        }else{
+            the_content();
+        }?>
         <div class="clear"></div>
        </div>
         <div class="clear"></div>
-
         <div class="entry-utility">
         <?php obandes_posted_in();?>
         <?php edit_post_link( __( 'Edit', 'obandes' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
@@ -321,8 +228,8 @@ echo "<!--cat ".$cat."-->";
 </ul>
 
 
-<?php if ( $wp_query->max_num_pages > 1 ) : ?>
+<?php if ( $wp_query->max_num_pages > 1 ){ ?>
 <div id="nav-below" class="clearfix">
 <span class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'obandes' ) ); ?></span><span class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'obandes' ) ); ?></span></div>
-<?php endif; ?>
+<?php } ?>
 <?php }?>

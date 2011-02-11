@@ -8,8 +8,10 @@
  */
 ?>
 <?php get_header();?>
-<!--<?php echo basename(__FILE__,'.php');?>[<?php echo basename(dirname(__FILE__));?>]-->
-
+<?php
+if(WP_DEBUG == true){
+    echo '<!--'.basename(__FILE__,'.php').'['.basename(dirname(__FILE__)).']-->';
+}?>
 <article id="yui-main">
   <div class="yui-b" >
     <section>

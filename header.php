@@ -23,10 +23,9 @@ if(isset($current_blog)){
 <!--Include jQuery: -->
 <?php if ( is_singular() && get_option( 'thread_comments' ) )
         wp_enqueue_script( 'comment-reply' );?>
-<link rel="profile" href="http://gmpg.org/xfn/11" />
 <title><?php obandes_title();?></title>
 <link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_directory_uri().'/style.css'; ?>" />
-<?php  
+<?php
 if(get_option( 'obandes_css' ) !== ""){
 
 echo str_replace(array("\n","\r","\t"),"",'<style type="text/css">'.get_option( 'obandes_css' ).'</style>'."\n");
@@ -36,10 +35,26 @@ echo str_replace(array("\n","\r","\t"),"",'<style type="text/css">'.get_option( 
 </head>
 <body <?php body_class($this_blog); ?> onLoad="horizontal()">
 <div id="<?php echo DOCUMENT_WIDTH; ?>" class="<?php echo SIDEBAR_WIDTH;?>">
-<?php $heading_elememt = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
-<header> <<?php echo $heading_elememt;?> class="h1"> <span><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-  <?php bloginfo( 'name' ); ?>
-  </a></span></<?php echo $heading_elememt;?>>
+<header>
+<?php
+
+    if( is_home() or is_front_page() ){
+        $heading_elememt = 'h1';
+    }else{
+        $heading_elememt = 'div';
+    }
+    $title_format = '<%s class="h1"><span><a href="%s" title="%s" rel="%s">%s</a></span></%s>';
+
+    printf(
+        $title_format,
+        $heading_elememt,
+        home_url(),
+        esc_attr(get_bloginfo( 'name', 'display' )),
+        "home",
+        get_bloginfo( 'name', 'display' ),
+        $heading_elememt
+        );
+?>
   <div class="horizon-header" id="site-description">
     <?php bloginfo( 'description' ); ?>
   </div>
@@ -55,7 +70,7 @@ if ( is_singular() && has_post_thumbnail( $post->ID ) && ( /* $src, $width, $hei
     // Houston, we have a new header image!
     echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
     else : ?>
-  <img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="header image"  style="width:<?php echo document_width();?>px;height:auto;" />
+  <img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="header image"  style="width:<?php echo obandes_document_width();?>px;height:auto;" />
   <?php endif; }?>
 </header>
 <br style="clear:both;" />

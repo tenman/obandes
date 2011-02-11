@@ -5,7 +5,7 @@ Description: extend basic template It is possible to change freely by using Yaho
 AdminPanel was omitted. The setting is useful for a revokable person in functions.php. 
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 0.33
+Version: 0.34
 Tags:white, two-columns,right-sidebar ,fixed-width ,flexible-width, custom-colors, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -50,10 +50,16 @@ blockquote{
 	padding:.5em;
 	border-left:3px solid #ccc;
 }
-cite { 
-	font-style: normal;
+cite,cite a{ 
 	text-decoration: underline;
 	font-style:italic;
+}
+del{
+	text-decoration:line-through;
+
+}
+ins{
+	text-decoration:underline;
 }
 ul,ol,dl{
 	margin-left:4.4em;	

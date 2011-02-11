@@ -8,8 +8,9 @@
  * @since obandes 0.1
  */
 get_header();?>
-<!--<?php echo basename(__FILE__,'.php');?>[<?php echo basename(dirname(__FILE__));?>]-->
-
+<?php if(WP_DEBUG == true){
+    echo '<!--'.basename(__FILE__,'.php').'['.basename(dirname(__FILE__)).']-->';
+}?>
 <div id="yui-main">
   <div class="yui-b" >
     <div class="<?php if(isset($yui_inner_layout)){echo $yui_inner_layout;}else{echo 'yui-ge';}?>" id="container">
@@ -54,11 +55,11 @@ get_header();?>
         <div class="entry">
           <div id="not-found">
             <h2 class="h2">
-              <?php _e("Not Found","Raindrops"); ?>
+              <?php _e("Not Found","obandes"); ?>
             </h2>
             <p><br />
               <small>
-              <?php _e("Sorry, but you are looking for something that isn't here.","Raindrops");?>
+              <?php _e("Sorry, but you are looking for something that isn't here.","obandes");?>
               </small></p>
           </div>
         </div>
