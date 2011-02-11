@@ -5,7 +5,7 @@ Description: extend basic template It is possible to change freely by using Yaho
 AdminPanel was omitted. The setting is useful for a revokable person in functions.php. 
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 0.35
+Version: 0.36
 Tags:white, two-columns,right-sidebar ,fixed-width ,flexible-width, custom-colors, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -803,12 +803,18 @@ html{
 	
 
 }
-body{
+#doc,
+#doc2,
+#doc3,
+#doc4,
+#doc-custom{
+	padding:10px;
 	border:1px solid #fff;
 	background:rgba(204,204,204,0.4);
 	
 
 }
+
 header img{
 	margin-top:6px;
 	border:1px solid #000;
@@ -826,7 +832,7 @@ footer{
 table#horizon-header{
 	border:1px solid #fff;
 }
-table#horizon-header,body{
+table#horizon-header{
 
 -moz-box-shadow: 1px 1px 3px #555;
 -webkit-box-shadow: 1px 1px 3px #555;
