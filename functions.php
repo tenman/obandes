@@ -55,7 +55,7 @@
           'text' => "1"));
     }
     if(!defined('TMN_USE_LIST_EXCERPT')){
-        define("TMN_USE_LIST_EXCERPT",true);
+        define("TMN_USE_LIST_EXCERPT",false);
     }
 /**
  * editor-style.css
