@@ -68,6 +68,51 @@
  * horizon class demo colors
  */
 $css_preset =<<< CSS_PRESET
+/* welcome obandes CSS setting */
+/*
+Data is preserved in the data base.
+Your original CSS setting is not overwrited when Theme upgrade.
+
+obandes have special body classes.
+languages class e.g.  .ja
+browser class e.g.  .ie  .chrome .gecko(firefox)
+multiuser class  e.g. .b4 .b3
+horizon class e.g. .horizon-something
+
+Multiuser class can be specified even if there is no child theme if they are only a few changes.
+
+Browse class can free from complex CSS hack.
+
+languages class give happyness who not ASCII languege user.
+
+horizon class USEGE:
+horizon class is not multiclass use only horizontal layout.
+
+paste your entry this code.
+use html mode.
+
+<div class="horizon-1">
+<div> your html block</div>
+</div>
+<div class="horizon-1">
+<div> your html block</div>
+</div>
+<div class="horizon-1">
+<div> your html block</div>
+</div>
+<div class="horizon-1">
+<div> your html block</div>
+</div>
+<div class="horizon-2">
+<div> your html block</div>
+</div>
+<div class="horizon-2">
+<div> your html block</div>
+</div>
+
+*/
+
+/*for example*/
 html{
 
 
@@ -79,7 +124,8 @@ html{
 #doc-custom{
     padding:10px;
     border:1px solid #fff;
-    background:rgba(204,204,204,0.4);
+   /*     background:#dfdfdf;// for IE
+    background:rgba(204,204,204,0.4);*/
 
 
 }
@@ -115,11 +161,12 @@ td.horizon-footer-widget.col1{
 }
 td.horizon-header.col2,
 td.horizon-footer-widget.col2{
-    background:#fcc;
+    background:#fcc; //for IE
     background:rgba(255,204,204,0.9);
 }
 td.horizon-header.col3,
 td.horizon-footer-widget.col3{
+        background:#ccf; //for IE
     background:rgba(204,204,255,0.9);
 }
 td.horizon-header.col4,
@@ -128,6 +175,7 @@ td.horizon-footer-widget.col4{
 }
 td.horizon-header.last,
 td.horizon-footer-widget.last{
+        background:#dcf; //for IE
     background:rgba(221, 204, 255,0.9);
 }
 .color{
@@ -154,7 +202,7 @@ CSS_PRESET;
             array('option_id' =>'null',
             'blog_id' => 0 ,
             'option_name' => "obandes_css",
-            'option_value' => "/* welcome obandes CSS setting */\n\n/*for example*/\n$css_preset\n",
+            'option_value' => "$css_preset\n",
             'autoload'=>'yes',
             'title'=> __('Base Color for Automatic Arrangement','obandes'),
             'excerpt1'=>'',
