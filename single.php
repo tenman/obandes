@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage obandes
- * @since obandes 0.1
+ * @since obandes 0.41
  */
 ?>
 <?php get_header();?>
@@ -13,18 +13,17 @@ if(WP_DEBUG == true){
     echo '<!--'.basename(__FILE__,'.php').'['.basename(dirname(__FILE__)).']-->'."\n";
 }?>
 <section id="yui-main">
-<?php 
+<?php
 
-	if ( have_posts()) {
-		while (have_posts()){
-		 
-		the_post();
-		
-			if ( locate_template( array( '/formats/format-standard.php' ))){
-			
-					get_template_part( 'formats/format', get_post_format() );
-				
-			}else{
+    if ( have_posts()) {
+        while (have_posts()){
+
+        the_post();
+
+            if (function_exists('get_post_format') and locate_template( array( 'formats/format-standard.php' ))){
+                    get_template_part( 'formats/format', get_post_format() );
+
+            }else{
 ?>
 <article id="post-<?php echo $post->ID; ?>" <?php post_class('yui-b'); ?>>
 <?php obandes_prev_next_post();?>
@@ -46,13 +45,13 @@ if(WP_DEBUG == true){
 </div>
 <br class="clear" />
 <?php obandes_prev_next_post('nav-below');?>
-</article>					
-<?php					
-			}
+</article>
+<?php
+            }
 
-		}
-	}
-?>	
+        }
+    }
+?>
 </section>
 <?php if ( is_active_sidebar( 'sidebar-1' ) ){ ?>
 <nav class="yui-b" id="toc">

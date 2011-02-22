@@ -345,7 +345,7 @@ msgstr "ブログアーカイブ"
 #: obandes/loop.php:71
 #: obandes/loop.php:108
 msgid "<span class=\"button\"><span class=\"meta-nav\">&larr;</span> Older posts</span>"
-msgstr "<span class=\"meta-nav\">&larr;</span> 古い投稿"
+msgstr "<span class=\"button\"><span class=\"meta-nav\">&larr;</span> 古い投稿</span>"
 
 #: obandes/loop.php:73
 #: obandes/loop.php:108

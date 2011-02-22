@@ -8,7 +8,7 @@
  *
  */
     if(!defined('DOCUMENT_WIDTH')){
-        define('DOCUMENT_WIDTH', 'doc' );
+        define('DOCUMENT_WIDTH', 'doc2' );
     }
 /**
  * .yui-t1 - Two columns, narrow on left, 160px
@@ -20,7 +20,7 @@
  *
  */
     if(!defined('SIDEBAR_WIDTH')){
-        define('SIDEBAR_WIDTH', 'yui-t6' );
+        define('SIDEBAR_WIDTH', 'yui-t5' );
     }
     if(!defined('NO_HEADER_TEXT')){
         define('NO_HEADER_TEXT', false );
@@ -664,7 +664,7 @@ CSS_PRESET;
     }
     function tmn_embed_meta($content){
         $result = "";
-        global $post,$content_width;
+        global $post,$content_width,$is_safari;
     /**
      * insert into embed style ,javascript script and embed tags from custom field
      */
