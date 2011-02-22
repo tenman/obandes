@@ -1,5 +1,4 @@
 <?php
-
 /**
  * #doc - 750px centered (good for 800x600)
  * #doc2 - 950px centered (good for 1024x768)
@@ -9,7 +8,7 @@
  *
  */
     if(!defined('DOCUMENT_WIDTH')){
-        define('DOCUMENT_WIDTH', 'doc2' );
+        define('DOCUMENT_WIDTH', 'doc' );
     }
 /**
  * .yui-t1 - Two columns, narrow on left, 160px
@@ -21,7 +20,7 @@
  *
  */
     if(!defined('SIDEBAR_WIDTH')){
-        define('SIDEBAR_WIDTH', 'yui-t5' );
+        define('SIDEBAR_WIDTH', 'yui-t6' );
     }
     if(!defined('NO_HEADER_TEXT')){
         define('NO_HEADER_TEXT', false );
@@ -38,8 +37,9 @@
     if(!defined('HEADER_IMAGE_HEIGHT')){
         define('HEADER_IMAGE_HEIGHT', 198);//auto or 999px
     }
-    if(!defined('SHOW_HEADER_IMAGE')){
-        define('SHOW_HEADER_IMAGE',true);
+
+    if(get_option("obandes_header") !== 'show'){
+        header_image_alert();
     }
     add_action( 'widgets_init', 'obandes_widgets_init' );
     function obandes_widgets_init() {
@@ -57,10 +57,28 @@
     if(!defined('TMN_USE_LIST_EXCERPT')){
         define("TMN_USE_LIST_EXCERPT",false);
     }
+
+/**
+ * post_formats
+ */
+if(locate_template( array( 'formats/format.php' ))){
+
+    add_theme_support(
+        'post-formats',
+        array(  'aside',
+                'gallery',
+                'chat',
+                'link',
+                'image'
+            )
+    );
+}
 /**
  * editor-style.css
  */
-     add_editor_style();
+if(locate_template( array( 'admin/editor-style.css' ))){
+     add_editor_style('admin/editor-style.css');
+}
 /**
  * admin panel and pages
  */
@@ -68,133 +86,159 @@
  * horizon class demo colors
  */
 $css_preset =<<< CSS_PRESET
-/* welcome obandes CSS setting */
 /*
-Data is preserved in the data base.
-Your original CSS setting is not overwrited when Theme upgrade.
-
-obandes have special body classes.
-languages class e.g.  .ja
-browser class e.g.  .ie  .chrome .gecko(firefox)
-multiuser class  e.g. .b4 .b3
-horizon class e.g. .horizon-something
-
-Multiuser class can be specified even if there is no child theme if they are only a few changes.
-
-Browse class can free from complex CSS hack.
-
-languages class give happyness who not ASCII languege user.
-
-horizon class USEGE:
-horizon class is not multiclass use only horizontal layout.
-
-paste your entry this code.
-use html mode.
-
-<div class="horizon-1">
-<div> your html block</div>
-</div>
-<div class="horizon-1">
-<div> your html block</div>
-</div>
-<div class="horizon-1">
-<div> your html block</div>
-</div>
-<div class="horizon-1">
-<div> your html block</div>
-</div>
-<div class="horizon-2">
-<div> your html block</div>
-</div>
-<div class="horizon-2">
-<div> your html block</div>
-</div>
-
+Welcome obandes CSS setting.
+Please read this theme in help of this page.
 */
-
-/*for example*/
-html{
-
-
+/**
+ *  background
+ */
+.pagenate a span,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a,
+.h2 a,
+.h3 a,
+.h4 a,
+.h5 a,
+.h6 a ,
+#access,
+.horizon-gallery.col1 .size-thumbnail,
+.widget_tag_cloud a:hover{
+    background:none;
 }
-#doc,
-#doc2,
-#doc3,
-#doc4,
-#doc-custom{
-    padding:10px;
-    border:1px solid #fff;
-   /*     background:#dfdfdf;// for IE
-    background:rgba(204,204,204,0.4);*/
-
-
-}
-
-header img{
-    margin-top:6px;
-    border:1px solid #000;
+.commentlist > li.pingback{
 
 }
-footer{
-    padding-bottom:1em;
+.nopassword,
+.long-title,
+.wp-caption,
+nav li a:hover,
+.comment-body blockquote,
+.comment-body blockquote blockquote,
+body.single-post .nocomments,
+#access ul ul a,
+#access li:hover > a,
+#access ul ul :hover > a,
+* html #access ul li.current_page_item a,
+* html #access ul li.current-menu-ancestor a,
+* html #access ul li.current-menu-item a,
+* html #access ul li.current-menu-parent a,
+* html #access ul li a:hover,
+#access li:hover > a,
+#access ul ul :hover > a,
+#access ul li.current_page_item > a,
+#access ul li.current-menu-ancestor > a,
+#access ul li.current-menu-item > a,
+#access ul li.current-menu-parent > a ,
+.pagenate span,
+.comment-body blockquote blockquote blockquote{
+    background:#eef;
+}
+blockquote{
+    background:#fff;
 }
 
-#access ul ul > a {
-    border-bottom:3px solid #fff;
-    color: #555;
+.home article.hentry,
+nav,
+article.hentry{
+/*background:#fff;*/
+background-color: rgba(255, 255, 255, 0.5);
+padding:0 3px 10px!important;
+}
+.index article.hentry{
+padding:0 10px 10px!important;
+}
+#access,
+nav:hover,
+article.hentry:hover {
+background-color: rgba(255, 255, 255, 1);
+padding:0 3px;
 }
 
-table#horizon-header{
-    border:1px solid #fff;
+#commentform,
+.plate{
+    padding:2em;
+    background:#cccccc;
+    background:-moz-linear-gradient(center top , #aaaaaa, #cccccc) repeat scroll 0 0 #aaaaaa;
+    background:-webkit-gradient(linear,left top , left bottom,from(#aaaaaa), to(#cccccc));
+    _background:#cccccc;
 }
-table#horizon-header{
+.reply,
+#searchsubmit,
+#commentform input[type="submit"],
+.pagenate,
+.grad,
+.button{
+    background:#aaaaaa;
+    background:-moz-linear-gradient(center top , #cccccc, #aaaaaa) repeat scroll 0 0 #aaaaaa;
+    background:-webkit-gradient(linear,left top , left bottom,from(#cccccc), to(#aaaaaa));
+    _background:#aaaaaa;
+}
+.reply:hover,
+#searchsubmit:hover,
+#commentform input[type="submit"]:hover,
+.button:hover{
+    background:-moz-linear-gradient(center top, #aaaaaa , #cccccc) repeat scroll 0 0 #aaaaaa;
+    background:-webkit-gradient(linear,left top , left bottom,from(#aaaaaa), to(#cccccc));
+    _background:#cccccc;
+}
+.arrow{
+    background-color:rgba(0,0,0,0.4);
+    background-image:url("http://code.jquery.com/mobile/1.0a1/images/icons-18-white.png");
+    background-repeat:no-repeat;
+    background-position:-1px -1px;
+}
+.button a:before{
+    background-color:rgba(0,0,0,0.4);
+    background-image:url("http://code.jquery.com/mobile/1.0a1/images/icons-18-white.png");
+    background-repeat:no-repeat;
+    background-position:-1px -2px;
+}
 
--moz-box-shadow: 1px 1px 3px #555;
--webkit-box-shadow: 1px 1px 3px #555;
-
+/**
+ *  colors
+ */
+.pagenate span,
+nav,
+nav li a,
+* html #access ul li.current_page_item a,
+* html #access ul li.current-menu-ancestor a,
+* html #access ul li.current-menu-item a,
+* html #access ul li.current-menu-parent a,
+* html #access ul li a:hover,
+#access li:hover > a,
+#access ul ul :hover > a ,
+nav li a:hover,
+#access a ,
+#access li > a,
+#access ul ul > a ,
+#access ul li.current_page_item > a,
+#access ul li.current-menu-ancestor > a,
+#access ul li.current-menu-item > a,
+#access ul li.current-menu-parent > a {
+    color: #333;
 }
-
-
-td.horizon-header.col1,
-td.horizon-footer-widget.col1{
-    background:rgba(204,255,204,0.9);
+.home .entry-meta,
+.home .entry-utility,
+#site-generator,
+#site-generator a,
+address a{
+    color:#777;
 }
-td.horizon-header.col2,
-td.horizon-footer-widget.col2{
-    background:#fcc; //for IE
-    background:rgba(255,204,204,0.9);
+#site-title a{
+    color: #000;
 }
-td.horizon-header.col3,
-td.horizon-footer-widget.col3{
-        background:#ccf; //for IE
-    background:rgba(204,204,255,0.9);
-}
-td.horizon-header.col4,
-td.horizon-footer-widget.col4{
-    background:rgba(255,255,204,0.9);
-}
-td.horizon-header.last,
-td.horizon-footer-widget.last{
-        background:#dcf; //for IE
-    background:rgba(221, 204, 255,0.9);
-}
-.color{
-    background:#fcc;
-}
-.color1{
-    background:#fcc;
-}
-.color2{
-    background:#cfc;
-}
-.color3{
-    background:#ccc;
-}
-.chrome .color1,.gecko .color1{
-    background: rgba(255, 0, 0, 0.2);
-}
-.ie .color1{
-    background: #fcc;
+.bar-text,
+.text,
+#searchsubmit,
+#commentform input[type="submit"],
+.pagenate,
+.grad,
+.button{
+    color:#fff;
 }
 CSS_PRESET;
 
@@ -207,8 +251,19 @@ CSS_PRESET;
             'title'=> __('Base Color for Automatic Arrangement','obandes'),
             'excerpt1'=>'',
             'excerpt2'=>'',
-             'validate'=>'obandes_css_validate')
+             'validate'=>'obandes_css_validate'),
+
+             array('option_id' =>'null',
+            'blog_id' => 0 ,
+            'option_name' => "obandes_header",
+            'option_value' => 'hide',
+            'autoload'=>'yes',
+            'title'=> __('Header image','obandes'),
+            'excerpt1'=>'',
+            'excerpt2'=>'',
+             'validate'=>'obandes_header_validate')
              );
+
     $obandes_query =  'obandes_setting';
     add_action( 'admin_init', 'obandes_theme_init' );
     add_action('admin_menu', 'obandes_theme_options_add_page');
@@ -305,9 +360,9 @@ CSS_PRESET;
         }
     }
     if (!function_exists('obandes_posted_on')) {
-        function obandes_posted_on() {
+        function obandes_posted_on($display = true) {
 
-        printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'obandes' ),
+        $result = sprintf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'obandes' ),
             'meta-prep meta-prep-author',
             sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',
                 get_permalink(),
@@ -320,6 +375,13 @@ CSS_PRESET;
                 get_the_author()
             )
         );
+
+        if($display == false){
+            return $result;
+        }else{
+            echo $result;
+        }
+
         }
     }
     function obandes_title(){
@@ -354,6 +416,10 @@ CSS_PRESET;
         wp_enqueue_script('yui');
         wp_register_script('obandes', get_template_directory_uri().'/obandes.js', array('jquery'), '0.1');
         wp_enqueue_script('obandes');
+
+        wp_register_script('jquery-template', 'http://nje.github.com/jquery-tmpl/jquery.tmpl.js', array('jquery'), '0.1');
+        wp_enqueue_script('jquery-template');
+
         }
     }
     if ( ! function_exists( 'obandes_admin_header_style' ) ){
@@ -508,16 +574,16 @@ CSS_PRESET;
         global $content_width;
         switch(DOCUMENT_WIDTH){
         case('doc'):
-            $result = 750;
+            $result = 750 - 4; //4px is border
         break;
         case('doc2'):
-            $result = 950;
+            $result = 950 - 4;
         break;
         case('doc4'):
-            $result = 974;
+            $result = 974 - 4;
         break;
         default:
-            $result = $content_width;
+            $result = $content_width - 4;
         break;
         }
     return $result;
@@ -552,7 +618,7 @@ CSS_PRESET;
         $result = '<div class="horizon-gallery">';
         if(isset($images)){
             foreach($images as $image){
-            $result .= '<a class="size-thumbnail" href="'.get_permalink() .$image->post_title.'/">'.wp_get_attachment_image( $image->ID, 'thumbnail' ).' </a>';
+            $result .= '<a class="size-thumbnail" href="'.esc_url(get_attachment_link($image->ID)).'/">'.wp_get_attachment_image( $image->ID, 'thumbnail' ).' </a>';
             }
         }else{
             return false;
@@ -566,10 +632,10 @@ CSS_PRESET;
             <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
                 <div id="comment-<?php comment_ID(); ?>">
                 <div class="comment-author vcard">
-                 <div style="width:40px;float:left">
+                 <div style="width:40px;float:left;margin-top:6px;">
                     <?php echo get_avatar( $comment, 32 ); ?>
                 </div>
-                    <div style="overflow:hidden;*width:100%;padding-left:1em;" class="clearfix">
+                    <div style="overflow:hidden;*width:100%;padding-left:1em;" class="clearfix comment_author_block">
                     <?php printf( __( '%s <span class="says">says:</span>', 'obandes' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
                     </div>
                 </div><!-- .comment-author .vcard -->
@@ -591,14 +657,14 @@ CSS_PRESET;
                 </div><!-- .reply -->
             </div><!-- #comment-##  -->
             <?php else : ?>
-            <li class="post pingback">
-                <p><?php _e( 'Pingback:', 'obandes' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'obandes'), ' ' ); ?></p>
+            <li class="post pingback"><?php _e( 'Pingback:', 'obandes' ); ?><?php comment_author_link(); ?><br />
+            <?php edit_comment_link( __('(Edit)', 'obandes'), ' ' ); ?>
             <?php endif;
         }
     }
     function tmn_embed_meta($content){
         $result = "";
-        global $post;
+        global $post,$content_width;
     /**
      * insert into embed style ,javascript script and embed tags from custom field
      */
@@ -606,10 +672,13 @@ CSS_PRESET;
             if(have_posts()){
              while (have_posts()) : the_post();
                 $css = get_post_meta($post->ID, 'css', true);
-                if (!empty($css)) {
+                if (!empty($css) or $is_safari == true) {
                 $result .= '<style type="text/css">';
                 $result .= "\n/*<![CDATA[*/\n";
                 $result .=  $css;
+                if($is_safari and $content_width < 500 ){
+                    $result .=  "\n".'.safari embed{width:'.$content_width.'!important;}';
+                }
                 $result .= "\n/*]]>*/\n";
                 $result .= "</style>";
                 }
@@ -641,6 +710,11 @@ CSS_PRESET;
                 add_option($setting['option_name'], $setting['option_value'], '', $setting['autoload']);
             }
         }
+    }
+    function obandes_header_validate($header_image_val){
+
+
+            return  $header_image_val;
     }
     function obandes_css_validate($css){
         $css = esc_html($css);
@@ -679,20 +753,65 @@ CSS_PRESET;
         echo '<div>';
         screen_icon();
         echo '<h2 style="float:left;">' . get_current_theme() . __( ' Options' ) . '</h2><br style="clear:both;" />';
+
         if (isset( $_POST['action'] ) == 'update' and isset($_POST['obandes_setting']['obandes_css'])){
-        $option_name = esc_html($_POST['obandes_setting']['obandes_css']);
-        update_option( 'obandes_css', stripslashes($option_name) );
-            echo '<div id="message" class="updated fade" title="Style Setting" ><p>'.
-            sprintf(__('<strong>%1$s</strong> updated  successfully.'),__( "Style",'obandes')).'</p></div>';
+            $post_val = esc_html($_POST['obandes_setting']['obandes_css']);
+            update_option( 'obandes_css', stripslashes($post_val) );
+            $obandes_result_message = __("Style",'obandes');
         }
+
+        if (isset( $_POST['action'] ) == 'update' and isset($_POST['obandes_setting']['obandes_header'])){
+            $post_val = esc_html($_POST['obandes_setting']['obandes_header']);
+            update_option('obandes_header', $post_val);
+            $obandes_result_message = __("Heade Image",'obandes');
+
+        }
+        echo '<div id="message" class="updated fade" title="Style Setting" ><p>'.
+        sprintf(__('<strong>%1$s</strong> updated  successfully.'),$obandes_result_message).'</p></div>';
+
         echo '<div style="margin-top:1em;">';
         $action = "themes.php?page=".$obandes_query;
         echo '<form method="post" action="'.$action.'">';
         settings_fields( 'obandes_setting' );
         $style = get_option( 'obandes_css' );
+        $header_image_show = get_option( 'obandes_header' );
+
+        $radio_options = array(
+            'yes' => array('value' => 'show',
+            'label' => __( 'show' )),
+            'no' => array('value' => 'hide',
+            'label' => __( 'hide' ))
+            );
+
+        if (!isset($checked)){
+            $checked = '';
+        }
         $rows =substr_count($style, "\n") * 1.5 + 10;
         echo '<p><input type="submit" value="'. __( 'Save Options' ).'" /></p>';
         echo '<table summary="stylesheet" width="100%">';
+        echo '<tr valign="top">';
+        echo '<th scope="row">'.__( 'Show Header Image' ).'</th>';
+        echo '<td>';
+        //$radio_options loop
+        foreach ( $radio_options as $option ) {
+            $radio_setting = $option['value'];
+            if ( '' != $radio_setting ) {
+                if ( $option['value'] == $header_image_show ) {
+                    $checked = "checked=\"checked\"";
+                } else {
+                    $checked = '';
+                }
+            }
+        $radio_block = '<label><input type="radio" name="%s" value="%s" %s />%s;</label><br />';
+
+            printf($radio_block,
+                    esc_attr('obandes_setting[obandes_header]'),
+                    esc_attr( $option['value']),
+                    $checked,
+                    esc_html($option['label'])
+                );
+        }
+        echo '</td></tr>';
         echo '<tr valign="top">';
         echo '<th scope="row">'.__( 'CSS Edit' ).'</th>';
         echo '<td>';
@@ -716,15 +835,100 @@ CSS_PRESET;
                     esc_url("http://www.tenman.info/wp3/obandes/quick-start-obandes/"),
                     esc_attr(__("obandes Quick Start",'obandes')),
                     esc_html(__("obandes Quick Start",'obandes')));
-        $result .= sprintf('<li><a href="%s" title="%s"></a>%2$s</li>',
+        $result .= sprintf('<li><a href="%s" title="%s">%s</a></li>',
                     esc_url("http://www.tenman.info/csstidy/css_optimiser.php"),
                     esc_attr(__("CSS Tidy",'obandes')),
                     esc_html(__("CSS Tidy",'obandes')));
+        $result .= sprintf('<li>%s</li>',
+                        str_replace("\t","",
+                            '<p>'.esc_html(__('Data is preserved in the data base.','obandes')).'</p>'.
+                            '<p>'.esc_html(__('Your original CSS setting is not overwrited when Theme upgrade.','obandes')).'</p>'.
+                            '<p>'.esc_html(__('obandes have special body classes.','obandes')).'</p>'.
+                            '<p>'.esc_html(__('languages class e.g.  .ja','obandes')).'</p>'.
+                            '<p>'.esc_html(__('browser class e.g.  .ie  .chrome .gecko(firefox)','obandes')).'</p>'.
+                            '<p>'.esc_html(__('multiuser class  e.g. .b4 .b3','obandes')).'</p>'.
+                            '<p>'.esc_html(__('horizon class e.g. .horizon-something','obandes')).'</p>'.
+                            '<p>'.esc_html(__('Multiuser class can be specified even if there is no child theme if they are only a few changes.','obandes')).'</p>'.
+                            '<p>'.esc_html(__('Browse class can free from complex CSS hack.','obandes')).'</p>'.
+                            '<p>'.esc_html(__('languages class give happyness who not ASCII languege user.','obandes')).'</p>'.
+                            '<p>'.esc_html(__('horizon class USEGE:','obandes')).'</p>'.
+                            '<p>'.esc_html(__('horizon class is not multiclass use only horizontal layout.','obandes')).'</p>'.
+                            '<p>'.esc_html(__('paste your entry this code.','obandes')).'</p>'.
+                            '<p>'.esc_html(__('use html mode.','obandes')).'</p>'
+                        )
+                    );
+        $result .= sprintf('<li><div style="border:1px solid #999;padding:2em;"><pre><code>%s</code></pre></div></li>',
+                        str_replace("\t","",
+                            htmlspecialchars('
+                            <div class="horizon-1">
+                            <div> your html block</div>
+                            </div>
+                            <div class="horizon-1">
+                            <div> your html block</div>
+                            </div>
+                            <div class="horizon-1">
+                            <div> your html block</div>
+                            </div>
+                            <div class="horizon-1">
+                            <div> your html block</div>
+                            </div>
+                            <div class="horizon-2">
+                            <div> your html block</div>
+                            </div>
+                            <div class="horizon-2">
+                            <div> your html block</div>
+                            </div>'
+                            )
+                        )
+                    );
         $result .= "</ul>\n";
             return apply_filters("obandes_help",$result);
         }else{
             return $text;
         }
+        }
+    }
+
+        function obandes_prev_next_post($position = "nav-above"){
+
+            $obandes_max_length     = 40;
+            $obandes_prev_length    = $obandes_max_length + 1;
+        if(!is_attachment()){
+
+            $obandes_max_length     = 40;
+            $obandes_prev_post_id   = get_adjacent_post(true,'',true) ;
+            $obandes_prev_length    = strlen(get_the_title($obandes_prev_post_id));
+            $obandes_next_post_id   = get_adjacent_post(false,'',false) ;
+            $obandes_next_length    = strlen(get_the_title($obandes_next_post_id));
+
+        }
+?>
+
+<div id="<?php echo $position;?>" class="clearfix">
+<?php if($obandes_prev_length < $obandes_max_length ){?>
+  <span class="nav-previous"><?php previous_post_link('%link','<span class="button">%title</span>'); ?></span>
+<?php }else{?>
+  <span class="nav-previous"><?php previous_post_link('%link','<span class="long-title">&laquo;prev: %title</span>'); ?></span>
+<?php }?>
+<?php if($obandes_next_length < $obandes_max_length ){?>
+  <div class="nav-next"><?php next_post_link('%link','<span class="button">%title</span>'); ?></div>
+<?php }else{?>
+  <div class="nav-next"><?php next_post_link('%link','<span class="long-title">next: %title &raquo; </span>'); ?></div>
+<?php }?>
+</div>
+<?php }?>
+<?php
+/**
+ * Alert when SHOW_HEADER_IMAGE false
+ *
+ *
+ *
+ *
+ */
+
+    function header_image_alert(){
+        if(isset($_GET['page']) and $_GET['page'] == 'custom-header'){
+        printf('<script type="text/javascript">alert(\'%s\');</script>',__('Please open obandes option, and set the value of Show Header Image to show.','obandes'));
         }
     }
 ?>

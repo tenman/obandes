@@ -8,23 +8,6 @@
  * @since obandes 0.1
  */
 get_header();?>
-
-<?php if ( ! have_posts() ) { //404not found ?>
-
-<div id="post-0" class="post error404 not-found">
-  <h1 class="entry-title h1">
-    <?php _e( 'Not Found', 'obandes' ); ?>
-  </h1>
-  <div class="entry-content">
-    <p>
-      <?php _e( 'Apologies, but no results were found for the requested Archive. Perhaps searching will help find a related post.', 'obandes' ); ?>
-    </p>
-    <?php get_search_form(); ?>
-  </div>
-</div>
-
-<?php }else{  // find ?>
-
 <?php if(WP_DEBUG == true){
     echo '<!--'.basename(__FILE__,'.php').'['.basename(dirname(__FILE__)).']-->';
 }?>
@@ -32,7 +15,6 @@ get_header();?>
   <div class="yui-b" >
     <section>
       <div class="yui-u first">
-
         <?php while (have_posts()) : the_post(); ?>
         <div class="entry page hpage">
           <div id="post-<?php the_ID(); ?>">
@@ -45,8 +27,8 @@ get_header();?>
             </div>
             <div class="clear"></div>
             <div class="linkpage clearfix">
-              <?php wp_link_pages('before=<p class="pagenate">&after=</p>&next_or_number=number&pagelink=<span>%</span>'); ?>
-            </div>
+			<?php wp_link_pages( array( 'before' => '<div class="pagenate">' . __( 'Pages:', 'obandes' ), 'after' => '</div>' ,'link_before'=>'<span>','link_after'=>'</span>') );?>
+			</div>
            <div class="clear"></div>
             <p class="postmetadata"><?php the_category(', ') ?>&nbsp;<?php edit_post_link('Edit', '', ' '); ?></p>
             <?php comments_template( '', true ); ?>
@@ -58,7 +40,6 @@ get_header();?>
     </section>
   </div>
 </article>
-<?php }?>
 <?php if ( is_active_sidebar( 'sidebar-1' ) ){ ?>
 <nav class="yui-b" id="toc">
 <ul>
