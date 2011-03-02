@@ -8,7 +8,7 @@
  *
  */
     if(!defined('DOCUMENT_WIDTH')){
-        define('DOCUMENT_WIDTH', 'doc2' );
+        define('DOCUMENT_WIDTH', 'doc3' );
     }
 /**
  * .yui-t1 - Two columns, narrow on left, 160px
@@ -141,6 +141,7 @@ blockquote{
     background:#fff;
 }
 
+
 .home article.hentry,
 nav,
 article.hentry{
@@ -185,22 +186,40 @@ padding:0 3px;
     background:-webkit-gradient(linear,left top , left bottom,from(#aaaaaa), to(#cccccc));
     _background:#cccccc;
 }
-.arrow{
-    background-color:rgba(0,0,0,0.4);
-    background-image:url("http://code.jquery.com/mobile/1.0a1/images/icons-18-white.png");
-    background-repeat:no-repeat;
-    background-position:-1px -1px;
-}
-.button a:before{
-    background-color:rgba(0,0,0,0.4);
-    background-image:url("http://code.jquery.com/mobile/1.0a1/images/icons-18-white.png");
-    background-repeat:no-repeat;
-    background-position:-1px -2px;
-}
 
+h2 a:after,
+h3 a:after,
+h4 a:after,
+h5 a:after,
+h6 a:after,
+.h2 a:after,
+.h3 a:after,
+.h4 a:after,
+.h5 a:after,
+.h6 a:after {
+     content: url("images/external.png"); padding-left: 5px;
+}
+hr{
+    background:url(images/hr.png);
+    background-position:center top;
+    background-repeat:no-repeat
+}
 /**
  *  colors
  */
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a,
+.h2 a,
+.h3 a,
+.h4 a,
+.h5 a,
+.h6 a {
+    color:#000;
+}
 .pagenate span,
 nav,
 nav li a,
@@ -231,6 +250,7 @@ address a{
 #site-title a{
     color: #000;
 }
+.reply a,
 .bar-text,
 .text,
 #searchsubmit,
