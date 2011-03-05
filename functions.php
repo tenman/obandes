@@ -20,7 +20,7 @@
  *
  */
     if(!defined('SIDEBAR_WIDTH')){
-        define('SIDEBAR_WIDTH', 'yui-t5' );
+        define('SIDEBAR_WIDTH', 'yui-t6' );
     }
     if(!defined('NO_HEADER_TEXT')){
         define('NO_HEADER_TEXT', false );
@@ -187,23 +187,6 @@ padding:0 3px;
     _background:#cccccc;
 }
 
-h2 a:after,
-h3 a:after,
-h4 a:after,
-h5 a:after,
-h6 a:after,
-.h2 a:after,
-.h3 a:after,
-.h4 a:after,
-.h5 a:after,
-.h6 a:after {
-     content: url("images/external.png"); padding-left: 5px;
-}
-hr{
-    background:url(images/hr.png);
-    background-position:center top;
-    background-repeat:no-repeat
-}
 /**
  *  colors
  */
@@ -769,6 +752,7 @@ CSS_PRESET;
     add_theme_page(__( 'Obandes Options' ), __( 'Obandes Options' ),'edit_theme_options', 'obandes_setting',             'obandes_options_page_view' );
     }
     function obandes_options_page_view() {
+        $obandes_result_message = '';
         global $select_options, $radio_options,$obandes_query;
         echo '<div>';
         screen_icon();
@@ -783,7 +767,7 @@ CSS_PRESET;
         if (isset( $_POST['action'] ) == 'update' and isset($_POST['obandes_setting']['obandes_header'])){
             $post_val = esc_html($_POST['obandes_setting']['obandes_header']);
             update_option('obandes_header', $post_val);
-            $obandes_result_message = __("Heade Image",'obandes');
+            $obandes_result_message = __("Header Image",'obandes');
 
         }
         echo '<div id="message" class="updated fade" title="Style Setting" ><p>'.

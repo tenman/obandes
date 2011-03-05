@@ -5,7 +5,7 @@ Description: extend basic template It is possible to change freely by using Yaho
 AdminPanel was omitted. The setting is useful for a revokable person in functions.php. 
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 0.50
+Version: 0.51
 Tags:white, two-columns,right-sidebar ,fixed-width ,flexible-width, custom-colors, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -411,6 +411,8 @@ html>body nav li a {
 	margin: 0 auto;
 	width: 99%;
 	margin-bottom:1em;
+	border:1px solid #fff;
+	border:none\9;/*ie*/
 	
 }
 #access .menu-header,
@@ -1233,7 +1235,7 @@ h6 a:after,
 .h4 a:after,
 .h5 a:after,
 .h6 a:after {
-	 content: url("images/external.png"); padding-left: 5px; 
+	 content: url(images/external.png); padding-left: 5px; 
 }
 hr{
 	background:url(images/hr.png);
