@@ -1,0 +1,36 @@
+Changelog -----------------------------------
+version:0.51
+removed
+    stylesheet
+    rule sets .arrow .button a:before why It is not used.
+added
+    1.horizontal menubar add border without IE why looks good when theme support background color change.
+fixed
+    1.error fix function obandes_options_page_view not set $obandes_result_message
+    2.typo typo Heade Image to Header Image
+    3.bug fix theme install preview not show (code change:sidebar index.php sidebar.php)
+modified
+    1.default page width change 100% fluid (Install preview good for everybody)
+    const DOCUMENT_WIDTH 'doc3' old value 'doc2'
+    2.default column width change 300px (media embed easy width good for everybody)
+    const SIDEBAR_WIDTH 'yui-t6' old value 'yui-t5'
+    3.entry-title color change and add after add link image
+made
+    changelog.txt
+----------------------------------------------
+
+#Changelog -----------------------------------
+#version:
+#removed
+#
+#moved
+#
+#added
+#
+#fixed
+#
+#modified
+#
+#made
+#
+#----------------------------------------------
