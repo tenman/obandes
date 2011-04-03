@@ -9,6 +9,7 @@
 ?>
 <br class="clear" />
 <footer class="bar">
+<a href="<?php echo get_permalink($post->ID);?>" class="go-page-top">PageTop</a>
   <div id="colophon">
     <?php    get_sidebar('footer');?>
     <address>

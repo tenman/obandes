@@ -35,7 +35,7 @@
 ?>
 <div class="yui-gf">
 <div class="yui-u first">
-<ul class="entry-meta">
+<ul class="meta blog-profile">
 <li class="published h2">
 <?php the_time(get_option('date_format')) ?>
 </li>
@@ -60,9 +60,9 @@ get_author_posts_url( get_the_author_meta( 'ID' ) ), get_the_author() );?>
 <?php edit_post_link('Edit', '<li>', '</li>'); ?>
 </ul>
 </div>
-<div class="entry-content yui-u">
-<h2 class="entry-title h2"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-<div class="entry-content clearfix">
+<div class="content yui-u">
+<h2 class="title h2"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+<div class="content clearfix">
 <?php the_content(__('Read the rest of this entry &raquo;', 'obandes')) ?>
 		  <div class="clear"></div>
 </div>
@@ -83,10 +83,10 @@ get_author_posts_url( get_the_author_meta( 'ID' ) ), get_the_author() );?>
 	
 	$module =<<<LAYOUT
 
-	  <h2 class="entry-title h2"><a href="%s" title="%s" rel="bookmark">%s</a></h2>
-	  <div class="entry-meta">%s
+	  <h2 class="title h2"><a href="%s" title="%s" rel="bookmark">%s</a></h2>
+	  <div class="meta posted-on">%s
 	  </div>
-	  <div class="entry-content">%s
+	  <div class="content">%s
 		<div class="horizon-gallery">
 		  %s
 		  <div class="clear"></div>
@@ -124,9 +124,9 @@ LAYOUT;
 	
 	$module =<<<LAYOUT
 <div>
-<h2 class="h2 entry-title"><a href="%s" title="%s" rel="bookmark">%s</a></h2>
-<div class="entry-meta">%s</div>
-<div class="entry-content clearfix">%s<div class="clear"></div></div>
+<h2 class="h2 title"><a href="%s" title="%s" rel="bookmark">%s</a></h2>
+<div class="meta posted-on">%s</div>
+<div class="content clearfix">%s<div class="clear"></div></div>
 <div class="clear"></div>
 LAYOUT;
 
@@ -149,7 +149,7 @@ LAYOUT;
 ?>
 <?php wp_link_pages( array( 'before' => '<div class="pagenate">' . __( 'Pages:', 'obandes' ), 'after' => '</div>' ,'link_before'=>'<span>','link_after'=>'</span>') );?>
 
-<div class="entry-utility"><?php obandes_posted_in();?>
+<div class="meta posted-in"><?php obandes_posted_in();?>
 <?php edit_post_link( __( 'Edit', 'obandes' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
 </div>
 <?php obandes_prev_next_post('nav-below');?>

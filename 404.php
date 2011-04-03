@@ -13,17 +13,17 @@ if(WP_DEBUG == true){
     echo '<!--'.basename(__FILE__,'.php').'['.basename(dirname(__FILE__)).']-->'."\n";
 }?>
 <section id="yui-main">
-<div id="post-0" class="post error404 not-found yui-b">
-  <h1 class="entry-title h1">
+<article id="post-0" class="post error404 not-found yui-b">
+  <h2 class="title h2">
     <?php _e( 'Not Found', 'obandes' ); ?>
-  </h1>
-  <div class="entry-content">
+  </h2>
+  <div class="content">
     <p>
       <?php _e( 'Apologies, but no results were found for the requested Archive. Perhaps searching will help find a related post.', 'obandes' ); ?>
     </p>
     <?php get_search_form(); ?>
   </div>
-</div>
+</article>
 <div class="clear"></div>	
 </section>
 

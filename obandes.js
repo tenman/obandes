@@ -13,7 +13,7 @@ var uniq = {};
         jQuery(class_list).each(function(i){
 
           jQuery('div[class="'+ this + '"]').wrap('<td class="' + this + '"></td>');
-          jQuery('td[class="'+ this + '"]').wrapAll('<table border="0" width="100%" id="' + this + '" summary="layout table"><tr></tr></table>');
+          jQuery('td[class="'+ this + '"]').wrapAll('<table border="0" width="100%" id="' + this + '" ><tr></tr></table>');
 
         jQuery('td[class="'+ this + '"]:first').addClass("col1");
         jQuery('td[class="'+ this + '"]:last').addClass("last");		

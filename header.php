@@ -30,14 +30,15 @@ if(isset($current_blog)){
 
 <link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_directory_uri().'/style.css'; ?>" />
 <?php
-if(get_option( 'obandes_css' ) !== ""){
-echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style type=\"text/css\"><!--".get_option( 'obandes_css' )."--></style>");
+$embed_style = get_option('obandes_theme_settings');
+if($embed_style['obandes_css'] !== ""){
+echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style type=\"text/css\"><!--\n".$embed_style['obandes_css']."--></style>");
 }?>
 
 <?php wp_head();?>
 </head>
 <body <?php body_class($this_blog); ?> onLoad="horizontal()">
-<div id="<?php echo DOCUMENT_WIDTH; ?>" class="<?php echo SIDEBAR_WIDTH;?>">
+<div id="<?php echo get_obandes_condition('letter-width'); ?>" class="<?php echo get_obandes_condition('menu-position');?>">
 <header class="clearfix">
 <?php
     if( is_home() or is_front_page() ){
@@ -64,7 +65,8 @@ echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style ty
 <?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
 </div>
 <?php
-    if(get_option("obandes_header") == 'show'){
+
+    if(get_obandes_condition("header_image") == 'show'){
 
         if ( is_singular()
                 and has_post_thumbnail( $post->ID )
@@ -88,5 +90,4 @@ $header_image_format = '<img src="%s" width="%s" height="%s" alt="header image" 
 
     }
 ?>
-
 </header>

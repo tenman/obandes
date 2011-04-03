@@ -48,7 +48,7 @@ if(WP_DEBUG == true){
   </div>
   <?php
 if(WP_DEBUG == true){
-    echo '<<!-- #third .horizon-footer-widget -->';
+    echo '<!-- #third .horizon-footer-widget -->';
 }?>
   <?php } ?>
   <?php if ( is_active_sidebar( 'fourth-footer-widget-area' ) ){ ?>
