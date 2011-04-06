@@ -10,7 +10,7 @@
 ?>
 <nav class="yui-b" id="toc">
 <ul>
-<?php if ( function_exists('dynamic_sidebar') && dynamic_sidebar('sidebar-1') ) : else : ?>
+<?php if ( dynamic_sidebar('sidebar-1') ) : else : ?>
 <?php wp_list_pages('title_li=<h2 class="h2">'.__('Pages','obandes').'</h2>' ); ?>
 <li>
 <h2 class="h2">Archives</h2>

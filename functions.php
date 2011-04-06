@@ -88,24 +88,129 @@ if(locate_template( array( 'admin/editor-style.css' ))){
  * horizon class demo colors
  */
 $css_preset =<<< CSS_PRESET
+@import url(http://fonts.googleapis.com/css?family=Fontdiner+Swanky) all;
 /*
 ========= obandes configrations =========
-layout-type=shrink
-letter-width=narrow
-menu-position=left
-menu-width=middle
+layout-type=fix
+letter-width=wide
+menu-position=right
+menu-width=wide
 ========= obandes configrations =========
 */
+
+/*design*/
+body{
+background:#5f7f5c;
+}
+body > #doc,
+body > #doc2,
+body > #doc3,
+body > #doc4{
+background:#8fbc8f url(images/bg-1.png);
+   box-shadow: 0 0 15px rgba(0, 0, 0);
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
+}
+
+
+footer,
+header{
+background:orange;
+color:#fff;
+}
+
+h3.widget-title:before{
+content:url(images/sidebar-title.png);
+margin-right:.5em;
+position:relative;
+top:3px;
+}
+nav > ul{
+background:#97a25e url(images/bg-1.png);
+}
+.ie6 #access,
+.ie7 #access,
+.ie8 #access,
+.ie6 article,
+.ie7 article,
+.ie8 article,
+#footer-widget-area,
+#fourth,
+#third,
+#second,
+#first,
+article{
+background:#c5d19b;
+}
+
+#footer-widget-area h3,
+#access{
+background:#97a25e  url(images/bg-1.png);
+border-color:#97a25e;
+margin-bottom:0;
+width:100%;
+}
+#footer-widget-area h3{
+-webkit-border-top-left-radius: 10px;
+-webkit-border-bottom-right-radius: 10px;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-bottomright: 10px;
+border-top-left-radius: 10px;
+border-bottom-right-radius: 10px;
+}
+header img{
+border-bottom:2px solid #000;
+margin-bottom:-5px;
+}
+.gecko div.posted-in,
+.chrome div.posted-in{
+border-top:3px solid #669966;
+border-bottom:3px solid #669966;
+}
+#commentform .form-submit{
+margin-bottom:1em;
+line-height:3;
+}
+.byuser,
+.commentlist > li,
+.reply,
+#commentform,
+div.tagcloud,
+.commentlist > li,
+.nopassword,
+#access ul ul a,
+.wp-caption,
+body.single-post .nocomments,
+.hentry th,.hentry td,
+.page-link,
+.bypostauthor
+.chrome article .content .size-thumbnail,
+.gecko article .content .size-thumbnail,
+.home .sticky,
+blockquote{
+border:1px solid #999!important;
+}
+
+/*@see http://www.google.com/webfonts*/
+.h1,
+h1{
+font-family:serif;
+font-size: 72px;
+}
+
+
 
 #doc,#doc2,#doc3,#doc4,#custom-doc{
 
 }
 header{
+
 }
 /*
  *horizontal navigation
+ * 
 */
-header #access{
+#access{
  
 }
 /*
@@ -113,11 +218,11 @@ header #access{
 */
 section{}
 .index{}
-article{}
-article .title{}
-article .posted-on{}
-article .posted-in{}
-article .pagenate{}
+.index article{}
+.index article .title a{}
+.index article .posted-on{}
+.index article .posted-in{}
+.index article .pagenate{}
 /*
  *single.php
 */
@@ -130,7 +235,7 @@ article .pagenate{}
 /*
  *footer.php
 */
-footer{;}
+footer{}
 #footer-widget-area{}
 .horizontal-footer-widget{}
 #footer-widget-area #first{}
@@ -267,7 +372,7 @@ CSS_PRESET;
 
         $result = sprintf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'obandes' ),
             'meta-prep meta-prep-author',
-            sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',
+            sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="date">%3$s</span></a>',
                 get_permalink(),
                 esc_attr( get_the_time() ),
                 get_the_date()
@@ -1006,7 +1111,7 @@ menu-width:wide
 	$current_settings 		= get_option('obandes_theme_settings');
 	if($condition == 'header_image'){
 		$image 	= $current_settings['obandes_header'];
-		return $image;
+		return trim($image);
 	}
 	$config 				= $current_settings['obandes_css'];
 	
@@ -1138,7 +1243,7 @@ if($condition == 'menu-position'){
 	
 			$add = '<li ' . $class . '>' .
 							$args->before .
-							'<a href="' . home_url( '#footer-widget-area' ) . '" title="go to footer">' .
+							'<a href="#footer-widget-area" title="go to footer">' .
 								$args->link_before .
 								'Menu footer' .
 								$args->link_after .

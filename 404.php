@@ -1,6 +1,6 @@
 <?php
 /**
- * The index for obandes.
+ * The page not found for obandes.
  *
  * @package WordPress
  * @subpackage obandes
@@ -26,14 +26,5 @@ if(WP_DEBUG == true){
 </article>
 <div class="clear"></div>	
 </section>
-
-<?php if ( is_active_sidebar( 'sidebar-1' ) ){ ?>
-<nav class="yui-b" id="toc">
-<ul>
-    <?php dynamic_sidebar('sidebar-1');?>
-  </ul>
-</nav>
-
-
-<?php }?>
+<?php get_sidebar('1');?>
 <?php get_footer();?>

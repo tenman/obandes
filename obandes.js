@@ -48,5 +48,5 @@ var uniq = {};
 
         });
 		/* for ie8*/
-		jQuery('.entry-content img').removeAttr("height");
+		jQuery('article .content img').removeAttr("height");
 }

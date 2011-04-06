@@ -40,23 +40,23 @@
 	}
 ?>
 
-<div id="post-<?php the_ID(); ?>" <?php post_class('yui-b'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('yui-b'); ?>>
 <?php obandes_prev_next_post();?>
-  <h2 class="h2 entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-  <div class="entry-meta"><?php obandes_posted_on(); ?></div>
+  <h2 class="h2 title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+  <div class="meta posted-on"><?php obandes_posted_on(); ?></div>
 
-  <div class="entry-content clearfix">
+  <div class="content clearfix">
     <?php the_content( __( 'Continue&nbsp;reading&nbsp;<span class="meta-nav">&rarr;</span>', 'obandes' ) ); ?>
     <div class="clear"></div>
     <?php wp_link_pages( array( 'before' => '<div class="pagenate">' . __( 'Pages:', 'obandes' ), 'after' => '</div>' ,'link_before'=>'<span>','link_after'=>'</span>') );?>
   </div>
      <div class="clear"></div>
-  <div class="entry-utility"><?php obandes_posted_in();?>
+  <div class="meta posted-in"><?php obandes_posted_in();?>
     <?php edit_post_link( __( 'Edit', 'obandes' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
 <?php obandes_prev_next_post('nav-below');?>
 
   </div>
   <?php comments_template( '', true ); ?>
-</div>
+</article>
 <!-- #post-<?php the_ID(); ?> -->
 

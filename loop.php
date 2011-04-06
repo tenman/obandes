@@ -64,7 +64,8 @@ echo '<ul class="index yui-b '.esc_attr($obandes_class_name).'">';
 		);
 	
 	}
-	
+
+//if(!have_posts()){	get_template_part("404");}
 	if ( $wp_query->max_num_pages > 1 ){ 
 // Display navigation to next/previous pages when applicable  ?>
 <li><div id="nav-above" class="clearfix"> <span class="nav-previous">

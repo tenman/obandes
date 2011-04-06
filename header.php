@@ -32,7 +32,19 @@ if(isset($current_blog)){
 <?php
 $embed_style = get_option('obandes_theme_settings');
 if($embed_style['obandes_css'] !== ""){
-echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style type=\"text/css\"><!--\n".$embed_style['obandes_css']."--></style>");
+
+/**
+ * CSS e.g. url(images/something.png) change absolute URL.
+ * url(http://example.com/wp/wp-content/themes/obandes/images/something.png)
+ *
+ */
+
+$obandes_template_dir = get_template_directory_uri();
+$embed_style = htmlspecialchars_decode($embed_style['obandes_css'], ENT_NOQUOTES);
+$embed_style = preg_replace('!(url\()([^\)]+)(\))!',"$1{$obandes_template_dir}/$2$3",$embed_style);
+$embed_style = str_replace(array('&lt;','&#60;','&#x3c;','PA==','%3C','!/```'),' !less than ',$embed_style);
+
+echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style type=\"text/css\"><!--\n".$embed_style."--></style>");
 }?>
 
 <?php wp_head();?>
@@ -77,7 +89,7 @@ echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style ty
                 echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
         }else{
 
-$header_image_format = '<img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" />';
+$header_image_format = '<div id="header-image"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
 
             printf( $header_image_format,
                     get_header_image(),

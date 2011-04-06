@@ -61,8 +61,8 @@ get_author_posts_url( get_the_author_meta( 'ID' ) ), get_the_author() );?>
 </ul>
 </div>
 <div class="content yui-u">
-<h2 class="entry-title h2"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-<div class="entry-content clearfix">
+<h2 class="title h2"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+<div class="content clearfix">
 <?php the_content(__('Read the rest of this entry &raquo;', 'obandes')) ?>
 		  <div class="clear"></div>
 </div>
@@ -149,7 +149,7 @@ LAYOUT;
 ?>
 <?php wp_link_pages( array( 'before' => '<div class="pagenate">' . __( 'Pages:', 'obandes' ), 'after' => '</div>' ,'link_before'=>'<span>','link_after'=>'</span>') );?>
 
-<div class="entry-utility"><?php obandes_posted_in();?>
+<div class="meta posted-in"><?php obandes_posted_in();?>
 <?php edit_post_link( __( 'Edit', 'obandes' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
 </div>
 <?php obandes_prev_next_post('nav-below');?>

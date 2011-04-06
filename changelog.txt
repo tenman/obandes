@@ -1,52 +1,37 @@
 
 Changelog -----------------------------------
 version:
-removed
-
-moved
-
-added
-
-fixed
-
 modified:   404.php
     div to section element change
     entry-title entry-content entry-meta class name rename title content
 modified:   footer.php
     add hyper link like a move page top.
 modified:   formats/format-aside.php
-    entry-title entry-content entry-meta class name rename title content
-    remove <div class="entry-utility">,</div>
+modified:   formats/format-chat.php	
+modified:   formats/format-gallery.php	
+modified:   formats/format-image.php	
 modified:   formats/format-link.php
-    entry-title entry-content entry-meta class name rename title content
-    posted-on posted-in.
 modified:   formats/format-standard.php
-    entry-title entry-content entry-meta class name rename title content
-    posted-on posted-in.
 modified:   formats/format.php
     entry-title entry-content entry-meta class name rename title content
     posted-on posted-in blog-profile.
 modified:   functions.php
-    theme can use only 1field options table why theme rule change.
+1.	theme can use only 1field options table why theme rule change.
     add function get_obandes_condition()
-
-    modified
     function tmn_install_navigation()
     function obandes_theme_init()
-    page layout change system add
+2.  page layout change system add
     add function get_obandes_condition($condition)
     add function obandes_detect_option($condition)
     remove function obandes_css_validate($css)
     $css_preset value change for more easier style setting.
-
-
     add_action( 'admin_init', 'obandes_theme_init' )
-    for IE8 expand height issue
+3.  for IE8 expand height issue
     add function ie_height_expand_issue($content)
-    for new page template onecolumn-page.php
-        conditional wp_nav_menu.
-    add function addHomeMenuLink($content, $args)
+4.  add new function for page template onecolumn-page.php
+    function addHomeMenuLink($content, $args)
 
+	html class attribute change where function obandes_posted_on. entry-date to date
 modified:   header.php
     get_option was changed from string to array.
     obandes can dinamic change where column width and pagewidth.
@@ -63,6 +48,10 @@ modified:   sidebar-footer.php
     bad html code r
 modified:   single.php
 modified:   style.css
+modified:	obandes.js
+obandes.js
+jQuery('.entry-content img').removeAttr("height");	
+	class name change article .content img
 
 made
 
