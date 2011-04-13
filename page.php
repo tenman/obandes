@@ -31,5 +31,11 @@ get_header();?>
   <?php endwhile; ?>
   <div class="clear"></div>
 </section>
-<?php get_sidebar('1');?>
+  <?php if ( is_active_sidebar( 'sidebar-1' ) ){ ?>
+  <nav class="yui-b" id="toc">
+    <ul>
+      <?php dynamic_sidebar('sidebar-1');?>
+    </ul>
+  </nav>
+  <?php }?>
   <?php get_footer();?>

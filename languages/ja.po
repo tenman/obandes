@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obandes 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-06 16:40+0900\n"
+"POT-Creation-Date: 2011-04-14 08:51+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Akio Tenman <akio@tenman.info>\n"
 "Language-Team: obandes <a.tenman@gmail.com>\n"
@@ -39,9 +39,9 @@ msgid "http://www.tenman.info/wp/obandes/"
 msgstr "http://www.tenman.info/wp/obandes/"
 
 #: obandes/footer.php:23
-#, fuzzy, php-format
+#, php-format
 msgid "Theme: %s"
-msgstr "%1$s テーマを更新中 (%2$d/%3$d)"
+msgstr "テーマ: %s"
 
 #: obandes/footer.php:26
 #, fuzzy
@@ -198,7 +198,7 @@ msgstr "WordPress の更新を完了しました。"
 
 #: obandes/functions.php:889
 msgid "I am waiting your Change."
-msgstr "お好きに変更してください"
+msgstr "編集可能です"
 
 #: obandes/functions.php:904
 #, fuzzy
@@ -228,7 +228,7 @@ msgstr "CSS編集"
 
 #: obandes/functions.php:941
 msgid "You can change page width and column position"
-msgstr "ページ幅やメニューの幅や位置(左右）を変更できます"
+msgstr "ページ幅、カラム幅と位置を指定できます"
 
 #: obandes/functions.php:966
 #, fuzzy
@@ -259,9 +259,8 @@ msgid "obandes have special body classes."
 msgstr "obandes テーマは、数種類の特別なクラス名を使うことができます。"
 
 #: obandes/functions.php:981
-#, fuzzy
 msgid "languages class e.g.  .ja"
-msgstr "テーマ <span class=\"b\">%1$s</span>"
+msgstr "言語　例：　.ja"
 
 #: obandes/functions.php:982
 msgid "browser class e.g.  .ie  .chrome .gecko(firefox)"
@@ -272,9 +271,8 @@ msgid "multiuser class  e.g. .b4 .b3"
 msgstr "マルチユーザクラス 例 .b4 .b3"
 
 #: obandes/functions.php:984
-#, fuzzy
 msgid "horizon class e.g. .horizon-something"
-msgstr "テーマ <span class=\"b\">%1$s</span>"
+msgstr "水平方向ブロック整列クラス　例 .horizon-整列させるグループ名"
 
 #: obandes/functions.php:985
 msgid "Multiuser class can be specified even if there is no child theme if they are only a few changes."
@@ -289,9 +287,8 @@ msgid "languages class give happyness who not ASCII languege user."
 msgstr "ランゲージクラスは、国別、スタイル指定を簡便に行うことができます。"
 
 #: obandes/functions.php:988
-#, fuzzy
 msgid "horizon class USEGE:"
-msgstr "テーマ <span class=\"b\">%1$s</span>"
+msgstr "horizon class 使い方:"
 
 #: obandes/functions.php:989
 msgid "horizon class is not multiclass use only horizontal layout."
