@@ -5,7 +5,7 @@ Description: extend basic template It is possible to change freely by using Yaho
 AdminPanel was omitted. The setting is useful for a revokable person in functions.php. 
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 0.51
+Version: 0.52
 Tags:white, two-columns,right-sidebar ,fixed-width ,flexible-width, custom-colors, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -233,10 +233,12 @@ h3.widget-title{
 	font-size:161.6%;
 	padding:10px 3px;
 	width:100%;
-	margin-left:-5px;
-	text-indent:.5em;
-}
 
+}
+.ie8 h3#comments-title,	
+.ie8 h3.widget-title{
+	padding:0px 3px;
+}
 h3#reply-title{
 	font-size:161.6%;
 	margin:10px 0 0 10px;
@@ -364,8 +366,11 @@ header img{
 	position:absolute;
 	top:0;
 	right:0;
-	top:10px\9;
 }
+.ie8 .search-form{
+	top:10px;
+}
+
 /**
  *	html5
  */
@@ -390,6 +395,8 @@ display:block;
 /**
  *	vertical menu column
  */
+
+article.fail-search,
 article.not-found,
 .single article{
 	margin-top:10px;
@@ -427,6 +434,10 @@ nav li a {
     padding: 5px 5px 5px 0.5em;
     text-decoration: none;
     }
+nav li a.rsswidget{
+	padding:0;
+	margin:0;
+}
 nav li.recentcomments{
 	}
 html>body nav li a:hover,
@@ -701,6 +712,7 @@ dd {
 	padding-left:2em;
 	
 }
+
 dl.author dd,
 dl.author dt,
 dl.my_tags dd,
@@ -740,7 +752,7 @@ dl.my_tags dt {
 article .title{
 	max-width:100%;
 	margin:0 10px;
-	border-bottom:thin inset #ccc;
+	border-bottom:#669933 solid 1px;
 	}
 	
 article .content{
@@ -819,15 +831,14 @@ article .content img{
 	
 	}
 article .content .size-thumbnail{
-	margin:0.25em 1em 1em;
 }
 /*
  * Archives
  */	
 #archives-title{
 	margin-bottom:1em;
-	font-size:40em;
-	background:url(images/title-bg.png);
+
+	/*background:url(images/title-bg.png);*/
 	background-position:right top;
 	background-repeat:no-repeat;
 }
@@ -1013,6 +1024,10 @@ input#url,
 .comment-form-comment label{
 	display:block;
 }
+.byuser .replay,
+.bypostauthor .reply{
+	line-height:3em;
+}
 
 /**
  *	utility
@@ -1177,7 +1192,7 @@ blockquote{
 div.tagcloud,
 footer,
 article{
-/*background:#fff;*/
+background-color:#fff;
 background-color: rgba(255, 255, 255, 0.5);
 padding:0 0 10px;
 }
@@ -1235,7 +1250,7 @@ hr{
 
 .reply,
 #searchsubmit,
-#commentform input[type="submit"],
+input[type="submit"],
 .grad{
 	background:#999;
 	background:-moz-linear-gradient(center top ,  #999,#555) repeat scroll 0 0 #999;
@@ -1248,7 +1263,7 @@ hr{
 
 .reply:active,
 #searchsubmit:active,
-#commentform input[type="submit"]:active{
+input[type="submit"]:active{
 	background:#555;
 	background:-moz-linear-gradient(center top , #555, #999) repeat scroll 0 0 #555;
 	background:-webkit-gradient(linear,left top , left bottom,from(#555), to(#999));	
@@ -1338,7 +1353,9 @@ address a{
 #doc2,
 #doc3,
 #doc4,
+article.fail-search,
 article.not-found,
+.page,
 div.tagcloud,
 /*#access,*/
 .home .sticky,
@@ -1382,6 +1399,10 @@ border-bottom-right-radius: 10px;
    margin:12px 12px 6px 12px;
    line-height:1.7;
 
+}
+.byuser,
+.bypostauthor{
+   padding:12px;
 }
 .page #commentform{
    margin:12px;
@@ -1459,7 +1480,7 @@ nav li li{
     border-right:none;
 }
 blockquote{
-	border-left:6px solid #ccc;
+	border-left:6px solid #777;
 }
 .home .hentry{
 	/*border-left:6px solid orange;*/
@@ -1609,6 +1630,7 @@ margin-right:5px;
 abbr[title="Really Simple Syndication"]:after,
 address .comments-rss:after,
 .error404 .title:before,
+.fail-search .title:before,
 .nav-previous a:before,
 .nav-next a:after{
 position:relative;
@@ -1617,7 +1639,7 @@ top:3px;
 .meta-nav{
 display:none;
 }
-
+.fail-search .title:before,
 .error404 .title:before{
 content: url("images/stop.png");
 margin-right:5px;
@@ -1658,16 +1680,17 @@ border:none;
 list-style-image:url("images/list-marker.png")!important;
 }
 
-.page yui-b{
-	border:none;
-}
 .page .edit-link{
 	display:block;
 	margin:1em;
 }
-section.onecolumn{
+section#onecolumn{
 
 }
+section#onecolumn article{
+	margin-left:0;
+}
+
 section#onecolumn .content{
 	margin:3% 5%;
 }
@@ -1720,94 +1743,95 @@ body > #doc4{
     -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
 }
 
-/*design
-body{
-background:#5f7f5c;
-background:#8fbc8f url(images/bg-1.png);
+.gecko div.posted-in,
+.chrome div.posted-in{
+border-top:3px solid #669966;
+border-bottom:3px solid #669966;
 }
-body > #doc,
-body > #doc2,
-body > #doc3,
-body > #doc4{
-background:#8fbc8f url(images/bg-1.png);
+#search-results-title{
+	background:url(images/search-results.png);
 }
-
-
-footer,
-header{
-background:orange;
-color:#fff;
+.monthly-archives{
+	background:url(images/monthly-archives.png);
 }
-
-h3.widget-title:before{
-content:url(images/sidebar-title.png);
-margin-right:.5em;
-position:relative;
-top:3px;
+.yearly-archives{
+	background:url(images/yearly-archives.png);
 }
-nav > ul{
-background:#97a25e url(images/bg-1.png);
+.daily-archives{
+	background:url(images/daily-archives.png);
 }
-.ie6 #access,
-.ie7 #access,
-.ie8 #access,
-.ie6 article,
-.ie7 article,
-.ie8 article,
-#footer-widget-area,
-#fourth,
-#third,
-#second,
-#first,
-article{
-background:#c5d19b;
+.category-archives{
+	background:url(images/category-archives.png);
 }
-
-#footer-widget-area h3,
-#access{
-background:#97a25e  url(images/bg-1.png);
-border-color:#97a25e;
-margin-bottom:0;
-width:100%;
+.author-archives{
+	background:url(images/author-archives.png);
 }
-#footer-widget-area h3{
--webkit-border-top-left-radius: 10px;
--webkit-border-bottom-right-radius: 10px;
--moz-border-radius-topleft: 10px;
--moz-border-radius-bottomright: 10px;
-border-top-left-radius: 10px;
-border-bottom-right-radius: 10px;
+.tag-archives{
+	background:url(images/tag-archives.png);
 }
+.tag-archives,
+.author-archives,
+.category-archives,
+.daily-archives,
+.yearly-archives,
+.monthly-archives,
+#search-results-title{
+	background-repeat:no-repeat;
+	background-position:right top;
+}
+/**
+ * search result
+ *
+ *
+ *
+ *
+ */
+.search-results{
+	margin-top:1em;
+}
+.search-results li{
+	list-style-type:none;
+}
+.search-results .date{
+	font-size:123.1%;
+	font-weight:700;
+	font-family:Georgia, "Times New Roman", Times, serif;
+}
+#comments-title,
+.search-results .meta{
+ margin:0 1em 0 1em;
+ }
+#archives-title{
+	height:70px;
+	padding-top:5px;
+	margin-left:1em;
+} 
 header img{
 border-bottom:2px solid #000;
-margin-bottom:-5px;
 }
 .gecko div.posted-in,
 .chrome div.posted-in{
 border-top:3px solid #669966;
 border-bottom:3px solid #669966;
 }
-#commentform .form-submit{
-margin-bottom:1em;
-line-height:3;
+/**
+ * page
+ */
+.page{
+	margin-top:10px;
 }
-.byuser,
-.commentlist > li,
-.reply,
-#commentform,
-div.tagcloud,
-.commentlist > li,
-.nopassword,
-#access ul ul a,
-.wp-caption,
-body.single-post .nocomments,
-.hentry th,.hentry td,
-.page-link,
-.bypostauthor
-.chrome article .content .size-thumbnail,
-.gecko article .content .size-thumbnail,
-.home .sticky,
-blockquote{
-border:1px solid #999!important;
+#onecolumn .page{
+	margin-top:0;
 }
-*/
+article.page{
+padding:0;
+}
+/**
+ * search
+ */
+
+nav #searchform{
+	margin:0 auto;
+	text-align:center;
+}
+

@@ -88,7 +88,6 @@ if(locate_template( array( 'admin/editor-style.css' ))){
  * horizon class demo colors
  */
 $css_preset =<<< CSS_PRESET
-@import url(http://fonts.googleapis.com/css?family=Fontdiner+Swanky) all;
 /*
 ========= obandes configrations =========
 layout-type=fix
@@ -124,6 +123,10 @@ content:url(images/sidebar-title.png);
 margin-right:.5em;
 position:relative;
 top:3px;
+
+}
+.ie8 h3.widget-title:before{
+top:0;
 }
 nav > ul{
 background:#97a25e url(images/bg-1.png);
@@ -188,14 +191,17 @@ body.single-post .nocomments,
 .gecko article .content .size-thumbnail,
 .home .sticky,
 blockquote{
-border:1px solid #999!important;
+border:1px solid #999;
 }
-
+article .content blockquote{
+border-left:6px solid #777;
+}
 /*@see http://www.google.com/webfonts*/
 .h1,
 h1{
-font-family:serif;
-font-size: 72px;
+font-family:Georgia, "Times New Roman", Times, serif;
+font-size:2em;
+
 }
 
 
@@ -248,6 +254,7 @@ footer #site-genelator{}
  *vertical navigation
 */
 nav{}
+
 CSS_PRESET;
 
     $obandes_base_setting =array(
@@ -829,7 +836,6 @@ CSS_PRESET;
                 global $obandes_base_setting;
 				
                 $ok             = false;
-                $option_id      = intval($_POST['option_id']);
                 $option_value   = esc_html($_POST['obandes_setting']['obandes_css']);
                 $option_name    = 'obandes_css';
                 $valid_function = 'obandes_css_validate';
@@ -850,7 +856,6 @@ CSS_PRESET;
         	if (isset( $_POST['action'] ) == 'update' and isset($_POST['obandes_setting']['obandes_header'])){
                 global $obandes_base_setting;
                 $ok             = false;
-                $option_id      = intval($_POST['option_id']);
                 $option_value   = esc_html($_POST['obandes_setting']['obandes_header']);
                 $option_name    = 'obandes_header';
                 $valid_function = 'obandes_header_validate';
