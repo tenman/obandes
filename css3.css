@@ -1,0 +1,188 @@
+/* CSS3 Document */
+
+article .content{
+	line-break:strict; /*ie*/
+	word-break:break-strict; /*css3*/
+	}
+.index article .posted-in,
+.single article .posted-in{
+	background-color: rgba(200, 200, 200, 0.5);
+}
+.not-found,
+div.tagcloud,
+footer,
+article{
+background-color: rgba(255, 255, 255, 0.5);
+}
+nav > ul{
+background-color: rgba(255, 255, 255, 0.5);
+}
+.tagcloud,
+.byuser,
+.bypostauthor,
+#wp-calendar th,
+#commentform{
+
+	background:-moz-linear-gradient(center top , #eef, #efe) repeat scroll 0 0 #efe;
+	background:-webkit-gradient(linear,left top , left bottom,from(#ddf), to(#efefef));	
+
+}
+
+.reply,
+#searchsubmit,
+input[type="submit"],
+.grad{
+	background:-moz-linear-gradient(center top ,  #999,#555) repeat scroll 0 0 #999;
+	background:-webkit-gradient(linear,left top , left bottom,from(#999), to(#555));	
+}
+.reply:active,
+#searchsubmit:active,
+input[type="submit"]:active{
+	background:-moz-linear-gradient(center top , #555, #999) repeat scroll 0 0 #555;
+	background:-webkit-gradient(linear,left top , left bottom,from(#555), to(#999));	
+
+}
+
+.home .sticky {
+	box-shadow:none;
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+}
+.wp-caption {
+   -moz-border-radius: 3px;
+   -khtml-border-radius: 3px;
+   -webkit-border-radius: 3px;
+   border-radius: 3px;
+}
+#access ul ul {
+	box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
+}
+
+.chrome article .content .horizon-gallery .size-thumbnail,
+.gecko article .content .horizon-gallery .size-thumbnail,
+.horizon-gallery.col1 .size-thumbnail{
+	box-shadow:none!important;
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+}
+#doc,
+#doc2,
+#doc3,
+#doc4,
+article.fail-search,
+article.not-found,
+.page,
+div.tagcloud,
+/*#access,*/
+.home .sticky,
+nav > ul,
+.hentry{
+   -moz-border-radius: 6px;
+   -khtml-border-radius: 6px;
+   -webkit-border-radius: 6px;
+   border-radius: 6px;
+}
+
+.byuser,
+.bypostauthor,
+.commentlist > li,
+.reply,
+#commentform,
+.corner{
+   -moz-border-radius: 6px;
+   -khtml-border-radius: 6px;
+   -webkit-border-radius: 6px;
+   border-radius: 6px;
+
+}
+
+input[type="file"],
+#searchsubmit,
+#commentform input[type="submit"],
+.grad{
+	border-radius:1em 1em 1em 1em;
+	-moz-border-radius:1em 1em 1em 1em;
+	-webkit-border-radius:1em 1em 1em 1em;
+	border-color:rgba(255, 255, 255, 0.3);
+	border-top:1px solid rgba(255, 255, 255, 0.3);
+}
+.pagenate span {
+   -moz-border-radius: 6px;
+   -khtml-border-radius: 6px;
+   -webkit-border-radius: 6px;
+   	border-radius: 6px;
+}
+
+#wp-calendar #today{
+	border-radius:0.2em 0.2em 0.2em 0.2em;
+    -moz-border-radius:0.2em 0.2em 0.2em 0.2em;
+    -webkit-border-radius:0.2em 0.2em 0.2em 0.2em;
+}
+#wp-calendar th:nth-child(1){
+	border-radius			:1em 0 0 0;
+    -moz-border-radius		:1em 0 0 0;
+    -webkit-border-radius	:1em 0 0 0;
+}
+#wp-calendar th:nth-child(7){
+	border-radius			:0 0.8em  0 0;
+    -moz-border-radius		:0 0.8em  0 0;
+    -webkit-border-radius	:0 0.8em  0 0;
+}
+
+body > #doc,
+body > #doc2,
+body > #doc3,
+body > #doc4{
+   	box-shadow: 0 0 15px rgba(0, 0, 0);
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
+}
+.plate,
+.grad{
+	background:-moz-linear-gradient(center top ,  #efe,#eef) repeat scroll 0 0 #efe;
+	background:-webkit-gradient(linear,left top , left bottom,from(#339999), to(#669999));	
+}
+header{
+-webkit-border-top-left-radius: 10px;
+-webkit-border-top-right-radius: 10px;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-topright: 10px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+}
+footer{
+-webkit-border-bottom-left-radius: 10px;
+-webkit-border-bottom-right-radius: 10px;
+-moz-border-radius-bottomleft: 10px;
+-moz-border-radius-bottomright: 10px;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+}
+#wp-calendar th:nth-child(1){
+	width:1em;
+}
+#wp-calendar th:nth-child(7){
+	width:1em;
+
+}
+
+body > #doc,
+body > #doc2,
+body > #doc3,
+body > #doc4{
+background:#8fbc8f url(images/bg-1.png);
+   box-shadow: 0 0 15px rgba(0, 0, 0);
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
+}
+
+#footer-widget-area h3{
+-webkit-border-top-left-radius: 10px;
+-webkit-border-bottom-right-radius: 10px;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-bottomright: 10px;
+border-top-left-radius: 10px;
+border-bottom-right-radius: 10px;
+}
