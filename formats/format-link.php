@@ -13,7 +13,7 @@
 	
 	global $post;
 	
-		preg_match("/(https?:\/\/)([-_.!˜*\'()a-zA-Z0-9;\/?:@&=+$,%#]+)([^>]+>)([^<]+)</iu",$contents,$regs);
+		preg_match("/(https?:\/\/)([-_.!*\'()a-zA-Z0-9;\/?:@&=+$,%#]+)([^>]+>)([^<]+)</iu",$contents,$regs);
 		
 		$url = $regs[1].$regs[2];
 		

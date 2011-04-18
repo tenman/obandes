@@ -1,4 +1,27 @@
+Changelog -----------------------------------
+version:0.53
+removed
+        formats/format-link.php 16
+        formats/format-image.php 15
+        remove tilde why theme check plugin echo 'Non-printable characters'
 
+fixed   font-size and page width issue.
+
+modified style.css
+        CSS ver2.1 valid style
+        i,em {font-style:itaric;} change itaric typo to italic.
+        .stickey{} change stickey to sticky.
+
+made css3.css
+        browser conditional stylesheet for chrome or firefox
+
+added   obandes options panel style
+        .time-diff{
+        /*if you need remove this '(Passage of * days)' */
+            /*display:none;*/
+        }
+
+----------------------------------------------
 Changelog -----------------------------------
 version:
 modified:   404.php
@@ -7,16 +30,16 @@ modified:   404.php
 modified:   footer.php
     add hyper link like a move page top.
 modified:   formats/format-aside.php
-modified:   formats/format-chat.php	
-modified:   formats/format-gallery.php	
-modified:   formats/format-image.php	
+modified:   formats/format-chat.php
+modified:   formats/format-gallery.php
+modified:   formats/format-image.php
 modified:   formats/format-link.php
 modified:   formats/format-standard.php
 modified:   formats/format.php
     entry-title entry-content entry-meta class name rename title content
     posted-on posted-in blog-profile.
 modified:   functions.php
-1.	theme can use only 1field options table why theme rule change.
+1.  theme can use only 1field options table why theme rule change.
     add function get_obandes_condition()
     function tmn_install_navigation()
     function obandes_theme_init()
@@ -31,7 +54,7 @@ modified:   functions.php
 4.  add new function for page template onecolumn-page.php
     function addHomeMenuLink($content, $args)
 
-	html class attribute change where function obandes_posted_on. entry-date to date
+    html class attribute change where function obandes_posted_on. entry-date to date
 modified:   header.php
     get_option was changed from string to array.
     obandes can dinamic change where column width and pagewidth.
@@ -48,10 +71,10 @@ modified:   sidebar-footer.php
     bad html code r
 modified:   single.php
 modified:   style.css
-modified:	obandes.js
+modified:   obandes.js
 obandes.js
-jQuery('.entry-content img').removeAttr("height");	
-	class name change article .content img
+jQuery('.entry-content img').removeAttr("height");
+    class name change article .content img
 
 made
 

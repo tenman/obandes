@@ -5,7 +5,7 @@ Description: extend basic template It is possible to change freely by using Yaho
 AdminPanel was omitted. The setting is useful for a revokable person in functions.php. 
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 0.52
+Version: 0.53
 Tags:white, two-columns,right-sidebar ,fixed-width ,flexible-width, custom-colors, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -128,7 +128,7 @@ table[id^='horizon']{
 	max-width:100%;
 }
 i,em{
-	font-style:itaric;
+	font-style:italic;
 	font-weight:700;
 }
 form{
@@ -545,7 +545,7 @@ div.menu ul {
 }
 #access .menu-header li,
 div.menu li {
-	float: left;
+	float: left;	
 	position: relative;
 	list-style:none;
 	margin:0;
@@ -555,7 +555,6 @@ div.menu li {
 	line-height: 3em;
 	padding: 0 10px;
 	text-decoration: none;
-	color:#fff;
 }
 #access ul ul {
 	display: none;
@@ -668,7 +667,7 @@ div.aligncenter {
    padding: 0 4px 5px;
    margin: 0;
 }
-.stickey{
+.sticky{
 }
 .wp-smiley{
     margin: 0;
@@ -758,15 +757,12 @@ article .title{
 article .content{
 	margin:0 1em;
 	max-width:100%;	
-	line-break:strict; /*ie*/
-	word-break:break-strict; /*css3*/
 	}
 
 .index article .posted-in,
 .single article .posted-in{
 	text-align:center;
 	background:#eef;
-	background-color: rgba(200, 200, 200, 0.5);
 	border-top:2px solid #ccc;
 	border-bottom:2px solid #ccc;
 	margin:10px 10px 0 10px;
@@ -862,6 +858,7 @@ ul.index > li{
 /**
  *	footer
  */
+
 	
 #footer-widget-area ul{
 	margin:0.3em;
@@ -1193,21 +1190,16 @@ div.tagcloud,
 footer,
 article{
 background-color:#fff;
-background-color: rgba(255, 255, 255, 0.5);
+
 padding:0 0 10px;
 }
 nav > ul{
-background-color: rgba(255, 255, 255, 0.5);
 padding:0;
 margin-top:12px;
 }
 article.not-found{
 padding:0 10px 10px;
 }
-/*#access{
-background-color: rgba(255, 255, 255, 0.8);
-padding:0 3px;
-}*/
 
 
 h2 a:after,
@@ -1229,10 +1221,13 @@ hr{
 }
 .plate,
 .grad{
-	background:-moz-linear-gradient(center top ,  #efe,#eef) repeat scroll 0 0 #efe;
-	background:-webkit-gradient(linear,left top , left bottom,from(#339999), to(#669999));	
-	_background:#0099CC;
 	color:#333;
+}
+.ie7 .plate,
+.ie7 .grad
+.ie8 .plate,
+.ie8 .grad{
+	background:#0099CC;
 }
 
 .tagcloud,
@@ -1241,23 +1236,42 @@ hr{
 #wp-calendar th,
 #commentform{
 
-	background:-moz-linear-gradient(center top , #eef, #efe) repeat scroll 0 0 #efe;
-	background:-webkit-gradient(linear,left top , left bottom,from(#ddf), to(#efefef));	
-	_background:#33CCCC;
 	color:#333;
 
 }
+.ie7.tagcloud,
+.ie7 .byuser,
+.ie7 .bypostauthor,
+.ie7 #wp-calendar th,
+.ie7 #commentform,
+.ie8.tagcloud,
+.ie8 .byuser,
+.ie8 .bypostauthor,
+.ie8 #wp-calendar th,
+.ie8 #commentform{
+	background:#33CCCC;
+}
 
+.reply a{
+	color:#fff;
+}
 .reply,
 #searchsubmit,
 input[type="submit"],
 .grad{
 	background:#999;
-	background:-moz-linear-gradient(center top ,  #999,#555) repeat scroll 0 0 #999;
-	background:-webkit-gradient(linear,left top , left bottom,from(#999), to(#555));	
-	_background:#000;
 	color:#fff;
 	border:none;
+}
+.ie8 .reply,
+.ie8 #searchsubmit,
+.ie8 input[type="submit"],
+.ie8 .grad,
+.ie7 .reply,
+.ie7 #searchsubmit,
+.ie7 input[type="submit"],
+.ie7 .grad{
+	background:#000;
 }
 
 
@@ -1265,19 +1279,25 @@ input[type="submit"],
 #searchsubmit:active,
 input[type="submit"]:active{
 	background:#555;
-	background:-moz-linear-gradient(center top , #555, #999) repeat scroll 0 0 #555;
-	background:-webkit-gradient(linear,left top , left bottom,from(#555), to(#999));	
-	_background:#33CCCC;
 	color:#fff;
-
 }
-.reply a{
-	color:#fff;
+.ie7 .reply:active,
+.ie7 #searchsubmit:active,
+.ie7 input[type="submit"]:active,
+.ie7 .reply a,
+.ie8 .reply:active,
+.ie8 #searchsubmit:active,
+.ie8 input[type="submit"]:active,
+.ie8 .reply a{
+	background:#33CCCC;
 }
 
 /**
  *	colors
  */
+#access a {
+	color:#fff;
+}
 h1 a,
 h2 a,
 h3 a,
@@ -1326,63 +1346,13 @@ address a{
 
 .home .sticky {
 	background:#eef;
-	box-shadow:none;
-	-webkit-box-shadow:none;
-	-moz-box-shadow:none;
 	margin-bottom:2em;
 }
-.wp-caption {
-   -moz-border-radius: 3px;
-   -khtml-border-radius: 3px;
-   -webkit-border-radius: 3px;
-   border-radius: 3px;
-}
-#access ul ul {
-	box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
-	-moz-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
-	-webkit-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
-}
-.chrome article .content .horizon-gallery .size-thumbnail,
-.gecko article .content .horizon-gallery .size-thumbnail,
-.horizon-gallery.col1 .size-thumbnail{
-	box-shadow:none!important;
-	-webkit-box-shadow:none;
-	-moz-box-shadow:none;
-}
-#doc,
-#doc2,
-#doc3,
-#doc4,
-article.fail-search,
-article.not-found,
-.page,
-div.tagcloud,
-/*#access,*/
-.home .sticky,
-nav > ul,
-.hentry{
-   -moz-border-radius: 6px;
-   -khtml-border-radius: 6px;
-   -webkit-border-radius: 6px;
-   border-radius: 6px;
-}
 
-header{
--webkit-border-top-left-radius: 10px;
--webkit-border-top-right-radius: 10px;
--moz-border-radius-topleft: 10px;
--moz-border-radius-topright: 10px;
-border-top-left-radius: 10px;
-border-top-right-radius: 10px;
-}
-footer{
--webkit-border-bottom-left-radius: 10px;
--webkit-border-bottom-right-radius: 10px;
--moz-border-radius-bottomleft: 10px;
--moz-border-radius-bottomright: 10px;
-border-bottom-left-radius: 10px;
-border-bottom-right-radius: 10px;
-}
+
+
+
+
 
 
 .byuser,
@@ -1391,10 +1361,6 @@ border-bottom-right-radius: 10px;
 .reply,
 #commentform,
 .corner{
-   -moz-border-radius: 6px;
-   -khtml-border-radius: 6px;
-   -webkit-border-radius: 6px;
-   border-radius: 6px;
    padding:12px 12px 0 12px;
    margin:12px 12px 6px 12px;
    line-height:1.7;
@@ -1415,19 +1381,10 @@ input[type="file"],
 #searchsubmit,
 #commentform input[type="submit"],
 .grad{
-	border-radius:1em 1em 1em 1em;
-	-moz-border-radius:1em 1em 1em 1em;
-	-webkit-border-radius:1em 1em 1em 1em;
-	border-color:rgba(255, 255, 255, 0.3);
-	border-top:1px solid rgba(255, 255, 255, 0.3);
 	padding:2px 6px 4px 6px;
 }
 .pagenate span {
 	border:3px solid #999;
-   -moz-border-radius: 6px;
-   -khtml-border-radius: 6px;
-   -webkit-border-radius: 6px;
-   	border-radius: 6px;
 }
 
 /**
@@ -1573,10 +1530,6 @@ nav{
 #wp-calendar #today{
 	width:1em;
 	background:#dfdfdf;
-	border-radius:0.2em 0.2em 0.2em 0.2em;
-    -moz-border-radius:0.2em 0.2em 0.2em 0.2em;
-    -webkit-border-radius:0.2em 0.2em 0.2em 0.2em;
-
 }
 #wp-calendar th{
 	height:2em;
@@ -1598,18 +1551,6 @@ nav{
 
 }
 
-#wp-calendar th:nth-child(1){
-	width:1em;
-	border-radius			:1em 0 0 0;
-    -moz-border-radius		:1em 0 0 0;
-    -webkit-border-radius	:1em 0 0 0;
-}
-#wp-calendar th:nth-child(7){
-	width					:1em;
-	border-radius			:0 0.8em  0 0;
-    -moz-border-radius		:0 0.8em  0 0;
-    -webkit-border-radius	:0 0.8em  0 0;
-}
 .ie6 .gallery-size-thumbnail .gallery-icon img,
 .ie7 .gallery-size-thumbnail .gallery-icon img,
 .ie8 .gallery-size-thumbnail .gallery-icon img{
@@ -1645,7 +1586,7 @@ content: url("images/stop.png");
 margin-right:5px;
 }
 abbr[title="Really Simple Syndication"]:after,
-address .comments-rss:after,
+address .comments-rss:after{
 content:url("images/rss.png");
 margin:0.25em;
 }
@@ -1697,7 +1638,7 @@ section#onecolumn .content{
 /* new add*/
 footer,
 header{
-overflow:hidden;
+/*overflow:hidden;*/
 }
 
 nav > ul{
@@ -1734,14 +1675,6 @@ margin-right:.5em;
 	margin-bottom:1em!important;
 }
 
-body > #doc,
-body > #doc2,
-body > #doc3,
-body > #doc4{
-   	box-shadow: 0 0 15px rgba(0, 0, 0);
-    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
-    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
-}
 
 .gecko div.posted-in,
 .chrome div.posted-in{
@@ -1834,4 +1767,16 @@ nav #searchform{
 	margin:0 auto;
 	text-align:center;
 }
+
+#doc{
+	width:750px!important;
+}
+#doc2{
+	width:950px!important;
+}
+#doc4{
+	width:974px!important;
+}
+html>/**/body.ie8 {font-size/*\**/: small;}
+
 

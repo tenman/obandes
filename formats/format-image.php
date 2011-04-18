@@ -12,7 +12,7 @@
 	function obandes_transform_link($contents){
 	
 
-		preg_match("/(https?:\/\/)([-_.!˜*\'()a-zA-Z0-9;\/?:@&=+$,%#]+)\.(jpg|jpeg|gif|png)/iu",$contents,$regs);
+		preg_match("/(https?:\/\/)([-_.!*\'()a-zA-Z0-9;\/?:@&=+$,%#]+)\.(jpg|jpeg|gif|png)/iu",$contents,$regs);
 
 		$url = $regs[1].$regs[2].'.'.$regs[3];
 		

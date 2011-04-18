@@ -98,6 +98,12 @@ menu-width=wide
 */
 
 /*design*/
+
+.time-diff{
+/*if you need remove this '(Passage of * days)' */
+    /*display:none;*/
+}
+
 body{
 background:#5f7f5c;
 }
@@ -106,9 +112,6 @@ body > #doc2,
 body > #doc3,
 body > #doc4{
 background:#8fbc8f url(images/bg-1.png);
-   box-shadow: 0 0 15px rgba(0, 0, 0);
-    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
-    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
 }
 
 
@@ -152,14 +155,6 @@ background:#97a25e  url(images/bg-1.png);
 border-color:#97a25e;
 margin-bottom:0;
 width:100%;
-}
-#footer-widget-area h3{
--webkit-border-top-left-radius: 10px;
--webkit-border-bottom-right-radius: 10px;
--moz-border-radius-topleft: 10px;
--moz-border-radius-bottomright: 10px;
-border-top-left-radius: 10px;
-border-bottom-right-radius: 10px;
 }
 header img{
 border-bottom:2px solid #000;
@@ -214,10 +209,9 @@ header{
 }
 /*
  *horizontal navigation
- * 
+ *
 */
 #access{
- 
 }
 /*
  *loop.php
@@ -417,7 +411,7 @@ CSS_PRESET;
         }
     }
     function obandes_init() {
-
+        global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
         $page = basename($_SERVER['REQUEST_URI']);
 
         if (!is_admin() and !preg_match("|^wp-login\.php|si",$page)) {
@@ -425,6 +419,10 @@ CSS_PRESET;
         wp_enqueue_style( 'html5reset');
         /*wp_register_style('Tangerine', 'http://fonts.googleapis.com/css?family=Tangerine',false,'0.1');
         wp_enqueue_style( 'Tangerine');*/
+        if($is_chrome or $is_gecko){
+        wp_register_style('css3',get_template_directory_uri().'/css3.css',false,'0.52');
+        }
+        wp_enqueue_style('css3');
         wp_register_script('yui-css','http://yui.yahooapis.com/2.8.0r4/build/yuiloader/yuiloader-min.js',false,'2.8.0r4');
         wp_enqueue_script('yui-css');
         wp_register_script('yui', get_template_directory_uri().'/yui.js', array('yui-css'), '0.1');
@@ -745,9 +743,9 @@ CSS_PRESET;
         }
         return '<div id="testmsg" class="error"><p>' . $msg . '</p></div>' . "\n";
     }
-	
-	
-	//////////////////////////////////////
+
+
+    //////////////////////////////////////
 /**
  * Option value set when install.
  *
@@ -770,7 +768,7 @@ CSS_PRESET;
         }
 
         update_option('obandes_theme_settings',$obandes_theme_settings,"",$add['autoload']);
-		}
+        }
 
     }
 /*
@@ -789,16 +787,16 @@ CSS_PRESET;
             add_action('admin_notices', create_function(null, 'echo obandes_first_only_msg(1);'));
             $install['install'] = true;
             update_option('obandes_theme_settings',$install);
-			obandes_theme_init();
+            obandes_theme_init();
         } else {
             add_action('switch_theme', create_function(null, 'delete_option("obandes_theme_settings");'));
         }
     }
-	
 
 
-	
-	////////////////////////////////////////
+
+
+    ////////////////////////////////////////
 /*    function tmn_install_navigation() {
         if ( false === get_option('obandes_install') ) {
             add_action('admin_notices', create_function(null, 'echo obandes_first_only_msg(1);'));
@@ -814,7 +812,7 @@ CSS_PRESET;
             delete_option($bye['option_name']);
         }
     }*/
-	
+
     function obandes_theme_options_add_page() {
     add_theme_page(__( 'Obandes Options' ), __( 'Obandes Options' ),'edit_theme_options', 'obandes_setting',             'obandes_options_page_view' );
     }
@@ -834,7 +832,7 @@ CSS_PRESET;
              */
             if (isset( $_POST['action'] ) == 'update' and isset($_POST['obandes_setting']['obandes_css'])){
                 global $obandes_base_setting;
-				
+
                 $ok             = false;
                 $option_value   = esc_html($_POST['obandes_setting']['obandes_css']);
                 $option_name    = 'obandes_css';
@@ -843,17 +841,17 @@ CSS_PRESET;
                 if($option_value == $valid_function($option_value)){
 
                       $new_settings                 = get_option('obandes_theme_settings');
-                      
-					  if($new_settings[$option_name] !== $option_value){
-						  $new_settings[$option_name]   = $option_value;
-						  update_option('obandes_theme_settings',$new_settings);
-						  $obandes_result_message = __("Style ,",'obandes');
-					  }
-					  
+
+                      if($new_settings[$option_name] !== $option_value){
+                          $new_settings[$option_name]   = $option_value;
+                          update_option('obandes_theme_settings',$new_settings);
+                          $obandes_result_message = __("Style ,",'obandes');
+                      }
+
                 }
             }
-			
-        	if (isset( $_POST['action'] ) == 'update' and isset($_POST['obandes_setting']['obandes_header'])){
+
+            if (isset( $_POST['action'] ) == 'update' and isset($_POST['obandes_setting']['obandes_header'])){
                 global $obandes_base_setting;
                 $ok             = false;
                 $option_value   = esc_html($_POST['obandes_setting']['obandes_header']);
@@ -863,11 +861,11 @@ CSS_PRESET;
                 if($option_value == $valid_function($option_value)){
 
                       $new_settings                 = get_option('obandes_theme_settings');
-					  if($new_settings[$option_name] !== $option_value){
-						  $new_settings[$option_name]   = $option_value;
-						  update_option('obandes_theme_settings',$new_settings);
-						  $obandes_result_message .= __("Header Image ",'obandes');
-					  }
+                      if($new_settings[$option_name] !== $option_value){
+                          $new_settings[$option_name]   = $option_value;
+                          update_option('obandes_theme_settings',$new_settings);
+                          $obandes_result_message .= __("Header Image ",'obandes');
+                      }
 
                 }
 
@@ -889,20 +887,20 @@ CSS_PRESET;
         }*/
         echo '<div id="message" class="updated fade" title="Style Setting" >';
         if(isset($obandes_result_message) and !empty($obandes_result_message)){
-			echo '<p>'.sprintf(__('<strong>%1$s</strong> updated  successfully.','obandes'),$obandes_result_message).'</p>';
-		}else{
-			echo '<p>'.sprintf(__('I am waiting your Change.','obandes')).'</p>';
-		}
-		echo '</div>';
-		
-		unset($obandes_result_message);
+            echo '<p>'.sprintf(__('<strong>%1$s</strong> updated  successfully.','obandes'),$obandes_result_message).'</p>';
+        }else{
+            echo '<p>'.sprintf(__('I am waiting your Change.','obandes')).'</p>';
+        }
+        echo '</div>';
+
+        unset($obandes_result_message);
         echo '<div style="margin-top:1em;">';
         $action = "themes.php?page=".$obandes_query;
         echo '<form method="post" action="'.$action.'">';
         settings_fields( 'obandes_setting' );
-		$current_settings 	= get_option('obandes_theme_settings');
-        $style 				= $current_settings['obandes_css'];
-        $header_image_show 	= $current_settings['obandes_header'];
+        $current_settings   = get_option('obandes_theme_settings');
+        $style              = $current_settings['obandes_css'];
+        $header_image_show  = $current_settings['obandes_header'];
 
         $radio_options = array(
             'yes' => array('value' => 'show',
@@ -942,17 +940,17 @@ CSS_PRESET;
         echo '</td></tr>';
         echo '<tr valign="top">';
         echo '<td class="title" style="font-weight:bold">'.__( 'CSS Edit' ,'obandes' );
-		echo '<p style="font-weight:bold">Cofigration Example</p>';
-		echo '<p class="description">'.__("You can change page width and column position","obandes").'</p>';
-		echo '<pre>e.g. shrink,fix
+        echo '<p style="font-weight:bold">Cofigration Example</p>';
+        echo '<p class="description">'.__("You can change page width and column position","obandes").'</p>';
+        echo '<pre>e.g. shrink,fix
 layout-type=shrink
 e.g. narrow,wide
 letter-width=narrow
 e.g. right,left
 menu-position=left
 e.g. narrow,middle,wide
-menu-width=middle</pre>';		
-		echo '</td>';
+menu-width=middle</pre>';
+        echo '</td>';
         echo '<td>';
         echo '<textarea id="obandes_setting[obandes_css]" cols="50" rows="10" name="obandes_setting[obandes_css]"';
         echo ' style="width:90%;height:'.$rows.'em;line-height:1.5;">';
@@ -1072,32 +1070,32 @@ menu-width=middle</pre>';
     }
 
 function obandes_detect_option($condition){
-	$current_settings 		= get_option('obandes_theme_settings');
-	$config 				= $current_settings['obandes_css'];
+    $current_settings       = get_option('obandes_theme_settings');
+    $config                 = $current_settings['obandes_css'];
 
-	preg_match("!^$condition=(.+)$!mu",$config,$regs);
-	 
-	if(isset($regs[1])){
-		$result = strip_tags($regs[1]);
-		$result = str_replace(array(" ","\n","\r"),"",$result);
-		
-		if(	$result == 'narrow' or 
-			$result == 'middle' or 
-			$result == 'wide' or 
-			$result == 'fix' or 
-			$result == 'shrink' or 
-			$result == 'fix' or 	
-			$result == 'left' or 
-			$result == 'right' or
-			is_numeric($result)){			
-		
-			return $result;
-		}else{
-			return false;
-		}
-	}else{
-			return false;	
-	}
+    preg_match("!^$condition=(.+)$!mu",$config,$regs);
+
+    if(isset($regs[1])){
+        $result = strip_tags($regs[1]);
+        $result = str_replace(array(" ","\n","\r"),"",$result);
+
+        if( $result == 'narrow' or
+            $result == 'middle' or
+            $result == 'wide' or
+            $result == 'fix' or
+            $result == 'shrink' or
+            $result == 'fix' or
+            $result == 'left' or
+            $result == 'right' or
+            is_numeric($result)){
+
+            return $result;
+        }else{
+            return false;
+        }
+    }else{
+            return false;
+    }
 
 }
 
@@ -1113,154 +1111,154 @@ e.g. narrow,middle,wide
 menu-width:wide
 */
 
-	$current_settings 		= get_option('obandes_theme_settings');
-	if($condition == 'header_image'){
-		$image 	= $current_settings['obandes_header'];
-		return trim($image);
-	}
-	$config 				= $current_settings['obandes_css'];
-	
-	$value = obandes_detect_option($condition);
-	
-	
-	if($value === false){
-	
-		if($condition == 'letter-width'){
-			return 'doc2';
-		}
-			
-		if($condition == 'menu-position'){
-			return 'yui-t5';
-		}	
-	
-	}
-	
-	
+    $current_settings       = get_option('obandes_theme_settings');
+    if($condition == 'header_image'){
+        $image  = $current_settings['obandes_header'];
+        return trim($image);
+    }
+    $config                 = $current_settings['obandes_css'];
+
+    $value = obandes_detect_option($condition);
+
+
+    if($value === false){
+
+        if($condition == 'letter-width'){
+            return 'doc2';
+        }
+
+        if($condition == 'menu-position'){
+            return 'yui-t5';
+        }
+
+    }
+
+
 if($condition == 'letter-width'){
-	if($value == 'narrow'){
-		if( obandes_detect_option('layout-type') == 'fix'){
-			return 'doc';
-		}elseif(obandes_detect_option('layout-type') == 'shrink'){
-			return 'doc3';
-		}else{
-		
-			return 'doc2';
-		}
-	}elseif($value == 'wide'){
-		if( obandes_detect_option('layout-type') == 'fix'){
-			return 'doc2';
-		}elseif(obandes_detect_option('layout-type') == 'shrink'){
-			return 'doc3';
-		}else{
-			return 'doc2';
-		}
-	}else{
-		if( obandes_detect_option('layout-type') == 'fix'){
-			return 'doc';
-		}elseif(obandes_detect_option('layout-type') == 'shrink'){
-			return 'doc3';
-		}else{
-			return 'doc2';
-		}
-	}
+    if($value == 'narrow'){
+        if( obandes_detect_option('layout-type') == 'fix'){
+            return 'doc';
+        }elseif(obandes_detect_option('layout-type') == 'shrink'){
+            return 'doc3';
+        }else{
+
+            return 'doc2';
+        }
+    }elseif($value == 'wide'){
+        if( obandes_detect_option('layout-type') == 'fix'){
+            return 'doc2';
+        }elseif(obandes_detect_option('layout-type') == 'shrink'){
+            return 'doc3';
+        }else{
+            return 'doc2';
+        }
+    }else{
+        if( obandes_detect_option('layout-type') == 'fix'){
+            return 'doc';
+        }elseif(obandes_detect_option('layout-type') == 'shrink'){
+            return 'doc3';
+        }else{
+            return 'doc2';
+        }
+    }
 }
 if($condition == 'menu-position'){
 
-	if($value == 'left'){
-		if(obandes_detect_option('menu-width') == 'narrow'){
-			return 'yui-t1';
-		}elseif(obandes_detect_option('menu-width') == 'middle'){
-			return 'yui-t2';
-		}elseif(obandes_detect_option('menu-width') == 'wide'){
-			return 'yui-t3';
-		}else{
-			return 'yui-t2';
-		}
-		
-	}elseif($value == 'right'){
-		if( obandes_detect_option('menu-width') == 'narrow'){
-			return 'yui-t4';
-		}elseif(obandes_detect_option('menu-width') == 'middle'){
-			return 'yui-t5';
-		}elseif(obandes_detect_option('menu-width') == 'wide'){
-			return 'yui-t6';
-		}else{
-			return 'yui-t4';
-		}
-	}else{
-		if( obandes_detect_option('menu-width') == 'narrow'){
-			return 'yui-t4';
-		}elseif(obandes_detect_option('menu-width') == 'middle'){
-			return 'yui-t5';
-		}elseif(obandes_detect_option('menu-width') == 'wide'){
-			return 'yui-t6';
-		}else{
-			return 'yui-t5';
-		}
-	}
+    if($value == 'left'){
+        if(obandes_detect_option('menu-width') == 'narrow'){
+            return 'yui-t1';
+        }elseif(obandes_detect_option('menu-width') == 'middle'){
+            return 'yui-t2';
+        }elseif(obandes_detect_option('menu-width') == 'wide'){
+            return 'yui-t3';
+        }else{
+            return 'yui-t2';
+        }
+
+    }elseif($value == 'right'){
+        if( obandes_detect_option('menu-width') == 'narrow'){
+            return 'yui-t4';
+        }elseif(obandes_detect_option('menu-width') == 'middle'){
+            return 'yui-t5';
+        }elseif(obandes_detect_option('menu-width') == 'wide'){
+            return 'yui-t6';
+        }else{
+            return 'yui-t4';
+        }
+    }else{
+        if( obandes_detect_option('menu-width') == 'narrow'){
+            return 'yui-t4';
+        }elseif(obandes_detect_option('menu-width') == 'middle'){
+            return 'yui-t5';
+        }elseif(obandes_detect_option('menu-width') == 'wide'){
+            return 'yui-t6';
+        }else{
+            return 'yui-t5';
+        }
+    }
 }
 
 }
 /**
- * image element has attribute 'width','height' and image size > column width 
+ * image element has attribute 'width','height' and image size > column width
  * style max-width value 100% set when expand height height attribute value.
  *
  * IE filter
  *
  */
 
-	add_filter('the_content','ie_height_expand_issue');
+    add_filter('the_content','ie_height_expand_issue');
 
-	function ie_height_expand_issue($content){
-		global $is_IE,$content_width;
-	
-		if($is_IE){
-			preg_match_all('#(<img)([^>]+)(height|width)(=")([0-9]+)"([^>]+)(height|width)(=")([0-9]+)"([^>]+)>#',$content,$images,PREG_SET_ORDER);
-			
-			foreach($images as $image){
-				if(($image[3] == "width" and $image[5] > $content_width) or ($image[7] == "width" and $image[9] > $content_width)){
-					$content = str_replace($image[0],$image[1].$image[2].$image[6].$image[10].'>',$content);
-				}
-			}
-			return $content;
-		}else{
-		
-			return $content;
-		}
-	}
+    function ie_height_expand_issue($content){
+        global $is_IE,$content_width;
+
+        if($is_IE){
+            preg_match_all('#(<img)([^>]+)(height|width)(=")([0-9]+)"([^>]+)(height|width)(=")([0-9]+)"([^>]+)>#',$content,$images,PREG_SET_ORDER);
+
+            foreach($images as $image){
+                if(($image[3] == "width" and $image[5] > $content_width) or ($image[7] == "width" and $image[9] > $content_width)){
+                    $content = str_replace($image[0],$image[1].$image[2].$image[6].$image[10].'>',$content);
+                }
+            }
+            return $content;
+        }else{
+
+            return $content;
+        }
+    }
 
 /**
- * onecolumn-page.php 
+ * onecolumn-page.php
  * condition this page, wp nav menu add footer widget area fragment identifier.
  *
  *
  *
  */
 
-	function addHomeMenuLink($content, $args){
-	
-		$template_name = basename(get_page_template(),'.php');
-	
-		if('primary' == $args->theme_location and $template_name == 'onecolumn-page'){
-		
-				$class = 'class="fragment_identifier onecolumn-page"';
-			
-	
-			$add = '<li ' . $class . '>' .
-							$args->before .
-							'<a href="#footer-widget-area" title="go to footer">' .
-								$args->link_before .
-								'Menu footer' .
-								$args->link_after .
-							'</a>' .
-							$args->after .
-							'</li>';
-	
-			return $add . $content;
-		}
-	
-		return $content;
-	}
-	
-	add_filter( 'wp_nav_menu_items', 'addHomeMenuLink', 10, 2 );
+    function addHomeMenuLink($content, $args){
+
+        $template_name = basename(get_page_template(),'.php');
+
+        if('primary' == $args->theme_location and $template_name == 'onecolumn-page'){
+
+                $class = 'class="fragment_identifier onecolumn-page"';
+
+
+            $add = '<li ' . $class . '>' .
+                            $args->before .
+                            '<a href="#footer-widget-area" title="go to footer">' .
+                                $args->link_before .
+                                'Menu footer' .
+                                $args->link_after .
+                            '</a>' .
+                            $args->after .
+                            '</li>';
+
+            return $add . $content;
+        }
+
+        return $content;
+    }
+
+    add_filter( 'wp_nav_menu_items', 'addHomeMenuLink', 10, 2 );
 ?>
