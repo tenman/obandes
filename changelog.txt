@@ -1,16 +1,27 @@
 Changelog -----------------------------------
-version:
-removed
-
-moved
-
-added
+version:0.54
 
 fixed
-
+    style.css
+    'If I set a body font-size the sidebar increases in size' issue fix
+    'There is a layout issue on paginated comments (see attachment). ' issue fix
 modified
+    commemts.php
 
-made
+    css3.css
+        nav > ul style removed
+
+    single.php,
+    loop.php
+        Passage of * days  change Published for * days
+
+
+    style.css
+        list marker style change.
+        #wp-calendar caption style change.
+        .bypostauthor style change  background for ie.
+        .reply button style change background for ie.
+        tagcloud style change add padding.
 
 ----------------------------------------------
 
