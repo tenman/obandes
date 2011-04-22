@@ -68,7 +68,7 @@
 	comment_form();
 				
 		function obandes_comment_prev_next($position = "comment-above"){ ?>
-<div id="<?php echo $position;?>" class="navigation">
+<div id="<?php echo $position;?>" class="navigation clearfix">
 <div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'obandes' ) ); ?></div>
 <div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'obandes' ) ); ?></div>
 </div>

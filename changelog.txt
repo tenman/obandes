@@ -1,4 +1,20 @@
 Changelog -----------------------------------
+version:
+removed
+
+moved
+
+added
+
+fixed
+
+modified
+
+made
+
+----------------------------------------------
+
+Changelog -----------------------------------
 version:0.53
 removed
         formats/format-link.php 16
@@ -17,7 +33,7 @@ made css3.css
 
 added   obandes options panel style
         .time-diff{
-        /*if you need remove this '(Passage of * days)' */
+        /*if you need remove this '(Published for * days)' */
             /*display:none;*/
         }
 

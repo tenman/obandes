@@ -5,7 +5,7 @@ Description: extend basic template It is possible to change freely by using Yaho
 AdminPanel was omitted. The setting is useful for a revokable person in functions.php. 
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 0.53
+Version: 0.54
 Tags:white, two-columns,right-sidebar ,fixed-width ,flexible-width, custom-colors, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -456,6 +456,7 @@ html>body .yui-t4 nav li a {
 #nav-above{
 	margin:.1em .1em 1em .1em;
 }
+
 #nav-below{
 	margin:1em .1em .1em .1em;
 }
@@ -791,8 +792,17 @@ article .content blockquote {
 	padding:1em;
 	}
 article .content ul > li{
-	list-style-type:none;
+	list-style-type:disc;
 }
+article .content ul li ul li{
+	list-style-type:square;
+}
+
+article .content ul li ul li ul li{
+	list-style-type:circle;
+}
+
+
 article .content ol > li{
 	list-style-type:decimal;
 	}
@@ -931,6 +941,12 @@ address a{
  *	comment pingback
  */
 
+#comment-above,
+#comment-below{
+	margin:1em!important;
+	display:block;
+	height:1%;
+}
 .pingback{
 	list-style-type:none;
 }
@@ -1014,6 +1030,7 @@ text-decoration:none;
 .bypostauthor{
 	padding:5px;
 	margin:0 -5px;
+	background:#eef;
 }
 input#author,
 input#email,
@@ -1095,6 +1112,7 @@ td.horizon-gallery.col1{
 body.page .nocomments{
 	display:none;
 }
+.must-log-in,
 .nopassword,
 body.single-post .nocomments{
 	margin:1em;
@@ -1156,6 +1174,7 @@ h6 a,
 .commentlist > li.pingback{
 	
 }
+.must-log-in,
 .nopassword,
 .long-title,
 .wp-caption,
@@ -1192,6 +1211,9 @@ article{
 background-color:#fff;
 
 padding:0 0 10px;
+}
+div.tagcloud{
+padding:6px 6px 6px 6px;
 }
 nav > ul{
 padding:0;
@@ -1239,6 +1261,15 @@ hr{
 	color:#333;
 
 }
+#wp-calendar caption{
+	color:#000;
+	font-weight:700;
+	background:#eef;
+}
+#wp-calendar a{
+	text-decoration:underline;
+}
+
 .ie7.tagcloud,
 .ie7 .byuser,
 .ie7 .bypostauthor,
@@ -1249,7 +1280,7 @@ hr{
 .ie8 .bypostauthor,
 .ie8 #wp-calendar th,
 .ie8 #commentform{
-	background:#33CCCC;
+	/*background:#33CCCC;*/
 }
 
 .reply a{
@@ -1289,7 +1320,7 @@ input[type="submit"]:active{
 .ie8 #searchsubmit:active,
 .ie8 input[type="submit"]:active,
 .ie8 .reply a{
-	background:#33CCCC;
+	/*background:#33CCCC;*/
 }
 
 /**
@@ -1393,6 +1424,7 @@ input[type="file"],
 body{
 	
 }
+.must-log-in,
 header,
 .byuser,
 .bypostauthor,
@@ -1675,7 +1707,10 @@ margin-right:.5em;
 	margin-bottom:1em!important;
 }
 
-
+#search-results-title{
+	margin-left:1em;
+	height:2em;
+}
 .gecko div.posted-in,
 .chrome div.posted-in{
 border-top:3px solid #669966;
@@ -1768,6 +1803,10 @@ nav #searchform{
 	text-align:center;
 }
 
+/**
+ *
+ *
+ */
 #doc{
 	width:750px!important;
 }
@@ -1778,5 +1817,100 @@ nav #searchform{
 	width:974px!important;
 }
 html>/**/body.ie8 {font-size/*\**/: small;}
+.yui-t1 nav{
+width:160px!important;
+}
+.yui-t4 nav,
+.yui-t2 nav{
+width:180px!important;
+}
+.yui-t6 nav,
+.yui-t3 nav{
+width:300px!important;
+}
+.yui-t5 nav{
+width:240px!important;
+}
+.ie6 .yui-t1 nav,
+.ie7 .yui-t1 nav,
+.ie8 .yui-t1 nav{
+	width:156px!important;
+}
+.yui-t4 nav,
+.ie6 .yui-t2 nav,
+.ie7 .yui-t2 nav,
+.ie8 .yui-t2 nav{
+	width:175px!important;
+}
+.yui-t6 nav,
+.ie6 .yui-t3 nav,
+.ie7 .yui-t3 nav,
+.ie8 .yui-t3 nav{
+	width:292px!important;
+}
+.ie6 .yui-t5 nav,
+.ie7 .yui-t5 nav,
+.ie8 .yui-t5 nav{
+	width:234px!important;
+}
 
+div.yui-t1 #yui-main .yui-b {
+/*margin-left:13.30769em;*/
+margin-left:173px;
+}
+div.yui-t2 #yui-main .yui-b {
+/*margin-left: 14.8461em;*/
+margin-left:193px;
+}
 
+div.yui-t3 #yui-main .yui-b {
+/*margin-left: 24.0769em;*/
+margin-left:313px;
+
+}
+div.yui-t4 #yui-main .yui-b {
+/*margin-left: 14.8461em;*/
+margin-right:193px;
+}
+
+div.yui-t5 #yui-main .yui-b {
+/*margin-right: 19.4615em;*/
+margin-right:253px;
+}
+div.yui-t6 #yui-main .yui-b {
+/*margin-left: 24.0769em;*/
+margin-right:313px;
+}
+.ie6 div.yui-t1 #yui-main .yui-b ,
+.ie7 div.yui-t1 #yui-main .yui-b ,
+.ie8 div.yui-t1 #yui-main .yui-b {
+margin-left:168px!important;
+}
+.ie6 div.yui-t2 #yui-main .yui-b ,
+.ie7 div.yui-t2 #yui-main .yui-b ,
+.ie8 div.yui-t2 #yui-main .yui-b {
+margin-left:188px!important;
+}
+
+.ie6 div.yui-t3 #yui-main .yui-b ,
+.ie7 div.yui-t3 #yui-main .yui-b ,
+.ie8 div.yui-t3 #yui-main .yui-b {
+margin-left:305px!important;
+
+}
+.ie6 div.yui-t4 #yui-main .yui-b ,
+.ie7 div.yui-t4 #yui-main .yui-b ,
+.ie8 div.yui-t4 #yui-main .yui-b {
+margin-right:188px!important;
+}
+
+.ie6 div.yui-t5 #yui-main .yui-b ,
+.ie7 div.yui-t5 #yui-main .yui-b ,
+.ie8 div.yui-t5 #yui-main .yui-b {
+margin-right:246px!important;
+}
+.ie6 div.yui-t6 #yui-main .yui-b ,
+.ie7 div.yui-t6 #yui-main .yui-b ,
+.ie8 div.yui-t6 #yui-main .yui-b {
+margin-right:305px!important;
+}
