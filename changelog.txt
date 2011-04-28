@@ -1,4 +1,10 @@
 Changelog -----------------------------------
+version:0.56
+fixed functions.php
+    preset style change.
+    background issue what 'page top few pixel white border ie8' fix.
+----------------------------------------------
+Changelog -----------------------------------
 version:0.55
 modified
     css3.css

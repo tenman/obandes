@@ -104,6 +104,7 @@ menu-width=wide
     /*display:none;*/
 }
 
+html,
 body{
 background:#5f7f5c;
 }
@@ -248,7 +249,7 @@ footer #site-genelator{}
  *vertical navigation
 */
 nav{}
-
+head{height:0;display:none;}
 CSS_PRESET;
 
     $obandes_base_setting =array(
