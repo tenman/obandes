@@ -172,7 +172,6 @@ body > #doc,
 body > #doc2,
 body > #doc3,
 body > #doc4{
-background:#8fbc8f url(images/bg-1.png);
    box-shadow: 0 0 15px rgba(0, 0, 0);
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
     -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 

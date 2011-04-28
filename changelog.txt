@@ -1,4 +1,11 @@
 Changelog -----------------------------------
+version:0.55
+modified
+    css3.css
+    remove propaty background:#8fbc8f url(images/bg-1.png)
+    This setting is setted 2times and it keeps difficult color reset or customize.
+----------------------------------------------
+Changelog -----------------------------------
 version:0.54
 
 fixed
