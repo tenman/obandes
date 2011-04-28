@@ -5,7 +5,7 @@ Description: extend basic template It is possible to change freely by using Yaho
 AdminPanel was omitted. The setting is useful for a revokable person in functions.php. 
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 0.56
+Version: 0.57
 Tags:white, two-columns,right-sidebar ,fixed-width ,flexible-width, custom-colors, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -131,16 +131,22 @@ i,em{
 	font-style:italic;
 	font-weight:700;
 }
-form{
+#doc2 form,
+#doc3 form,
+#doc4 form,
+#doc form{
 	max-width:100%;
 }
 #commentform{
 	padding-bottom:1em;
 }
-input{
+#doc2 input,
+#doc3 input,
+#doc4 input,
+#doc input{
 	max-width:75%;
 }
-img{
+section img{
 	max-width:100%;
 }
 textarea{
@@ -362,11 +368,13 @@ header img{
 #archives-title{
 	font-size:30px;
 }
+
 .search-form{
 	position:absolute;
 	top:0;
 	right:0;
 }
+
 .ie8 .search-form{
 	top:10px;
 }
@@ -657,11 +665,13 @@ div.aligncenter {
    margin: 10px;
    max-width:100%;   
 }
+
 .wp-caption img {
 	margin:0;
    padding: 0;
    max-width:99%;
 }
+
 .wp-caption p.wp-caption-text {
    font-size: 100%;
    line-height: 1.5;
@@ -828,7 +838,7 @@ article .content embed{
 /**
  *	images
  */
-.avatar,
+section .avatar,
 article .content img{
 	max-width:100%;
 	height:auto;
@@ -1774,9 +1784,11 @@ border-bottom:3px solid #669966;
 	padding-top:5px;
 	margin-left:1em;
 } 
+
 header img{
 border-bottom:2px solid #000;
 }
+
 .gecko div.posted-in,
 .chrome div.posted-in{
 border-top:3px solid #669966;

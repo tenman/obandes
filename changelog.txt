@@ -1,4 +1,9 @@
 Changelog -----------------------------------
+version:0.57
+fixed style.css
+	#wpadminbar style conflict on IE8 issue fix.	
+----------------------------------------------
+Changelog -----------------------------------
 version:0.56
 fixed functions.php
     preset style change.
