@@ -104,7 +104,6 @@ menu-width=wide
     /*display:none;*/
 }
 
-html,
 body{
 background:#5f7f5c;
 }
@@ -249,7 +248,71 @@ footer #site-genelator{}
  *vertical navigation
 */
 nav{}
-head{height:0;display:none;}
+body > #doc,
+body > #doc2,
+body > #doc3,
+body > #doc4{
+   box-shadow: 0 0 15px rgba(0, 0, 0);
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
+}
+.plate,
+.grad{
+	background:-moz-linear-gradient(center top ,  #efe,#eef) repeat scroll 0 0 #efe;
+	background:-webkit-gradient(linear,left top , left bottom,from(#339999), to(#669999));	
+}
+header{
+-webkit-border-top-left-radius: 10px;
+-webkit-border-top-right-radius: 10px;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-topright: 10px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+}
+footer{
+-webkit-border-bottom-left-radius: 10px;
+-webkit-border-bottom-right-radius: 10px;
+-moz-border-radius-bottomleft: 10px;
+-moz-border-radius-bottomright: 10px;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+}
+#wp-calendar th:nth-child(1){
+	width:1em;
+}
+#wp-calendar th:nth-child(7){
+	width:1em;
+
+}
+body > #doc,
+body > #doc2,
+body > #doc3,
+body > #doc4{
+-webkit-border-radius: 10px;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+border-radius: 10px;
+}
+body > #doc,
+body > #doc2,
+body > #doc3,
+body > #doc4{
+   box-shadow: 0 0 15px rgba(0, 0, 0);
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
+}
+
+#footer-widget-area h3{
+-webkit-border-top-left-radius: 10px;
+-webkit-border-bottom-right-radius: 10px;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-bottomright: 10px;
+border-top-left-radius: 10px;
+border-bottom-right-radius: 10px;
+}
+
 CSS_PRESET;
 
     $obandes_base_setting =array(

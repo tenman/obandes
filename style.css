@@ -1459,7 +1459,7 @@ body.single-post .nocomments,
 .gecko article .content .size-thumbnail,
 .home .sticky,
 blockquote{
-	border:1px solid #ccc;
+	/*border:1px solid #ccc;*/
 }
 .comment_author_block{
 	border-bottom:1px solid #ccc;
@@ -1891,7 +1891,7 @@ margin-right:253px;
 }
 div.yui-t6 #yui-main .yui-b {
 /*margin-left: 24.0769em;*/
-margin-right:313px;
+margin-right:303px;
 }
 .ie6 div.yui-t1 #yui-main .yui-b ,
 .ie7 div.yui-t1 #yui-main .yui-b ,

@@ -1,8 +1,8 @@
 /* CSS3 Document */
-
+/*
 article .content{
-	line-break:strict; /*ie*/
-	word-break:break-strict; /*css3*/
+	line-break:strict; 
+	word-break:break-strict; 
 	}
 .index article .posted-in,
 .single article .posted-in{
@@ -15,7 +15,6 @@ article{
 background-color: rgba(255, 255, 255, 0.5);
 }
 nav > ul{
-/*background-color: rgba(255, 255, 255, 0.5);*/
 }
 .tagcloud,
 .byuser,
@@ -75,7 +74,6 @@ article.fail-search,
 article.not-found,
 .page,
 div.tagcloud,
-/*#access,*/
 .home .sticky,
 nav > ul,
 .hentry{
@@ -185,3 +183,4 @@ body > #doc4{
 border-top-left-radius: 10px;
 border-bottom-right-radius: 10px;
 }
+*/
