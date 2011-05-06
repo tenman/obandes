@@ -63,7 +63,7 @@ a{
 	text-decoration:none; 
 	}
 a:hover{
-	text-decoration:underline; 
+	border-bottom:1px solid #999; 
 }
 a:focus { 
 	outline: none; 
@@ -73,9 +73,33 @@ a:active,a:focus {
     outline:none;
 }
 html body{
-	line-height:1.5;
+		line-height:1.5;
 		margin:0;
-		padding-top:1em;
+		padding-top:1px;
+		padding-bottom:1em;
+}
+html body.gecko.single,
+html body.gecko,
+html body.page.gecko,
+html body.chrome.single,
+html body.chrome,
+html body.page.chrome,
+html body.page{
+	padding-top:2em;
+
+}
+html body.gecko,
+html body.chrome{
+	padding-top:.1em;
+}
+
+head{
+height:0!important;
+display:none;
+}
+html {
+    background: none repeat scroll 0 0 inherit;
+    color: #000000;
 }
 dl dt,
 ol li,
@@ -347,10 +371,11 @@ li h2{
 header{
 	margin:0 auto;
 	position:relative;
+	padding:0;
 }
 #header-image{
 text-align:center;
-	margin-bottom:-6px;
+	/*margin-bottom:-6px;*/
 }
 
 .wp-post-image,
@@ -361,8 +386,8 @@ header img{
 }
 #site-description{
 	text-indent:1em;
-	margin:12px;
-	padding:0;
+	margin:0;
+	padding:12px;
 	text-align:left;	
 }
 #archives-title{
@@ -419,6 +444,7 @@ nav ul {
     margin: 0 0 0 0;
     padding: 0;
     }
+
 nav ul > li{
     margin: 0 0 0 0;
 }
@@ -461,8 +487,13 @@ html>body .yui-t4 nav li a {
 	max-width:70%;
 	}
 
+.single #nav-above{
+	margin:1em 0 0 0;
+}
+
+
 #nav-above{
-	margin:.1em .1em 1em .1em;
+	margin:2em 0 0 0;
 }
 
 #nav-below{
@@ -517,13 +548,16 @@ html>body .yui-t4 nav li a {
 #doc.yui-t5 nav ul,
 #doc.yui-t6 nav ul
 {
-	margin-right:.5em;
+	margin-right:1em;
 }
 #doc.yui-t4 article,
 #doc.yui-t5 article,
 #doc.yui-t6 article
 {
-	margin-left:.5em;
+	margin-left:.8em;
+}
+#onecolumn  article.page{
+	margin-left:0;
 }
 html>body .yui-t1 nav ul li,
 html>body .yui-t4 nav ul li{
@@ -662,7 +696,7 @@ div.aligncenter {
 .wp-caption {
    text-align: center;
    padding: 4px;
-   margin: 10px;
+   /*margin: 10px;*/
    max-width:100%;   
 }
 
@@ -862,7 +896,7 @@ article .content .size-thumbnail{
  *	loop page
  */
 ul.index{
-	margin:0;
+	margin:0 0 0 .2em;
 }
 ul.index > li{
 	list-style-type:none;
@@ -1188,7 +1222,6 @@ h6 a,
 .nopassword,
 .long-title,
 .wp-caption,
-nav li a:hover,
 .comment-body blockquote,
 .comment-body blockquote blockquote,
 body.single-post .nocomments,
@@ -1227,8 +1260,17 @@ padding:6px 6px 6px 6px;
 }
 nav > ul{
 padding:0;
-margin-top:12px;
+margin-top:1.4em;
+margin-bottom:.6em;
 }
+.page article{
+margin-top:.8em;
+}
+.page nav > ul{
+padding:0;
+margin-top:1em;
+}
+
 article.not-found{
 padding:0 10px 10px;
 }
@@ -1292,7 +1334,6 @@ hr{
 .ie8 #commentform{
 	/*background:#33CCCC;*/
 }
-
 .reply a{
 	color:#fff;
 }
@@ -1380,7 +1421,10 @@ nav li a:hover,
 address a{
 	color:#555;
 }
-
+nav li a:hover{
+	color:#fff;
+	text-decoration:none;
+}
 /**
  *	effect
  */
@@ -1411,9 +1455,8 @@ address a{
 .bypostauthor{
    padding:12px;
 }
-.page #commentform{
-   margin:12px;
-
+.page #respond{
+	padding-bottom:0;
 }
 footer{
    margin:5px 0 6px 0;
@@ -1423,6 +1466,7 @@ input[type="file"],
 #commentform input[type="submit"],
 .grad{
 	padding:2px 6px 4px 6px;
+	cursor:pointer;
 }
 .pagenate span {
 	border:3px solid #999;
@@ -1692,15 +1736,6 @@ margin-right:5px;
 #doc article{
 margin-left:5px;
 }
-/*
-#doc4 nav > ul,
-#doc2 nav > ul,
-#doc3 nav > ul{
-margin-right:1em;
-padding-bottom:1em;
-}
-*/
-
 #footer-widget-area{
 padding-right:1em;
 padding-bottom:.5em;
@@ -1798,13 +1833,10 @@ border-bottom:3px solid #669966;
  * page
  */
 .page{
-	margin-top:10px;
+	/*margin-top:10px;*/
 }
 #onecolumn .page{
 	margin-top:0;
-}
-article.page{
-padding:0;
 }
 /**
  * search

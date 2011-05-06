@@ -51,7 +51,7 @@ echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style ty
 </head>
 <body <?php body_class($this_blog); ?> onLoad="horizontal()">
 <div id="<?php echo get_obandes_condition('letter-width'); ?>" class="<?php echo get_obandes_condition('menu-position');?>">
-<header class="clearfix">
+<header>
 <?php
     if( is_home() or is_front_page() ){
         $heading_elememt = 'h1';
@@ -73,7 +73,7 @@ echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style ty
 ?>
 <div id="site-description"><?php bloginfo( 'description' ); ?></div>
 <div class="search-form"><?php //get_search_form(); ?></div>
-<div id="access" role="navigation">
+<div id="access" role="navigation" class="clearfix">
 <?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
 </div>
 <?php
@@ -89,7 +89,7 @@ echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style ty
                 echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
         }else{
 
-$header_image_format = '<div id="header-image"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
+$header_image_format = '<div id="header-image" style="background:#000;"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
 
             printf( $header_image_format,
                     get_header_image(),

@@ -91,7 +91,7 @@ $css_preset =<<< CSS_PRESET
 /*
 ========= obandes configrations =========
 layout-type=fix
-letter-width=wide
+letter-width=narrow
 menu-position=right
 menu-width=wide
 ========= obandes configrations =========
@@ -104,102 +104,114 @@ menu-width=wide
     /*display:none;*/
 }
 
-body{
+body {
 background:#5f7f5c;
 }
-body > #doc,
-body > #doc2,
-body > #doc3,
-body > #doc4{
+
+body > #doc,body > #doc2,body > #doc3,body > #doc4 {
+-moz-border-radius:10px;
+-moz-box-shadow:0 0 15px rgba(0,0,0,1);
+-webkit-border-radius:10px;
+-webkit-box-shadow:0 0 15px rgba(0,0,0,1);
 background:#8fbc8f url(images/bg-1.png);
+border-radius:10px;
+box-shadow:0 0 15px rgba(0,0,0);
 }
 
-
-footer,
-header{
+footer,header {
 background:orange;
 color:#fff;
 }
 
-h3.widget-title:before{
+h3.widget-title:before {
 content:url(images/sidebar-title.png);
 margin-right:.5em;
 position:relative;
 top:3px;
-
 }
-.ie8 h3.widget-title:before{
+
+.ie8 h3.widget-title:before {
 top:0;
 }
-nav > ul{
+
+nav > ul {
 background:#97a25e url(images/bg-1.png);
 }
-.ie6 #access,
-.ie7 #access,
-.ie8 #access,
-.ie6 article,
-.ie7 article,
-.ie8 article,
-#footer-widget-area,
-#fourth,
-#third,
-#second,
-#first,
-article{
+
+.ie6 #access,.ie7 #access,.ie8 #access,.ie6 article,.ie7 article,.ie8 article,#footer-widget-area,#fourth,#third,#second,#first,article {
 background:#c5d19b;
 }
 
-#footer-widget-area h3,
-#access{
-background:#97a25e  url(images/bg-1.png);
+#footer-widget-area h3,#access {
+background:#97a25e url(images/bg-1.png);
 border-color:#97a25e;
 margin-bottom:0;
 width:100%;
 }
-header img{
+
+header img {
 border-bottom:2px solid #000;
 margin-bottom:-5px;
 }
-.gecko div.posted-in,
-.chrome div.posted-in{
-border-top:3px solid #669966;
-border-bottom:3px solid #669966;
+
+.gecko div.posted-in,.chrome div.posted-in {
+border-bottom:3px solid #696;
+border-top:3px solid #696;
 }
-#commentform .form-submit{
-margin-bottom:1em;
+
+#commentform .form-submit {
 line-height:3;
+margin-bottom:1em;
 }
-.byuser,
-.commentlist > li,
-.reply,
-#commentform,
-div.tagcloud,
-.commentlist > li,
-.nopassword,
-#access ul ul a,
-.wp-caption,
-body.single-post .nocomments,
-.hentry th,.hentry td,
-.page-link,
-.bypostauthor
-.chrome article .content .size-thumbnail,
-.gecko article .content .size-thumbnail,
-.home .sticky,
-blockquote{
+
+.byuser,.commentlist > li,.reply,#commentform,div.tagcloud,.commentlist > li,.nopassword,#access ul ul a,.wp-caption,body.single-post .nocomments,.hentry th,.hentry td,.page-link,.bypostauthor
+.chrome article .content .size-thumbnail,.gecko article .content .size-thumbnail,.home .sticky,blockquote {
 border:1px solid #999;
 }
-article .content blockquote{
+
+article .content blockquote {
 border-left:6px solid #777;
 }
-/*@see http://www.google.com/webfonts*/
-.h1,
-h1{
+
+.h1,h1 {
 font-family:Georgia, "Times New Roman", Times, serif;
 font-size:2em;
-
 }
 
+.plate,.grad {
+background:0 to(#669999));
+}
 
+header {
+-moz-border-radius-topleft:10px;
+-moz-border-radius-topright:10px;
+-webkit-border-top-left-radius:10px;
+-webkit-border-top-right-radius:10px;
+border-top-left-radius:10px;
+border-top-right-radius:10px;
+}
+
+footer {
+-moz-border-radius-bottomleft:10px;
+-moz-border-radius-bottomright:10px;
+-webkit-border-bottom-left-radius:10px;
+-webkit-border-bottom-right-radius:10px;
+border-bottom-left-radius:10px;
+border-bottom-right-radius:10px;
+}
+
+#footer-widget-area h3 {
+-moz-border-radius-bottomright:10px;
+-moz-border-radius-topleft:10px;
+-webkit-border-bottom-right-radius:10px;
+-webkit-border-top-left-radius:10px;
+border-bottom-right-radius:10px;
+border-top-left-radius:10px;
+}
+
+#wp-calendar th:nth-child(1),#wp-calendar th:nth-child(7) {
+width:1em;
+}
 
 #doc,#doc2,#doc3,#doc4,#custom-doc{
 
@@ -244,75 +256,6 @@ footer{}
 #footer-widget-area #fourth{}
 footer address{}
 footer #site-genelator{}
-/*
- *vertical navigation
-*/
-nav{}
-body > #doc,
-body > #doc2,
-body > #doc3,
-body > #doc4{
-   box-shadow: 0 0 15px rgba(0, 0, 0);
-    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
-    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
-}
-.plate,
-.grad{
-	background:-moz-linear-gradient(center top ,  #efe,#eef) repeat scroll 0 0 #efe;
-	background:-webkit-gradient(linear,left top , left bottom,from(#339999), to(#669999));	
-}
-header{
--webkit-border-top-left-radius: 10px;
--webkit-border-top-right-radius: 10px;
--moz-border-radius-topleft: 10px;
--moz-border-radius-topright: 10px;
-border-top-left-radius: 10px;
-border-top-right-radius: 10px;
-}
-footer{
--webkit-border-bottom-left-radius: 10px;
--webkit-border-bottom-right-radius: 10px;
--moz-border-radius-bottomleft: 10px;
--moz-border-radius-bottomright: 10px;
-border-bottom-left-radius: 10px;
-border-bottom-right-radius: 10px;
-}
-#wp-calendar th:nth-child(1){
-	width:1em;
-}
-#wp-calendar th:nth-child(7){
-	width:1em;
-
-}
-body > #doc,
-body > #doc2,
-body > #doc3,
-body > #doc4{
--webkit-border-radius: 10px;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-border-radius: 10px;
-}
-body > #doc,
-body > #doc2,
-body > #doc3,
-body > #doc4{
-   box-shadow: 0 0 15px rgba(0, 0, 0);
-    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
-    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 1); 
-}
-
-#footer-widget-area h3{
--webkit-border-top-left-radius: 10px;
--webkit-border-bottom-right-radius: 10px;
--moz-border-radius-topleft: 10px;
--moz-border-radius-bottomright: 10px;
-border-top-left-radius: 10px;
-border-bottom-right-radius: 10px;
-}
-
 CSS_PRESET;
 
     $obandes_base_setting =array(
