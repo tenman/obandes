@@ -281,6 +281,7 @@ CSS_PRESET;
              );
 
     $obandes_query =  'obandes_setting';
+    add_filter( 'use_default_gallery_style', '__return_false' );
     //add_action( 'admin_init', 'obandes_theme_init' );
     add_action('admin_menu', 'obandes_theme_options_add_page');
     add_action('load-themes.php', 'tmn_install_navigation');

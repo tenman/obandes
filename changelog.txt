@@ -1,7 +1,17 @@
 Changelog -----------------------------------
 version:0.57
 fixed style.css
-	#wpadminbar style conflict on IE8 issue fix.	
+    #wpadminbar style conflict on IE8 issue fix.
+        style setting change etc, for good
+    page.php,single.php background issue what 'page top few pixel white border ie8' fix.
+    CSS visual issue
+     Page background issue what 'page top few pixel white border ie8' fix.
+    footer.php
+        Author URI change correct URI.
+modified
+    page.php element nav default value set.
+    Gallery short code style element remove to style.css.
+    article margin, nav margin visual Adjustment.
 ----------------------------------------------
 Changelog -----------------------------------
 version:0.56
