@@ -1,5 +1,5 @@
 Changelog -----------------------------------
-version:0.57
+version:0.58
 fixed style.css
     #wpadminbar style conflict on IE8 issue fix.
         style setting change etc, for good
