@@ -36,8 +36,9 @@
     </div>
   </div>
   <div class="clear"></div>
+</div>
   <?php obandes_prev_next_post('nav-below');?>
   <?php comments_template( '', true ); ?>
-</div>
+
 <!-- #entry-utility -->
 </article>

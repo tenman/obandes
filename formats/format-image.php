@@ -53,9 +53,8 @@
      <div class="clear"></div>
   <div class="meta posted-in"><?php obandes_posted_in();?>
     <?php edit_post_link( __( 'Edit', 'obandes' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
+  </div>	
 <?php obandes_prev_next_post('nav-below');?>
-
-  </div>
   <?php comments_template( '', true ); ?>
 </article>
 <!-- #post-<?php the_ID(); ?> -->

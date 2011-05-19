@@ -78,20 +78,7 @@ html body{
 		padding-top:1px;
 		padding-bottom:1em;
 }
-html body.gecko.single,
-html body.gecko,
-html body.page.gecko,
-html body.chrome.single,
-html body.chrome,
-html body.page.chrome,
-html body.page{
-	padding-top:2em;
 
-}
-html body.gecko,
-html body.chrome{
-	padding-top:.1em;
-}
 
 head{
 height:0!important;
@@ -229,21 +216,26 @@ hr{
 /**
  *	heading
  */
+header h1, header h2, header h3 {
+	margin:0 0;
+}
+#site-title,
 #archives-title,
 header h1,
 header h1 a,
 header div.h1 a{
 	position:relative;
-	top:10px;
-	left:10px;
+	top:0;
+	left:0;
 	font-size:174%;
 	text-align:left;
 	text-decoration:none;
 	text-align:left;
 	font-weight:700;
+	text-indent:10px;
 	
 }
-
+nav h2,
 .page h2,
 h2,
 h2 a,
@@ -338,7 +330,7 @@ h6,
 .h6,
 #archives-title{
 	font-weight:700;
-	overflow:hidden;
+	/*overflow:hidden;*/
 	line-height:1.5;
 	margin:0;
 	
@@ -367,6 +359,7 @@ li h2{
  */
 #doc,#doc2,.doc3,.doc4{
 	padding:0;
+	margin-top:1em!important;
 }
 header{
 	margin:0 auto;
@@ -396,8 +389,8 @@ header img{
 
 .search-form{
 	position:absolute;
-	top:0;
-	right:0;
+	top:10px;
+	right:5px;
 }
 
 .ie8 .search-form{
@@ -444,6 +437,16 @@ nav ul {
     margin: 0 0 0 0;
     padding: 0;
     }
+nav > ul{
+	padding:0;
+	margin-top:4px;
+	margin-bottom:16px;
+}
+.category-blog nav > ul{
+	padding:0;
+	margin-top:34px;
+	margin-bottom:16px;
+}
 
 nav ul > li{
     margin: 0 0 0 0;
@@ -493,7 +496,7 @@ html>body .yui-t4 nav li a {
 
 
 #nav-above{
-	margin:2em 0 0 0;
+	margin:.1em;
 }
 
 #nav-below{
@@ -569,11 +572,8 @@ html>body .yui-t4 nav ul li{
  */
 #access {
 	display: block;
-	float: left;
-	margin: 0 auto;
-	width: 99%;
-	margin-bottom:1em;
-	
+	margin: 0;
+	width: 100%;	
 }
 #access .menu-header,
 div.menu {
@@ -807,9 +807,6 @@ article .content{
 .index article .posted-in,
 .single article .posted-in{
 	text-align:center;
-	background:#eef;
-	border-top:2px solid #ccc;
-	border-bottom:2px solid #ccc;
 	margin:10px 10px 0 10px;
 }
 .single article .posted-on{
@@ -1116,15 +1113,22 @@ input#url,
 /**
  *	DOM
  */
+table[class^=horizon]{
+max-width:100%;
+}
 article .content #horizon-gallery td .size-thumbnail{
 	margin:0;
 	padding:0;
 }
+td[class^=horizon],
 td.horizon-blog,
 td.horizon-footer-widget,
 td.horizon-gallery{
 	vertical-align:top;
 	}
+div[class^=horizon] img{
+	max-width:100%!important;
+}
 .single .category-blog .blog-profile,
 td.category-blog.col1{
 	width:140px;
@@ -1225,23 +1229,8 @@ h6 a,
 .comment-body blockquote,
 .comment-body blockquote blockquote,
 body.single-post .nocomments,
-#access ul ul a,
-#access li:hover > a,
-#access ul ul :hover > a,
-* html #access ul li.current_page_item a,
-* html #access ul li.current-menu-ancestor a,
-* html #access ul li.current-menu-item a,
-* html #access ul li.current-menu-parent a,
-* html #access ul li a:hover,
-#access li:hover > a,
-#access ul ul :hover > a,
-#access ul li.current_page_item > a,
-#access ul li.current-menu-ancestor > a,
-#access ul li.current-menu-item > a,
-#access ul li.current-menu-parent > a ,
 .pagenate span,
 .comment-body blockquote blockquote blockquote{
-	background:#eef;
 }
 blockquote{
 	background:#fff;
@@ -1251,18 +1240,13 @@ blockquote{
 div.tagcloud,
 footer,
 article{
-background-color:#fff;
 
 padding:0 0 10px;
 }
 div.tagcloud{
 padding:6px 6px 6px 6px;
 }
-nav > ul{
-padding:0;
-margin-top:1.4em;
-margin-bottom:.6em;
-}
+
 .page article{
 margin-top:.8em;
 }
@@ -1314,9 +1298,7 @@ hr{
 
 }
 #wp-calendar caption{
-	color:#000;
 	font-weight:700;
-	background:#eef;
 }
 #wp-calendar a{
 	text-decoration:underline;
@@ -1340,10 +1322,12 @@ hr{
 .reply,
 #searchsubmit,
 input[type="submit"],
+input[type="reset"],
 .grad{
-	background:#999;
+	background:#555;
 	color:#fff;
 	border:none;
+	padding:2px 4px;
 }
 .ie8 .reply,
 .ie8 #searchsubmit,
@@ -1352,6 +1336,7 @@ input[type="submit"],
 .ie7 .reply,
 .ie7 #searchsubmit,
 .ie7 input[type="submit"],
+.ie7 input[type="reset"],
 .ie7 .grad{
 	background:#000;
 }
@@ -1359,17 +1344,20 @@ input[type="submit"],
 
 .reply:active,
 #searchsubmit:active,
-input[type="submit"]:active{
+input[type="submit"]:active,
+input[type="reset"]:active{
 	background:#555;
 	color:#fff;
 }
 .ie7 .reply:active,
 .ie7 #searchsubmit:active,
 .ie7 input[type="submit"]:active,
+.ie7 input[type="reset"]:active,
 .ie7 .reply a,
 .ie8 .reply:active,
 .ie8 #searchsubmit:active,
 .ie8 input[type="submit"]:active,
+.ie8 input[type="reset"]:active,
 .ie8 .reply a{
 	/*background:#33CCCC;*/
 }
@@ -1397,23 +1385,11 @@ h6 a,
 .pagenate span,
 nav,
 nav li a,
-* html #access ul li.current_page_item a,
-* html #access ul li.current-menu-ancestor a,
-* html #access ul li.current-menu-item a,
-* html #access ul li.current-menu-parent a,
-* html #access ul li a:hover,
-#access li:hover > a,
-#access ul ul :hover > a ,	
-nav li a:hover,
-#access a ,
-#access li > a,
-#access ul ul > a ,
-#access ul li.current_page_item > a,
-#access ul li.current-menu-ancestor > a,
-#access ul li.current-menu-item > a,
-#access ul li.current-menu-parent > a {
+nav li a:hover{
 	color: #333;
 }
+
+
 .home article .meta,
 .home .meta posted-in,
 #site-generator,
@@ -1447,7 +1423,6 @@ nav li a:hover{
 #commentform,
 .corner{
    padding:12px 12px 0 12px;
-   margin:12px 12px 6px 12px;
    line-height:1.7;
 
 }
@@ -1506,7 +1481,7 @@ blockquote{
 	/*border:1px solid #ccc;*/
 }
 .comment_author_block{
-	border-bottom:1px solid #ccc;
+	border-bottom:2px groove #eee;
 }
 
 nav li li{
@@ -1527,14 +1502,6 @@ blockquote{
 }
 .home .hentry{
 	/*border-left:6px solid orange;*/
-}
-#access li > a,
-#access ul ul > a {
-	border-bottom:3px solid #999;
-}
-#access li:hover > a,
-#access ul ul :hover > a {
-	border-bottom:3px solid #555;
 }
 hr,
 .horizon-gallery.col1 .size-thumbnail,
@@ -1687,6 +1654,7 @@ z-index:2;
 content:url("images/pagetop.png");
 
 margin-right:5px;
+margin-left:8px;
 
 }
 
@@ -1756,11 +1724,7 @@ margin-right:.5em;
 	margin-left:1em;
 	height:2em;
 }
-.gecko div.posted-in,
-.chrome div.posted-in{
-border-top:3px solid #669966;
-border-bottom:3px solid #669966;
-}
+
 #search-results-title{
 	background:url(images/search-results.png);
 }
@@ -1800,7 +1764,7 @@ border-bottom:3px solid #669966;
  *
  */
 .search-results{
-	margin-top:1em;
+	
 }
 .search-results li{
 	list-style-type:none;
@@ -1815,8 +1779,6 @@ border-bottom:3px solid #669966;
  margin:0 1em 0 1em;
  }
 #archives-title{
-	height:70px;
-	padding-top:5px;
 	margin-left:1em;
 } 
 
@@ -1824,11 +1786,7 @@ header img{
 border-bottom:2px solid #000;
 }
 
-.gecko div.posted-in,
-.chrome div.posted-in{
-border-top:3px solid #669966;
-border-bottom:3px solid #669966;
-}
+
 /**
  * page
  */
@@ -1975,3 +1933,16 @@ margin-right:305px!important;
 .gallery-columns-7 dl{ width: 14.28% }
 .gallery-columns-8 dl{ width: 12.5% }
 .gallery-columns-9 dl{ width: 11.1% }
+
+nav h2{
+	padding:5px;
+}
+nav li a{
+	border-bottom:none!important;
+}
+nav h2{
+border-bottom:#693 1px solid;
+}
+#footer-widget-area{
+color:#333;
+}

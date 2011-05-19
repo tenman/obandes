@@ -38,14 +38,17 @@ if($embed_style['obandes_css'] !== ""){
  * url(http://example.com/wp/wp-content/themes/obandes/images/something.png)
  *
  */
+	$embed_style = htmlspecialchars_decode($embed_style['obandes_css'], ENT_NOQUOTES);
+}else{
+	$embed_style = $css_preset;
+}
 
 $obandes_template_dir = get_template_directory_uri();
-$embed_style = htmlspecialchars_decode($embed_style['obandes_css'], ENT_NOQUOTES);
 $embed_style = preg_replace('!(url\()([^\)]+)(\))!',"$1{$obandes_template_dir}/$2$3",$embed_style);
 $embed_style = str_replace(array('&lt;','&#60;','&#x3c;','PA==','%3C','!/```'),' !less than ',$embed_style);
 
 echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style type=\"text/css\"><!--\n".$embed_style."--></style>");
-}?>
+?>
 
 <?php wp_head();?>
 </head>
@@ -53,12 +56,9 @@ echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style ty
 <div id="<?php echo get_obandes_condition('letter-width'); ?>" class="<?php echo get_obandes_condition('menu-position');?>">
 <header>
 <?php
-    if( is_home() or is_front_page() ){
-        $heading_elememt = 'h1';
-    }else{
-        $heading_elememt = 'div';
-    }
-    $title_format = '<%s class="h1 clear-fix" id="site-title"><span><a href="%s" title="%s" rel="%s">%s</a></span></%s>';
+    $heading_elememt = 'h1';
+   
+    $title_format = '<%s class="h1" id="site-title"><a href="%s" title="%s" rel="%s"><span>%s</span></a></%s>';
 
     printf(
         $title_format,
@@ -72,7 +72,7 @@ echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style ty
         // class="horizon-header"
 ?>
 <div id="site-description"><?php bloginfo( 'description' ); ?></div>
-<div class="search-form"><?php //get_search_form(); ?></div>
+<div class="search-form"><?php get_search_form(); ?></div>
 <div id="access" role="navigation" class="clearfix">
 <?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
 </div>
