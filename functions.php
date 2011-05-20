@@ -148,7 +148,7 @@ color:#fff;
 * html #access ul li.current-menu-parent a,
 * html #access ul li a:hover,
 #access li:hover > a,
-#access ul ul :hover > a ,	
+#access ul ul :hover > a ,
 #access a ,
 #access li > a,
 #access ul ul > a ,
@@ -156,7 +156,7 @@ color:#fff;
 #access ul li.current-menu-ancestor > a,
 #access ul li.current-menu-item > a,
 #access ul li.current-menu-parent > a {
-	color: #999;
+    color: #999;
 }
 .fragment_identifier a:hover,
 * html #access ul > li.current_page_item a,
@@ -165,7 +165,7 @@ color:#fff;
 * html #access ul > li.current-menu-parent a:hover,
 * html #access ul > li a:hover,
 #access li:hover > a:hover,
-#access ul ul  > a:hover,	
+#access ul ul  > a:hover,
 #access a:hover,
 #access li > a:hover,
 #access ul ul > a ,
@@ -173,8 +173,8 @@ color:#fff;
 #access ul li.current-menu-ancestor > a:hover,
 #access ul li.current-menu-item > a:hover,
 #access ul li.current-menu-parent > a:hover {
-	color: #333;
-	background:#fff;
+    color: #333;
+    background:#fff;
 }
 #access a:hover{
 text-decoration:none;
@@ -908,8 +908,8 @@ CSS_PRESET;
         $rows =substr_count($style, "\n") * 1.5 + 10;
         echo '<p><input type="submit" value="'. __( 'Save Options' ).'" class="button" /></p>';
         echo '<table summary="stylesheet" class="form-table">';
-		echo '<col class="highlight tablenav" />';
-		echo '<col class="tablenav" />';
+        echo '<col class="highlight tablenav" />';
+        echo '<col class="tablenav" />';
         echo '<tr valign="top">';
         echo '<td class="title" style="font-size:24px;font-weight:bold;vertical-align:middle;width:260px;border-bottom:3px solid #fff;">'.__( 'Show Header Image' ).'</td>';
         echo '<td>';
@@ -1255,9 +1255,5 @@ if($condition == 'menu-position'){
         return $content;
     }
 
-    add_filter( 'wp_nav_menu_items', 'obandes_addHomeMenuLink', 10, 2 );
-	
-//Add hover effects in comment avatar
-wp_enqueue_script( 'gprofiles', 'http://s.gravatar.com/js/gprofiles.js', array( 'jquery' ), 'e', true );	
 
 ?>

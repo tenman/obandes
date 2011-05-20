@@ -1,12 +1,15 @@
 /*   
 Theme Name: obandes
 Theme URI: http://www.tenman.info/wp3/obandes/
-Description: extend basic template It is possible to change freely by using Yahoo User Interface Framework though it is a basic theme in the layout. 
-AdminPanel was omitted. The setting is useful for a revokable person in functions.php. 
+Description: This theme has 2 column post and 1column page.
+Special layout when selected category 'blog'.
+In addition, post format link is auto create link thumbnail ,post format image is auto create Zoom in view,and post format gallery is add column and show gallery image.
+Recommends it.this theme is customize easy why stylesheet color background and border is controlled admin panel another margin padding is setted style.css.
+Style structure and favor is almost separated.(Admin panel textarea value delete and may be appear clean minimal view.)
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 0.58
-Tags:white, two-columns,right-sidebar ,fixed-width ,flexible-width, custom-colors, threaded-comments, sticky-post, translation-ready
+Version: 0.59
+Tags:white, two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready,editor-style
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */

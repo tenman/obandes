@@ -1,4 +1,25 @@
 Changelog -----------------------------------
+version:0.59
+removed
+
+moved
+
+added
+
+fixed
+
+modified
+    format-gallery.php,format-image.php
+     nav-below navigation link position change.
+    functions.php
+     $css_preset value change.
+    code clean up add prefix obandes_addHomeMenuLink
+    header.php
+     theme install before style set.
+    style.css
+     Browser view check and modified.
+----------------------------------------------
+Changelog -----------------------------------
 version:0.58
 fixed style.css
     #wpadminbar style conflict on IE8 issue fix.
