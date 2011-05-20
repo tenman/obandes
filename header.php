@@ -38,9 +38,10 @@ if($embed_style['obandes_css'] !== ""){
  * url(http://example.com/wp/wp-content/themes/obandes/images/something.png)
  *
  */
-	$embed_style = htmlspecialchars_decode($embed_style['obandes_css'], ENT_NOQUOTES);
+    $embed_style = htmlspecialchars_decode($embed_style['obandes_css'], ENT_NOQUOTES);
 }else{
-	$embed_style = $css_preset;
+    global $css_preset;
+    $embed_style = $css_preset;
 }
 
 $obandes_template_dir = get_template_directory_uri();
@@ -57,7 +58,7 @@ echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style ty
 <header>
 <?php
     $heading_elememt = 'h1';
-   
+
     $title_format = '<%s class="h1" id="site-title"><a href="%s" title="%s" rel="%s"><span>%s</span></a></%s>';
 
     printf(
