@@ -1,4 +1,15 @@
 Changelog -----------------------------------
+version:0.61
+added
+     functions.php
+        $css_preset value change.
+        add function function plugin_is_active($plugin_path)
+modified
+     functions.php
+        $css_preset value change.
+            #access horizontal menu children background color modified
+----------------------------------------------
+Changelog -----------------------------------
 version:0.60
 removed
 

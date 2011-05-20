@@ -176,10 +176,6 @@ color:#fff;
     color: #333;
     background:#fff;
 }
-#access a:hover{
-text-decoration:none;
-border:none;
-}
 header img {
 border-bottom:2px solid #000;
 margin-bottom:-5px;
@@ -194,7 +190,7 @@ background:rgba(255,255,255,0.3);
 line-height:3;
 margin-bottom:1em;
 }
-.byuser,.commentlist > li,.reply,#commentform,div.tagcloud,.commentlist > li,.nopassword,#access ul ul a,.wp-caption,body.single-post .nocomments,.hentry th,.hentry td,.page-link,.bypostauthor
+.byuser,.commentlist > li,.reply,#commentform,div.tagcloud,.commentlist > li,.nopassword,.wp-caption,body.single-post .nocomments,.hentry th,.hentry td,.page-link,.bypostauthor
 .chrome article .content .size-thumbnail,.gecko article .content .size-thumbnail,.home .sticky,blockquote {
 border:1px solid #999;
 }
@@ -288,6 +284,17 @@ footer{}
 #footer-widget-area #fourth{}
 footer address{}
 footer #site-genelator{}
+
+#access a:hover{border:none;}
+#access .children{
+background:#eee;
+background:rgba(255,255,255,0.9);
+color:#333;
+}
+#access .children li:hover{
+background:#dedede;
+}
+
 CSS_PRESET;
 
     $obandes_base_setting =array(
@@ -1256,4 +1263,43 @@ if($condition == 'menu-position'){
     }
 
 
+
+/**
+ * plugin API
+ *
+ *
+ *
+ *
+ */
+
+    function plugin_is_active($plugin_path) {
+        $return_var = in_array( $plugin_path, apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) );
+        return $return_var;
+    }
+
+    if (plugin_is_active('tmn-quickpost/tmn-quickpost.php')) {
+
+            global $base_info;
+
+            foreach( $base_info['root'] as $key=>$val ) {
+                $wp_cockneyreplace['%'.$key.'%'] = $val;
+            }
+
+        function raindrops_import_post_meta(){
+
+            global $post,$base_info;
+            $r = get_post_meta($post->ID, 'template', true);
+
+            foreach( $base_info['root'] as $key=>$val ) {
+                $r = str_replace('%'.$key.'%', $val,$r);
+            }
+
+            if(class_exists('trans')){
+                $n = new trans($r);
+                return $n->text2html();
+            }else{
+                return $r;
+            }
+        }
+    }
 ?>
