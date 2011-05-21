@@ -72,13 +72,11 @@ a:active,a:focus {
     outline:none;
 }
 html body{
-		line-height:1.5;
-		margin:0;
-		padding-top:1px;
-		padding-bottom:1em;
+	line-height:1.5;
+	margin:0;
+	padding-top:1px;
+	padding-bottom:1em;
 }
-
-
 head{
 height:0!important;
 display:none;
@@ -110,8 +108,6 @@ ins{
 ul,ol,dl{
 	margin-left:4.4em;	
 }
-
-
 .single .category-blog .content{
 	margin:0 0 0 5px;
 }
@@ -232,7 +228,6 @@ header div.h1 a{
 	text-align:left;
 	font-weight:700;
 	text-indent:10px;
-	
 }
 nav h2,
 .page h2,
@@ -329,10 +324,8 @@ h6,
 .h6,
 #archives-title{
 	font-weight:700;
-	/*overflow:hidden;*/
 	line-height:1.5;
 	margin:0;
-	
 }
 	
 h2 a,
@@ -345,9 +338,7 @@ h6 a,
 .h4 a,
 .h5 a,
 .h6 a {
-	
 	display:inline;
-	
 }
 li h2{
 	margin:0;
@@ -367,14 +358,11 @@ header{
 }
 #header-image{
 text-align:center;
-	/*margin-bottom:-6px;*/
 }
 
 .wp-post-image,
 header img{
-	margin:0 auto;
-	max-width:99.9%;
-	
+	max-width:100%;
 }
 #site-description{
 	text-indent:1em;
@@ -385,17 +373,14 @@ header img{
 #archives-title{
 	font-size:30px;
 }
-
 .search-form{
 	position:absolute;
 	top:10px;
 	right:5px;
 }
-
 .ie8 .search-form{
 	top:10px;
 }
-
 /**
  *	html5
  */
@@ -409,7 +394,7 @@ hgroup,
 menu, 
 nav, 
 section {
-display:block;
+	display:block;
 }
 
 /**
@@ -462,8 +447,7 @@ nav .recentcomments{
     padding: 5px 5px 5px 0.5em;
     text-decoration: none;
     max-width: 100%;
-
-}
+	}
 nav li a {
 	display:block;
     display:inline-block;
@@ -473,7 +457,7 @@ nav li a {
 nav li a.rsswidget{
 	padding:0;
 	margin:0;
-}
+	}
 nav li.recentcomments{
 	}
 html>body nav li a:hover,
@@ -488,74 +472,62 @@ html>body .yui-t4 nav li a {
     width: auto;
 	max-width:70%;
 	}
-
 .single #nav-above{
 	margin:1em 0 0 0;
-}
-
-
+	}
 #nav-above{
 	margin:.1em;
-}
-
+	}
 #nav-below{
 	margin:1em .1em .1em .1em;
-}
+	}
 #nav-above a,
 #nav-below a
 #nav-above a:hover,
 #nav-below a:hover{
 	text-decoration:none;
-}
+	}
 .yui-t1 nav ul,
 .yui-t2 nav ul,
-.yui-t3 nav ul
-{
+.yui-t3 nav ul{
 	margin-left:1em;
 }
 .yui-t1 article,
 .yui-t2 article,
-.yui-t3 article
-{
+.yui-t3 article{
 	margin-right:1em;
 }
 
 #doc.yui-t1 nav ul,
 #doc.yui-t2 nav ul,
-#doc.yui-t3 nav ul
-{
+#doc.yui-t3 nav ul{
 	margin-left:.5em;
 }
 #doc.yui-t1 article,
 #doc.yui-t2 article,
-#doc.yui-t3 article
-{
+#doc.yui-t3 article{
 	margin-right:.5em;
 }
 
 .yui-t4 nav ul,
 .yui-t5 nav ul,
-.yui-t6 nav ul
-{
+.yui-t6 nav ul{
 	margin-right:1em;
 }
 .yui-t4 article,
 .yui-t5 article,
-.yui-t6 article
-{
+.yui-t6 article{
 	margin-left:1em;
 }
 
 #doc.yui-t4 nav ul,
 #doc.yui-t5 nav ul,
-#doc.yui-t6 nav ul
-{
+#doc.yui-t6 nav ul{
 	margin-right:1em;
 }
 #doc.yui-t4 article,
 #doc.yui-t5 article,
-#doc.yui-t6 article
-{
+#doc.yui-t6 article{
 	margin-left:.8em;
 }
 #onecolumn  article.page{
@@ -601,7 +573,6 @@ div.menu li {
 #access ul ul {
 	display: none;
 	position: absolute;
-	/*top: 38px;*/
 	top: 3em;
 	left: 0;
 	float: left;
@@ -670,7 +641,9 @@ div[class^=post-]{
 }
 .post{
 }
-.attachment{
+article.attachment .content .attachment img{
+float:left;
+margin-right:2em;
 }
 .hentry{
 }
@@ -754,6 +727,9 @@ dd {
 	text-align:left;
 	padding-left:2em;
 	
+}
+div[class^=horizon] .gallery .gallery-caption {
+	display:none;
 }
 
 dl.author dd,
@@ -883,8 +859,6 @@ article .content .size-thumbnail{
  */	
 #archives-title{
 	margin-bottom:1em;
-
-	/*background:url(images/title-bg.png);*/
 	background-position:right top;
 	background-repeat:no-repeat;
 }
@@ -1026,7 +1000,6 @@ textarea#comment{
 	padding:1em;
 	
 }
-
 .commentlist{
   
 }
@@ -1035,24 +1008,20 @@ textarea#comment{
 }
 
 .commentlist ul{
-
 	margin-right:0;
 }
 .commentlist > li{
 	margin:2px;
 
 }
-
 .commentlist .depth-1 > div{
 	padding:1em;
 	margin-right:0;
-
 }
 .commentlist .depth-1 > ul.children{
 	padding:1em;
 	margin-right:0;
 }
-
 .reply{
 display:inline;
 padding:2px 5px!important;
@@ -1219,9 +1188,7 @@ h6 a,
 .widget_tag_cloud a:hover{
 	background:none;
 }
-.commentlist > li.pingback{
-	
-}
+.commentlist > li.pingback{}
 .must-log-in,
 .nopassword,
 .long-title,
@@ -1230,33 +1197,31 @@ h6 a,
 .comment-body blockquote blockquote,
 body.single-post .nocomments,
 .pagenate span,
-.comment-body blockquote blockquote blockquote{
-}*/
+.comment-body blockquote blockquote blockquote{}
+*/
 blockquote{
 	background:#fff;
 }
-
 .not-found,
 div.tagcloud,
 footer,
 article{
-
-padding:0 0 10px;
+	padding:0 0 10px;
 }
 div.tagcloud{
-padding:6px 6px 6px 6px;
+	padding:6px 6px 6px 6px;
 }
 
 .page article{
-margin-top:.8em;
+	margin-top:.8em;
 }
 .page nav > ul{
-padding:0;
-margin-top:1em;
+	padding:0;
+	margin-top:1em;
 }
 
 article.not-found{
-padding:0 10px 10px;
+	padding:0 10px 10px;
 }
 
 
@@ -1269,9 +1234,7 @@ h6 a:after,
 .h3 a:after,
 .h4 a:after,
 .h5 a:after,
-.h6 a:after {
-	/* content: url(images/external.png); padding-left: 5px; */
-}
+.h6 a:after {}
 hr{
 	background:url(images/hr.png);
 	background-position:center top;
@@ -1293,9 +1256,7 @@ hr{
 .bypostauthor,
 #wp-calendar th,
 #commentform{
-
 	color:#333;
-
 }
 #wp-calendar caption{
 	font-weight:700;
@@ -1313,9 +1274,8 @@ hr{
 .ie8 .byuser,
 .ie8 .bypostauthor,
 .ie8 #wp-calendar th,
-.ie8 #commentform{
-	/*background:#33CCCC;*/
-}
+.ie8 #commentform{}
+
 .reply a{
 	color:#fff;
 }
@@ -1340,8 +1300,6 @@ input[type="reset"],
 .ie7 .grad{
 	background:#000;
 }
-
-
 .reply:active,
 #searchsubmit:active,
 input[type="submit"]:active,
@@ -1358,9 +1316,7 @@ input[type="reset"]:active{
 .ie8 #searchsubmit:active,
 .ie8 input[type="submit"]:active,
 .ie8 input[type="reset"]:active,
-.ie8 .reply a{
-	/*background:#33CCCC;*/
-}
+.ie8 .reply a{}
 
 /**
  *	colors
@@ -1381,15 +1337,12 @@ h6 a,
 .h6 a {
 	color:#000;
 }
-
 .pagenate span,
 nav,
 nav li a,
 nav li a:hover{
 	color: #333;
 }
-
-
 .home article .meta,
 .home .meta posted-in,
 #site-generator,
@@ -1409,13 +1362,6 @@ nav li a:hover{
 	background:#eef;
 	margin-bottom:2em;
 }
-
-
-
-
-
-
-
 .byuser,
 .bypostauthor,
 .commentlist > li,
@@ -1483,14 +1429,12 @@ blockquote{
 .comment_author_block{
 	border-bottom:2px groove #eee;
 }
-
 nav li li{
 	border-bottom:0 solid #ccc;
 	list-style-image:url("images/list-marker.png")!important;
 	list-style-position:inside;
 	
 }
-
 .pagenate a span {
 	border:1px solid #999;
 	}
@@ -1529,7 +1473,6 @@ hr{
 	border:none;
 	background-repeat:no-repeat
 }
-
 /**
  *	font family
 */ 
@@ -1553,13 +1496,11 @@ h6,
 #archives-title{
 	font-family:"Times New Roman", Times, serif;	
 }
-
 nav{
 	font-family: 'Trebuchet MS', 'Lucida Grande',
       'Verdana', 'Lucida, Geneva, Helvetica',
       'Arial', sans-serif;
 }
-
 /**
  * wp-calendar
  *
@@ -1567,7 +1508,6 @@ nav{
  *
  *
  */
-
 #wp-calendar{
 	width:100%;
 	margin:0 auto;
@@ -1586,8 +1526,6 @@ nav{
 }
 #wp-calendar th{
 	height:2em;
-	
-
 }
 #wp-calendar td,
 #wp-calendar tbody{
@@ -1596,29 +1534,26 @@ nav{
 #wp-calendar tbody td{
 	height:25px;
 }
-
 #wp-calendar #prev,
 #wp-calendar #next,
 #wp-calendar .pad{
 	border:none;
-
 }
-
 .ie6 .gallery-size-thumbnail .gallery-icon img,
 .ie7 .gallery-size-thumbnail .gallery-icon img,
 .ie8 .gallery-size-thumbnail .gallery-icon img{
-width:100%;
-height:100%;
+	width:100%;
+	height:100%;
 }
 .nav-previous a:before{
-content:url("images/previous.png");
-margin-right:3px;
-margin-left:5px;
+	content:url("images/previous.png");
+	margin-right:3px;
+	margin-left:5px;
 }
 .nav-next a:after{
-content:url("images/next.png");
-margin-left:3px;
-margin-right:5px;
+	content:url("images/next.png");
+	margin-left:3px;
+	margin-right:5px;
 }
 .go-page-top:before,
 abbr[title="Really Simple Syndication"]:after,
@@ -1627,46 +1562,41 @@ address .comments-rss:after,
 .fail-search .title:before,
 .nav-previous a:before,
 .nav-next a:after{
-position:relative;
-top:3px;
+	position:relative;
+	top:3px;
 }
 .meta-nav{
-display:none;
+	display:none;
 }
 .fail-search .title:before,
 .error404 .title:before{
-content: url("images/stop.png");
-margin-right:5px;
+	content: url("images/stop.png");
+	margin-right:5px;
 }
 abbr[title="Really Simple Syndication"]:after,
 address .comments-rss:after{
-content:url("images/rss.png");
-margin:0.25em;
+	content:url("images/rss.png");
+	margin:0.25em;
 }
-
 #site-generator:before{
-content:url("images/wp-logo.png");
-position:relative;
-top:3px;
-z-index:2;
+	content:url("images/wp-logo.png");
+	position:relative;
+	top:3px;
+	z-index:2;
 }
 .go-page-top:before{
-content:url("images/pagetop.png");
-
-margin-right:5px;
-margin-left:8px;
-
+	content:url("images/pagetop.png");
+	margin-right:5px;
+	margin-left:8px;
 }
-
 .nav-previous .meta-nav,
 .nav-next .meta-nav{
-display:none;
+	display:none;
 }
 td[class^="horizon"],
 div[class^="horizon"]{
-text-align:left;
-border:none;
-
+	text-align:left;
+	border:none;
 }
 #footer-widget-area li{
 	list-style:none;
@@ -1674,14 +1604,11 @@ border:none;
 #footer-widget-area .widget-container > ul > li{
 list-style-image:url("images/list-marker.png")!important;
 }
-
 .page .edit-link{
 	display:block;
 	margin:1em;
 }
-section#onecolumn{
-
-}
+section#onecolumn{}
 section#onecolumn article{
 	margin-left:0;
 }
@@ -1691,40 +1618,32 @@ section#onecolumn .content{
 }
 /* new add*/
 footer,
-header{
-/*overflow:hidden;*/
-}
-
+header{}
 nav > ul{
-margin-right:5px;
+	margin-right:5px;
 }
-#yui-main{
-}
-
+#yui-main{}
 #doc article{
-margin-left:5px;
+	margin-left:5px;
 }
 #footer-widget-area{
-padding-right:1em;
-padding-bottom:.5em;
+	padding-right:1em;
+	padding-bottom:.5em;
 }
 address,
 #site-generator{
 margin-right:.5em;
 }
-
 #footer-widget-area tagcloud{
 	margin:5px;
 }
 #footer-widget-area h3{
 	margin-bottom:1em!important;
 }
-
 #search-results-title{
 	margin-left:1em;
 	height:2em;
 }
-
 #search-results-title{
 	background:url(images/search-results.png);
 }
@@ -1763,9 +1682,7 @@ margin-right:.5em;
  *
  *
  */
-.search-results{
-	
-}
+.search-results{}
 .search-results li{
 	list-style-type:none;
 }
@@ -1776,17 +1693,14 @@ margin-right:.5em;
 }
 #comments-title,
 .search-results .meta{
- margin:0 1em 0 1em;
+	margin:0 1em 0 1em;
  }
 #archives-title{
 	margin-left:1em;
 } 
-
 header img{
-border-bottom:2px solid #000;
+	border-bottom:2px solid #000;
 }
-
-
 /**
  * page
  */
@@ -1820,18 +1734,18 @@ nav #searchform{
 }
 html>/**/body.ie8 {font-size/*\**/: small;}
 .yui-t1 nav{
-width:160px!important;
+	width:160px!important;
 }
 .yui-t4 nav,
 .yui-t2 nav{
-width:180px!important;
+	width:180px!important;
 }
 .yui-t6 nav,
 .yui-t3 nav{
-width:300px!important;
+	width:300px!important;
 }
 .yui-t5 nav{
-width:240px!important;
+	width:240px!important;
 }
 .ie6 .yui-t1 nav,
 .ie7 .yui-t1 nav,
@@ -1855,66 +1769,61 @@ width:240px!important;
 .ie8 .yui-t5 nav{
 	width:234px!important;
 }
-
 div.yui-t1 #yui-main .yui-b {
 /*margin-left:13.30769em;*/
-margin-left:173px;
+	margin-left:173px;
 }
 div.yui-t2 #yui-main .yui-b {
 /*margin-left: 14.8461em;*/
-margin-left:193px;
+	margin-left:193px;
 }
-
 div.yui-t3 #yui-main .yui-b {
 /*margin-left: 24.0769em;*/
-margin-left:313px;
-
+	margin-left:313px;
 }
 div.yui-t4 #yui-main .yui-b {
 /*margin-left: 14.8461em;*/
-margin-right:193px;
+	margin-right:193px;
 }
-
 div.yui-t5 #yui-main .yui-b {
 /*margin-right: 19.4615em;*/
-margin-right:253px;
+	margin-right:253px;
 }
 div.yui-t6 #yui-main .yui-b {
-/*margin-left: 24.0769em;*/
-margin-right:303px;
+	margin-right:303px;
 }
 .ie6 div.yui-t1 #yui-main .yui-b ,
 .ie7 div.yui-t1 #yui-main .yui-b ,
 .ie8 div.yui-t1 #yui-main .yui-b {
-margin-left:168px!important;
+	margin-left:168px!important;
 }
 .ie6 div.yui-t2 #yui-main .yui-b ,
 .ie7 div.yui-t2 #yui-main .yui-b ,
 .ie8 div.yui-t2 #yui-main .yui-b {
-margin-left:188px!important;
+	margin-left:188px!important;
 }
 
 .ie6 div.yui-t3 #yui-main .yui-b ,
 .ie7 div.yui-t3 #yui-main .yui-b ,
 .ie8 div.yui-t3 #yui-main .yui-b {
-margin-left:305px!important;
+	margin-left:305px!important;
 
 }
 .ie6 div.yui-t4 #yui-main .yui-b ,
 .ie7 div.yui-t4 #yui-main .yui-b ,
 .ie8 div.yui-t4 #yui-main .yui-b {
-margin-right:188px!important;
+	margin-right:188px!important;
 }
 
 .ie6 div.yui-t5 #yui-main .yui-b ,
 .ie7 div.yui-t5 #yui-main .yui-b ,
 .ie8 div.yui-t5 #yui-main .yui-b {
-margin-right:246px!important;
+	margin-right:246px!important;
 }
 .ie6 div.yui-t6 #yui-main .yui-b ,
 .ie7 div.yui-t6 #yui-main .yui-b ,
 .ie8 div.yui-t6 #yui-main .yui-b {
-margin-right:305px!important;
+	margin-right:305px!important;
 }
 /**
  * Gallery
@@ -1933,7 +1842,6 @@ margin-right:305px!important;
 .gallery-columns-7 dl{ width: 14.28% }
 .gallery-columns-8 dl{ width: 12.5% }
 .gallery-columns-9 dl{ width: 11.1% }
-
 nav h2{
 	padding:5px;
 }
@@ -1941,8 +1849,8 @@ nav li a{
 	border-bottom:none!important;
 }
 nav h2{
-border-bottom:#693 1px solid;
+	border-bottom:#693 1px solid;
 }
 #footer-widget-area{
-color:#333;
+	color:#333;
 }
