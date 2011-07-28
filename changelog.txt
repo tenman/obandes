@@ -1,5 +1,5 @@
 Changelog -----------------------------------
-version:0.7
+version:0.70
 added
     theme option page UI change
     Group view style add when post fotmat checked
