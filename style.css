@@ -4,7 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description: 	This theme has 2 column post and 1column page.Special layout when selected category 'blog'.	In addition, post format link is auto create link thumbnail ,	\npost format image is auto create Zoom in view,and post format gallery is add column and show gallery image.	If you set select header image 'show' where obandes admin panel,header image is changed when set featured image each post. 
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 0.63
+Version: 0.7
 Tags:white, two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready,editor-style
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -212,7 +212,8 @@ hr{
  *	heading
  */
 header h1, header h2, header h3 {
-	margin:0 0;
+	margin:0 10px;
+	max-width:75%;
 }
 #site-title,
 #archives-title,
@@ -286,7 +287,7 @@ h6 a,
 .ja .h1,
 .ja #site-title{
 	font-size:174%;
-	margin:0;
+	margin:0 0 0 10px;
 	}
 .ja h2,
 .ja .h2{
@@ -1854,3 +1855,32 @@ nav h2{
 #footer-widget-area{
 	color:#333;
 }
+.hide{
+	display:none!important;
+	}
+
+.home table#horizon-aside:before{
+	content:"Asides";
+	font-size:167%;
+	margin-left:20px;
+
+}
+.home table#horizon-link:before{
+	content:"Links";
+	font-size:167%;
+	margin-left:20px;
+
+}
+.home table#horizon-quote:before{
+	content:"Quotes";
+	font-size:167%;
+	margin-left:20px;
+
+}
+.home table#horizon-video:before{
+	content:"Videos";
+	font-size:167%;
+	margin-left:20px;
+
+}
+

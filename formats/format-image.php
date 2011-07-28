@@ -27,7 +27,7 @@
 		} else {
 			$json_decode = json_decode($json_res['body']);
 			
-			$contents = preg_replace("|(<img[^>]+)($url)([^>]+>)|",'',$contents);
+			$contents = preg_replace("|(<img)([^>]+>)|i",'',$contents,1);
 		
 			return str_replace('&','&amp;',$json_decode->embedHtml)."<p><a href=\"$url\">$url</a></p>".$contents;
 		}

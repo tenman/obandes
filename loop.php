@@ -86,7 +86,7 @@ echo '<ul class="index yui-b '.esc_attr($obandes_class_name).'">';
 <?php echo sprintf( __( '<span class="time-diff">(Published for %s)</span>', 'obandes' ), human_time_diff(get_the_time('U'),time()) );?> </div>
 <div class="content clearfix">
 <?php
-if(TMN_USE_LIST_EXCERPT == true){
+if(OBANDES_USE_LIST_EXCERPT == true){
 the_excerpt();
 }else{
 the_content();

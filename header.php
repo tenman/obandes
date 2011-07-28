@@ -78,22 +78,22 @@ echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style ty
 <?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
 </div>
 <?php
-
-    if(get_obandes_condition("header_image") == 'show'){
-
+	$obandes_image_uri = get_header_image();
+	
+    if(!empty($obandes_image_uri)){
+		
         if ( is_singular()
                 and has_post_thumbnail( $post->ID )
                 and (  $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail' ) )
                 and $image[1] >= HEADER_IMAGE_WIDTH
             ){
-
                 echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
-        }else{
-
+        }elseif(!empty($obandes_image_uri)){
+		
 $header_image_format = '<div id="header-image" style="background:#000;"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
 
             printf( $header_image_format,
-                    get_header_image(),
+                    $obandes_image_uri,
                     HEADER_IMAGE_WIDTH,
                     HEADER_IMAGE_HEIGHT,
                     obandes_document_width()

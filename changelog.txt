@@ -1,4 +1,11 @@
 Changelog -----------------------------------
+version:0.7
+added
+    theme option page UI change
+    Group view style add when post fotmat checked
+    where index page for not IE browser
+----------------------------------------------
+Changelog -----------------------------------
 version:0.63
 added
      functions.php

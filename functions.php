@@ -56,8 +56,8 @@
           'widget_name' => 'default',
           'text' => "1"));
     }
-    if(!defined('TMN_USE_LIST_EXCERPT')){
-        define("TMN_USE_LIST_EXCERPT",false);
+    if(!defined('OBANDES_USE_LIST_EXCERPT')){
+        define("OBANDES_USE_LIST_EXCERPT",false);
     }
 
 /**
@@ -71,7 +71,10 @@ if(locate_template( array( 'formats/format.php' ))){
                 'gallery',
                 'chat',
                 'link',
-                'image'
+                'image',
+                'status',
+                'quote',
+                'video'
             )
     );
 }
@@ -88,14 +91,6 @@ if(locate_template( array( 'admin/editor-style.css' ))){
  * horizon class demo colors
  */
 $css_preset =<<< CSS_PRESET
-/*
-========= obandes configrations =========
-layout-type=fix
-letter-width=wide
-menu-position=right
-menu-width=wide
-========= obandes configrations =========
-*/
 
 body {
 background:#5f7f5c;
@@ -194,6 +189,7 @@ margin-bottom:1em;
 .chrome article .content .size-thumbnail,.gecko article .content .size-thumbnail,.home .sticky,blockquote {
 border:1px solid #999;
 }
+
 article .content blockquote {
 border-left:6px solid #777;
 }
@@ -207,6 +203,8 @@ article .content blockquote {
 background:#eee;
 background:rgba(255,255,255,0.3);
 }
+
+
 
 .h1,h1 {
 font-family:Georgia, "Times New Roman", Times, serif;
@@ -298,7 +296,7 @@ background:#dedede;
 CSS_PRESET;
 
     $obandes_base_setting =array(
-            array('option_id' =>'null',
+            array('option_id' =>'css',
             'blog_id' => 0 ,
             'option_name' => "obandes_css",
             'option_value' => "$css_preset\n",
@@ -308,29 +306,40 @@ CSS_PRESET;
             'excerpt2'=>'',
              'validate'=>'obandes_css_validate'),
 
-             array('option_id' =>'null',
+             array('option_id' =>'navigation=',
             'blog_id' => 0 ,
-            'option_name' => "obandes_header",
-            'option_value' => 'hide',
+            'option_name' => "obandes_radio_options_navigation",
+            'option_value' => 't4',
             'autoload'=>'yes',
-            'title'=> __('Header image','obandes'),
+            'title'=> __('Navi Col','obandes'),
             'excerpt1'=>'',
             'excerpt2'=>'',
-             'validate'=>'obandes_header_validate')
+             'validate'=>'obandes_radio_options_navigation_validate'),
+
+             array('option_id' =>'pagetype',
+            'blog_id' => 0 ,
+            'option_name' => "obandes_radio_options_pagetype",
+            'option_value' => 'doc2',
+            'autoload'=>'yes',
+            'title'=> __('Page Type','obandes'),
+            'excerpt1'=>'',
+            'excerpt2'=>'',
+             'validate'=>'obandes_radio_options_pagetype_validate'),
              );
+
 
     $obandes_query =  'obandes_setting';
     add_filter( 'use_default_gallery_style', '__return_false' );
     //add_action( 'admin_init', 'obandes_theme_init' );
     add_action('admin_menu', 'obandes_theme_options_add_page');
-    add_action('load-themes.php', 'tmn_install_navigation');
+    add_action('load-themes.php', 'obandes_install_navigation');
     add_filter('contextual_help','obandes_help');
     add_action('init', 'obandes_init');
     add_custom_background();
     load_textdomain( 'obandes', get_template_directory().'/languages/'.get_locale().'.mo' );
     add_custom_image_header( '', 'obandes_admin_header_style' );
     add_filter('body_class','obandes_add_body_class');
-    add_filter("wp_head","tmn_embed_meta",'99');
+    add_filter("wp_head","obandes_embed_meta",'99');
     if(!function_exists("obandes_page_menu_args")){
         function obandes_page_menu_args( $args ) {
             $args['show_home'] = false;
@@ -722,7 +731,8 @@ CSS_PRESET;
             <?php endif;
         }
     }
-    function tmn_embed_meta($content){
+
+    function obandes_embed_meta($content){
         $result = "";
         global $post,$content_width,$is_safari;
     /**
@@ -769,6 +779,16 @@ CSS_PRESET;
     function obandes_css_validate($css){
             return $css;
     }
+    function obandes_radio_options_pagetype_validate($data){
+    return $data;
+
+
+    }
+    function obandes_radio_options_navigation_validate($data){
+    return $data;
+
+
+    }
     function obandes_first_only_msg($type=0) {
         global $obandes_query;
         if ( $type == 1 ) {
@@ -813,7 +833,7 @@ CSS_PRESET;
  *
  */
 
-    function tmn_install_navigation() {
+    function obandes_install_navigation() {
 
         $install = get_option('obandes_theme_settings');
 
@@ -832,7 +852,7 @@ CSS_PRESET;
     }
     function obandes_options_page_view() {
         $obandes_result_message = '';
-        global $select_options, $radio_options,$obandes_query;
+        global $select_options, $obandes_radio_options,$obandes_query;
         echo '<div>';
         screen_icon();
         echo '<h2 style="float:left;">' . get_current_theme() . __( ' Options' ) . '</h2><br style="clear:both;" />';
@@ -885,7 +905,49 @@ CSS_PRESET;
 
 
 
+
+            if (isset( $_POST['action'] ) == 'update' and isset($_POST['obandes_setting']['obandes_radio_options_pagetype'])){
+                global $obandes_base_setting;
+                $ok             = false;
+                $option_value   = esc_html($_POST['obandes_setting']['obandes_radio_options_pagetype']);
+                $option_name    = 'obandes_radio_options_pagetype';
+
+                if($option_value == obandes_radio_options_pagetype_validate($option_value)){
+
+                      $new_settings                 = get_option('obandes_theme_settings');
+                      if($new_settings[$option_name] !== $option_value){
+                          $new_settings[$option_name]   = $option_value;
+                          update_option('obandes_theme_settings',$new_settings);
+                          $obandes_result_message .= __("Page Width ",'obandes');
+                      }
+
+                }
+
+            }
+
+
+            if (isset( $_POST['action'] ) == 'update' and isset($_POST['obandes_setting']['obandes_radio_options_navigation'])){
+                global $obandes_base_setting;
+                $ok             = false;
+                $option_value   = esc_html($_POST['obandes_setting']['obandes_radio_options_navigation']);
+                $option_name    = 'obandes_radio_options_navigation';
+
+               if($option_value == obandes_radio_options_navigation_validate($option_value)){
+
+                      $new_settings                 = get_option('obandes_theme_settings');
+                      if($new_settings[$option_name] !== $option_value){
+                          $new_settings[$option_name]   = $option_value;
+                          update_option('obandes_theme_settings',$new_settings);
+                          $obandes_result_message .= __("Navigation Setting ",'obandes');
+                      }
+
+               }
+
+            }
+
+
         echo '<div id="message" class="updated fade" title="Style Setting" >';
+
         if(isset($obandes_result_message) and !empty($obandes_result_message)){
             echo '<p>'.sprintf(__('<strong>%1$s</strong> updated  successfully.','obandes'),$obandes_result_message).'</p>';
         }else{
@@ -898,65 +960,105 @@ CSS_PRESET;
         $action = "themes.php?page=".$obandes_query;
         echo '<form method="post" action="'.$action.'">';
         settings_fields( 'obandes_setting' );
-        $current_settings   = get_option('obandes_theme_settings');
-        $style              = $current_settings['obandes_css'];
-        $header_image_show  = $current_settings['obandes_header'];
+        $obandes_current_settings   = get_option('obandes_theme_settings');
+        $obandes_style              = $obandes_current_settings['obandes_css'];
+        $obandes_header_image_show  = $obandes_current_settings['obandes_header'];
 
-        $radio_options = array(
-            'yes' => array('value' => 'show',
-            'label' => __( 'show' )),
-            'no' => array('value' => 'hide',
-            'label' => __( 'hide' ))
+        $obandes_radio_options_pagetype = array(
+            'fluid' => array('value' => 'doc4',
+            'label' => __( 'fluid', 'obandes' ),'image' => 'obandes_admin_page_fluid.jpg'),
+            'fix-950' => array('value' => 'doc2',
+            'label' => __( 'fix 950px','obandes' ),'image' => 'obandes_admin_page_950.jpg'),
+            'fix-974' => array('value' => 'doc3',
+            'label' => __( 'fix 974px', 'obandes' ),'image' => 'obandes_admin_page_974.jpg'),
+            'fix-750' => array('value' => 'doc',
+            'label' => __( 'fix 750px', 'obandes' ),'image' => 'obandes_admin_page_750.jpg')
+            );
+
+        $obandes_radio_options_navigation = array(
+            'left-narrow' => array('value' => 't1',
+            'label' => __( 'Left narrow' ),'image' => 'obandes_admin_page_t1.png'),
+            'left-middle' => array('value' => 't2',
+            'label' => __( 'Left middle' ),'image' => 'obandes_admin_page_t2.png'),
+            'left-wide' => array('value' => 't3',
+            'label' => __( 'Left wide' ),'image' => 'obandes_admin_page_t3.png'),
+            'right-narrow' => array('value' => 't4',
+            'label' => __( 'Right narrow' ),'image' => 'obandes_admin_page_t4.png'),
+            'right-middle' => array('value' => 't5',
+            'label' => __( 'Right middle' ),'image' => 'obandes_admin_page_t5.png'),
+            'right-wide' => array('value' => 't6',
+            'label' => __( 'Right wide' ),'image' => 'obandes_admin_page_t6.png'),
             );
 
         if (!isset($checked)){
             $checked = '';
         }
-        $rows =substr_count($style, "\n") * 1.5 + 10;
+        $rows =substr_count($obandes_style, "\n") * 1.5 + 10;
         echo '<p><input type="submit" value="'. __( 'Save Options' ).'" class="button" /></p>';
         echo '<table summary="stylesheet" class="form-table">';
         echo '<col class="highlight tablenav" />';
         echo '<col class="tablenav" />';
+
+        /////////////////////
         echo '<tr valign="top">';
-        echo '<td class="title" style="font-size:24px;font-weight:bold;vertical-align:middle;width:260px;border-bottom:3px solid #fff;">'.__( 'Show Header Image' ).'</td>';
-        echo '<td>';
-        //$radio_options loop
-        foreach ( $radio_options as $option ) {
+        echo '<td class="title" style="font-size:24px;font-weight:bold;vertical-align:middle;width:260px;border-bottom:3px solid #fff;">'.__( 'Column' ).'</td>';
+        echo '<td><ul>';
+        //$obandes_radio_options loop
+        foreach ( $obandes_radio_options_navigation as $option ) {
             $radio_setting = $option['value'];
             if ( '' != $radio_setting ) {
-                if ( $option['value'] == $header_image_show ) {
+                if ( $option['value'] == $obandes_current_settings['obandes_radio_options_navigation'] ) {
                     $checked = "checked=\"checked\"";
                 } else {
                     $checked = '';
                 }
             }
-        $radio_block = '<label><input type="radio" name="%s" value="%s" %s />%s;</label><br />';
+        $radio_block = '<li style="float:left"><label><input type="radio" name="%s" value="%s" %s />&nbsp;%s<div style="%s">&nbsp;</div></label><br />';
 
             printf($radio_block,
-                    esc_attr('obandes_setting[obandes_header]'),
+                    esc_attr('obandes_setting[obandes_radio_options_navigation]'),
                     esc_attr( $option['value']),
                     $checked,
-                    esc_html($option['label'])
+                    esc_html($option['label']),
+                    'width:150px;height:150px;background:url('.get_template_directory_uri().'/images/'.$option['image'].');'
+                );
+        }
+        echo '</ul></td></tr>';
+
+        ////////////////////////
+        echo '<tr valign="top">';
+        echo '<td class="title" style="font-size:24px;font-weight:bold;vertical-align:middle;width:260px;border-bottom:3px solid #fff;">'.__( 'Page' ).'</td>';
+        echo '<td>';
+        //$obandes_radio_options loop
+        foreach ( $obandes_radio_options_pagetype as $option ) {
+            $radio_setting = $option['value'];
+            if ( '' != $radio_setting ) {
+                if ( $option['value'] == $obandes_current_settings['obandes_radio_options_pagetype'] ) {
+                    $checked = "checked=\"checked\"";
+                } else {
+                    $checked = '';
+                }
+            }
+        $radio_block = '<li style="float:left;list-style:none;"><label><input type="radio" name="%s" value="%s" %s />&nbsp;%s<div style="%s">&nbsp;</div></label><br />';
+
+            printf($radio_block,
+                    esc_attr('obandes_setting[obandes_radio_options_pagetype]'),
+                    esc_attr( $option['value']),
+                    $checked,
+                    esc_html($option['label']),
+                    'width:150px;height:150px;background:url('.get_template_directory_uri().'/images/'.$option['image'].');'
+
                 );
         }
         echo '</td></tr>';
         echo '<tr valign="top">';
         echo '<td class="title" ><div style="font-size:24px;font-weight:bold;vertical-align:top;">'.__( 'CSS Edit' ,'obandes' );
-        echo '</div><p style="font-weight:bold">Cofigration Example</p>';
-        echo '<p class="description">'.__("You can change page width and column position","obandes").'</p>';
-        echo '<pre>e.g. shrink,fix
-layout-type=shrink
-e.g. narrow,wide
-letter-width=narrow
-e.g. right,left
-menu-position=left
-e.g. narrow,middle,wide
-menu-width=middle</pre>';
+        echo '</div>';
         echo '</td>';
         echo '<td>';
         echo '<textarea id="obandes_setting[obandes_css]" cols="50" rows="10" name="obandes_setting[obandes_css]"';
         echo ' style="width:90%;height:'.$rows.'em;line-height:1.5;font-size:120%;font-family:"Courier New", Courier, mono;padding:3px;">';
-        echo stripslashes( $style);
+        echo stripslashes( $obandes_style);
         echo '</textarea>';
         echo '</td></tr></table>';
         echo '<p><input type="submit" value="'. __( 'Save Options' ).'" class="button" /></p>';
@@ -1072,8 +1174,8 @@ menu-width=middle</pre>';
     }
 
 function obandes_detect_option($condition){
-    $current_settings       = get_option('obandes_theme_settings');
-    $config                 = $current_settings['obandes_css'];
+    $obandes_current_settings       = get_option('obandes_theme_settings');
+    $config                 = $obandes_current_settings['obandes_css'];
 
     preg_match("!^$condition=(.+)$!mu",$config,$regs);
 
@@ -1113,15 +1215,22 @@ e.g. narrow,middle,wide
 menu-width:wide
 */
 
-    $current_settings       = get_option('obandes_theme_settings');
+    $obandes_current_settings       = get_option('obandes_theme_settings');
     if($condition == 'header_image'){
-        $image  = $current_settings['obandes_header'];
+        $image  = $obandes_current_settings['obandes_header'];
         return trim($image);
     }
-    $config                 = $current_settings['obandes_css'];
 
+
+    if($condition == 'letter-width'){
+
+    if(isset($obandes_current_settings['obandes_radio_options_pagetype'])){
+
+        return $obandes_current_settings['obandes_radio_options_pagetype'];
+    }
+
+    $config = $obandes_current_settings['obandes_css'];
     $value = obandes_detect_option($condition);
-
 
     if($value === false){
 
@@ -1136,7 +1245,10 @@ menu-width:wide
     }
 
 
-if($condition == 'letter-width'){
+
+
+
+
     if($value == 'narrow'){
         if( obandes_detect_option('layout-type') == 'fix'){
             return 'doc';
@@ -1165,6 +1277,12 @@ if($condition == 'letter-width'){
     }
 }
 if($condition == 'menu-position'){
+if(isset($obandes_current_settings['obandes_radio_options_navigation'])){
+
+    return 'yui-'.$obandes_current_settings['obandes_radio_options_navigation'];
+}
+
+
 
     if($value == 'left'){
         if(obandes_detect_option('menu-width') == 'narrow'){
