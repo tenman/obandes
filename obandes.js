@@ -26,8 +26,13 @@ var uniq = {};
 
         });
 
+        jQuery('.home table#horizon-video').before('<h2 id="horizon-video-title">Videos</h2>');
+        jQuery('.home table#horizon-quote').before('<h2 id="horizon-quote-title">Quotes</h2>');
+        jQuery('.home table#horizon-link').before('<h2 id="horizon-link-title">Links</h2>');
+        jQuery('.home table#horizon-aside').before('<h2 id="horizon-aside-title">Asides</h2>');
 
-        jQuery('h2[id^="horizon"]').css("cursor","pointer");
+
+		jQuery('h2[id^="horizon"]').css("cursor","pointer");
 
         jQuery('h2[id^="horizon"]').hover(
             function(){

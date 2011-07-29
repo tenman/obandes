@@ -39,11 +39,11 @@
 		
 	if ( have_comments() ){
 
-		$response_message = sprintf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'obandes' ),
+		$obandes_response_message = sprintf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'obandes' ),
 										 number_format_i18n( get_comments_number() ),
 										 '<em>' . get_the_title() . '</em>' 
 							);
-		printf('<h3 id="comments-title">%s</h3>',$response_message);
+		printf('<h3 id="comments-title">%s</h3>',$obandes_response_message);
 					
 		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ){ 
 			obandes_comment_prev_next();

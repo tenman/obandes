@@ -10,57 +10,57 @@
  ?>
 <?php
 	$obandes_class_name = "";
-	$page_title = "";
+	$obandes_page_title = "";
 	if(is_search()){
 		$obandes_class_name = 'serch-result'; 
-		$page_title = __("Search Results",'obandes');
-		$page_title_c = get_search_query();
+		$obandes_page_title = __("Search Results",'obandes');
+		$obandes_page_title_c = get_search_query();
 	}elseif(is_tag()){
 		$obandes_class_name = 'tag-archives'; 
-		$page_title = __("Tag Archives",'obandes');
-		$page_title_c = single_term_title("", false);
+		$obandes_page_title = __("Tag Archives",'obandes');
+		$obandes_page_title_c = single_term_title("", false);
 	}elseif(is_category()){
 		$obandes_class_name = 'category-archives'; 
-		$page_title = __("Category Archives",'obandes');
-		$page_title_c = single_cat_title('', false);
+		$obandes_page_title = __("Category Archives",'obandes');
+		$obandes_page_title_c = single_cat_title('', false);
 	}elseif (is_archive()){
 		if (is_day()){
 			$obandes_class_name = 'dayly-archives'; 
-			$page_title = __('Daily Archives', 'obandes');
-			$page_title_c = get_the_date(get_option('date_format'));
+			$obandes_page_title = __('Daily Archives', 'obandes');
+			$obandes_page_title_c = get_the_date(get_option('date_format'));
 		}elseif (is_month()){
 			$obandes_class_name = 'monthly-archives'; 
-			$page_title = __('Monthly Archives', 'obandes');
+			$obandes_page_title = __('Monthly Archives', 'obandes');
 			if(get_bloginfo("language") == 'ja'){
-				$page_title_c = get_the_date('Y / F');
+				$obandes_page_title_c = get_the_date('Y / F');
 			}else{
-				$page_title_c = get_the_date('F Y');
+				$obandes_page_title_c = get_the_date('F Y');
 			}
 		}elseif (is_year()){
 			$obandes_class_name = 'yearly-archives'; 
-			$page_title = __('Yearly Archives', 'obandes');
-			$page_title_c = get_the_date('Y');
+			$obandes_page_title = __('Yearly Archives', 'obandes');
+			$obandes_page_title_c = get_the_date('Y');
 		}elseif (is_author()){
 			$obandes_class_name = 'author-archives'; 
-			$page_title =	__("Author Archives",'obandes');
+			$obandes_page_title =	__("Author Archives",'obandes');
 
 			while (have_posts()){ the_post();
-				$page_title_c = get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'obandes_author_bio_avatar_size', 32 ) ).' '.get_the_author();
+				$obandes_page_title_c = get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'obandes_author_bio_avatar_size', 32 ) ).' '.get_the_author();
 				break;
 			}
 			rewind_posts();
 		}else{
 			$obandes_class_name = 'blog-archives';
-			$page_title = __("Blog Archives",'obandes');
+			$obandes_page_title = __("Blog Archives",'obandes');
 		}
 	}
 	
 echo '<ul class="index yui-b '.esc_attr($obandes_class_name).'">';
 	
-	if(!empty($page_title)){
+	if(!empty($obandes_page_title)){
 		printf('<li class="h1" id="archives-title">%s <span>%s</span></li>',
-				$page_title,
-				$page_title_c
+				$obandes_page_title,
+				$obandes_page_title_c
 		);
 	
 	}

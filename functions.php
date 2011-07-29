@@ -40,9 +40,7 @@
         define('HEADER_IMAGE_HEIGHT', 198);//auto or 999px
     }
 
-    if(get_obandes_condition("header_image") !== 'show'){
-        header_image_alert();
-    }
+
     add_action( 'widgets_init', 'obandes_widgets_init' );
     function obandes_widgets_init() {
         register_sidebar(array (
@@ -1159,19 +1157,6 @@ CSS_PRESET;
 </div>
 <?php }?>
 <?php
-/**
- * Alert when SHOW_HEADER_IMAGE false
- *
- *
- *
- *
- */
-
-    function header_image_alert(){
-        if(isset($_GET['page']) and $_GET['page'] == 'custom-header'){
-        printf('<script type="text/javascript">alert(\'%s\');</script>',__('Please open obandes option, and set the value of Show Header Image to show.','obandes'));
-        }
-    }
 
 function obandes_detect_option($condition){
     $obandes_current_settings       = get_option('obandes_theme_settings');

@@ -14,8 +14,8 @@ if(WP_DEBUG == true){
 }?>
 <section id="yui-main">
 <?php
-global $is_IE;
-if(is_home() === false or $is_IE == true){
+
+if(is_home() === false){
 	get_template_part( 'loop', 'default' );
 }else{
 	get_template_part( 'loop', 'format' );
