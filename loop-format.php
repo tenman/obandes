@@ -18,7 +18,15 @@
       <?php previous_posts_link( __( '<span class="button">Newer posts <span class="meta-nav">&rarr;</span></span>', 'obandes' ) ); ?>
       </span> </div>
   </div>
-  <?php 	} //end #nav-above	?>
+  <?php 	} //end #nav-above	
+  	$obandes_format_count_link 		= 0;
+	$obandes_format_count_image 	= 0;
+	$obandes_format_count_quote 	= 0;
+	$obandes_format_count_video 	= 0;
+	$obandes_format_count_aside 	= 0;
+	$obandes_format_count_default 	= 0;
+	$obandes_format_add_class 		= 0;  
+  ?>
   <?php while (have_posts()){ the_post(); ?>
   <?php if(get_post_format( $post->ID ) === false ){ 
 /**
@@ -64,7 +72,7 @@ the_content();
  *
  */
 	$obandes_format_name 	= get_post_format( $post->ID );
-	$obandes_format_class 	= 'class="horizon-'.$obandes_format_name.'"';	
+	
 	if(WP_DEBUG == true){
 		echo '<!--loop-format.php case:'.$obandes_format_name.' start-->'."\n";
 	}
@@ -78,8 +86,12 @@ the_content();
  *
  */
 	case("video"):
+	
+		$obandes_format_class 	= 'class="horizon-postformat-'.$obandes_format_name.obandes_format_add_class($obandes_format_count_video).'"';	
+	$obandes_format_count_video ++;	
+
 ?>
-  <div <?php echo $obandes_format_class;?>>
+  <div>
     <?php
 			printf('<article id="post-%s" %s>',	
 				$post->ID,
@@ -108,6 +120,9 @@ the_content();
  *
  */
 	case("quote"):
+	$obandes_format_class 	= 'class="horizon-postformat-'.$obandes_format_name.obandes_format_add_class($obandes_format_count_quote).'"';	
+	$obandes_format_count_quote ++;	
+
 ?>
   <div <?php echo $obandes_format_class;?>>
     <?php
@@ -140,6 +155,9 @@ the_content();
  */
 	case("image"):
 	
+	$obandes_format_class 	= 'class="horizon-postformat-'.$obandes_format_name.obandes_format_add_class($obandes_format_count_image).'"';	
+	$obandes_format_count_image ++;		
+
 		$obandes_content = get_the_content( __( 'Continue&nbsp;reading&nbsp;<span class="meta-nav">&rarr;</span>', 'obandes' ) );
 		
 		if(preg_match("|(<img[^>]+>)|",$obandes_content,$regs)){
@@ -155,7 +173,7 @@ the_content();
     <?php edit_post_link( __( 'Edit', 'obandes' ), '<span class="edit-link">', '</span>' ); ?>
   </div>
   <hr class="clear" />
-  ';
+
   <?php		
 		}
 	break;
@@ -168,6 +186,8 @@ the_content();
  *
  */
 	case("link"):
+	$obandes_format_class 	= 'class="horizon-postformat-'.$obandes_format_name.obandes_format_add_class($obandes_format_count_link).'"';	
+	$obandes_format_count_link ++;	
 ?>
   <div <?php echo $obandes_format_class;?>>
     <?php
@@ -202,6 +222,7 @@ the_content();
   </div>
   <?php
 	break;
+	
 /**
  *
  *
@@ -209,7 +230,10 @@ the_content();
  *
  *
  */
-	default:
+	case("aside"):
+
+	$obandes_format_class 	= 'class="horizon-postformat-'.$obandes_format_name.obandes_format_add_class($obandes_format_count_aside).'"';	
+	$obandes_format_count_aside ++;	
 ?>
   <div <?php echo $obandes_format_class;?>>
     <?php
@@ -229,8 +253,7 @@ the_content();
     <div class="clear"></div>
     <?php comments_template( '', true ); ?>
     </article>
-  </div>
-  <?php 	}//end switch ?>
+  </div><?php	}//end switch ?>
   <?php
 	}//endif?>
   <?php
@@ -246,3 +269,25 @@ the_content();
     </span></div>
 </div>
 <?php }//end nav below ?>
+
+<?php
+
+	function obandes_format_add_class($num,$pitch = 3){
+	
+		if($num < $pitch){
+			return 1;
+		}elseif($num < $pitch * 2){
+			return 2;
+		}elseif($num < $pitch * 3){
+			return 3;
+		}elseif($num < $pitch * 4){
+			return 4;
+		}elseif($num < $pitch * 5){
+			return 5;
+		}elseif($num < $pitch * 6){
+			return 6;
+		}
+	
+	
+	}
+?>

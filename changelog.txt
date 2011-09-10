@@ -1,4 +1,17 @@
 Changelog -----------------------------------
+version:0.72
+added
+    add
+        comment link where posted on area
+        header background color setting and color picker
+    fix
+        I18n functions namespace check and fix
+        loose view ploblem
+        Browser view issue Post Format Groups overflow main content where loop post
+    remove
+        nav list marker remove(comment out)
+----------------------------------------------
+Changelog -----------------------------------
 version:0.71
 added
     theme option page UI change

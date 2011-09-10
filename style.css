@@ -4,7 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description: 	This is sidebar width and position changeable 2column html5 theme. You can embed big size photo easy and can get drag and drop view when using post format image. Post format link make a website thumbnail create automatically. And index page have post format group view.Some category has special layout e.g blog , gallery. All of view keep WEB standard. This theme has style sheet editor for background ,color and border. Layout keep clean and not broken when  you delete all this textarea. This theme is the one such as palettes and paintbrushes often devised for the artist.  
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 0.71
+Version: 0.72
 Tags:white, two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready,editor-style
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -464,7 +464,7 @@ nav li.recentcomments{
 html>body nav li a:hover,
 html>body nav li a {
     width: auto;
-	max-width:88%;
+	max-width:80%;
 	}
 html>body .yui-t1 nav li a:hover,
 html>body .yui-t4 nav li a:hover,
@@ -1431,9 +1431,7 @@ blockquote{
 	border-bottom:2px groove #eee;
 }
 nav li li{
-	border-bottom:0 solid #ccc;
-	list-style-image:url("images/list-marker.png")!important;
-	list-style-position:inside;
+	/*list-style-image:url("images/list-marker.png")!important;*/
 	
 }
 .pagenate a span {
@@ -1867,4 +1865,16 @@ nav h2{
 	font-size:167%;
 	margin-left:20px;
 
+}
+div.horizon-video{
+position:relative;
+overflow:hidden;
+max-width:100%;
+}
+
+td[class^="horizon-postformat"]{
+width:33%;
+}
+td[class^="horizon-postformat"] > div{
+overflow:hidden;
 }

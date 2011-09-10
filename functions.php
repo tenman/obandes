@@ -1,6 +1,4 @@
 <?php
-
-
 /**
  * #doc - 750px centered (good for 800x600)
  * #doc2 - 950px centered (good for 1024x768)
@@ -30,9 +28,13 @@
     if(!defined('HEADER_TEXTCOLOR')){
         define('HEADER_TEXTCOLOR', 'ffffff');
     }
+    if(!defined('HEADER_IMAGE_BACKGROUND_COLOR')){
+        define('HEADER_IMAGE_BACKGROUND_COLOR','orange');
+    }
     if(!defined('HEADER_IMAGE')){
         define('HEADER_IMAGE', '%s/images/headers/wp3.jpg');
     }
+
      if(!defined('HEADER_IMAGE_WIDTH')){
         define('HEADER_IMAGE_WIDTH', 950);//auto or 999px
     }
@@ -44,7 +46,7 @@
     add_action( 'widgets_init', 'obandes_widgets_init' );
     function obandes_widgets_init() {
         register_sidebar(array (
-          'name' => __('Default Sidebar'),
+          'name' => __('Default Sidebar','obandes'),
           'id' => 'sidebar-1',
           'before_widget' => '<li class="widget default">',
           'after_widget' => '</li>',
@@ -76,6 +78,161 @@ if(locate_template( array( 'formats/format.php' ))){
             )
     );
 }
+
+
+add_custom_image_header( 'obandes_header_style', 'obandes_admin_header_style','obandes_admin_header_image');
+
+if ( ! function_exists( 'obandes_header_style' ) ){
+    function obandes_header_style(){
+
+        ?>
+        <style type="text/css">
+        <?php echo 'header h1,header h1 a,header #site-description {color:#'.get_theme_mod( 'header_textcolor' ).'}';?>
+
+        </style>
+        <?php
+    }
+}
+
+if ( ! function_exists( 'obandes_admin_header_style' ) ){
+    function obandes_admin_header_style() {
+    ?>
+        <style type="text/css">
+        /* Shows the same border as on front end */
+        #headimg {
+            -moz-border-radius-topleft:10px;
+            -moz-border-radius-topright:10px;
+            -webkit-border-top-left-radius:10px;
+            -webkit-border-top-right-radius:10px;
+            border-top-left-radius:10px;
+            border-top-right-radius:10px;
+            background:<?php echo get_obandes_condition('obandes_header_background_color');?>;
+            padding-top:1em;
+        }
+        #headimg h1{
+            font-family:Georgia, "Times New Roman", Times, serif;
+            margin:0 10px!important;
+            font-size:2em!important;
+            text-align:left;
+            text-decoration:none;
+            text-align:left;
+            font-weight:700;
+            text-indent:10px;
+        }
+        #headimg img{
+            border-bottom:2px solid #000;
+            margin-bottom:-5px;
+        }
+
+        #headimg #site-description{
+            text-indent:1em;
+            margin:0;
+            padding:12px;
+            text-align:left;
+        }
+
+        #headimg #name {
+            color:#000;
+        }
+        #headimg #desc {
+            color:#000;
+        }
+        #headimg #access a,
+        #headimg #access .menu,
+        #headimg #access {
+            background:#000;
+            color:#fff;
+        }
+        #headimg #access {
+            display: block;
+            margin: 0;
+            width: 100%;
+        }
+        #headimg #access .menu-header,
+        div.menu {
+            font-size: 13px;
+            margin-left: 12px;
+            width: 98.7%;
+        }
+        #headimg #access .menu-header ul,
+        div.menu ul {
+            list-style: none;
+            margin: 0;
+        }
+        #headimg #access .menu-header li,
+        div.menu li {
+            float: left;
+            position: relative;
+            list-style:none;
+            margin:0;
+        }
+        #headimg #access a {
+            display: block;
+            line-height: 3em;
+            padding: 0 10px;
+            text-decoration: none;
+        }
+        #headimg #access ul ul {
+            display: none;
+            position: absolute;
+            top: 3em;
+            left: 0;
+            float: left;
+            width: 180px;
+            z-index: 99999;
+        }
+        #headimg #access ul ul li {
+            min-width: 180px;
+        }
+        #headimg #access ul ul ul {
+            left: 100%;
+            top: 0;
+        }
+        #headimg #access ul ul a {
+            line-height: 1em;
+            padding: 10px;
+            width: 160px;
+            height: auto;
+        }
+        #headimg #access ul li:hover > ul {
+            display: block;
+        }
+        </style>
+    <?php
+    }
+}
+if ( ! function_exists( 'obandes_admin_header_image' ) ){
+
+    function obandes_admin_header_image(){
+        $obandes_header_image = get_header_image();
+    get_bloginfo( 'name' );
+
+    $obandes_header_style = 'style="color:#'.get_theme_mod( 'header_textcolor' ).'"';
+
+
+
+    ?>
+    <div id="headimg">
+                <h1 <?php echo $obandes_header_style;?>><a id="name" onclick="return false;" href="<?php esc_url( home_url( '/' ) );?>"><?php bloginfo( 'name' ); ?></a></h1>
+        <div id="site-description" <?php echo $obandes_header_style;?>><?php bloginfo( 'description' ); ?></div>
+        <div id="access" role="navigation" class="clearfix">
+<?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
+        </div>
+<?php
+$header_image_format = '<div style="background:#000;overflow:visible"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
+
+            printf( $header_image_format,
+                    $obandes_header_image,
+                    HEADER_IMAGE_WIDTH,
+                    HEADER_IMAGE_HEIGHT,
+                    obandes_document_width()
+            );
+?>
+    </div>
+    <?php
+    }
+}
+
 /**
  * editor-style.css
  */
@@ -88,6 +245,7 @@ if(locate_template( array( 'admin/editor-style.css' ))){
 /**
  * horizon class demo colors
  */
+$header_background_color = HEADER_IMAGE_BACKGROUND_COLOR;
 $css_preset =<<< CSS_PRESET
 
 body {
@@ -103,8 +261,8 @@ border-radius:10px;
 box-shadow:0 0 15px rgba(0,0,0);
 }
 footer,header {
-background:orange;
-color:#fff;
+background:$header_background_color;
+/*color:#fff;*/
 }
 nav h3:before,
 h3.widget-title:before {
@@ -206,7 +364,7 @@ background:rgba(255,255,255,0.3);
 
 .h1,h1 {
 font-family:Georgia, "Times New Roman", Times, serif;
-font-size:2em;
+/*font-size:2em;*/
 }
 .plate,.grad {
 /*background:0 to(#669999));*/
@@ -323,6 +481,19 @@ CSS_PRESET;
             'excerpt1'=>'',
             'excerpt2'=>'',
              'validate'=>'obandes_radio_options_pagetype_validate'),
+
+             array('option_id' =>'headerbackgroundcolor',
+            'blog_id' => 0 ,
+            'option_name' => "obandes_header_background_color",
+            'option_value' => 'orange',
+            'autoload'=>'yes',
+            'title'=> __('Header Background Color','obandes'),
+            'excerpt1'=>'',
+            'excerpt2'=>'',
+             'validate'=>'obandes_header_background_color_validate'),
+
+
+
              );
 
 
@@ -335,7 +506,7 @@ CSS_PRESET;
     add_action('init', 'obandes_init');
     add_custom_background();
     load_textdomain( 'obandes', get_template_directory().'/languages/'.get_locale().'.mo' );
-    add_custom_image_header( '', 'obandes_admin_header_style' );
+   // add_custom_image_header( '', 'obandes_admin_header_style' );
     add_filter('body_class','obandes_add_body_class');
     add_filter("wp_head","obandes_embed_meta",'99');
     if(!function_exists("obandes_page_menu_args")){
@@ -425,7 +596,23 @@ CSS_PRESET;
     if (!function_exists('obandes_posted_on')) {
         function obandes_posted_on($display = true) {
 
-        $result = sprintf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'obandes' ),
+            if (comments_open()){
+                $obandes_comment_html = '<a href="%1$s" class="obandes-comment-link"><span class="obandes-comment-string">%3$s</span>%2$s</a>';
+                if(get_comments_number() > 0 ){
+                    $obandes_comment_string = _n('Comment','Comments',get_comments_number(),'obandes');
+                    $obandes_comment_number = get_comments_number();
+                }else{
+                    $obandes_comment_string = 'Comment';
+                    $obandes_comment_number = '';
+                }
+            }else{
+                $obandes_comment_html   = '';
+                $obandes_comment_string = '';
+                $obandes_comment_number = '';
+
+            }
+
+        $result = sprintf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s  %4$s', 'obandes' ),
             'meta-prep meta-prep-author',
             sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="date">%3$s</span></a>',
                 get_permalink(),
@@ -436,7 +623,8 @@ CSS_PRESET;
                 get_author_posts_url( get_the_author_meta( 'ID' ) ),
                 sprintf( esc_attr__( 'View all posts by %s', 'obandes' ), get_the_author() ),
                 get_the_author()
-            )
+            ),
+            sprintf($obandes_comment_html,get_comments_link(),$obandes_comment_number,$obandes_comment_string)
         );
 
         if($display == false){
@@ -489,24 +677,7 @@ CSS_PRESET;
 
         }
     }
-    if ( ! function_exists( 'obandes_admin_header_style' ) ){
-        function obandes_admin_header_style() {
-        ?>
-            <style type="text/css">
-            /* Shows the same border as on front end */
-            #headimg {
-                border-bottom: 1px solid #000000;
-                border-top: 4px solid #000000;
-            }
-            /* If NO_HEADER_TEXT is false, you can style here the header text preview */
-            #headimg #name {
-            }
-            #headimg #desc {
-            }
-            </style>
-        <?php
-        }
-    }
+
     if (!function_exists('obandes_add_body_class')) {
         function obandes_add_body_class($class) {
 
@@ -775,17 +946,21 @@ CSS_PRESET;
             return  $header_image_val;
     }
     function obandes_css_validate($css){
+    $css = str_replace(array("<script",'</script>','<'.'?'),"",$css);
             return $css;
     }
     function obandes_radio_options_pagetype_validate($data){
-    return $data;
+            return esc_html($data);
 
 
     }
     function obandes_radio_options_navigation_validate($data){
-    return $data;
+            return esc_html($data);
 
 
+    }
+    function obandes_header_background_color_validate($data){
+            return esc_html($data);
     }
     function obandes_first_only_msg($type=0) {
         global $obandes_query;
@@ -845,15 +1020,29 @@ CSS_PRESET;
         }
     }
 
+
+add_action('admin_print_styles', 'my_admin_print_styles');
+function my_admin_print_styles() {
+  wp_enqueue_style( 'farbtastic' );
+}
+add_action('admin_print_scripts', 'my_admin_print_scripts');
+function my_admin_print_scripts() {
+  wp_enqueue_script( 'farbtastic' );
+  wp_enqueue_script( 'quicktags' );
+  wp_enqueue_script( 'my-admin-script', get_bloginfo('stylesheet_directory') . '/admin-script.js', array( 'farbtastic', 'quicktags' ), false, true );
+}
+
     function obandes_theme_options_add_page() {
-    add_theme_page(__( 'Obandes Options' ), __( 'Obandes Options' ),'edit_theme_options', 'obandes_setting',             'obandes_options_page_view' );
+    add_theme_page(__( 'Obandes Options','obandes'), __( 'Obandes Options' ,'obandes'),'edit_theme_options', 'obandes_setting',             'obandes_options_page_view' );
     }
+
+
     function obandes_options_page_view() {
         $obandes_result_message = '';
         global $select_options, $obandes_radio_options,$obandes_query;
         echo '<div>';
         screen_icon();
-        echo '<h2 style="float:left;">' . get_current_theme() . __( ' Options' ) . '</h2><br style="clear:both;" />';
+        echo '<h2 style="float:left;">' . get_current_theme() . __( ' Options' ,'obandes') . '</h2><br style="clear:both;" />';
 
             /**
              * POSTGET
@@ -943,6 +1132,24 @@ CSS_PRESET;
 
             }
 
+            if (isset( $_POST['action'] ) == 'update' and isset($_POST['obandes_setting']['obandes_header_background_color'])){
+                global $obandes_base_setting;
+                $ok             = false;
+                $option_value   = esc_html($_POST['obandes_setting']['obandes_header_background_color']);
+                $option_name    = 'obandes_header_background_color';
+
+               if($option_value == obandes_radio_options_navigation_validate($option_value)){
+
+                      $new_settings                 = get_option('obandes_theme_settings');
+                      if($new_settings[$option_name] !== $option_value){
+                          $new_settings[$option_name]   = $option_value;
+                          update_option('obandes_theme_settings',$new_settings);
+                          $obandes_result_message .= __("Header Background Color",'obandes');
+                      }
+
+               }
+
+            }
 
         echo '<div id="message" class="updated fade" title="Style Setting" >';
 
@@ -961,6 +1168,7 @@ CSS_PRESET;
         $obandes_current_settings   = get_option('obandes_theme_settings');
         $obandes_style              = $obandes_current_settings['obandes_css'];
         $obandes_header_image_show  = $obandes_current_settings['obandes_header'];
+        $obandes_header_background_color_val  = $obandes_current_settings['obandes_header_background_color'];
 
         $obandes_radio_options_pagetype = array(
             'fluid' => array('value' => 'doc4',
@@ -975,31 +1183,31 @@ CSS_PRESET;
 
         $obandes_radio_options_navigation = array(
             'left-narrow' => array('value' => 't1',
-            'label' => __( 'Left narrow' ),'image' => 'obandes_admin_page_t1.png'),
+            'label' => __( 'Left narrow' ,'obandes'),'image' => 'obandes_admin_page_t1.png'),
             'left-middle' => array('value' => 't2',
-            'label' => __( 'Left middle' ),'image' => 'obandes_admin_page_t2.png'),
+            'label' => __( 'Left middle','obandes' ),'image' => 'obandes_admin_page_t2.png'),
             'left-wide' => array('value' => 't3',
-            'label' => __( 'Left wide' ),'image' => 'obandes_admin_page_t3.png'),
+            'label' => __( 'Left wide','obandes' ),'image' => 'obandes_admin_page_t3.png'),
             'right-narrow' => array('value' => 't4',
-            'label' => __( 'Right narrow' ),'image' => 'obandes_admin_page_t4.png'),
+            'label' => __( 'Right narrow','obandes' ),'image' => 'obandes_admin_page_t4.png'),
             'right-middle' => array('value' => 't5',
-            'label' => __( 'Right middle' ),'image' => 'obandes_admin_page_t5.png'),
+            'label' => __( 'Right middle','obandes' ),'image' => 'obandes_admin_page_t5.png'),
             'right-wide' => array('value' => 't6',
-            'label' => __( 'Right wide' ),'image' => 'obandes_admin_page_t6.png'),
+            'label' => __( 'Right wide','obandes' ),'image' => 'obandes_admin_page_t6.png'),
             );
 
         if (!isset($checked)){
             $checked = '';
         }
         $rows =substr_count($obandes_style, "\n") * 1.5 + 10;
-        echo '<p><input type="submit" value="'. __( 'Save Options' ).'" class="button" /></p>';
+        echo '<p><input type="submit" value="'. __( 'Save Options' ,'obandes').'" class="button" /></p>';
         echo '<table summary="stylesheet" class="form-table">';
         echo '<col class="highlight tablenav" />';
         echo '<col class="tablenav" />';
 
         /////////////////////
         echo '<tr valign="top">';
-        echo '<td class="title" style="font-size:24px;font-weight:bold;vertical-align:middle;width:260px;border-bottom:3px solid #fff;">'.__( 'Column' ).'</td>';
+        echo '<td class="title" style="font-weight:bold;vertical-align:middle;width:260px;border-bottom:3px solid #fff;">'.__( 'Column','obandes' ).'</td>';
         echo '<td><ul>';
         //$obandes_radio_options loop
         foreach ( $obandes_radio_options_navigation as $option ) {
@@ -1025,7 +1233,7 @@ CSS_PRESET;
 
         ////////////////////////
         echo '<tr valign="top">';
-        echo '<td class="title" style="font-size:24px;font-weight:bold;vertical-align:middle;width:260px;border-bottom:3px solid #fff;">'.__( 'Page' ).'</td>';
+        echo '<td class="title" style="font-weight:bold;vertical-align:middle;width:260px;border-bottom:3px solid #fff;">'.__( 'Page' ).'</td>';
         echo '<td>';
         //$obandes_radio_options loop
         foreach ( $obandes_radio_options_pagetype as $option ) {
@@ -1049,17 +1257,46 @@ CSS_PRESET;
                 );
         }
         echo '</td></tr>';
-        echo '<tr valign="top">';
-        echo '<td class="title" ><div style="font-size:24px;font-weight:bold;vertical-align:top;">'.__( 'CSS Edit' ,'obandes' );
+               echo '<tr valign="top">';
+        echo '<td class="title" ><div style="font-weight:bold;vertical-align:top;">'.__( 'Header Background Color' ,'obandes' );
         echo '</div>';
         echo '</td>';
         echo '<td>';
-        echo '<textarea id="obandes_setting[obandes_css]" cols="50" rows="10" name="obandes_setting[obandes_css]"';
+                $obandes_text_field = '<div><input type="text" name="%1$s" id="%1$s" class="obandes-color-picker" value="" />'.
+                                    '<a href="#" id="pickcolor" class="button">'.__("Select a Color","obandes").'</a>'.
+                                    '<div id="colorpicker-selector" %3$s></div>';
+
+                    printf($obandes_text_field,
+                        esc_attr('obandes_setting[obandes_header_background_color]'),
+                        esc_attr($obandes_header_background_color_val),
+                        'style="z-index: 100; background:#fff; border:1px solid #ccc; position:absolute; display:none;"'
+
+                    );
+
+        echo '</td></tr>';
+
+        echo '<tr valign="top">';
+        echo '<td class="title" ><div style="font-weight:bold;vertical-align:top;">'.__( 'CSS Edit' ,'obandes' );
+                $obandes_text_field = '<div style="margin:1em; padding:1em;border:inset thin">
+                <p style="font-weight:normal">Create Hex Color Code</p><input id="obandespastetextarea" type="text" name="%1$s" id="%1$s" class="obandes-color-picker2" value="" onClick="this.select();" />'.'<a href="#" id="pickcolor2" class="button">'.__("Select a Color","obandes").'</a>'.
+'<div id="colorpicker-selector2" %3$s></div>';
+
+                    printf($obandes_text_field,
+                        esc_attr('obandes_setting[obandes_header_background_color]'),
+                        esc_attr($obandes_header_background_color_val),
+                        'style="z-index: 100; background:#fff; border:1px solid #ccc; position:absolute; display:none;"'
+
+                    );
+
+        echo '</div>';
+        echo '</td>';
+        echo '<td>';
+        echo '<textarea class="obandes-css-textarea" id="obandes_setting[obandes_css]" cols="50" rows="10" name="obandes_setting[obandes_css]"';
         echo ' style="width:90%;height:'.$rows.'em;line-height:1.5;font-size:120%;font-family:"Courier New", Courier, mono;padding:3px;">';
         echo stripslashes( $obandes_style);
         echo '</textarea>';
         echo '</td></tr></table>';
-        echo '<p><input type="submit" value="'. __( 'Save Options' ).'" class="button" /></p>';
+        echo '<p><input type="submit" value="'. __( 'Save Options' ,'obandes').'" class="button" /></p>';
         echo '</form>';
         echo '</div>';
         echo '</div>';
@@ -1206,6 +1443,10 @@ menu-width:wide
         return trim($image);
     }
 
+    if($condition == 'obandes_header_background_color'){
+            $obandes_header_background_color  = $obandes_current_settings['obandes_header_background_color'];
+        return trim($obandes_header_background_color);
+    }
 
     if($condition == 'letter-width'){
 
@@ -1388,7 +1629,7 @@ if(isset($obandes_current_settings['obandes_radio_options_navigation'])){
                 $wp_cockneyreplace['%'.$key.'%'] = $val;
             }
 
-        function raindrops_import_post_meta(){
+        function obandes_import_post_meta(){
 
             global $post,$base_info;
             $r = get_post_meta($post->ID, 'template', true);

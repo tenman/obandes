@@ -55,7 +55,7 @@ echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style ty
 </head>
 <body <?php body_class($this_blog); ?> onLoad="horizontal()">
 <div id="<?php echo get_obandes_condition('letter-width'); ?>" class="<?php echo get_obandes_condition('menu-position');?>">
-<header>
+<header style="background:<?php echo get_obandes_condition('obandes_header_background_color');?>">
 <?php
     $heading_elememt = 'h1';
 
