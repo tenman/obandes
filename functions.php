@@ -1029,7 +1029,7 @@ add_action('admin_print_scripts', 'my_admin_print_scripts');
 function my_admin_print_scripts() {
   wp_enqueue_script( 'farbtastic' );
   wp_enqueue_script( 'quicktags' );
-  wp_enqueue_script( 'my-admin-script', get_bloginfo('stylesheet_directory') . '/admin-script.js', array( 'farbtastic', 'quicktags' ), false, true );
+  wp_enqueue_script( 'obandes-picker', get_stylesheet_directory_uri() . '/admin/admin-script.js', array( 'farbtastic', 'quicktags' ), false, true );
 }
 
     function obandes_theme_options_add_page() {
