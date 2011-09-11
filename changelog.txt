@@ -1,12 +1,18 @@
 Changelog -----------------------------------
+version:0.74
+    fix
+        bug header background settig update everytime submited
+
+----------------------------------------------
+Changelog -----------------------------------
 version:0.73
-	fix
+    fix
     remove var
         $obandes_header_image_show  = $obandes_current_settings['obandes_header'];
-		check  prefix functions , const and vars
-    	function get_obandes_condition
+        check  prefix functions , const and vars
+        function get_obandes_condition
     add
-    	function obandes_get_condition
+        function obandes_get_condition
 ----------------------------------------------
 Changelog -----------------------------------
 version:0.72
