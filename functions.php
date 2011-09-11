@@ -28,8 +28,8 @@
     if(!defined('HEADER_TEXTCOLOR')){
         define('HEADER_TEXTCOLOR', 'ffffff');
     }
-    if(!defined('HEADER_IMAGE_BACKGROUND_COLOR')){
-        define('HEADER_IMAGE_BACKGROUND_COLOR','orange');
+    if(!defined('OBANDES_HEADER_BACKGROUND_COLOR')){
+        define('OBANDES_HEADER_BACKGROUND_COLOR','orange');
     }
     if(!defined('HEADER_IMAGE')){
         define('HEADER_IMAGE', '%s/images/headers/wp3.jpg');
@@ -106,7 +106,7 @@ if ( ! function_exists( 'obandes_admin_header_style' ) ){
             -webkit-border-top-right-radius:10px;
             border-top-left-radius:10px;
             border-top-right-radius:10px;
-            background:<?php echo get_obandes_condition('obandes_header_background_color');?>;
+            background:<?php echo obandes_get_condition('obandes_header_background_color');?>;
             padding-top:1em;
         }
         #headimg h1{
@@ -219,9 +219,9 @@ if ( ! function_exists( 'obandes_admin_header_image' ) ){
 <?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
         </div>
 <?php
-$header_image_format = '<div style="background:#000;overflow:visible"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
+$obandes_header_image_format = '<div style="background:#000;overflow:visible"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
 
-            printf( $header_image_format,
+            printf( $obandes_header_image_format,
                     $obandes_header_image,
                     HEADER_IMAGE_WIDTH,
                     HEADER_IMAGE_HEIGHT,
@@ -245,8 +245,8 @@ if(locate_template( array( 'admin/editor-style.css' ))){
 /**
  * horizon class demo colors
  */
-$header_background_color = HEADER_IMAGE_BACKGROUND_COLOR;
-$css_preset =<<< CSS_PRESET
+$obandes_header_background_color = OBANDES_HEADER_BACKGROUND_COLOR;
+$obandes_css_preset =<<< CSS_PRESET
 
 body {
 background:#5f7f5c;
@@ -261,7 +261,7 @@ border-radius:10px;
 box-shadow:0 0 15px rgba(0,0,0);
 }
 footer,header {
-background:$header_background_color;
+background:$obandes_header_background_color;
 /*color:#fff;*/
 }
 nav h3:before,
@@ -455,7 +455,7 @@ CSS_PRESET;
             array('option_id' =>'css',
             'blog_id' => 0 ,
             'option_name' => "obandes_css",
-            'option_value' => "$css_preset\n",
+            'option_value' => "$obandes_css_preset\n",
             'autoload'=>'yes',
             'title'=> __('Base Color for Automatic Arrangement','obandes'),
             'excerpt1'=>'',
@@ -1053,6 +1053,7 @@ function my_admin_print_scripts() {
                 global $obandes_base_setting;
 
                 $ok             = false;
+
                 $option_value   = esc_html($_POST['obandes_setting']['obandes_css']);
                 $option_name    = 'obandes_css';
                 $valid_function = 'obandes_css_validate';
@@ -1167,7 +1168,6 @@ function my_admin_print_scripts() {
         settings_fields( 'obandes_setting' );
         $obandes_current_settings   = get_option('obandes_theme_settings');
         $obandes_style              = $obandes_current_settings['obandes_css'];
-        $obandes_header_image_show  = $obandes_current_settings['obandes_header'];
         $obandes_header_background_color_val  = $obandes_current_settings['obandes_header_background_color'];
 
         $obandes_radio_options_pagetype = array(
@@ -1425,7 +1425,7 @@ function obandes_detect_option($condition){
 
 }
 
-function get_obandes_condition($condition){
+function obandes_get_condition($condition){
 /*
 e.g. shrink,fix
 layout-type:fix
@@ -1553,9 +1553,9 @@ if(isset($obandes_current_settings['obandes_radio_options_navigation'])){
  *
  */
 
-    add_filter('the_content','ie_height_expand_issue');
+    add_filter('the_content','obandes_ie_height_expand_issue');
 
-    function ie_height_expand_issue($content){
+    function obandes_ie_height_expand_issue($content){
         global $is_IE,$content_width;
 
         if($is_IE){
