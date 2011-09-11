@@ -110,7 +110,7 @@ if ( ! function_exists( 'obandes_admin_header_style' ) ){
             padding-top:1em;
         }
         #headimg h1{
-            font-family:Georgia, "Times New Roman", Times, serif;
+            font-family:Georgia, "Times New Roman", Times, serif!important;
             margin:0 10px!important;
             font-size:2em!important;
             text-align:left;
@@ -215,11 +215,14 @@ if ( ! function_exists( 'obandes_admin_header_image' ) ){
     <div id="headimg">
                 <h1 <?php echo $obandes_header_style;?>><a id="name" onclick="return false;" href="<?php esc_url( home_url( '/' ) );?>"><?php bloginfo( 'name' ); ?></a></h1>
         <div id="site-description" <?php echo $obandes_header_style;?>><?php bloginfo( 'description' ); ?></div>
-        <div id="access" role="navigation" class="clearfix">
+<?php
+if(isset($obandes_header_image) and !empty($obandes_header_image)){
+?>
+ <div id="access" role="navigation" class="clearfix">
 <?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
         </div>
 <?php
-$obandes_header_image_format = '<div style="background:#000;overflow:visible"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
+	$obandes_header_image_format = '<div style="background:#000;overflow:visible"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
 
             printf( $obandes_header_image_format,
                     $obandes_header_image,
@@ -227,6 +230,7 @@ $obandes_header_image_format = '<div style="background:#000;overflow:visible"><i
                     HEADER_IMAGE_HEIGHT,
                     obandes_document_width()
             );
+}
 ?>
     </div>
     <?php
@@ -1139,7 +1143,7 @@ function my_admin_print_scripts() {
                 $option_value   = esc_html($_POST['obandes_setting']['obandes_header_background_color']);
                 $option_name    = 'obandes_header_background_color';
 
-               if($option_value == obandes_radio_options_navigation_validate($option_value)){
+               if($option_value == obandes_radio_options_navigation_validate($option_value) and !empty($option_value)){
 
                       $new_settings                 = get_option('obandes_theme_settings');
                       if($new_settings[$option_name] !== $option_value){

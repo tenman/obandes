@@ -1601,7 +1601,7 @@ div[class^="horizon"]{
 	list-style:none;
 }
 #footer-widget-area .widget-container > ul > li{
-list-style-image:url("images/list-marker.png")!important;
+/*list-style-image:url("images/list-marker.png")!important;*/
 }
 .page .edit-link{
 	display:block;
