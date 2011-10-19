@@ -222,7 +222,7 @@ if(isset($obandes_header_image) and !empty($obandes_header_image)){
 <?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
         </div>
 <?php
-	$obandes_header_image_format = '<div style="background:#000;overflow:visible"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
+    $obandes_header_image_format = '<div style="background:#000;overflow:visible"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
 
             printf( $obandes_header_image_format,
                     $obandes_header_image,
@@ -1266,14 +1266,15 @@ function my_admin_print_scripts() {
         echo '</div>';
         echo '</td>';
         echo '<td>';
-                $obandes_text_field = '<div><input type="text" name="%1$s" id="%1$s" class="obandes-color-picker" value="" />'.
+                $obandes_text_field = '<div><input type="text" name="%1$s" id="%1$s" class="obandes-color-picker" value="%4$s" />'.
                                     '<a href="#" id="pickcolor" class="button">'.__("Select a Color","obandes").'</a>'.
                                     '<div id="colorpicker-selector" %3$s></div>';
 
                     printf($obandes_text_field,
                         esc_attr('obandes_setting[obandes_header_background_color]'),
                         esc_attr($obandes_header_background_color_val),
-                        'style="z-index: 100; background:#fff; border:1px solid #ccc; position:absolute; display:none;"'
+                        'style="z-index: 100; background:#fff; border:1px solid #ccc; position:absolute; display:none;"',
+                        esc_attr(obandes_get_condition('obandes_header_background_color'))
 
                     );
 
