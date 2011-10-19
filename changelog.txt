@@ -9,9 +9,11 @@ version:0.75
         Blog show correct when obandes option panel style is blank
         Obandes options panel Column default value change.
         from the Right narrow  to the Right middle.
+        Custom header preview It adjusted so that it could display correctly.
     add
         Add color picker where obandes options panel.
-        andheader background color can change
+        and header background color can change.
+        Add admin-script.js for color picker script
 ----------------------------------------------
 Changelog -----------------------------------
 version:0.74
