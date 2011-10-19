@@ -38,8 +38,8 @@
  */
 ?>
   <div>
-    <article id="post-<?php echo $post->ID; ?>" <?php post_class(); ?>>
-      <h2 class="h2 title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>">
+   <article id="post-<?php echo $post->ID; ?>" <?php post_class(); ?>>
+      <h2 class="h2 title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_post_thumbnail(array(32,32)); ?>
         <?php the_title(); ?>
         </a></h2>
       <div class="meta posted-on">
@@ -155,6 +155,7 @@ the_content();
  */
 	case("image"):
 	
+	
 	$obandes_format_class 	= 'class="horizon-postformat-'.$obandes_format_name.obandes_format_add_class($obandes_format_count_image).'"';	
 	$obandes_format_count_image ++;		
 
@@ -163,7 +164,7 @@ the_content();
 		if(preg_match("|(<img[^>]+>)|",$obandes_content,$regs)){
 			$regs[1] = preg_replace('#(<img)([^>]+)(height|width)(=")([0-9]+)"([^>]+)(height|width)(=")([0-9]+)"([^>]+)>#','$1$2$6$10>',$regs[1]);
 ?>
-  <div style="width:150px;float:left;margin-left:20px;"> <a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+  <div style="width:150px;float:left;margin-left:20px;" class="obandes-format-image"> <a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
     <?php  echo $regs[1];?>
     </a> </div>
   <div style="margin-left:200px;"> <strong class="title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
@@ -172,6 +173,7 @@ the_content();
     <?php the_excerpt();?>
     <?php edit_post_link( __( 'Edit', 'obandes' ), '<span class="edit-link">', '</span>' ); ?>
   </div>
+
   <hr class="clear" />
 
   <?php		
@@ -258,7 +260,7 @@ the_content();
 	}//endif?>
   <?php
 }//endwhile ?>
-</div>
+
 
 <?php if ( $wp_query->max_num_pages > 1 ){ ?>
 <div>
@@ -269,7 +271,7 @@ the_content();
     </span></div>
 </div>
 <?php }//end nav below ?>
-
+</div>
 <?php
 
 	function obandes_format_add_class($num,$pitch = 3){

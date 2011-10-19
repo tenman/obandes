@@ -1,6 +1,18 @@
 Changelog -----------------------------------
 version:0.74
     fix
+        Bug obandes options panel fluid layout is create fixed 974px width page.
+        Bug obandes options panel 974px fix layout is create fluid width page.
+    modified
+        Add style.css fallback style.
+        blog show correct when obandes option panel style is blank
+
+        obandes options panel Column default value change.
+        fro
+----------------------------------------------
+Changelog -----------------------------------
+version:0.74
+    fix
         bug header background settig update everytime submited
 
 ----------------------------------------------

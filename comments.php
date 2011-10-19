@@ -27,6 +27,8 @@
 				__( 'This post is password protected. Enter the password to view any comments.', 'obandes' )
 		);
 		return;
+	}else{
+	   echo '<div id="comments">&nbsp;</div>';
 	}
 
 /**

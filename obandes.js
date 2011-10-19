@@ -54,4 +54,13 @@ var uniq = {};
         });
 		/* for ie8*/
 		jQuery('article .content img').removeAttr("height");
+		
+	
+	jQuery('*[class^="toggle"]').hide().css("width","100%");
+
+	jQuery('*[id^="toggle"]').css("cursor","pointer").click(function(){
+			var target ="."+jQuery(this).attr("id");
+			jQuery(target).toggle("slow");
+	});
+	
 }

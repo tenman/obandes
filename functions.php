@@ -469,7 +469,7 @@ CSS_PRESET;
              array('option_id' =>'navigation=',
             'blog_id' => 0 ,
             'option_name' => "obandes_radio_options_navigation",
-            'option_value' => 't4',
+            'option_value' => 't5',
             'autoload'=>'yes',
             'title'=> __('Navi Col','obandes'),
             'excerpt1'=>'',
@@ -1175,11 +1175,11 @@ function my_admin_print_scripts() {
         $obandes_header_background_color_val  = $obandes_current_settings['obandes_header_background_color'];
 
         $obandes_radio_options_pagetype = array(
-            'fluid' => array('value' => 'doc4',
+            'fluid' => array('value' => 'doc3',
             'label' => __( 'fluid', 'obandes' ),'image' => 'obandes_admin_page_fluid.jpg'),
             'fix-950' => array('value' => 'doc2',
             'label' => __( 'fix 950px','obandes' ),'image' => 'obandes_admin_page_950.jpg'),
-            'fix-974' => array('value' => 'doc3',
+            'fix-974' => array('value' => 'doc4',
             'label' => __( 'fix 974px', 'obandes' ),'image' => 'obandes_admin_page_974.jpg'),
             'fix-750' => array('value' => 'doc',
             'label' => __( 'fix 750px', 'obandes' ),'image' => 'obandes_admin_page_750.jpg')

@@ -17,6 +17,7 @@ if(WP_DEBUG == true){
 
 if(is_home() === false){
 	get_template_part( 'loop', 'default' );
+	
 }else{
 	get_template_part( 'loop', 'format' );
 } 

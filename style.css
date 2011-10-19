@@ -4,7 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description: 	This is sidebar width and position changeable 2column html5 theme. You can embed big size photo easy and can get drag and drop view when using post format image. Post format link make a website thumbnail create automatically. And index page have post format group view.Some category has special layout e.g blog , gallery. All of view keep WEB standard. This theme has style sheet editor for background ,color and border. Layout keep clean and not broken when  you delete all this textarea. This theme is the one such as palettes and paintbrushes often devised for the artist.  
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 0.74
+Version: 0.75
 Tags:white, two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready,editor-style
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -62,7 +62,8 @@ a{
 	text-decoration:none; 
 	}
 a:hover{
-	border-bottom:1px solid #999; 
+	border-bottom:1px solid #999;
+	color:#0099CC 
 }
 a:focus { 
 	outline: none; 
@@ -401,7 +402,9 @@ section {
 /**
  *	nav and #access
  */
-
+nav{
+margin-top:5px!important;
+}
 
 /**
  *	vertical menu column
@@ -1698,7 +1701,7 @@ margin-right:.5em;
 	margin-left:1em;
 } 
 header img{
-	border-bottom:2px solid #000;
+	/*border-bottom:2px solid #000;*/
 }
 /**
  * page
@@ -1877,4 +1880,69 @@ width:33%;
 }
 td[class^="horizon-postformat"] > div{
 overflow:hidden;
+}
+
+/*fallback style*/
+#access .menu,
+#access{
+	background:#000;
+	color:#fff;
+}
+* html #access ul li.current-menu-ancestor a,
+* html #access ul li.current-menu-item a,
+* html #access ul li.current-menu-parent a,
+* html #access ul li a:hover,
+#access li:hover > a,
+#access ul ul :hover > a ,
+#access a ,
+#access li > a,
+#access ul ul > a ,
+#access ul li.current_page_item > a,
+#access ul li.current-menu-ancestor > a,
+#access ul li.current-menu-item > a,
+#access ul li.current-menu-parent > a {
+    color: #ddd;
+}
+* html #access ul > li.current_page_item a,
+* html #access ul > li.current-menu-ancestor a:hover,
+* html #access ul > li.current-menu-item a:hover,
+* html #access ul > li.current-menu-parent a:hover,
+* html #access ul > li a:hover,
+#access li:hover > a:hover,
+#access ul ul  > a:hover,
+#access a:hover,
+#access li > a:hover,
+#access ul ul > a ,
+#access ul li.current_page_item > a:hover,
+#access ul li.current-menu-ancestor > a:hover,
+#access ul li.current-menu-item > a:hover,
+#access ul li.current-menu-parent > a:hover {
+    color: #333;
+    background:#fff;
+	-moz-box-shadow:0 0 15px rgba(0,0,0,0.5);
+	-webkit-box-shadow:0 0 15px rgba(0,0,0,0.5);
+	box-shadow:0 0 15px rgba(52,52,52);
+}
+#access a:hover{border:none;}
+#access .children{
+	background:#000;
+	background:rgba(0,0,0,0.9);
+	color:#ddd;
+}
+#access .children li:hover{
+	background:#666;
+}
+nav li a:hover{
+	color:#09c;
+}
+#site-title,
+header h1:hover,
+header h1 a:hover,
+header div.h1 a:hover{
+	border-bottom:none;
+	text-decoration:none;
+	color:inherit;
+}
+body > #doc,body > #doc2,body > #doc3,body > #doc4 {
+	background:#fff;
 }

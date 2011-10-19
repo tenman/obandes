@@ -90,13 +90,27 @@ echo str_replace(array("\n","\r","\t",'&quot;'),array("","","",'"'),"\n<style ty
                 echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
         }elseif(!empty($obandes_image_uri)){
 		
-$header_image_format = '<div id="header-image" style="background:#000;"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
+$header_image_format = '<div id="header-image" style="%s"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%s;height:auto;" /></div>';
 
+switch(obandes_get_condition('letter-width')){
+case("doc3"):
+case("doc4"):
+$obandes_header_image_width = '100%';
+$obandes_header_image_height = '100%';
+
+break;
+default:
+$obandes_header_image_width = HEADER_IMAGE_WIDTH.'px';
+$obandes_header_image_height = HEADER_IMAGE_HEIGHT.'px';
+break;
+}
+ //obandes_document_width() + 4
             printf( $header_image_format,
+					"background:none;",
                     $obandes_image_uri,
-                    HEADER_IMAGE_WIDTH,
-                    HEADER_IMAGE_HEIGHT,
-                    obandes_document_width()
+                    $obandes_header_image_width,
+                    $obandes_header_image_height,
+                   $obandes_header_image_width
             );
 
         }
