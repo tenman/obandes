@@ -1,14 +1,17 @@
 Changelog -----------------------------------
-version:0.74
+version:0.75
     fix
         Bug obandes options panel fluid layout is create fixed 974px width page.
         Bug obandes options panel 974px fix layout is create fluid width page.
+        Bug header image is smaller width than page width when obandes options panel page fluid and 974px width.
     modified
-        Add style.css fallback style.
-        blog show correct when obandes option panel style is blank
-
-        obandes options panel Column default value change.
-        fro
+        Add  fallback style where style.css
+        Blog show correct when obandes option panel style is blank
+        Obandes options panel Column default value change.
+        from the Right narrow  to the Right middle.
+    add
+        Add color picker where obandes options panel.
+        andheader background color can change
 ----------------------------------------------
 Changelog -----------------------------------
 version:0.74
