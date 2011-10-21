@@ -29,7 +29,7 @@
         define('HEADER_TEXTCOLOR', 'ffffff');
     }
     if(!defined('OBANDES_HEADER_BACKGROUND_COLOR')){
-        define('OBANDES_HEADER_BACKGROUND_COLOR','orange');
+        define('OBANDES_HEADER_BACKGROUND_COLOR','#FFA500');
     }
     if(!defined('HEADER_IMAGE')){
         define('HEADER_IMAGE', '%s/images/headers/wp3.jpg');
@@ -489,7 +489,7 @@ CSS_PRESET;
              array('option_id' =>'headerbackgroundcolor',
             'blog_id' => 0 ,
             'option_name' => "obandes_header_background_color",
-            'option_value' => 'orange',
+            'option_value' => '#FFA500',
             'autoload'=>'yes',
             'title'=> __('Header Background Color','obandes'),
             'excerpt1'=>'',
@@ -1025,21 +1025,24 @@ CSS_PRESET;
     }
 
 
-add_action('admin_print_styles', 'my_admin_print_styles');
-function my_admin_print_styles() {
-  wp_enqueue_style( 'farbtastic' );
-}
-add_action('admin_print_scripts', 'my_admin_print_scripts');
-function my_admin_print_scripts() {
-  wp_enqueue_script( 'farbtastic' );
-  wp_enqueue_script( 'quicktags' );
-  wp_enqueue_script( 'obandes-picker', get_stylesheet_directory_uri() . '/admin/admin-script.js', array( 'farbtastic', 'quicktags' ), false, true );
-}
 
-    function obandes_theme_options_add_page() {
-    add_theme_page(__( 'Obandes Options','obandes'), __( 'Obandes Options' ,'obandes'),'edit_theme_options', 'obandes_setting',             'obandes_options_page_view' );
+    function obandes_admin_print_styles() {
+
+      wp_enqueue_style( 'farbtastic' );
+
     }
 
+    function obandes_admin_print_scripts() {
+      wp_enqueue_script( 'farbtastic' );
+      wp_enqueue_script( 'quicktags' );
+      wp_enqueue_script( 'obandes-picker', get_stylesheet_directory_uri() . '/admin/admin-script.js', array( 'farbtastic', 'quicktags' ), false, true );
+    }
+
+    function obandes_theme_options_add_page() {
+        $obandes_hook_suffix = add_theme_page(__( 'Obandes Options','obandes'), __( 'Obandes Options' ,'obandes'),'edit_theme_options', 'obandes_setting',             'obandes_options_page_view' );
+        add_action('admin_print_styles-'.$obandes_hook_suffix, 'obandes_admin_print_styles');
+        add_action('admin_print_scripts-'.$obandes_hook_suffix, 'obandes_admin_print_scripts');
+    }
 
     function obandes_options_page_view() {
         $obandes_result_message = '';

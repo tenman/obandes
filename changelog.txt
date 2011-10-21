@@ -1,4 +1,15 @@
 Changelog -----------------------------------
+version:0.76
+    fix
+        Scripts are loaded every page in the admin area.
+            Add $obandes_hook_suffix
+        Bad prefix my_  change obandes_
+    modified
+        default header color change from orange to #FFA500.
+            OBANDES_HEADER_BACKGROUND_COLOR
+            $obandes_base_setting[3][option_value]
+----------------------------------------------
+Changelog -----------------------------------
 version:0.75
     fix
         Bug obandes options panel fluid layout is create fixed 974px width page.
