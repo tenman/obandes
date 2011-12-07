@@ -1,4 +1,11 @@
 Changelog -----------------------------------
+version:0.77
+    fix
+        theme install errors fixed
+            function obandes_theme_init()
+            obandes_install_navigation()
+----------------------------------------------
+Changelog -----------------------------------
 version:0.76
     fix
         Scripts are loaded every page in the admin area.

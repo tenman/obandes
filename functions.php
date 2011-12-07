@@ -986,21 +986,21 @@ CSS_PRESET;
  */
 
     function obandes_theme_init(){
-        global $wpdb,$obandes_base_setting;
-        $obandes_theme_settings = get_option('obandes_theme_settings');
-        if (!array_key_exists('install', $install)) {
-       foreach($obandes_base_setting as $add){
-
-            $option_name = $add['option_name'];
-
-            if(!isset($obandes_theme_settings[$option_name])){
-                $obandes_theme_settings[$option_name] = $add['option_value'];
-            }
-        }
-
+		global $wpdb,$obandes_base_setting;
+		
+		
+		foreach($obandes_base_setting as $add){
+		
+			$option_name = $add['option_name'];
+		
+			if(!isset($obandes_theme_settings[$option_name])){
+				$obandes_theme_settings[$option_name] = $add['option_value'];
+			}
+			
+		}
+		$obandes_theme_settings['install'] = true;
+		
         update_option('obandes_theme_settings',$obandes_theme_settings,"",$add['autoload']);
-        }
-
     }
 /*
  * Management of uninstall and install.
@@ -1013,11 +1013,11 @@ CSS_PRESET;
     function obandes_install_navigation() {
 
         $install = get_option('obandes_theme_settings');
-
-        if (!array_key_exists('install', $install)) {
+		if(!array_key_exists('install', $install) and isset($install)){
+			delete_option('obandes_theme_settings');
+		
+		} elseif (!array_key_exists('install', $install)) {
             add_action('admin_notices', create_function(null, 'echo obandes_first_only_msg(1);'));
-            $install['install'] = true;
-            update_option('obandes_theme_settings',$install);
             obandes_theme_init();
         } else {
             add_action('switch_theme', create_function(null, 'delete_option("obandes_theme_settings");'));
