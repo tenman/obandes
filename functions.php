@@ -973,6 +973,16 @@ CSS_PRESET;
             $link   = get_site_url('', 'wp-admin/themes.php', 'admin') . '?page='.$obandes_query;
             $msg    = sprintf(__('Thank you for adopting the %s theme. It is necessary to set it to this theme. Please move to a set screen clicking this <a href="%s">obandes settings view</a>.','obandes'),get_current_theme() ,$link);
         }
+
+        if ( $type == 2 ) {
+            $query  = 'obandes_settings';
+            $link   = get_site_url('', 'wp-admin/themes.php', 'admin') . '?page='.$obandes_query;
+            $msg    = sprintf(__('Thank you for adopting the %s theme. It is necessary to set it to this theme. Please move to a set screen clicking this <a href="%s">obandes settings view</a>.','obandes'),get_current_theme() ,$link);
+            $msg    .= sprintf(__('     Note:Detected improperly option value. The value was corrected. ','obandes'));
+
+        }
+
+
         return '<div id="testmsg" class="error"><p>' . $msg . '</p></div>' . "\n";
     }
 
@@ -986,20 +996,19 @@ CSS_PRESET;
  */
 
     function obandes_theme_init(){
-		global $wpdb,$obandes_base_setting;
-		
-		
-		foreach($obandes_base_setting as $add){
-		
-			$option_name = $add['option_name'];
-		
-			if(!isset($obandes_theme_settings[$option_name])){
-				$obandes_theme_settings[$option_name] = $add['option_value'];
-			}
-			
-		}
-		$obandes_theme_settings['install'] = true;
-		
+        global $wpdb,$obandes_base_setting;
+
+        foreach($obandes_base_setting as $add){
+
+            $option_name = $add['option_name'];
+
+            if(!isset($obandes_theme_settings[$option_name])){
+                $obandes_theme_settings[$option_name] = $add['option_value'];
+            }
+
+        }
+        $obandes_theme_settings['install'] = true;
+
         update_option('obandes_theme_settings',$obandes_theme_settings,"",$add['autoload']);
     }
 /*
@@ -1013,10 +1022,11 @@ CSS_PRESET;
     function obandes_install_navigation() {
 
         $install = get_option('obandes_theme_settings');
-		if(!array_key_exists('install', $install) and isset($install)){
-			delete_option('obandes_theme_settings');
-		
-		} elseif (!array_key_exists('install', $install)) {
+        if(!array_key_exists('install', $install) and is_array($install)){
+            delete_option('obandes_theme_settings');
+            add_action('admin_notices', create_function(null, 'echo obandes_first_only_msg(2);'));
+             obandes_theme_init();
+        } elseif (!array_key_exists('install', $install)) {
             add_action('admin_notices', create_function(null, 'echo obandes_first_only_msg(1);'));
             obandes_theme_init();
         } else {

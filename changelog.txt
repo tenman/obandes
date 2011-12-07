@@ -1,9 +1,11 @@
 Changelog -----------------------------------
-version:0.77
+version:0.78
     fix
         theme install errors fixed
             function obandes_theme_init()
             obandes_install_navigation()
+    modified
+        Add install message when the theme option improperly value exists
 ----------------------------------------------
 Changelog -----------------------------------
 version:0.76
