@@ -39,7 +39,8 @@
 ?>
   <div>
    <article id="post-<?php echo $post->ID; ?>" <?php post_class(); ?>>
-      <h2 class="h2 title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_post_thumbnail(array(32,32)); ?>
+<h2 class="h2 title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
+	  <?php the_post_thumbnail(array(32,32)); ?>
         <?php the_title(); ?>
         </a></h2>
       <div class="meta posted-on">

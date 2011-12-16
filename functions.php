@@ -503,14 +503,11 @@ CSS_PRESET;
 
     $obandes_query =  'obandes_setting';
     add_filter( 'use_default_gallery_style', '__return_false' );
-    //add_action( 'admin_init', 'obandes_theme_init' );
     add_action('admin_menu', 'obandes_theme_options_add_page');
     add_action('load-themes.php', 'obandes_install_navigation');
-    add_filter('contextual_help','obandes_help');
     add_action('init', 'obandes_init');
     add_custom_background();
     load_textdomain( 'obandes', get_template_directory().'/languages/'.get_locale().'.mo' );
-   // add_custom_image_header( '', 'obandes_admin_header_style' );
     add_filter('body_class','obandes_add_body_class');
     add_filter("wp_head","obandes_embed_meta",'99');
     if(!function_exists("obandes_page_menu_args")){
@@ -1052,6 +1049,10 @@ CSS_PRESET;
         $obandes_hook_suffix = add_theme_page(__( 'Obandes Options','obandes'), __( 'Obandes Options' ,'obandes'),'edit_theme_options', 'obandes_setting',             'obandes_options_page_view' );
         add_action('admin_print_styles-'.$obandes_hook_suffix, 'obandes_admin_print_styles');
         add_action('admin_print_scripts-'.$obandes_hook_suffix, 'obandes_admin_print_scripts');
+		
+		if ( $obandes_hook_suffix ){	
+			add_action( 'load-' . $obandes_hook_suffix, 'obandes_help' );
+		}
     }
 
     function obandes_options_page_view() {
@@ -1322,7 +1323,6 @@ CSS_PRESET;
         if (!function_exists('obandes_help')) {
         function obandes_help($text){
         global $title,$obandes_query;
-        if(isset($_GET['page']) and $obandes_query == $_GET['page']){
         $result = "<h2 class=\"h2\">".__('CSS links').'</h2>';
         $result .= "<ul>";
         $result .= sprintf('<li><a href="%s" title="%s">%s</a></li>',
@@ -1376,11 +1376,11 @@ CSS_PRESET;
                         )
                     );
         $result .= "</ul>\n";
-            return apply_filters("obandes_help",$result);
-        }else{
-            return $text;
-        }
-        }
+		
+		$screen = get_current_screen();
+		$screen -> add_help_tab(array('id' => 'obandes-theme-help','title' => 'Tips obandes','content' => $result));
+		
+	        }
     }
 
         function obandes_prev_next_post($position = "nav-above"){

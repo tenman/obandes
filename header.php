@@ -28,7 +28,7 @@ if(isset($current_blog)){
 
 <title><?php trim(obandes_title());?></title>
 
-<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_directory_uri().'/style.css'; ?>" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_uri(); ?>" />
 <?php
 $embed_style = get_option('obandes_theme_settings');
 if($embed_style['obandes_css'] !== ""){
