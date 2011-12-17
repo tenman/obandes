@@ -1046,13 +1046,16 @@ CSS_PRESET;
     }
 
     function obandes_theme_options_add_page() {
+        global $wp_version;
+
         $obandes_hook_suffix = add_theme_page(__( 'Obandes Options','obandes'), __( 'Obandes Options' ,'obandes'),'edit_theme_options', 'obandes_setting',             'obandes_options_page_view' );
         add_action('admin_print_styles-'.$obandes_hook_suffix, 'obandes_admin_print_styles');
         add_action('admin_print_scripts-'.$obandes_hook_suffix, 'obandes_admin_print_scripts');
-		
-		if ( $obandes_hook_suffix ){	
-			add_action( 'load-' . $obandes_hook_suffix, 'obandes_help' );
-		}
+        $raindrops_check_wp_version = explode('-',$wp_version);
+
+        if ( $obandes_hook_suffix and $raindrops_check_wp_version[0] >= 3.3){
+            add_action( 'load-' . $obandes_hook_suffix, 'obandes_help' );
+        }
     }
 
     function obandes_options_page_view() {
@@ -1354,33 +1357,33 @@ CSS_PRESET;
         $result .= sprintf('<li><div style="border:1px solid #999;padding:2em;"><pre><code>%s</code></pre></div></li>',
                         str_replace("\t","",
                             htmlspecialchars('
-                            <div class="horizon-1">
-                            <div> your html block</div>
-                            </div>
-                            <div class="horizon-1">
-                            <div> your html block</div>
-                            </div>
-                            <div class="horizon-1">
-                            <div> your html block</div>
-                            </div>
-                            <div class="horizon-1">
-                            <div> your html block</div>
-                            </div>
-                            <div class="horizon-2">
-                            <div> your html block</div>
-                            </div>
-                            <div class="horizon-2">
-                            <div> your html block</div>
-                            </div>'
+    <div class="horizon-1">
+    <div> your html block</div>
+    </div>
+    <div class="horizon-1">
+    <div> your html block</div>
+    </div>
+    <div class="horizon-1">
+    <div> your html block</div>
+    </div>
+    <div class="horizon-1">
+    <div> your html block</div>
+    </div>
+    <div class="horizon-2">
+    <div> your html block</div>
+    </div>
+    <div class="horizon-2">
+    <div> your html block</div>
+    </div>'
                             )
                         )
                     );
         $result .= "</ul>\n";
-		
-		$screen = get_current_screen();
-		$screen -> add_help_tab(array('id' => 'obandes-theme-help','title' => 'Tips obandes','content' => $result));
-		
-	        }
+
+        $screen = get_current_screen();
+        $screen -> add_help_tab(array('id' => 'obandes-theme-help','title' => 'Tips obandes','content' => $result));
+
+            }
     }
 
         function obandes_prev_next_post($position = "nav-above"){

@@ -1,4 +1,16 @@
 Changelog -----------------------------------
+version:0.79
+    fix
+        h2 title attribute value improperly
+        Change  title attribute template function from the_title() to the_title_attribute()
+    modified
+        Change template function
+            from    <?php echo get_stylesheet_directory_uri().'/style.css'; ?>
+            to      <?php echo get_stylesheet_uri(); ?>
+        Change code context help
+            If you use no newest Wordpress when context help will be disappearance
+----------------------------------------------
+Changelog -----------------------------------
 version:0.78
     fix
         theme install errors fixed
