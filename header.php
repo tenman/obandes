@@ -117,8 +117,3 @@ break;
     }
 ?>
 </header>
-<?php
-require("example.php");
-echo $var;
-echo hello_world();
-?>

@@ -3,6 +3,10 @@ version:0.79
     fix
         h2 title attribute value improperly
         Change  title attribute template function from the_title() to the_title_attribute()
+        single.php
+            Using improperly function
+            from get_template_part() to locate_template()
+            get_template_part() must not call sub directory template part file.
     modified
         Change template function
             from    <?php echo get_stylesheet_directory_uri().'/style.css'; ?>
