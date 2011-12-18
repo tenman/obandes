@@ -20,11 +20,11 @@ if(WP_DEBUG == true){
 
         the_post();
 
-		if ( !locate_template( array( 'formats/format-standard.php', 'formats/format.php' ), true ) ) {
+            if (!locate_template( array('formats/format-'.get_post_format().'.php'), true ) ) {
 ?>
 <article id="post-<?php echo $post->ID; ?>" <?php post_class('yui-b'); ?>>
 <?php obandes_prev_next_post();?>
-<h2 class="h2 title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
+<h2 class="h2 title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>">
 <?php the_title(); ?>
 </a></h2>
 <div class="meta posted-on">
