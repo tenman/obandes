@@ -1,4 +1,22 @@
 Changelog -----------------------------------
+version:
+added
+    lessphp support see http://leafo.net/lessphp/docs/
+fixed
+    Child theme issue fix
+        Child theme works properly when obandes all files and directory copied child
+made
+    Directory lib
+    file lessc.inc.php
+modified
+    Theme description change
+        lessphp (CSS preprocessor) support Where Theme option panel style editor.
+        YUI(Yahoo User Inter face) Grid layout support.
+        2column fixed and fluid layout theme.Post format image support Zoom it API.
+        This theme supply your happy blogging  From beginners to a specialist
+----------------------------------------------
+
+Changelog -----------------------------------
 version:0.79
     fix
         h2 title attribute value improperly
