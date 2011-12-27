@@ -2,8 +2,8 @@
 /**
  * The format-standard for obandes.
  *
- * @package WordPress
- * @subpackage obandes
+ *
+ * @package: obandes
  * @since obandes 0.41
  */
 ?>

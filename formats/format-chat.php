@@ -2,8 +2,8 @@
 /**
  * The format-chat for obandes.
  *
- * @package WordPress
- * @subpackage obandes
+ *
+ * @package: obandes
  * @since obandes 0.41
  */
 	add_filter("the_content","obandes_transform_chat");

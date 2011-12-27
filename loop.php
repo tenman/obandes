@@ -3,8 +3,8 @@
  * The html5 loop for obandes.
  * index archive page loop
  *
- * @package WordPress
- * @subpackage obandes
+ *
+ * @package: obandes
  * @since obandes 0.1
  */
  ?>

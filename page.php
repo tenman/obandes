@@ -3,8 +3,8 @@
  * pages for our theme.
  *
  *
- * @package WordPress
- * @subpackage obandes
+ *
+ * @package: obandes
  * @since obandes 0.1
  */
 get_header();?>

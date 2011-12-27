@@ -3,8 +3,8 @@
  * sidebar-1 for our theme.
  *
  *
- * @package WordPress
- * @subpackage obandes
+ *
+ * @package: obandes
  * @since obandes 0.1
  */
 ?>

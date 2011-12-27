@@ -5,7 +5,7 @@ Description:lessphp (CSS preprocessor) support Where Theme option panel style ed
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
 Version: 0.80
-Tags:white, two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready,editor-style
+Tags:two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -600,44 +600,7 @@ div.menu li {
 	display: block;
 }
 
-/**
- *	body_class
- */
-/*.rtl{	}
-.home{	}
-.home .sticky {
-}
-.blog{	}
-.archive{	}
-.date{	}
-.search{	}
-.paged{	}
-.attachment{	}
-.error404{	}
-.single postid-(id){	}
-.attachmentid-(id){	}
-.attachment-(mime-type){	}
-.author{	}
-.author-(user_nicename){	}
-.category{	}
-.category-(slug){	}
-.tag{	}
-.tag-(slug){	}
-.page-parent{	}
-.page-child parent-pageid-(id){	}
-.page-template page-template-(template file name){	}
-.search-results{	}
-.search-no-results{	}
-.logged-in{	}
-.paged-(page number){	}
-.single-paged-(page number){	}
-.page-paged-(page number){	}
-.category-paged-(page number){	}
-.tag-paged-(page number){	}
-.date-paged-(page number){	}
-.author-paged-(page number){	}
-.search-paged-(page number){	}
-*/
+
 /** 
  *	post_class 
  */
@@ -1175,34 +1138,6 @@ div.yui-gc div.yui-u, div.yui-gd .yui-u.first,.yui-gb >div.yui-u.first,.yui-gb >
 #doc,#doc2,#doc3,#doc4{
 	
 }
-/*
-.pagenate a span,
-h2 a,
-h3 a,
-h4 a,
-h5 a,
-h6 a,
-.h2 a,
-.h3 a,
-.h4 a,
-.h5 a,
-.h6 a ,
-#access,
-.horizon-gallery.col1 .size-thumbnail,
-.widget_tag_cloud a:hover{
-	background:none;
-}
-.commentlist > li.pingback{}
-.must-log-in,
-.nopassword,
-.long-title,
-.wp-caption,
-.comment-body blockquote,
-.comment-body blockquote blockquote,
-body.single-post .nocomments,
-.pagenate span,
-.comment-body blockquote blockquote blockquote{}
-*/
 blockquote{
 	background:#fff;
 }
@@ -1434,7 +1369,6 @@ blockquote{
 	border-bottom:2px groove #eee;
 }
 nav li li{
-	/*list-style-image:url("images/list-marker.png")!important;*/
 	
 }
 .pagenate a span {

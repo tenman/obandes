@@ -2,8 +2,8 @@
 /**
  * The no seach result for obandes.
  *
- * @package WordPress
- * @subpackage obandes
+ *
+ * @package: obandes
  * @since obandes 0.52
  */
 ?>
@@ -12,7 +12,7 @@
  * search for our theme.
  *
  *
- * @package WordPress
+ *
  * @subpackage Raindrops
  * @since Raindrops 0.1
  */

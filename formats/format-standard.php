@@ -2,8 +2,8 @@
 /**
  * The format-standard Single post module for obandes relate in_category.
  *
- * @package WordPress
- * @subpackage obandes
+ *
+ * @package: obandes
  * @since obandes 0.41
  */
 ?><?php

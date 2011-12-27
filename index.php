@@ -2,8 +2,8 @@
 /**
  * The index for obandes.
  *
- * @package WordPress
- * @subpackage obandes
+ *
+ * @package: obandes
  * @since obandes 0.1
  */
 ?>
@@ -14,14 +14,7 @@ if(WP_DEBUG == true){
 }?>
 <section id="yui-main">
 <?php
-
-if(is_home() === false){
 	get_template_part( 'loop', 'default' );
-	
-}else{
-	get_template_part( 'loop', 'format' );
-} 
-
 ?>
 <div class="clear"></div>
 </section>

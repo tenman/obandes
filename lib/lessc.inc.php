@@ -1,5 +1,15 @@
 <?php
-
+/**
+ * lessphp v0.3.0 for WordPress theme obandes
+ *
+ * Note
+ * file_get_contents, file_put_contents is comment outed
+ *
+ * License: GNU General Public License v3.0
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.html
+ * @package obandes
+ * @since obandes 0.8
+ */
 /**
  * lessphp v0.3.0
  * http://leafo.net/lessphp
@@ -8,12 +18,6 @@
  *
  * Copyright 2011, Leaf Corcoran <leafot@gmail.com>
  * Licensed under MIT or GPLv3, see LICENSE
- */
-/*
- * Note
- *
- * file_get_contents, file_put_contents is comment outed
- * theme obandes 
  */
 /**
  * The less compiler and parser.

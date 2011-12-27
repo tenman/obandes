@@ -3,8 +3,8 @@
  * search form for our theme.
  *
  *
- * @package WordPress
- * @subpackage obandes
+ *
+ * @package: obandes
  * @since obandes 0.41
  */
 ?>

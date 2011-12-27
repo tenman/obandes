@@ -978,17 +978,27 @@ if(!function_exists("obandes_embed_meta")){
         global $post;
         $images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image', 'orderby' => 'menu_order', 'order' => 'ASC', 'numberposts' => 10 ) );
                         $total_images = count( $images );
-        $result = '<div class="horizon-gallery">';
-        if(isset($images)){
+        
+        if(isset($images) and !preg_match("|\[gallery|",$post->post_content)){
+		$result = '<div class="horizon-gallery">';
             foreach($images as $image){
             $result .= '<a class="size-thumbnail" href="'.esc_url(get_attachment_link($image->ID)).'/">'.wp_get_attachment_image( $image->ID, 'thumbnail' ).' </a>';
             }
+	        return $result.'</div>';
+	
         }else{
             return false;
         }
-        return $result.'</div>';
-        }
-    if (!function_exists('obandes_comment')) {
+    }
+}
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+if (!function_exists('obandes_comment')) {
         function obandes_comment( $comment, $args, $depth ) {
             $GLOBALS['comment'] = $comment; ?>
             <?php if ( '' == $comment->comment_type ) : ?>
@@ -1024,7 +1034,6 @@ if(!function_exists("obandes_embed_meta")){
             <?php edit_comment_link( __('(Edit)', 'obandes'), ' ' ); ?>
             <?php endif;
         }
-    }
 }
 /**
  *
@@ -1189,7 +1198,8 @@ if(!function_exists("obandes_theme_init")){
 if(!function_exists("obandes_install_navigation")){
     function obandes_install_navigation() {
         $install = get_option('obandes_theme_settings');
-        if(!array_key_exists('install', $install) and is_array($install)){
+		
+        if(is_array($install) and !array_key_exists('install', $install)){
             delete_option('obandes_theme_settings');
             add_action('admin_notices', create_function(null, 'echo obandes_first_only_msg(2);'));
              obandes_theme_init();
@@ -1435,7 +1445,7 @@ if(!function_exists("obandes_options_page_view")){
         echo '</div>';
         echo '</td>';
         echo '<td>';
-                $obandes_text_field = '<div><input type="text" name="%1$s" id="%1$s" class="obandes-color-picker" value="%4$s" />'.
+                $obandes_text_field = '<div><input type="text" name="%1$s" id="%1$s" class="obandes-color-picker" value="" />'.
                                     '<a href="#" id="pickcolor" class="button">'.__("Select a Color","obandes").'</a>'.
                                     '<div id="colorpicker-selector" %3$s></div>';
                     printf($obandes_text_field,
@@ -1446,18 +1456,18 @@ if(!function_exists("obandes_options_page_view")){
                     );
         echo '</td></tr>';
         echo '<tr valign="top">';
-        echo '<td class="title" ><div style="font-weight:bold;vertical-align:top;">'.__( 'CSS Edit' ,'obandes' );
+        echo '<td class="title" style="border:1px solid red"><div style="font-weight:bold;vertical-align:top;">'.__( 'CSS Edit' ,'obandes' );
                 $obandes_text_field = '<div style="margin:1em; padding:1em;border:inset thin">
-                <p style="font-weight:normal">Create Hex Color Code</p><input id="obandespastetextarea" type="text" name="%1$s" id="%1$s" class="obandes-color-picker2" value="" onClick="this.select();" />'.'<a href="#" id="pickcolor2" class="button">'.__("Select a Color","obandes").'</a>'.
+                <p style="font-weight:normal">Create Hex Color Code</p><input id="obandespastetextarea" type="text" name="%1$s" id="%1$s" class="obandes-color-picker2" value="" onClick="colorpicker-selector2.select();" />'.'<a href="#" id="pickcolor2" class="button">'.__("Select a Color","obandes").'</a>'.
 '<div id="colorpicker-selector2" %3$s></div>';
                     printf($obandes_text_field,
-                        esc_attr('obandes_setting[obandes_header_background_color]'),
+                        'cleate-color',
                         esc_attr($obandes_header_background_color_val),
                         'style="z-index: 100; background:#fff; border:1px solid #ccc; position:absolute; display:none;"'
                     );
         echo '</div>';
         echo '</td>';
-        echo '<td>';
+        echo '<td style="border:1px solid red">';
         echo '<textarea class="obandes-css-textarea" id="obandes_setting[obandes_css]" cols="50" rows="10" name="obandes_setting[obandes_css]"';
         echo ' style="width:90%;height:'.$rows.'em;line-height:1.5;font-size:120%;font-family:"Courier New", Courier, mono;padding:3px;">';
         echo stripslashes( $obandes_style);
@@ -1540,13 +1550,13 @@ if(!function_exists("obandes_prev_next_post")){
         function obandes_prev_next_post($position = "nav-above"){
             $obandes_max_length     = 40;
             $obandes_prev_length    = $obandes_max_length + 1;
-        if(!is_attachment()){
-            $obandes_max_length     = 40;
-            $obandes_prev_post_id   = get_adjacent_post(true,'',true) ;
-            $obandes_prev_length    = strlen(get_the_title($obandes_prev_post_id));
-            $obandes_next_post_id   = get_adjacent_post(false,'',false) ;
-            $obandes_next_length    = strlen(get_the_title($obandes_next_post_id));
-        }
+			if(!is_attachment()){
+				$obandes_max_length     = 40;
+				$obandes_prev_post_id   = get_adjacent_post(true,'',true) ;
+				$obandes_prev_length    = strlen(get_the_title($obandes_prev_post_id));
+				$obandes_next_post_id   = get_adjacent_post(false,'',false) ;
+				$obandes_next_length    = strlen(get_the_title($obandes_next_post_id));
+        
 ?>
 <div id="<?php echo $position;?>" class="clearfix">
 <?php if($obandes_prev_length < $obandes_max_length ){?>
@@ -1560,7 +1570,9 @@ if(!function_exists("obandes_prev_next_post")){
   <div class="nav-next"><?php next_post_link('%link','<span class="long-title">%title</span>'); ?></div>
 <?php }?>
 </div>
-<?php }
+<?php
+			}
+	   }
 }
 /**
  *
@@ -1857,6 +1869,7 @@ if(!function_exists("obandes_compress_css")){
  */
 if(!function_exists("obandes_get_header_image_renderer")){
     function obandes_get_header_image_renderer($obandes_image_uri = ''){
+		global $post;
         if(empty($obandes_image_uri)){
             $obandes_image_uri = get_header_image();
         }

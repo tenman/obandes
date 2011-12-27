@@ -7,8 +7,8 @@
  * handled by a callback to obandes_comment which is
  * located in the functions.php file.
  *
- * @package WordPress
- * @subpackage obandes
+ *
+ * @package: obandes
  * @since obandes 0.1
  */
 ?>
