@@ -1,46 +1,46 @@
 Changelog -----------------------------------
-version:0.81
+version:0.90
 Note: important:
 This versions index.php is display change when useing post format.
 If you need same displaying when please use post-format-group.php(page template name : post format group)
 
 removed
-	Duplicate file admin-script.js
-	license.txt	
+    Duplicate file admin-script.js
+    license.txt
 fixed
-	Fixed comment Tags improperly keyword.
-		style.css
-	Fixed color pickng value improperly.	
-		Color picker where obandes options
-	Fixed underfined variable $obandes_next_length
-		Conditonal Post format gallery and show attachments view.
-	Fixed function obandes_get_header_image_renderer works improperly
-		Add global $post
-	Fixed obandes_install_navigation works improperly.
-	Fixed format gallery
-		duplicate gallery problem
-			if entry useing gallery shortcode when post format gallery layout not show.
+    Fixed comment Tags improperly keyword.
+        style.css
+    Fixed color pickng value improperly.
+        Color picker where obandes options
+    Fixed underfined variable $obandes_next_length
+        Conditonal Post format gallery and show attachments view.
+    Fixed function obandes_get_header_image_renderer works improperly
+        Add global $post
+    Fixed obandes_install_navigation works improperly.
+    Fixed format gallery
+        duplicate gallery problem
+            if entry useing gallery shortcode when post format gallery layout not show.
 modified
-	lessic.inc.php 
-		Add license
-	Missing comment where single.php
-	A display embarrasses a visitor in index.php when Post formats entry.
-		Change index page display nomal blog style.
-		see made post-format-group.php
-	Add description readme.txt
-		format-chat.php format-image.php format-link.php
-			About External API
-	readme.txt
-		Add license.
-		another description.
-	style.css
-		Remove comments un-necessary.
-	All template files.
-		remove @package WordPress
-		change from @subpackage obandes to  @package: obandes
+    lessic.inc.php
+        Add license
+    Missing comment where single.php
+    A display embarrasses a visitor in index.php when Post formats entry.
+        Change index page display nomal blog style.
+        see made post-format-group.php
+    Add description readme.txt
+        format-chat.php format-image.php format-link.php
+            About External API
+    readme.txt
+        Add license.
+        another description.
+    style.css
+        Remove comments un-necessary.
+    All template files.
+        remove @package WordPress
+        change from @subpackage obandes to  @package: obandes
 made
-	Add post-format-group.php page template.
-		post formatted entry is display  group by post format
+    Add post-format-group.php page template.
+        post formatted entry is display  group by post format
 
 ----------------------------------------------
 Changelog -----------------------------------
