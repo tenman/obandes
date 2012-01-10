@@ -1,4 +1,14 @@
 Changelog -----------------------------------
+version:0.92
+modified
+    Add images license where readme.txt
+    Remove editor style
+fixed
+    functions.php
+        Missing inline style border 1px solid red remove.
+        Theme options page td width 260px remove.
+----------------------------------------------
+Changelog -----------------------------------
 version:0.90
 Note: important:
 This versions index.php is display change when useing post format.
