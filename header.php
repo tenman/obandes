@@ -19,7 +19,7 @@
 		wp_enqueue_script( 'comment-reply' );
 	}
 ?>
-<title><?php trim(obandes_title());?></title>
+<title><?php wp_title('|', true, 'right')?></title>
 <?php wp_head();?>
 </head>
 <body <?php body_class(); ?> onLoad="horizontal()">

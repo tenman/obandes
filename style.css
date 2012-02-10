@@ -4,7 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description:lessphp (CSS preprocessor) support Where Theme option panel style editor. YUI(Yahoo User Inter face) Grid layout support.  2column fixed and fluid layout theme.Post format image support Zoom it API. This theme supply your happy blogging  From beginners to a specialist
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 0.92
+Version: 0.93
 Tags:two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -656,6 +656,7 @@ div.aligncenter {
 .wp-smiley{
     margin: 0;
 }
+
 .nav-previous{
 	float:left;
 }
@@ -664,6 +665,17 @@ div.aligncenter {
 .nav-next,	
 .nav-previous a:hover{
 	text-decoration:none;
+}
+.parent-entry{
+	margin-left:1em;
+}
+
+.attachment .caption {
+	text-align:left;
+}
+.attachment .caption dl{
+	margin:0;
+	padding:0;
 }
 
 /**
@@ -696,7 +708,7 @@ dd {
 	
 }
 div[class^=horizon] .gallery .gallery-caption {
-	display:none;
+	/*display:none;*/
 }
 
 dl.author dd,
@@ -732,7 +744,7 @@ dl.my_tags dt {
 	margin-bottom:2em;
 }
 #doc3{
-	min-width:750px;
+	min-width:600px;
 	}
 
 article .title{
@@ -1787,6 +1799,9 @@ nav li a{
 nav h2{
 	border-bottom:#693 1px solid;
 }
+.widget-container ul{
+	margin-left:1em;
+}
 #footer-widget-area{
 	color:#333;
 }
@@ -1880,3 +1895,4 @@ header div.h1 a:hover{
 body > #doc,body > #doc2,body > #doc3,body > #doc4 {
 	background:#fff;
 }
+

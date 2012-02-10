@@ -40,6 +40,8 @@ if(WP_DEBUG == true){
 <?php edit_post_link( __( 'Edit', 'obandes' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
 </div>
 <br class="clear" />
+<?php comments_template( '', true ); ?>
+<br class="clear" />
 <?php obandes_prev_next_post('nav-below');?>
 </article>
 <?php

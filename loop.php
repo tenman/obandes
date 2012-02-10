@@ -99,6 +99,7 @@ the_content();
 <?php edit_post_link( __( 'Edit', 'obandes' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
 </div>
 <br class="clear" />
+<?php comments_template( '', true ); ?>
 </article>
 </li>
 <?php }//endwhile ?>

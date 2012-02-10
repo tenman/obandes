@@ -1,4 +1,19 @@
 Changelog -----------------------------------
+version:0.93
+removed
+
+moved
+
+added
+
+fixed
+
+modified
+
+made
+
+----------------------------------------------
+Changelog -----------------------------------
 version:0.92
 modified
     Add images license where readme.txt

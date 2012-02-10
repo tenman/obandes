@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: obandes 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-11 07:19+0900\n"
+"POT-Creation-Date: 2012-02-10 14:17+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Akio Tenman <akio@tenman.info>\n"
 "Language-Team: obandes <a.tenman@gmail.com>\n"
@@ -21,16 +21,16 @@ msgstr ""
 msgid "This post is password protected. Enter the password to view any comments."
 msgstr "この投稿はパスワードで保護されています。コメントを表示するにはパスワードを入力してください。"
 
-#: obandes/comments.php:63
+#: obandes/comments.php:65
 #, fuzzy
 msgid "Comments are closed."
 msgstr "コメントは受け付けていません。"
 
-#: obandes/comments.php:72
+#: obandes/comments.php:74
 msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
 msgstr "<span class=\"meta-nav\">&larr;</span> 古いコメント"
 
-#: obandes/comments.php:73
+#: obandes/comments.php:75
 msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
 msgstr "新しいコメント <span class=\"meta-nav\">&rarr;</span>"
 
@@ -53,370 +53,381 @@ msgstr "http://ja.wordpress.org/"
 msgid "Proudly powered by %s."
 msgstr "Proudly powered by %s."
 
-#: obandes/functions.php:62
+#: obandes/functions.php:89
 #, fuzzy
 msgid "Default Sidebar"
 msgstr "左サイドバー"
 
-#: obandes/functions.php:473
+#: obandes/functions.php:517
 msgid "Base Color for Automatic Arrangement"
 msgstr "Base Color for Automatic Arrangement"
 
-#: obandes/functions.php:483
+#: obandes/functions.php:526
 msgid "Navi Col"
 msgstr "ナビゲーション列"
 
-#: obandes/functions.php:493
+#: obandes/functions.php:535
 #, fuzzy
 msgid "Page Type"
 msgstr "ページ %s"
 
-#: obandes/functions.php:503
-#: obandes/functions.php:1143
-#: obandes/functions.php:1257
+#: obandes/functions.php:544
+#: obandes/functions.php:1392
+#: obandes/functions.php:1490
 msgid "Header Background Color"
 msgstr "ヘッダー背景色"
 
-#: obandes/functions.php:541
+#: obandes/functions.php:596
 #, fuzzy
 msgid "Primary Navigation"
 msgstr "メインナビゲーション"
 
-#: obandes/functions.php:548
+#: obandes/functions.php:603
 msgid "obandes"
 msgstr "obandes"
 
-#: obandes/functions.php:559
+#: obandes/functions.php:618
 msgid "Main Column Wiget Area"
 msgstr "メインウィジェット"
 
-#: obandes/functions.php:561
+#: obandes/functions.php:620
 #, fuzzy
 msgid "The main colmun widget area"
 msgstr "フッターウィジェットエリア1"
 
-#: obandes/functions.php:569
+#: obandes/functions.php:628
 #, fuzzy
 msgid "First Footer Widget Area"
 msgstr "フッターウィジェットエリア1"
 
-#: obandes/functions.php:571
+#: obandes/functions.php:630
 #, fuzzy
 msgid "The first footer widget area"
 msgstr "フッターウィジェットエリア1"
 
-#: obandes/functions.php:579
+#: obandes/functions.php:638
 #, fuzzy
 msgid "Second Footer Widget Area"
 msgstr "フッターウィジェットエリア2"
 
-#: obandes/functions.php:581
+#: obandes/functions.php:640
 #, fuzzy
 msgid "The second footer widget area"
 msgstr "フッターウィジェットエリア2"
 
-#: obandes/functions.php:589
+#: obandes/functions.php:648
 #, fuzzy
 msgid "Third Footer Widget Area"
 msgstr "フッターウィジェットエリア3"
 
-#: obandes/functions.php:591
+#: obandes/functions.php:650
 #, fuzzy
 msgid "The third footer widget area"
 msgstr "フッターウィジェットエリア3"
 
-#: obandes/functions.php:599
+#: obandes/functions.php:658
 #, fuzzy
 msgid "Fourth Footer Widget Area"
 msgstr "フッターウィジェットエリア4"
 
-#: obandes/functions.php:601
+#: obandes/functions.php:660
 #, fuzzy
 msgid "The fourth footer widget area"
 msgstr "フッターウィジェットエリア4"
 
-#: obandes/functions.php:612
-#, php-format
-msgid "<span class=\"%1$s\">Posted on</span> %2$s <span class=\"meta-sep\">by</span> %3$s"
+#: obandes/functions.php:691
+#, fuzzy, php-format
+msgid "<span class=\"%1$s\">Posted on</span> %2$s <span class=\"meta-sep\">by</span> %3$s  %4$s"
 msgstr "<span class=\"%1$s\">Posted on</span> %2$s <span class=\"meta-sep\">by</span> %3$s"
 
-#: obandes/functions.php:648
+#: obandes/functions.php:741
+#, fuzzy, php-format
+msgid " Page %s"
+msgstr "ページ %s"
+
+#: obandes/functions.php:775
 #, fuzzy, php-format
 msgid "Page %s"
 msgstr "ページ %s"
 
-#: obandes/functions.php:831
+#: obandes/functions.php:998
 #, php-format
 msgid "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 
-#: obandes/functions.php:833
+#: obandes/functions.php:1000
 #, php-format
 msgid "This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr "カテゴリー: %1$s &nbsp; <a href=\"%3$s\" title=\"%4$s へのパーマリンク\" rel=\"bookmark\">パーマリンク</a>"
 
-#: obandes/functions.php:835
+#: obandes/functions.php:1002
 #, php-format
 msgid "Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr "ブックマーク用 <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">パーマリンク</a>."
 
-#: obandes/functions.php:873
+#: obandes/functions.php:1058
 #, fuzzy, php-format
 msgid "%s <span class=\"says\">says:</span>"
 msgstr "%s <span class=\"says\">より:</span>"
 
-#: obandes/functions.php:885
+#: obandes/functions.php:1070
 #, fuzzy, php-format
 msgid "%1$s at %2$s"
 msgstr "%1$s %2$s"
 
-#: obandes/functions.php:885
-#: obandes/functions.php:895
+#: obandes/functions.php:1070
+#: obandes/functions.php:1080
 #, fuzzy
 msgid "(Edit)"
 msgstr "(編集)"
 
-#: obandes/functions.php:966
+#: obandes/functions.php:1206
+#: obandes/functions.php:1211
 #, php-format
 msgid "Thank you for adopting the %s theme. It is necessary to set it to this theme. Please move to a set screen clicking this <a href=\"%s\">obandes settings view</a>."
 msgstr "%sを選んでくれて　ありがとう　最初一度だけ、設定ページを開いてくださいますようお願いします <a href=\"%s\">obandes　設定ページ</a>."
 
-#: obandes/functions.php:1032
+#: obandes/functions.php:1212
+msgid "     Note:Detected improperly option value. The value was corrected. "
+msgstr "注：おかしなオプション値を検出しました　値は修正されました"
+
+#: obandes/functions.php:1296
 #, fuzzy
 msgid "Obandes Options"
 msgstr "表示オプション"
 
-#: obandes/functions.php:1041
+#: obandes/functions.php:1318
 #, fuzzy
 msgid " Options"
 msgstr "設定"
 
-#: obandes/functions.php:1063
+#: obandes/functions.php:1335
 #, fuzzy
 msgid "Style ,"
 msgstr "伸縮"
 
-#: obandes/functions.php:1082
+#: obandes/functions.php:1350
 #, fuzzy
 msgid "Header Image "
 msgstr "ヘッダー画像"
 
-#: obandes/functions.php:1104
+#: obandes/functions.php:1364
 msgid "Page Width "
 msgstr "ページ幅"
 
-#: obandes/functions.php:1124
+#: obandes/functions.php:1378
 msgid "Navigation Setting "
 msgstr "ナビゲーションバー　設定"
 
-#: obandes/functions.php:1153
+#: obandes/functions.php:1398
 #, fuzzy, php-format
 msgid "<strong>%1$s</strong> updated  successfully."
 msgstr "WordPress の更新を完了しました。"
 
-#: obandes/functions.php:1155
+#: obandes/functions.php:1400
 msgid "I am waiting your Change."
 msgstr "編集可能"
 
-#: obandes/functions.php:1171
+#: obandes/functions.php:1413
 msgid "fluid"
 msgstr "fluid"
 
-#: obandes/functions.php:1173
+#: obandes/functions.php:1415
 msgid "fix 950px"
 msgstr "950px幅"
 
-#: obandes/functions.php:1175
+#: obandes/functions.php:1417
 msgid "fix 974px"
 msgstr "974px幅"
 
-#: obandes/functions.php:1177
+#: obandes/functions.php:1419
 msgid "fix 750px"
 msgstr "750px幅"
 
-#: obandes/functions.php:1182
+#: obandes/functions.php:1423
 msgid "Left narrow"
 msgstr "左側　狭い幅"
 
-#: obandes/functions.php:1184
+#: obandes/functions.php:1425
 msgid "Left middle"
 msgstr "左側に　中ぐらいの幅"
 
-#: obandes/functions.php:1186
+#: obandes/functions.php:1427
 msgid "Left wide"
 msgstr "左側に広い幅"
 
-#: obandes/functions.php:1188
+#: obandes/functions.php:1429
 msgid "Right narrow"
 msgstr "右側に狭い幅"
 
-#: obandes/functions.php:1190
+#: obandes/functions.php:1431
 msgid "Right middle"
 msgstr "右側に中ぐらいの幅"
 
-#: obandes/functions.php:1192
+#: obandes/functions.php:1433
 msgid "Right wide"
 msgstr "右側に広い幅"
 
-#: obandes/functions.php:1199
-#: obandes/functions.php:1295
+#: obandes/functions.php:1439
+#: obandes/functions.php:1522
 #, fuzzy
 msgid "Save Options"
 msgstr "表示オプション"
 
-#: obandes/functions.php:1206
+#: obandes/functions.php:1444
 msgid "Column"
 msgstr "カラム"
 
-#: obandes/functions.php:1232
+#: obandes/functions.php:1467
 #, fuzzy
 msgid "Page"
 msgstr "ページ"
 
-#: obandes/functions.php:1262
-#: obandes/functions.php:1277
+#: obandes/functions.php:1495
+#: obandes/functions.php:1507
 msgid "Select a Color"
 msgstr "色の選択"
 
-#: obandes/functions.php:1275
+#: obandes/functions.php:1505
 #, fuzzy
 msgid "CSS Edit"
 msgstr "CSS編集"
 
-#: obandes/functions.php:1304
+#: obandes/functions.php:1530
 #, fuzzy
 msgid "CSS links"
 msgstr "被リンク"
 
-#: obandes/functions.php:1308
-#: obandes/functions.php:1309
+#: obandes/functions.php:1534
+#: obandes/functions.php:1535
 msgid "obandes Quick Start"
 msgstr "クイック スタート"
 
-#: obandes/functions.php:1312
-#: obandes/functions.php:1313
+#: obandes/functions.php:1538
+#: obandes/functions.php:1539
 #, fuzzy
 msgid "CSS Tidy"
 msgstr "CSS クラス"
 
-#: obandes/functions.php:1316
+#: obandes/functions.php:1542
 msgid "Data is preserved in the data base."
 msgstr "ここに書き込んだ指定は、データベースに保存されます"
 
-#: obandes/functions.php:1317
+#: obandes/functions.php:1543
 msgid "Your original CSS setting is not overwrited when Theme upgrade."
 msgstr "テーマファイルがアップグレードした時に上書きされません"
 
-#: obandes/functions.php:1318
+#: obandes/functions.php:1544
 msgid "obandes have special body classes."
 msgstr "obandes テーマは、数種類の特別なクラス名を使うことができます。"
 
-#: obandes/functions.php:1319
+#: obandes/functions.php:1545
 #, fuzzy
 msgid "languages class e.g.  .ja"
 msgstr "テーマ <span class=\"b\">%1$s</span>"
 
-#: obandes/functions.php:1320
+#: obandes/functions.php:1546
 msgid "browser class e.g.  .ie  .chrome .gecko(firefox)"
 msgstr "ブラウザクラス 例  .ie  .chrome .gecko(firefox)"
 
-#: obandes/functions.php:1321
+#: obandes/functions.php:1547
 msgid "multiuser class  e.g. .b4 .b3"
 msgstr "マルチユーザクラス 例 .b4 .b3"
 
-#: obandes/functions.php:1322
+#: obandes/functions.php:1548
 #, fuzzy
 msgid "horizon class e.g. .horizon-something"
 msgstr "テーマ <span class=\"b\">%1$s</span>"
 
-#: obandes/functions.php:1323
+#: obandes/functions.php:1549
 msgid "Multiuser class can be specified even if there is no child theme if they are only a few changes."
 msgstr "マルチユーザクラスは、各ユーザー間のちょっとした変更だけならテーマファイルのstyle.cssだけでユーザ毎のスタイル指定も可能です。"
 
-#: obandes/functions.php:1324
+#: obandes/functions.php:1550
 msgid "Browse class can free from complex CSS hack."
 msgstr "ブラウザクラスを使うことで、CSS hackが軽減されます"
 
-#: obandes/functions.php:1325
+#: obandes/functions.php:1551
 msgid "languages class give happyness who not ASCII languege user."
 msgstr "ランゲージクラスは、国別、スタイル指定を簡便に行うことができます。"
 
-#: obandes/functions.php:1326
+#: obandes/functions.php:1552
 #, fuzzy
 msgid "horizon class USEGE:"
 msgstr "テーマ <span class=\"b\">%1$s</span>"
 
-#: obandes/functions.php:1327
+#: obandes/functions.php:1553
 msgid "horizon class is not multiclass use only horizontal layout."
 msgstr "horizon クラスは、マルチクラス指定できません。"
 
-#: obandes/functions.php:1328
+#: obandes/functions.php:1554
 msgid "paste your entry this code."
 msgstr "以下のコードを投稿に貼り付けてみてください。"
 
-#: obandes/functions.php:1329
+#: obandes/functions.php:1555
 #, fuzzy
 msgid "use html mode."
 msgstr "HTML モードに切り替え"
 
+#: obandes/functions.php:1885
+msgid "Style Rule ERROR"
+msgstr "スタイルルールのエラーです"
+
+#: obandes/image.php:33
+#: obandes/loop-format.php:48
+#: obandes/loop.php:85
+#, fuzzy, php-format
+msgid "<span class=\"time-diff\">(Published for %s)</span>"
+msgstr "<span class=\"time-diff\">( %s　経過)</span>"
+
+#: obandes/image.php:51
+#: obandes/loop-format.php:57
+#: obandes/loop-format.php:107
+#: obandes/loop-format.php:141
+#: obandes/loop-format.php:219
+#: obandes/loop-format.php:253
+#: obandes/loop.php:94
+#: obandes/onecolumn-page.php:24
+#: obandes/page.php:26
+#, fuzzy
+msgid "Pages:"
+msgstr "ページ:"
+
+#: obandes/image.php:66
+#: obandes/loop-format.php:62
+#: obandes/loop-format.php:108
+#: obandes/loop-format.php:142
+#: obandes/loop-format.php:175
+#: obandes/loop-format.php:220
+#: obandes/loop-format.php:254
+#: obandes/loop.php:99
+#: obandes/onecolumn-page.php:26
+#: obandes/page.php:28
+#: obandes/search.php:53
+#, fuzzy
+msgid "Edit"
+msgstr "編集"
+
 #: obandes/loop-format.php:16
-#: obandes/loop-format.php:266
-#: obandes/loop.php:72
+#: obandes/loop-format.php:269
+#: obandes/loop.php:71
 #: obandes/loop.php:109
 msgid "<span class=\"button\"><span class=\"meta-nav\">&larr;</span> Older posts</span>"
 msgstr "<span class=\"button\"><span class=\"meta-nav\">&larr;</span> 古い投稿</span>"
 
 #: obandes/loop-format.php:18
-#: obandes/loop-format.php:268
-#: obandes/loop.php:74
+#: obandes/loop-format.php:271
+#: obandes/loop.php:73
 #: obandes/loop.php:109
 #, fuzzy
 msgid "<span class=\"button\">Newer posts <span class=\"meta-nav\">&rarr;</span></span>"
 msgstr "%s の投稿をすべて表示 <span class=\"meta-nav\">&rarr;</span>"
 
-#: obandes/loop-format.php:47
-#: obandes/loop.php:86
-#: obandes/single.php:35
-#, fuzzy, php-format
-msgid "<span class=\"time-diff\">(Published for %s)</span>"
-msgstr "<span class=\"time-diff\">( %s　経過)</span>"
-
-#: obandes/loop-format.php:56
-#: obandes/loop-format.php:106
-#: obandes/loop-format.php:140
-#: obandes/loop-format.php:216
-#: obandes/loop-format.php:250
-#: obandes/loop.php:95
-#: obandes/onecolumn-page.php:24
-#: obandes/page.php:26
-#: obandes/single.php:39
-#: obandes/formats/format-aside.php:27
-#, fuzzy
-msgid "Pages:"
-msgstr "ページ:"
-
-#: obandes/loop-format.php:61
-#: obandes/loop-format.php:107
-#: obandes/loop-format.php:141
-#: obandes/loop-format.php:173
-#: obandes/loop-format.php:217
+#: obandes/loop-format.php:105
+#: obandes/loop-format.php:139
+#: obandes/loop-format.php:163
+#: obandes/loop-format.php:206
 #: obandes/loop-format.php:251
-#: obandes/loop.php:100
-#: obandes/onecolumn-page.php:26
-#: obandes/page.php:28
-#: obandes/search.php:53
-#: obandes/single.php:44
-#: obandes/formats/format-aside.php:30
-#, fuzzy
-msgid "Edit"
-msgstr "編集"
-
-#: obandes/loop-format.php:104
-#: obandes/loop-format.php:138
-#: obandes/loop-format.php:161
-#: obandes/loop-format.php:203
-#: obandes/loop-format.php:248
-#: obandes/formats/format-aside.php:25
 msgid "Continue&nbsp;reading&nbsp;<span class=\"meta-nav\">&rarr;</span>"
 msgstr "続きを読む&nbsp;<span class=\"meta-nav\">&rarr;</span>"
 
