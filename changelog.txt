@@ -1,16 +1,26 @@
 Changelog -----------------------------------
 version:0.93
-removed
-
-moved
-
 added
-
+    new file image.php
 fixed
+    Fixed Post Format Test: Gallery-> Post text is not showing.
+        Change style rule
+    Fixed Previous and next image link is not showing on single image gallery post.
+        Add new file image.php
 
+    Fixed 1.    Many Trackbacks post-> fail. Pingback is not showing.
+          2.    Comment Test -> fail, comments are not showing.
+            Add function comments_template
+
+    Fixed Image test -> Fail, Wide Image, Resized In Editor and Wide Image, Not Resized both are showing in equal size in IE.
+            Set $content_width value
+
+    Fixed sidebar Widget custom menu issues -> Parent menu and child-menu are showing in same alignment
+            add margin style rule
+    Fixed Menu design issues.
+            Change style rule
 modified
-
-made
+    Blog title function change from obandes_title() to wp_title() and add filter function obandes_wp_title
 
 ----------------------------------------------
 Changelog -----------------------------------

@@ -724,28 +724,28 @@ add_filter('wp_title','obandes_wp_title',10,3);
     if ( ! function_exists( 'obandes_wp_title' ) ){
         function obandes_wp_title( $title, $sep, $seplocation ){
             global $page, $paged;
-			$page_info			= '';
-			$add_title 			= array();
-			$site_description 	= get_bloginfo( 'description', 'display' );
-			
-			if(!empty($title)){
-            	$add_title[]	= str_replace($sep,'',$title);
-			}
-            	$add_title[] 	= get_bloginfo( 'name' );
-           			
+            $page_info          = '';
+            $add_title          = array();
+            $site_description   = get_bloginfo( 'description', 'display' );
+
+            if(!empty($title)){
+                $add_title[]    = str_replace($sep,'',$title);
+            }
+                $add_title[]    = get_bloginfo( 'name' );
+
             if ( !empty($site_description) and ( is_home() or is_front_page() ) ){
-                $add_title[] 	= $site_description;
+                $add_title[]    = $site_description;
             }
             // Add a page number
             if ( $paged > 1 or $page > 1 ){
-                $page_info 		= sprintf( __( ' Page %s', 'obandes' ), max( $paged, $page ) );
+                $page_info      = sprintf( __( ' Page %s', 'obandes' ), max( $paged, $page ) );
             }
-			if('right' == $seplocation){
-				$add_title 		= array_reverse( $add_title );
-				$title 			= implode( " $sep ", $add_title ). $page_info;
-			}else{
-				$title 			= implode( " $sep ", $add_title ). $page_info;
-			}
+            if('right' == $seplocation){
+                $add_title      = array_reverse( $add_title );
+                $title          = implode( " $sep ", $add_title ). $page_info;
+            }else{
+                $title          = implode( " $sep ", $add_title ). $page_info;
+            }
             return  $title ;
         }
     }
@@ -870,7 +870,7 @@ if (!function_exists('obandes_add_body_class')) {
  *
  */
 
- 
+
 if(!function_exists("obandes_content_width")){
     function obandes_content_width(){
         $adjust = 16;
@@ -952,7 +952,8 @@ if(!function_exists("obandes_content_width")){
 }
 
     if(!isset($content_width)){
-        $obandes_content_width = obandes_content_width();
+        $content_width = obandes_content_width();
+
     }
 /**
  *
@@ -991,25 +992,25 @@ if(!function_exists("obandes_document_width")){
  */
 
 if (!function_exists('obandes_posted_in')) {
-	function obandes_posted_in() {
-		// Retrieves tag list of current post, separated by commas.
-		$tag_list = get_the_tag_list( '', ', ' );
-		if ( $tag_list ) {
-			$posted_in = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'obandes' );
-		} elseif ( is_object_in_taxonomy( get_post_type(), 'category' ) ) {
-			$posted_in = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'obandes' );
-		} else {
-			$posted_in = __( 'Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'obandes' );
-		}
-		// Prints the string, replacing the placeholders.
-		printf(
-			$posted_in,
-			get_the_category_list( ', ' ),
-			$tag_list,
-			get_permalink(),
-			the_title_attribute( 'echo=0' )
-		);
-	}
+    function obandes_posted_in() {
+        // Retrieves tag list of current post, separated by commas.
+        $tag_list = get_the_tag_list( '', ', ' );
+        if ( $tag_list ) {
+            $posted_in = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'obandes' );
+        } elseif ( is_object_in_taxonomy( get_post_type(), 'category' ) ) {
+            $posted_in = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'obandes' );
+        } else {
+            $posted_in = __( 'Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'obandes' );
+        }
+        // Prints the string, replacing the placeholders.
+        printf(
+            $posted_in,
+            get_the_category_list( ', ' ),
+            $tag_list,
+            get_permalink(),
+            the_title_attribute( 'echo=0' )
+        );
+    }
 }
 
 /**
@@ -1772,7 +1773,6 @@ if(!function_exists("obandes_get_condition")){
  *
  */
     add_filter('the_content','obandes_ie_height_expand_issue');
-
 if(!function_exists("obandes_ie_height_expand_issue")){
     function obandes_ie_height_expand_issue($content){
         global $is_IE,$content_width;
