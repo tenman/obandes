@@ -372,7 +372,12 @@ color:@color-primary-navigation;
 #access ul li.current-menu-ancestor > a,
 #access ul li.current-menu-item > a,
 #access ul li.current-menu-parent > a {
-    color: #999;
+	color:@color-primary-navigation;
+	background:@background-primary-navigation;
+}
+#access ul li .children a{
+	background:#444;
+	color:#ddd;
 }
 .fragment_identifier a:hover,
 * html #access ul > li.current_page_item a,
@@ -722,7 +727,7 @@ add_filter('wp_title','obandes_wp_title',10,3);
 
 
     if ( ! function_exists( 'obandes_wp_title' ) ){
-        function obandes_wp_title( $title, $sep, $seplocation ){
+        function obandes_wp_title( $title, $sep = true, $seplocation = 'right' ){
             global $page, $paged;
             $page_info          = '';
             $add_title          = array();
@@ -806,9 +811,15 @@ if (!function_exists('obandes_init')) {
         wp_enqueue_script('yui');
         wp_register_script('obandes', get_template_directory_uri().'/obandes.js', array('jquery'), '0.1');
         wp_enqueue_script('obandes');
-        wp_register_script('jquery-template', 'http://nje.github.com/jquery-tmpl/jquery.tmpl.js', array('jquery'), '0.1');
-        wp_enqueue_script('jquery-template');
+       /* wp_register_script('jquery-template', 'http://nje.github.com/jquery-tmpl/jquery.tmpl.js', array('jquery'), '0.1');
+        wp_enqueue_script('jquery-template');*/
         }
+		
+		if($is_IE){
+        wp_register_script('html5shiv', 'http://html5shiv.googlecode.com/svn/trunk/html5.js', array(), '3', false);
+        wp_enqueue_script('html5shiv');
+		
+		}
     }
 }
 /**
@@ -912,7 +923,7 @@ if(!function_exists("obandes_content_width")){
             $obandes_content_width = $default;
         }
     }elseif(DOCUMENT_WIDTH == 'doc3'){
-        $w = 750;
+        $w = 600;
         if(SIDEBAR_WIDTH == 'yui-t1'){
             $obandes_content_width = $w - 160 - $adjust;
         }elseif(SIDEBAR_WIDTH == 'yui-t2'){
@@ -1777,10 +1788,10 @@ if(!function_exists("obandes_ie_height_expand_issue")){
     function obandes_ie_height_expand_issue($content){
         global $is_IE,$content_width;
         if($is_IE){
-            preg_match_all('#(<img)([^>]+)(height|width)(=")([0-9]+)"([^>]+)(height|width)(=")([0-9]+)"([^>]+)>#',$content,$images,PREG_SET_ORDER);
+            preg_match_all('#(<img)([^>]+)(height|width)(=")([0-9]+)"([^>]+)(height|width)(=")([0-9]+)"([^>]+)>#siu',$content,$images,PREG_SET_ORDER);
             foreach($images as $image){
                 if(($image[3] == "width" and $image[5] > $content_width) or ($image[7] == "width" and $image[9] > $content_width)){
-                    $content = str_replace($image[0],$image[1].$image[2].$image[6].$image[10].'>',$content);
+                    $content = str_replace($image[0],$image[1].$image[2].$image[6].' style="height:auto" '.$image[10].'>',$content);
                 }
             }
             return $content;
@@ -1992,4 +2003,21 @@ if(!function_exists("obandes_title_format")){
        echo apply_filters( 'obandes_title_format', obandes_get_title_format($heading_elememt));
     }
 }
+
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+
+add_action( 'wp_enqueue_scripts', 'obandes_enqueue_comment_reply' );
+function obandes_enqueue_comment_reply() {
+if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	wp_enqueue_script( 'comment-reply' );
+}
+}
+
+
 ?>

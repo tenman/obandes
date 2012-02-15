@@ -1,4 +1,21 @@
 Changelog -----------------------------------
+version:0.94
+removed
+    Removed wp_enqueue_script( 'comment-reply' ) where header.php
+    Removed html script element(http://html5shiv.googlecode.com/svn/trunk/html5.js) where header.php
+        Add wp_register_script 'html5shiv'
+fixed
+    Fixed sub menu background display improperly
+        Style rule change
+    Fixed somment Order listing and Unorder listing issues
+        Style rule change
+    Fixed Auto-embeds twitter and movie display impropely
+        Maximum embed size wider than column width then display improperly
+        Style rule change
+modified
+    Add function obandes_enqueue_comment_reply
+----------------------------------------------
+Changelog -----------------------------------
 version:0.93
 added
     new file image.php
