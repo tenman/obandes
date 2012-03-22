@@ -1,4 +1,9 @@
 Changelog -----------------------------------
+version:0.95
+modified
+    Change newer version lessphp v0.3.3
+----------------------------------------------
+Changelog -----------------------------------
 version:0.94
 removed
     Removed wp_enqueue_script( 'comment-reply' ) where header.php
