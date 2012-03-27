@@ -65,6 +65,8 @@ Writing helpers:
 
         see http://leafo.net/lessphp/docs/
 
+        Note:obandes lessphp can not use @import rule.
+
     Yahoo user interface nesting grid support where templates and the post
 
         see http://developer.yahoo.com/yui/examples/grids/grids-g.html
@@ -114,11 +116,20 @@ Writing helpers:
         example
 
         field name : meta
-        firld value: <meta name="description" content="How to obandes">
+        field value: <meta name="description" content="How to obandes">
 
 
         auto embeding elements below.
 
             <meta name="description" content="How to obandes">
+
+        Field name 'less' convert less notation to CSS rules and embed style rules
+        when display single.
+        since ver0.99
+
+        example
+
+        field name : less
+        field value: @color-1:#555; p{background:@color-1;}
 
 

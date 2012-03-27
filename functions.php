@@ -1873,7 +1873,10 @@ if(!function_exists("obandes_embed_style")){
             $less = new lessc();
             //$css_classes = get_template_directory().'lib/css_classes.php';
         $embed_style = get_option('obandes_theme_settings');
-
+		if(is_single()){
+			$embed_style['obandes_css'] = $embed_style['obandes_css']. get_post_meta($post->ID, 'less', true);
+		}
+		
         if($embed_style['obandes_css'] !== ""){
 
         /**
@@ -1882,7 +1885,6 @@ if(!function_exists("obandes_embed_style")){
          *
          */
             $embed_style = htmlspecialchars_decode($embed_style['obandes_css'], ENT_NOQUOTES);
-			$embed_style .= get_post_meta($post->ID, 'less', true);
 			
 			
         }else{
