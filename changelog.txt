@@ -1,4 +1,12 @@
 Changelog -----------------------------------
+version:0.98
+
+modified
+    custom field reserved words 'less'
+        'less' field value will parsed lessPHP after add embed style.
+----------------------------------------------
+
+Changelog -----------------------------------
 version:0.97
 modified
     Change newer version lessphp v0.3.3

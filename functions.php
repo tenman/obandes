@@ -1868,6 +1868,7 @@ if(!function_exists("plugin_is_active")){
 add_action("wp_head",'obandes_embed_style');
 if(!function_exists("obandes_embed_style")){
      function obandes_embed_style(){
+	 global $post;
             require get_template_directory().'/lib/lessc.inc.php';
             $less = new lessc();
             //$css_classes = get_template_directory().'lib/css_classes.php';
@@ -1881,6 +1882,9 @@ if(!function_exists("obandes_embed_style")){
          *
          */
             $embed_style = htmlspecialchars_decode($embed_style['obandes_css'], ENT_NOQUOTES);
+			$embed_style .= get_post_meta($post->ID, 'less', true);
+			
+			
         }else{
             global $css_preset;
             $embed_style = $css_preset;
