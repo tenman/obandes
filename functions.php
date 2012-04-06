@@ -45,6 +45,9 @@
     if(!defined('OBANDES_HEADER_BACKGROUND_COLOR')){
         define('OBANDES_HEADER_BACKGROUND_COLOR','#FFA500');
     }
+    if(!defined('OBANDES_HEADER_BACKGROUND_IMAGE')){
+        define('OBANDES_HEADER_BACKGROUND_IMAGE','');
+    }
 /**
  *
  *
@@ -593,8 +596,8 @@ if(!isset($obandes_query)){
     add_action('init', 'obandes_init');
 
 if( function_exists('wp_get_theme') ){ // WordPress 3.4 check
-    $args = array('default-color' => BACKGROUND_COLOR
-                ,'default-image' => BACKGROUND_IMAGE
+    $args = array('default-color' => OBANDES_HEADER_BACKGROUND_COLOR
+                ,'default-image' => OBANDES_HEADER_BACKGROUND_IMAGE
             );
     add_theme_support( 'custom-background', $args );
 }else{

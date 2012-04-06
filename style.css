@@ -1602,7 +1602,8 @@ margin-right:.5em;
 }
 #search-results-title{
 	margin-left:1em;
-	height:2em;
+	height:75px;
+	font-size:182%;
 }
 #search-results-title{
 	background:url(images/search-results.png);
