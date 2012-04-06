@@ -1,6 +1,12 @@
 Changelog -----------------------------------
 version:1.00
 
+modified
+    Functions support when exists
+    wp_get_theme()
+    add_theme_support( 'custom-header', $args )
+    add_theme_support( 'custom-background', $args );
+    wp_editor()
 ----------------------------------------------
 Changelog -----------------------------------
 version:0.99
