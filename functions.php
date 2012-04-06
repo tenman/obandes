@@ -1,4 +1,11 @@
 <?php
+/*add_filter('wp_default_editor','my_editor');
+function my_editor($content){
+//var_dump($content);
+
+return $content;
+}
+var_dump( get_user_setting('editor', 'tinymce') );*/
 /**
  * #doc - 750px centered (good for 800x600)
  * #doc2 - 950px centered (good for 1024x768)
@@ -128,9 +135,26 @@ if ( ! function_exists( 'obandes_header_style' ) ){
  *
  *
  *
- *
+ *add_theme_support( 'custom-background', 'default-color' => 'e3ecf2', 'default-image' => '%s/images/bg.png' ) );
  */
+ 
+ //working check 
+if( function_exists('wp_get_theme') ){ // WordPress 3.4 check
+	$args = array(
+				'default-text-color' => HEADER_TEXTCOLOR
+				,'width' => HEADER_IMAGE_WIDTH
+				,'height' => HEADER_IMAGE_HEIGHT
+				,'header-text' => NO_HEADER_TEXT
+				,'default-image' => HEADER_IMAGE
+			);
+	//they are "suggested" when flex-width and flex-height are set
+	
+	add_theme_support( 'custom-header', $args );
+	
+}else{
     add_custom_image_header( 'obandes_header_style', 'obandes_admin_header_style','obandes_admin_header_image');
+}
+	
 if ( ! function_exists( 'obandes_header_style' ) ){
     function obandes_header_style(){
         $html = '<style type="text/css">
@@ -138,6 +162,7 @@ if ( ! function_exists( 'obandes_header_style' ) ){
         printf($html,get_theme_mod( 'header_textcolor' ));
     }
 }
+
 /**
  *
  *
@@ -314,50 +339,51 @@ $obandes_css_preset =<<< CSS_PRESET
 @background-primary-navigation-color-hover: #333333;
 @color-primary-navigation-color-hover: #ffffff;
 @title-font-family:Georgia,Times New Roman,Times,serif;
+
 body {
-background:@background-body;
+	background:@background-body;
 }
 body > #doc,body > #doc2,body > #doc3,body > #doc4 {
--moz-border-radius:10px;
--moz-box-shadow:0 0 15px rgba(0,0,0,1);
--webkit-border-radius:10px;
--webkit-box-shadow:0 0 15px rgba(0,0,0,1);
-background:@background-page;
-border-radius:10px;
-box-shadow:0 0 15px rgba(0,0,0);
+	-moz-border-radius:10px;
+	-moz-box-shadow:0 0 15px rgba(0,0,0,1);
+	-webkit-border-radius:10px;
+	-webkit-box-shadow:0 0 15px rgba(0,0,0,1);
+	background:@background-page;
+	border-radius:10px;
+	box-shadow:0 0 15px rgba(0,0,0);
 }
 footer,header {
-background:@background-header;
+	background:@background-header;
 /*color:#fff;*/
 }
 nav h3:before,
 h3.widget-title:before {
-content:url(images/sidebar-title.png);
-margin-right:.5em;
-position:relative;
-top:3px;
+	content:url(images/sidebar-title.png);
+	margin-right:.5em;
+	position:relative;
+	top:3px;
 }
 .ie8 h3.widget-title:before {
-top:0;
+	top:0;
 }
 nav > ul {
-background:background-navigation;
+	background:background-navigation;
 }
 index article{
-border:#eee 2px groove;
+	border:#eee 2px groove;
 }
 .ie6 article,.ie7 article,.ie8 article,#footer-widget-area,#fourth,#third,#second,#first,article {
-background:@background-article;
+	background:@background-article;
 }
 #footer-widget-area h3{
-background:#97a25e url(images/bg-1.png);
-margin-bottom:0;
-color:#333;
+	background:#97a25e url(images/bg-1.png);
+	margin-bottom:0;
+	color:#333;
 }
 #access .menu,
 #access {
-background:@background-primary-navigation;
-color:@color-primary-navigation;
+	background:@background-primary-navigation;
+	color:@color-primary-navigation;
 }
 * html #access ul li.current-menu-ancestor a,
 * html #access ul li.current-menu-item a,
@@ -398,25 +424,25 @@ color:@color-primary-navigation;
     background:@background-primary-navigation-color-hover;
 }
 header img {
-border-bottom:2px solid #000;
-margin-bottom:-5px;
+	border-bottom:2px solid #000;
+	margin-bottom:-5px;
 }
 div.posted-in {
-border-bottom:3px solid #bbb;
-border-top:3px solid #bbb;
-background:#eef;
-background:saturate(@color-primary-navigation, 96%);
+	border-bottom:3px solid #bbb;
+	border-top:3px solid #bbb;
+	background:#eef;
+	background:saturate(@color-primary-navigation, 96%);
 }
 #commentform .form-submit {
-line-height:3;
-margin-bottom:1em;
+	line-height:3;
+	margin-bottom:1em;
 }
 .byuser,.commentlist > li,.reply,#commentform,div.tagcloud,.commentlist > li,.nopassword,.wp-caption,body.single-post .nocomments,.hentry th,.hentry td,.page-link,.bypostauthor
 .chrome article .content .size-thumbnail,.gecko article .content .size-thumbnail,.home .sticky,blockquote {
-border:1px solid #999;
+	border:1px solid #999;
 }
 article .content blockquote {
-border-left:6px solid #777;
+	border-left:6px solid #777;
 }
 .not-found,
 div.tagcloud,
@@ -425,41 +451,41 @@ footer,
 .pingback,
 .nocomments,
 article .content blockquote {
-background:#eee;
-background:saturate(@color-primary-navigation, 96%);
+	background:#eee;
+	background:saturate(@color-primary-navigation, 96%);
 }
 .h1,h1 {
-font-family:@title-font-family;
+	font-family:@title-font-family;
 /*font-size:2em;*/
 }
 .plate,.grad {
 }
 header {
--moz-border-radius-topleft:10px;
--moz-border-radius-topright:10px;
--webkit-border-top-left-radius:10px;
--webkit-border-top-right-radius:10px;
-border-top-left-radius:10px;
-border-top-right-radius:10px;
+	-moz-border-radius-topleft:10px;
+	-moz-border-radius-topright:10px;
+	-webkit-border-top-left-radius:10px;
+	-webkit-border-top-right-radius:10px;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
 }
 footer {
--moz-border-radius-bottomleft:10px;
--moz-border-radius-bottomright:10px;
--webkit-border-bottom-left-radius:10px;
--webkit-border-bottom-right-radius:10px;
-border-bottom-left-radius:10px;
-border-bottom-right-radius:10px;
+	-moz-border-radius-bottomleft:10px;
+	-moz-border-radius-bottomright:10px;
+	-webkit-border-bottom-left-radius:10px;
+	-webkit-border-bottom-right-radius:10px;
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
 }
 #footer-widget-area h3 {
--moz-border-radius-bottomright:10px;
--moz-border-radius-topleft:10px;
--webkit-border-bottom-right-radius:10px;
--webkit-border-top-left-radius:10px;
-border-bottom-right-radius:10px;
-border-top-left-radius:10px;
+	-moz-border-radius-bottomright:10px;
+	-moz-border-radius-topleft:10px;
+	-webkit-border-bottom-right-radius:10px;
+	-webkit-border-top-left-radius:10px;
+	border-bottom-right-radius:10px;
+	border-top-left-radius:10px;
 }
 #wp-calendar th:nth-child(1),#wp-calendar th:nth-child(7) {
-width:1em;
+	width:1em;
 }
 #doc,#doc2,#doc3,#doc4,#custom-doc{
 }
@@ -574,7 +600,17 @@ if(!isset($obandes_query)){
     add_action('admin_menu', 'obandes_theme_options_add_page');
     add_action('load-themes.php', 'obandes_install_navigation');
     add_action('init', 'obandes_init');
+	
+if( function_exists('wp_get_theme') ){ // WordPress 3.4 check
+	$args = array('default-color' => BACKGROUND_COLOR
+				,'default-image' => BACKGROUND_IMAGE
+			);
+	add_theme_support( 'custom-background', $args );
+}else{	
     add_custom_background();
+}
+	
+	
     load_textdomain( 'obandes', get_template_directory().'/languages/'.get_locale().'.mo' );
     add_filter('body_class','obandes_add_body_class');
     add_filter("wp_head","obandes_embed_meta",'99');
@@ -792,9 +828,11 @@ if (!function_exists('obandes_init')) {
     function obandes_init() {
         global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
         $page = basename($_SERVER['REQUEST_URI']);
-
-        $theme_data = get_theme_data( get_theme_root() . '/' . get_current_theme() . '/style.css' );
-
+		if(function_exists(' wp_get_theme')){ // WordPress 3.4 check
+        	$theme_data = get_theme_data( get_theme_root() . '/' . wp_get_theme() . '/style.css' );
+		}else{
+        	$theme_data = get_theme_data( get_theme_root() . '/' . get_current_theme() . '/style.css' );
+		}
         if (!is_admin() and !preg_match("|^wp-login\.php|si",$page)) {
         wp_register_style('html5reset', 'http://html5resetcss.googlecode.com/files/html5-reset-1.4.css',false,$theme_data['Version']);
         wp_enqueue_style( 'html5reset');
@@ -1215,12 +1253,25 @@ if(!function_exists("obandes_first_only_msg")){
         if ( $type == 1 ) {
             $query  = 'obandes_settings';
             $link   = get_site_url('', 'wp-admin/themes.php', 'admin') . '?page='.$obandes_query;
+			
+		if(function_exists('wp_get_theme')){ // WordPress 3.4 check
             $msg    = sprintf(__('Thank you for adopting the %s theme. It is necessary to set it to this theme. Please move to a set screen clicking this <a href="%s">obandes settings view</a>.','obandes'),get_current_theme() ,$link);
+		}else{
+            $msg    = sprintf(__('Thank you for adopting the %s theme. It is necessary to set it to this theme. Please move to a set screen clicking this <a href="%s">obandes settings view</a>.','obandes'),get_current_theme() ,$link);
+		}
+
         }
         if ( $type == 2 ) {
             $query  = 'obandes_settings';
             $link   = get_site_url('', 'wp-admin/themes.php', 'admin') . '?page='.$obandes_query;
+			
+			
+		if(function_exists('wp_get_theme')){ // WordPress 3.4 check
+            $msg    = sprintf(__('Thank you for adopting the %s theme. It is necessary to set it to this theme. Please move to a set screen clicking this <a href="%s">obandes settings view</a>.','obandes'),wp_get_theme() ,$link);
+		}else{
             $msg    = sprintf(__('Thank you for adopting the %s theme. It is necessary to set it to this theme. Please move to a set screen clicking this <a href="%s">obandes settings view</a>.','obandes'),get_current_theme() ,$link);
+		}
+
             $msg    .= sprintf(__('     Note:Detected improperly option value. The value was corrected. ','obandes'));
         }
         return '<div id="testmsg" class="error"><p>' . $msg . '</p></div>' . "\n";
@@ -1279,6 +1330,22 @@ if(!function_exists("obandes_install_navigation")){
 if(!function_exists("obandes_admin_print_styles")){
     function obandes_admin_print_styles() {
       wp_enqueue_style( 'farbtastic' );
+	  
+	  $src 		= get_stylesheet_directory_uri().'/admin/admin-style.css';
+	  $deps 	= array();
+	  
+	  	if(function_exists('wp_get_theme')){ // WordPress 3.4 check
+			$theme 	= wp_get_theme( get_template_directory().'/style.css' );
+		}else{
+        	$theme 	= get_theme_data( get_template_directory().'/style.css' );
+		}
+	  
+	  $ver 		= $theme['Version'];
+	  $media	= 'screen';
+	  
+	  wp_register_style( 'obandes_admin_style', $src, $deps, $ver, $media );
+      wp_enqueue_style( 'obandes_admin_style' );
+	  
     }
 }
 /**
@@ -1321,19 +1388,60 @@ if(!function_exists("obandes_theme_options_add_page")){
  *
  *
  */
+/*
+add_action("admin_print_scripts", "js_libs");
+function js_libs() {
+    wp_enqueue_script('tiny_mce');
+}
+add_action("admin_print_scripts", "tmce",99);
+
+function tmce(){
+?>
+<script type="text/javascript">
+tinyMCE.init({
+    mode : "exact",
+    elements: "obandes_setting[obandes_css]",
+    theme : "simple"
+	"editor_selector" => "obandes_setting[obandes_css]"
+});
+</script>
+<?php
+}
+*/
+
 if(!function_exists("obandes_options_page_view")){
     function obandes_options_page_view() {
         $obandes_result_message = '';
         global $select_options, $obandes_radio_options,$obandes_query;
         echo '<div>';
         screen_icon();
-        echo '<h2 style="float:left;">' . get_current_theme() . __( ' Options' ,'obandes') . '</h2><br style="clear:both;" />';
+		if(function_exists('wp_get_theme')){ // WordPress 3.4 check
+        	echo '<h2 style="float:left;">' . wp_get_theme() . __( ' Options' ,'obandes') . '</h2><br style="clear:both;" />';
+		}else{
+        	echo '<h2 style="float:left;">' . get_current_theme() . __( ' Options' ,'obandes') . '</h2><br style="clear:both;" />';		
+		}
+
         /**
          * POSTGET
          *
          *
          */
-        if (isset( $_POST['action'] ) == 'update' and isset($_POST['obandes_setting']['obandes_css'])){
+        if (isset( $_POST['action'] ) == 'update' and isset($_POST['obandessettingcss'])){
+            global $obandes_base_setting;
+            $ok             = false;
+            $option_value   = esc_html($_POST['obandessettingcss']);
+            $option_name    = 'obandes_css';
+            $valid_function = 'obandes_css_validate';
+            if($option_value == $valid_function($option_value)){
+                  $new_settings                 = get_option('obandes_theme_settings');
+                  if($new_settings[$option_name] !== $option_value){
+                      $new_settings[$option_name]   = $option_value;
+                      update_option('obandes_theme_settings',$new_settings);
+                      $obandes_result_message = __("Style ,",'obandes');
+                  }
+            }
+        }
+/*        if (isset( $_POST['action'] ) == 'update' and isset($_POST['obandes_setting']['obandes_css'])){
             global $obandes_base_setting;
             $ok             = false;
             $option_value   = esc_html($_POST['obandes_setting']['obandes_css']);
@@ -1347,7 +1455,7 @@ if(!function_exists("obandes_options_page_view")){
                       $obandes_result_message = __("Style ,",'obandes');
                   }
             }
-        }
+        }*/
         if (isset( $_POST['action'] ) == 'update' and isset($_POST['obandes_setting']['obandes_header'])){
             global $obandes_base_setting;
             $ok             = false;
@@ -1526,16 +1634,29 @@ if(!function_exists("obandes_options_page_view")){
         echo '</div>';
         echo '</td>';
         echo '<td>';
-        echo '<textarea class="obandes-css-textarea" id="obandes_setting[obandes_css]" cols="50" rows="10" name="obandes_setting[obandes_css]"';
-        echo ' style="width:90%;height:'.$rows.'em;line-height:1.5;font-size:120%;font-family:"Courier New", Courier, mono;padding:3px;">';
-        echo stripslashes( $obandes_style);
-        echo '</textarea>';
-        echo '</td></tr></table>';
-        echo '<p><input type="submit" value="'. __( 'Save Options' ,'obandes').'" class="button" /></p>';
-        echo '</form>';
-        echo '</div>';
-        echo '</div>';
-    }
+		if(function_exists('wp_get_theme')){ // WordPress 3.4 check	
+			$obandes_wp_editor_settings = array(
+			'wpautop' => false,
+			'quicktags' => false,
+			'media_buttons' => true,
+			'textarea_rows' => get_option('default_post_edit_rows', 10) * 1.5
+			);
+			$obandes_style = strip_tags($obandes_style);
+			$obandes_style = stripslashes( $obandes_style);
+			
+			wp_editor( $obandes_style, 'obandessettingcss',	$obandes_wp_editor_settings );
+		}else{
+			echo '<textarea class="obandes-css-textarea" id="obandes_setting[obandes_css]" cols="50" rows="10" name="obandes_setting[obandes_css]"';
+			echo ' style="width:90%;height:'.$rows.'em;line-height:1.5;font-size:120%;font-family:"Courier New", Courier, mono;padding:3px;">';
+			echo stripslashes( $obandes_style);
+			echo '</textarea>';
+			}
+			echo '</td></tr></table>';
+			echo '<p><input type="submit" value="'. __( 'Save Options' ,'obandes').'" class="button" /></p>';
+			echo '</form>';
+			echo '</div>';
+			echo '</div>';
+    	}
         if (!function_exists('obandes_help')) {
         function obandes_help($text){
         global $title,$obandes_query;
@@ -1597,6 +1718,8 @@ if(!function_exists("obandes_options_page_view")){
             }
     }
 }
+
+
 /**
  *
  *
@@ -1873,6 +1996,10 @@ if(!function_exists("obandes_embed_style")){
             $less = new lessc();
             //$css_classes = get_template_directory().'lib/css_classes.php';
         $embed_style = get_option('obandes_theme_settings');
+		//$lesses = include(get_stylesheet_directory().'/lesses.php');
+		
+		//$embed_style['obandes_css'] = $lesses. $embed_style['obandes_css'];
+		
 		if(is_single()){
 			$embed_style['obandes_css'] = $embed_style['obandes_css']. get_post_meta($post->ID, 'less', true);
 		}
@@ -1894,7 +2021,9 @@ if(!function_exists("obandes_embed_style")){
 
         $obandes_template_dir   = get_template_directory_uri();
 
-        $embed_style = preg_replace('!(url\()([^\)]+)(\))!',"$1{$obandes_template_dir}/$2$3",$embed_style);
+        $embed_style = preg_replace('!(url\()([^(\)|:)]+)(\))!',"$1{$obandes_template_dir}/$2$3",$embed_style);
+		
+		
         $embed_style = obandes_compress_css($embed_style,WP_DEBUG);
         try {
             $embed_style            = $less->parse($embed_style);

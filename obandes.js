@@ -1,4 +1,3 @@
-
 function horizontal(){
 var class_list = [];
 var uniq = {};
