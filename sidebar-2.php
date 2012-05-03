@@ -1,31 +1,33 @@
 <?php
 /**
- * sidebar-1 for our theme.
+ * sidebar-2 for our theme.
  *
  *
  *
  * @package: obandes
- * @since obandes 0.1
+ * @since obandes 1.10
  */
 ?>
 <nav class="yui-b" id="toc">
 <div class="wrap-toggle">
 <span id="nav-toggle">1col</span>
 </div>
-<ul class="nav-toggle">
+
+<ul class="nav-toggle"><li id="setting-for-responsive">
+<?php the_widget('WP_Widget_Pages', '', 'before_title=<h3 class="widget-title">&after_title=</h3>'); ?></li>
 <?php if ( dynamic_sidebar('sidebar-2') ) : else : ?>
-<?php wp_list_pages('title_li=<h2 class="h2">'.__('Pages','obandes').'</h2>' ); ?>
+<?php wp_list_pages('title_li=<h3 class="widget-title h3">'.__('Pages','obandes').'</h3>' ); ?>
 <li>
-<h2 class="h2">Archives</h2>
+<h3 class="widget-title h3">Archives</h3>
 <ul>
 <?php wp_get_archives('type=monthly'); ?>
 </ul>
 </li>
-<?php wp_list_categories('show_count=0&title_li=<h2 class="h2">'.__('Categories','obandes').'</h2>'); ?>
+<?php wp_list_categories('show_count=0&title_li=<h3 class="widget-title h3">'.__('Categories','obandes').'</h3>'); ?>
 <?php /* If this is the frontpage */ if ( is_home() || is_page() ) { ?>
 <?php wp_list_bookmarks(); ?>
 <li>
-<h2 class="h2"><?php _e("Meta",'obandes');?></h2>
+<h3 class="widget-title h3"><?php _e("Meta",'obandes');?></h3>
 <ul>
 <?php wp_register(); ?>
 <li>

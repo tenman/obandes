@@ -4,7 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description:lessphp (CSS preprocessor) support Where Theme option panel style editor. YUI(Yahoo User Inter face) Grid layout support.  2column fixed and fluid layout theme.Post format image support Zoom it API. This theme supply your happy blogging  From beginners to a specialist
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 1.00
+Version: 1.10
 Tags:two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -110,6 +110,7 @@ http://developer.yahoo.com/yui/fonts/
 	font-size:174%;
 	text-align:left;
 	height:85px;
+	padding:20px 0 0 40px;
 }
 
 #author-infomation td.col1{
@@ -760,8 +761,6 @@ http://developer.yahoo.com/yui/fonts/
 .page article .content,.single article .content,.index article .content,.index article .title{
 	margin-left:20px;
 }
-
-
 .page h5,h5,/*h5 a,*/
 .h5 a,.ja h3,.ja .h3{
 	font-size:116%;
@@ -881,7 +880,7 @@ http://developer.yahoo.com/yui/fonts/
 }
 
 .tag-archives,.author-archives,.category-archives,.daily-archives,.yearly-archives,.monthly-archives,#search-results-title{
-	background-position:-10px 0;
+	background-position:90% top;
 	background-repeat:no-repeat;
 }
 
@@ -1499,4 +1498,3 @@ body.col-left article .title{
 	margin-left:0px;
 	margin-right:10px;
 }
-widget-container widget_tag_cloud
