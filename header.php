@@ -16,7 +16,7 @@
 </head>
 <body <?php body_class(); ?> onLoad="horizontal()">
 <div id="<?php echo obandes_get_condition('letter-width'); ?>" class="<?php echo obandes_get_condition('menu-position');?>">
-<header style="background:<?php echo obandes_get_condition('obandes_header_background_color');?>">
+<header style="background:<?php echo obandes_get_condition('obandes_header_background_color');?> url(<?php echo get_stylesheet_directory_uri().'/images/d1-head.png';?>);">
 <?php	obandes_title_format();?>
 	<div id="site-description"><?php bloginfo( 'description' ); ?></div>
 	<div class="search-form"><?php get_search_form(); ?></div>

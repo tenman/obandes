@@ -41,11 +41,10 @@ $i = 0;
           <li>
             <article id="post-<?php echo $post->ID; ?>" <?php post_class(); ?>>
 			
-              <div class="meta posted-on"><?php obandes_posted_on();?></div>			
 			
-              <h3 class="h5 title">
+              <h3 class="h4 title">
                 <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php printf( esc_attr__( 'Permalink to %s', 'Raindrops' ), the_title_attribute( 'echo=0' ) ); ?>"><?php the_title(); ?></a></h3>
-				
+              <div class="meta posted-on"><?php obandes_posted_on();?></div>			
 
               <div class="content clearfix"><?php		the_excerpt();?></div>
               <div class="meta posted-in">

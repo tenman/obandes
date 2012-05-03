@@ -21,14 +21,14 @@ if(WP_DEBUG == true){
 
             if (!locate_template( array('formats/format-'.get_post_format().'.php'), true ) ) {
 ?>
-<article id="post-<?php echo $post->ID; ?>" <?php post_class('yui-b'); ?>>
+<article id="post-<?php echo $post->ID; ?>" <?php post_class('yui-b'); ?> style="margin-left:10px;">
 <?php obandes_prev_next_post();?>
 <h2 class="h2 title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>">
 <?php the_title(); ?>
 </a></h2>
 <div class="meta posted-on">
 <?php obandes_posted_on(); ?>
-<?php echo sprintf( __( '<span class="time-diff">(Published for %s)</span>', 'obandes' ), human_time_diff(get_the_time('U'),time()) );?> </div>
+<?php //echo sprintf( __( '<span class="time-diff">(Published for %s)</span>', 'obandes' ), human_time_diff(get_the_time('U'),time()) );?> </div>
 <div class="content clearfix">
 <?php the_content();?>
 <div class="clear"></div>

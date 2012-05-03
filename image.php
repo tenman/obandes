@@ -30,7 +30,7 @@ if(WP_DEBUG == true){
 			
 <div class="meta posted-on">
 <?php obandes_posted_on(); ?>
-<?php echo sprintf( __( '<span class="time-diff">(Published for %s)</span>', 'obandes' ), human_time_diff(get_the_time('U'),time()) );?> </div>
+<?php //echo sprintf( __( '<span class="time-diff">(Published for %s)</span>', 'obandes' ), human_time_diff(get_the_time('U'),time()) );?> </div>
 
 <div class="content clearfix">
             <?php $image = get_post_meta($post->ID, 'image', true); ?>

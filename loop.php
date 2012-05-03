@@ -25,7 +25,7 @@
         $obandes_page_title_c = single_cat_title('', false);
     }elseif (is_archive()){
         if (is_day()){
-            $obandes_class_name = 'dayly-archives';
+            $obandes_class_name = 'daily-archives';
             $obandes_page_title = __('Daily Archives', 'obandes');
             $obandes_page_title_c = get_the_date(get_option('date_format'));
         }elseif (is_month()){
@@ -82,7 +82,7 @@ echo '<ul class="index yui-b '.esc_attr($obandes_class_name).'">';
 </a></h2>
 <div class="meta posted-on">
 <?php obandes_posted_on(); ?>
-<?php echo sprintf( __( '<span class="time-diff">(Published for %s)</span>', 'obandes' ), human_time_diff(get_the_time('U'),time()) );?> </div>
+<?php //echo sprintf( __( '<span class="time-diff">(Published for %s)</span>', 'obandes' ), human_time_diff(get_the_time('U'),time()) );?> </div>
 <div class="content clearfix">
 <?php
 if(OBANDES_USE_LIST_EXCERPT == true){

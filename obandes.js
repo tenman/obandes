@@ -1,6 +1,9 @@
 function horizontal(){
 var class_list = [];
 var uniq = {};
+var width = jQuery(window).width();
+if( width > 639 ){
+	/* responsive action */
         jQuery('div[class^="horizon"]').each(function(){
                 var class_name = this.className;
 
@@ -30,7 +33,8 @@ var uniq = {};
         jQuery('.home table#horizon-link').before('<h2 id="horizon-link-title">Links</h2>');
         jQuery('.home table#horizon-aside').before('<h2 id="horizon-aside-title">Asides</h2>');
 
-
+	
+}
 		jQuery('h2[id^="horizon"]').css("cursor","pointer");
 
         jQuery('h2[id^="horizon"]').hover(
@@ -55,11 +59,27 @@ var uniq = {};
 		jQuery('article .content img').removeAttr("height");
 		
 	
-	jQuery('*[class^="toggle"]').hide().css("width","100%");
-
-	jQuery('*[id^="toggle"]').css("cursor","pointer").click(function(){
-			var target ="."+jQuery(this).attr("id");
-			jQuery(target).toggle("slow");
-	});
+		jQuery('*[class^="toggle"]').hide().css("width","100%");
 	
+		jQuery('*[id^="toggle"]').css("cursor","pointer").click(function(){
+				var target ="."+jQuery(this).attr("id");
+				jQuery(target).toggle("slow");
+		});
+
+		jQuery('#nav-toggle').toggle(
+							  
+		function(){
+			jQuery('#yui-main article,ul.index.yui-b').addClass("expand");
+			jQuery('.nav-toggle').hide();
+			jQuery('#nav-toggle').text('2col');
+		},
+		function(){
+			jQuery('#yui-main article,ul.index.yui-b').removeClass("expand");
+			jQuery('.nav-toggle').show();
+			jQuery('#nav-toggle').text('1col');
+		}
+							  
+		);
+			
+
 }

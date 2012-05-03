@@ -8,7 +8,7 @@
  */
 ?>
 <br class="clear" />
-<footer class="bar">
+<footer class="bar" style="background:<?php echo obandes_get_condition('obandes_header_background_color');?>">
 <?php 
 	if(is_page() or is_single()){
 		printf('<a href="%s" class="go-page-top">PageTop</a>',esc_url(get_permalink($post->ID)));

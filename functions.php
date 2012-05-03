@@ -8,7 +8,7 @@
  *
  */
     if(!defined('DOCUMENT_WIDTH')){
-        define('DOCUMENT_WIDTH', 'doc2' );
+        define('DOCUMENT_WIDTH', 'doc3' );
     }
 /**
  * .yui-t1 - Two columns, narrow on left, 160px
@@ -43,7 +43,7 @@
  *
  */
     if(!defined('OBANDES_HEADER_BACKGROUND_COLOR')){
-        define('OBANDES_HEADER_BACKGROUND_COLOR','#FFA500');
+        define('OBANDES_HEADER_BACKGROUND_COLOR','#ccc');
     }
     if(!defined('OBANDES_HEADER_BACKGROUND_IMAGE')){
         define('OBANDES_HEADER_BACKGROUND_IMAGE','');
@@ -66,7 +66,7 @@
  *
  */
      if(!defined('HEADER_IMAGE_WIDTH')){
-        define('HEADER_IMAGE_WIDTH', 950);//auto or 999px
+        define('HEADER_IMAGE_WIDTH', 960 );//auto or 999px
     }
 /**
  *
@@ -85,10 +85,10 @@
  *
  *
  */
-    add_action( 'widgets_init', 'obandes_widgets_init' );
 if ( ! function_exists( 'obandes_header_style' ) ){
     function obandes_widgets_init() {
-        register_sidebar(array (
+        register_sidebars(
+		array (
           'name' => __('Default Sidebar','obandes'),
           'id' => 'sidebar-1',
           'before_widget' => '<li class="widget default">',
@@ -97,7 +97,18 @@ if ( ! function_exists( 'obandes_header_style' ) ){
           'after_title' => '</h2>',
           'widget_id' => 'default',
           'widget_name' => 'default',
-          'text' => "1"));
+          'text' => "1"),
+		 array (
+          'name' => __('Page Sidebar','obandes'),
+          'id' => 'sidebar-2',
+          'before_widget' => '<li class="widget page-sidebar">',
+          'after_widget' => '</li>',
+          'before_title' => '<h2 class="widgettitle page-sidebar h2">',
+          'after_title' => '</h2>',
+          'widget_id' => 'page-sidebar',
+          'widget_name' => 'page sidebar',
+          'text' => "2")
+		  );
     }
 }
 
@@ -126,6 +137,10 @@ if ( ! function_exists( 'obandes_header_style' ) ){
                 )
         );
     }
+	
+	
+	
+    add_action( 'after_setup_theme', 'obandes_theme_setup' );
 /**
  *
  *
@@ -133,20 +148,44 @@ if ( ! function_exists( 'obandes_header_style' ) ){
  *
  *
  */
-if( function_exists('wp_get_theme') ){ // WordPress 3.4 check
-    $args = array(
-                'default-text-color' => HEADER_TEXTCOLOR
-                ,'width' => HEADER_IMAGE_WIDTH
-                ,'height' => HEADER_IMAGE_HEIGHT
-                ,'header-text' => NO_HEADER_TEXT
-                ,'default-image' => HEADER_IMAGE
-            );
-    //they are "suggested" when flex-width and flex-height are set
-
-    add_theme_support( 'custom-header', $args );
-
-}else{
-    add_custom_image_header( 'obandes_header_style', 'obandes_admin_header_style','obandes_admin_header_image');
+if( !function_exists( 'obandes_theme_setup' ) ){
+    function obandes_theme_setup(){
+		load_textdomain( 'obandes', get_template_directory().'/languages/'.get_locale().'.mo' );
+	
+	    add_action( 'widgets_init', 'obandes_widgets_init' );
+		add_action("wp_head",'obandes_embed_style');
+		add_action( 'wp_enqueue_scripts', 'obandes_enqueue_comment_reply' );
+		add_action('wp_footer','obandes_small_device_helper');
+		
+		add_filter( 'use_default_gallery_style', '__return_false' );
+		add_filter('body_class','obandes_add_body_class');
+		add_filter("wp_head","obandes_embed_meta",'99');
+        add_filter( 'wp_page_menu_args', 'obandes_page_menu_args' );
+		add_filter('wp_title','obandes_wp_title',10,3);
+		add_filter('the_content','obandes_ie_height_expand_issue');
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+		if( function_exists('wp_get_theme') ){ // WordPress 3.4 check
+			$args = array(
+						'default-text-color' => HEADER_TEXTCOLOR
+						,'width' => HEADER_IMAGE_WIDTH
+						,'height' => HEADER_IMAGE_HEIGHT
+						,'header-text' => NO_HEADER_TEXT
+						,'default-image' => HEADER_IMAGE
+					);
+			//they are "suggested" when flex-width and flex-height are set
+		
+			add_theme_support( 'custom-header', $args );
+		
+		}else{
+			add_custom_image_header( 'obandes_header_style', 'obandes_admin_header_style','obandes_admin_header_image');
+		}
+	}
 }
 
 if ( ! function_exists( 'obandes_header_style' ) ){
@@ -166,8 +205,7 @@ if ( ! function_exists( 'obandes_header_style' ) ){
  */
 if ( ! function_exists( 'obandes_admin_header_style' ) ){
     function obandes_admin_header_style() {
-        $header_background = obandes_get_condition('obandes_header_background_color');
-
+        $header_background = obandes_get_condition('obandes_header_background_color').' url('. get_stylesheet_directory_uri().'/images/d1-head.png);';
    $admin_header_style=<<<CSS
         /* Shows the same border as on front end */
         #headimg {
@@ -206,12 +244,20 @@ if ( ! function_exists( 'obandes_admin_header_style' ) ){
         #headimg #desc {
             color:#000;
         }
+		#headimg #access .menu > ul > li > a:hover,
         #headimg #access a,
         #headimg #access .menu,
         #headimg #access {
             background:#000;
             color:#fff;
         }
+		#headimg #access,
+		#headimg #access .menu > ul,
+		#headimg #access .menu > ul > li > a,
+		#headimg #access .menu{
+			background:#999;
+		}
+
         #headimg #access {
             display: block;
             margin: 0;
@@ -275,8 +321,8 @@ CSS;
 if ( ! function_exists( 'obandes_admin_header_image' ) ){
     function obandes_admin_header_image(){
         $obandes_header_image = get_header_image();
-    get_bloginfo( 'name' );
-    $obandes_header_style = 'style="color:#'.get_theme_mod( 'header_textcolor' ).'"';
+		get_bloginfo( 'name' );
+		$obandes_header_style = 'style="color:#'.get_theme_mod( 'header_textcolor' ).'"';
 ?>
     <div id="headimg">
                 <h1 <?php echo $obandes_header_style;?>><a id="name" onclick="return false;" href="<?php esc_url( home_url( '/' ) );?>"><?php bloginfo( 'name' ); ?></a></h1>
@@ -288,7 +334,7 @@ if(isset($obandes_header_image) and !empty($obandes_header_image)){
 <?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
         </div>
 <?php
-    $obandes_header_image_format = '<div style="background:#000;overflow:visible"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
+    $obandes_header_image_format = '<div style="background:#999;overflow:visible"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
             printf( $obandes_header_image_format,
                     $obandes_header_image,
                     HEADER_IMAGE_WIDTH,
@@ -323,61 +369,71 @@ if(!isset($obandes_header_background_color)){
 }
 if(!isset($obandes_css_preset)){
 $obandes_css_preset =<<< CSS_PRESET
-@background-body:#5f7f5c;
-@background-page:#c5d19b;
-@background-header:#FFA500;
-@background-navigation:#c5d19b;
-@background-article:#c5d19b;
-@background-primary-navigation:#000000;
-@color-primary-navigation:#ffffff;
-@background-primary-navigation-color-hover: #333333;
-@color-primary-navigation-color-hover: #ffffff;
-@title-font-family:Georgia,Times New Roman,Times,serif;
+/*============= lessphp =============*/
+@sidebar-background:#efefef;
+@article-background:inherit;
+@article-title-link-color:inherit;
+@article-title-font-family:Georgia,Times New Roman,Times,serif;
+@primary-navigation-background:#444;
+@primary-navigation-background-color-hover: #333333;
+@primary-navigation-color:#ffffff;
+@primary-navigation-color-hover: #ffffff;
+@site-title-font-family:Georgia,Times New Roman,Times,serif;
+@page-radius:3px;
+@page-background:#fff;
+@posted-background:#fff;
+@posted-color:#333;
+@commentform-background:#fff;
 
+/*============= style rules =============*/
+#commentform{
+	background:@commentform-background;
+}
 body {
-    background:@background-body;
+    background:#efefef;
 }
 body > #doc,body > #doc2,body > #doc3,body > #doc4 {
-    -moz-border-radius:10px;
+    -moz-border-radius:@page-radius;
     -moz-box-shadow:0 0 15px rgba(0,0,0,1);
-    -webkit-border-radius:10px;
+    -webkit-border-radius:@page-radius;
     -webkit-box-shadow:0 0 15px rgba(0,0,0,1);
-    background:@background-page;
-    border-radius:10px;
+    background:@page-background;
+    border-radius:@page-radius;
     box-shadow:0 0 15px rgba(0,0,0);
 }
 footer,header {
-    background:@background-header;
+    background:#FFA500;
 /*color:#fff;*/
 }
 nav h3:before,
 h3.widget-title:before {
-    content:url(images/sidebar-title.png);
+  /*  content:url(images/sidebar-title.png);
     margin-right:.5em;
     position:relative;
-    top:3px;
+    top:3px;*/
 }
 .ie8 h3.widget-title:before {
     top:0;
 }
 nav > ul {
-    background:background-navigation;
+    background:@sidebar-background;
 }
 index article{
     border:#eee 2px groove;
 }
 .ie6 article,.ie7 article,.ie8 article,#footer-widget-area,#fourth,#third,#second,#first,article {
-    background:@background-article;
+    background:@article-background;
 }
 #footer-widget-area h3{
-    background:#97a25e url(images/bg-1.png);
+    background:#ccc;
     margin-bottom:0;
     color:#333;
 }
 #access .menu,
 #access {
-    background:@background-primary-navigation;
-    color:@color-primary-navigation;
+    background:@primary-navigation-background;
+
+    color:@primary-navigation-color;
 }
 * html #access ul li.current-menu-ancestor a,
 * html #access ul li.current-menu-item a,
@@ -392,8 +448,8 @@ index article{
 #access ul li.current-menu-ancestor > a,
 #access ul li.current-menu-item > a,
 #access ul li.current-menu-parent > a {
-    color:@color-primary-navigation;
-    background:@background-primary-navigation;
+    color:@primary-navigation-color;
+    background:@primary-navigation-background;
 }
 #access ul li .children a{
     background:#444;
@@ -414,26 +470,39 @@ index article{
 #access ul li.current-menu-ancestor > a:hover,
 #access ul li.current-menu-item > a:hover,
 #access ul li.current-menu-parent > a:hover {
-    color: @color-primary-navigation-color-hover;
-    background:@background-primary-navigation-color-hover;
+    color: @primary-navigation-color-hover;
+    background:@primary-navigation-background-color-hover;
 }
 header img {
     border-bottom:2px solid #000;
     margin-bottom:-5px;
 }
+div.posted-on,
 div.posted-in {
-    border-bottom:3px solid #bbb;
-    border-top:3px solid #bbb;
-    background:#eef;
-    background:saturate(@color-primary-navigation, 96%);
+    border-bottom:1px solid lighten(@posted-background, 50);
+    border-top:1px solid lighten(@posted-background, 50);
+    background:@posted-background;
+    color:@posted-color!important;
+    span,
+    a{
+    color:@posted-color;
+    }
+   
 }
 #commentform .form-submit {
     line-height:3;
     margin-bottom:1em;
 }
-.byuser,.commentlist > li,.reply,#commentform,div.tagcloud,.commentlist > li,.nopassword,.wp-caption,body.single-post .nocomments,.hentry th,.hentry td,.page-link,.bypostauthor
+.commentlist > li,.byuser,.reply,div.tagcloud,.nopassword,.wp-caption,body.single-post .nocomments,.hentry th,.hentry td,.page-link,.bypostauthor
 .chrome article .content .size-thumbnail,.gecko article .content .size-thumbnail,.home .sticky,blockquote {
     border:1px solid #999;
+}
+.home .sticky{
+	border-color:#c5d19b;
+	border-width: 2px;
+	border-style: dashed;
+	background:#fff;
+
 }
 article .content blockquote {
     border-left:6px solid #777;
@@ -446,37 +515,39 @@ footer,
 .nocomments,
 article .content blockquote {
     background:#eee;
-    background:saturate(@color-primary-navigation, 96%);
+    background:saturate(@primary-navigation-color, 96%);
 }
 .h1,h1 {
-    font-family:@title-font-family;
+    font-family:@site-title-font-family;
 /*font-size:2em;*/
 }
 .plate,.grad {
 }
+.widget-title,
 header {
-    -moz-border-radius-topleft:10px;
-    -moz-border-radius-topright:10px;
-    -webkit-border-top-left-radius:10px;
-    -webkit-border-top-right-radius:10px;
-    border-top-left-radius:10px;
-    border-top-right-radius:10px;
+    -moz-border-radius-topleft:@page-radius;
+    -moz-border-radius-topright:@page-radius;
+    -webkit-border-top-left-radius:@page-radius;
+    -webkit-border-top-right-radius:@page-radius;
+    border-top-left-radius:@page-radius;
+    border-top-right-radius:@page-radius;
 }
+.widget-title,
 footer {
-    -moz-border-radius-bottomleft:10px;
-    -moz-border-radius-bottomright:10px;
-    -webkit-border-bottom-left-radius:10px;
-    -webkit-border-bottom-right-radius:10px;
-    border-bottom-left-radius:10px;
-    border-bottom-right-radius:10px;
+    -moz-border-radius-bottomleft:@page-radius;
+    -moz-border-radius-bottomright:@page-radius;
+    -webkit-border-bottom-left-radius:@page-radius;
+    -webkit-border-bottom-right-radius:@page-radius;
+    border-bottom-left-radius:@page-radius;
+    border-bottom-right-radius:@page-radius;
 }
 #footer-widget-area h3 {
-    -moz-border-radius-bottomright:10px;
-    -moz-border-radius-topleft:10px;
-    -webkit-border-bottom-right-radius:10px;
-    -webkit-border-top-left-radius:10px;
-    border-bottom-right-radius:10px;
-    border-top-left-radius:10px;
+    -moz-border-radius-bottomright:@page-radius;
+    -moz-border-radius-topleft:@page-radius;
+    -webkit-border-bottom-right-radius:@page-radius;
+    -webkit-border-top-left-radius:@page-radius;
+    border-bottom-right-radius:@page-radius;
+    border-top-left-radius:@page-radius;
 }
 #wp-calendar th:nth-child(1),#wp-calendar th:nth-child(7) {
     width:1em;
@@ -497,7 +568,10 @@ header{
 section{}
 .index{}
 .index article{}
-.index article .title a{}
+.index article .title a{
+	color:@article-title-link-color;
+	font-family:@article-title-font-family;
+}
 .index article .posted-on{}
 .index article .posted-in{}
 .index article .pagenate{}
@@ -506,7 +580,10 @@ section{}
 */
 .single-post{}
 .single article{}
-.single article .title{}
+.single article .title{
+	color:@article-title-link-color;
+	font-family:@article-title-font-family;
+	}
 .single article .posted-on{}
 .single article .posted-in{}
 .single article .pagenate{}
@@ -546,7 +623,7 @@ if(!isset($obandes_base_setting)){
          array('option_id' =>'navigation=',
         'blog_id' => 0 ,
         'option_name' => "obandes_radio_options_navigation",
-        'option_value' => 't5',
+        'option_value' => str_replace( 'yui-', '', SIDEBAR_WIDTH ),
         'autoload'=>'yes',
         'title'=> __('Navi Col','obandes'),
         'excerpt1'=>'',
@@ -555,7 +632,7 @@ if(!isset($obandes_base_setting)){
          array('option_id' =>'pagetype',
         'blog_id' => 0 ,
         'option_name' => "obandes_radio_options_pagetype",
-        'option_value' => 'doc2',
+        'option_value' => DOCUMENT_WIDTH,
         'autoload'=>'yes',
         'title'=> __('Page Type','obandes'),
         'excerpt1'=>'',
@@ -564,7 +641,7 @@ if(!isset($obandes_base_setting)){
          array('option_id' =>'headerbackgroundcolor',
         'blog_id' => 0 ,
         'option_name' => "obandes_header_background_color",
-        'option_value' => '#FFA500',
+        'option_value' => OBANDES_HEADER_BACKGROUND_COLOR,
         'autoload'=>'yes',
         'title'=> __('Header Background Color','obandes'),
         'excerpt1'=>'',
@@ -590,14 +667,14 @@ if(!isset($obandes_query)){
  *
  */
 
-    add_filter( 'use_default_gallery_style', '__return_false' );
+
     add_action('admin_menu', 'obandes_theme_options_add_page');
     add_action('load-themes.php', 'obandes_install_navigation');
     add_action('init', 'obandes_init');
 
 if( function_exists('wp_get_theme') ){ // WordPress 3.4 check
-    $args = array('default-color' => OBANDES_HEADER_BACKGROUND_COLOR
-                ,'default-image' => OBANDES_HEADER_BACKGROUND_IMAGE
+    $args = array('default-color' => '#ccc'
+                ,'default-image' => ''
             );
     add_theme_support( 'custom-background', $args );
 }else{
@@ -605,9 +682,7 @@ if( function_exists('wp_get_theme') ){ // WordPress 3.4 check
 }
 
 
-    load_textdomain( 'obandes', get_template_directory().'/languages/'.get_locale().'.mo' );
-    add_filter('body_class','obandes_add_body_class');
-    add_filter("wp_head","obandes_embed_meta",'99');
+
 /**
  *
  *
@@ -620,7 +695,7 @@ if( function_exists('wp_get_theme') ){ // WordPress 3.4 check
             $args['show_home'] = false;
             return $args;
         }
-        add_filter( 'wp_page_menu_args', 'obandes_page_menu_args' );
+
     }
     if(function_exists('add_theme_support')) {
         add_theme_support('automatic-feed-links');
@@ -629,6 +704,7 @@ if( function_exists('wp_get_theme') ){ // WordPress 3.4 check
     }
     register_nav_menus( array(
         'primary' => __( 'Primary Navigation', 'obandes' ),
+		'responsive' => __( 'Archives Navigation', 'obandes' )
     ) );
     register_default_headers( array(
         'default' => array(
@@ -709,6 +785,7 @@ if(!function_exists("register_obandes_menus")){
  */
 if (!function_exists('obandes_posted_on')) {
     function obandes_posted_on($display = true) {
+	            $obandes_date_format = get_option('date_format'). ' '. get_option( 'time_format' );
         if (comments_open()){
             $obandes_comment_html = '<a href="%1$s" class="obandes-comment-link"><span class="obandes-comment-string">%3$s</span>%2$s</a>';
             if(get_comments_number() > 0 ){
@@ -727,8 +804,8 @@ if (!function_exists('obandes_posted_on')) {
         'meta-prep meta-prep-author',
         sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="date">%3$s</span></a>',
             get_permalink(),
-            esc_attr( get_the_time() ),
-            get_the_date()
+            esc_attr( get_the_time( $obandes_date_format ) ),
+            get_the_date( $obandes_date_format )
         ),
         sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="vcard:url">%3$s</a></span>',
             get_author_posts_url( get_the_author_meta( 'ID' ) ),
@@ -753,7 +830,7 @@ if (!function_exists('obandes_posted_on')) {
  * since obandes 0.93
  */
 
-add_filter('wp_title','obandes_wp_title',10,3);
+
 
 
     if ( ! function_exists( 'obandes_wp_title' ) ){
@@ -822,7 +899,7 @@ if (!function_exists('obandes_init')) {
     function obandes_init() {
         global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
         $page = basename($_SERVER['REQUEST_URI']);
-        if(function_exists(' wp_get_theme')){ // WordPress 3.4 check
+        if(function_exists( 'wp_get_theme' )){ // WordPress 3.4 check
             $theme_data = get_theme_data( get_theme_root() . '/' . wp_get_theme() . '/style.css' );
         }else{
             $theme_data = get_theme_data( get_theme_root() . '/' . get_current_theme() . '/style.css' );
@@ -830,13 +907,11 @@ if (!function_exists('obandes_init')) {
         if (!is_admin() and !preg_match("|^wp-login\.php|si",$page)) {
         wp_register_style('html5reset', 'http://html5resetcss.googlecode.com/files/html5-reset-1.4.css',false,$theme_data['Version']);
         wp_enqueue_style( 'html5reset');
-        wp_register_style('style', get_stylesheet_uri(),false,$theme_data['Version']);
-        wp_enqueue_style( 'style');
-
-        if($is_chrome or $is_gecko){
-        wp_register_style('css3',get_template_directory_uri().'/css3.css',false,$theme_data['Version']);
-        }
-        wp_enqueue_style('css3');
+		
+wp_register_style('style', get_stylesheet_uri(), array( 'html5reset' ),$theme_data['Version']);
+        wp_enqueue_style( 'style' );		
+		
+		
         wp_register_script('yui-css','http://yui.yahooapis.com/2.8.0r4/build/yuiloader/yuiloader-min.js',false,'2.8.0r4');
         wp_enqueue_script('yui-css');
         wp_register_script('yui', get_template_directory_uri().'/yui.js', array('yui-css'), '0.1');
@@ -902,6 +977,43 @@ if (!function_exists('obandes_add_body_class')) {
                 $classes[]  = 'unknown';
             break;
             }
+		if( obandes_get_condition('letter-width') == 'doc3' ){
+                $classes[]  = 'fluid';
+		}
+		$header_image = get_header_image();
+		if( empty( $header_image ) ){
+                $classes[]  = 'header-image-none';
+		
+		}
+		switch( obandes_get_condition('menu-position') ){
+			case( 'yui-t1' ):
+                $classes[]  = 'col-left';
+                $classes[]  = 'col-w-160';
+			break;
+			case( 'yui-t2' ):
+                $classes[]  = 'col-left';
+                $classes[]  = 'col-w-180';
+			break;
+			case( 'yui-t3' ):
+                $classes[]  = 'col-left';
+                $classes[]  = 'col-w-300';
+			break;
+			case( 'yui-t4' ):
+                $classes[]  = 'col-right';
+                $classes[]  = 'col-w-180';
+			
+			break;
+			case( 'yui-t5' ):
+                $classes[]  = 'col-right';
+                $classes[]  = 'col-w-240';
+			
+			break;
+			case( 'yui-t6' ):
+                $classes[]  = 'col-right';
+                $classes[]  = 'col-w-300';
+			break;
+		}
+		
         return $classes;
         }
 }
@@ -955,7 +1067,7 @@ if(!function_exists("obandes_content_width")){
             $obandes_content_width = $default;
         }
     }elseif(DOCUMENT_WIDTH == 'doc3'){
-        $w = 600;
+		$w = 600;
         if(SIDEBAR_WIDTH == 'yui-t1'){
             $obandes_content_width = $w - 160 - $adjust;
         }elseif(SIDEBAR_WIDTH == 'yui-t2'){
@@ -971,6 +1083,7 @@ if(!function_exists("obandes_content_width")){
         }else{
             $obandes_content_width = $default;
         }
+		
     }elseif(DOCUMENT_WIDTH == 'doc4'){
         $w = 974;
         $adjust = 16;
@@ -1019,7 +1132,7 @@ if(!function_exists("obandes_document_width")){
             $result = 974 - 4;
         break;
         default:
-            $result = $content_width - 4;
+            $result = 'underfind-';
         break;
         }
     return $result;
@@ -1063,7 +1176,7 @@ if (!function_exists('obandes_posted_in')) {
  *
  *
  */
-if(!function_exists("obandes_embed_meta")){
+if(!function_exists("obandes_gallery_list")){
     function obandes_gallery_list(){
         global $post;
         $images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image', 'orderby' => 'menu_order', 'order' => 'ASC', 'numberposts' => 10 ) );
@@ -1369,8 +1482,8 @@ if(!function_exists("obandes_theme_options_add_page")){
         $obandes_hook_suffix = add_theme_page(__( 'Obandes Options','obandes'), __( 'Obandes Options' ,'obandes'),'edit_theme_options', 'obandes_setting',             'obandes_options_page_view' );
         add_action('admin_print_styles-'.$obandes_hook_suffix, 'obandes_admin_print_styles');
         add_action('admin_print_scripts-'.$obandes_hook_suffix, 'obandes_admin_print_scripts');
-        $raindrops_check_wp_version = explode('-',$wp_version);
-        if ( $obandes_hook_suffix and $raindrops_check_wp_version[0] >= 3.3){
+        $obandes_check_wp_version = explode('-',$wp_version);
+        if ( $obandes_hook_suffix and $obandes_check_wp_version[0] >= 3.3){
             add_action( 'load-' . $obandes_hook_suffix, 'obandes_help' );
         }
     }
@@ -1886,7 +1999,7 @@ if(!function_exists("obandes_get_condition")){
  * IE filter
  *
  */
-    add_filter('the_content','obandes_ie_height_expand_issue');
+
 if(!function_exists("obandes_ie_height_expand_issue")){
     function obandes_ie_height_expand_issue($content){
         global $is_IE,$content_width;
@@ -1968,7 +2081,7 @@ if(!function_exists("plugin_is_active")){
  *
  *
  */
-add_action("wp_head",'obandes_embed_style');
+
 if(!function_exists("obandes_embed_style")){
      function obandes_embed_style(){
      global $post;
@@ -2010,7 +2123,7 @@ if(!function_exists("obandes_embed_style")){
 
             $embed_style = str_replace(array('\&#039;','&#039;','\&quot;','&quot;'),array('\'','\'','"','"'),$embed_style);
 
-        echo  "\n<style type=\"text/css\"><!--\n".$embed_style."--></style>";
+        echo  "\n<style type=\"text/css\"><!--\n".obandes_compress_css($embed_style, WP_DEBUG )."--></style>";
     }
 }
 /**
@@ -2054,9 +2167,15 @@ if(!function_exists("obandes_get_header_image_renderer")){
             if ( is_singular()
                     and has_post_thumbnail( $post->ID )
                     and (  $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail' ) )
-                    and $image[1] >= HEADER_IMAGE_WIDTH
-                ){
+                    /*and $image[1] >= HEADER_IMAGE_WIDTH*/
+            ){
+			if( $image[1] < HEADER_IMAGE_WIDTH ){
+			echo '<div id="header-image" style="background:#000;text-align:center;">';
+			}
                     echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
+			if( $image[1] < HEADER_IMAGE_WIDTH ){
+			echo '</div>';
+			}
             }elseif(!empty($obandes_image_uri)){
                 $header_image_format = '<div id="header-image" style="%s"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%s;height:auto;" /></div>';
 
@@ -2095,6 +2214,7 @@ if(!function_exists("obandes_header_image_renderer")){
         echo apply_filters( 'obandes_header_image_renderer', obandes_get_header_image_renderer($obandes_image_uri));
     }
 }
+
 /**
  *
  *
@@ -2130,12 +2250,157 @@ if(!function_exists("obandes_title_format")){
  *
  */
 
-add_action( 'wp_enqueue_scripts', 'obandes_enqueue_comment_reply' );
+
 function obandes_enqueue_comment_reply() {
 if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
     wp_enqueue_script( 'comment-reply' );
 }
 }
 
+        function obandes_comment_prev_next($position = "comment-above"){ ?>
+<div id="<?php echo $position;?>" class="navigation clearfix">
+<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'obandes' ) ); ?></div>
+<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'obandes' ) ); ?></div>
+</div>
+<?php }?>
+
+<?php
+function obandes_archive_menu($content){
+$year = '';
+$month = '';
+$month_link = get_month_link( $year, $month );
+$year_link = get_year_link( $year );
+}
+
+
+
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+
+if ( ! function_exists( 'obandes_small_device_helper' ) ) {
+    function obandes_small_device_helper(){
+        global $is_IE;
+    ?>
+        <script type="text/javascript">
+        (function(){
+        jQuery(function(){
+            var width = jQuery(window).width();
+        <?php
+        /**
+        * Site title , description font size resize and header height ajust
+        */
+        ?>
+            function obandes_Resize(){
+			
+                if( width < 1281 ){
+                    body_class = 'obandes-w-sxga';
+                }
+                if( width < 1025 ){
+                    body_class = 'obandes-w-xga';
+                }
+                if( width < 801 ){
+                    body_class = 'obandes-w-svga';
+                }
+                if( width < 641 ){
+                    body_class = 'obandes-w-vga';
+					if( !jQuery("#access").attr('style') ){
+					
+					jQuery("#access").css({'display':'none'});
+					jQuery("#setting-for-responsive .widget_pages").css({'display':'block'});
+					window.reload();
+					
+					}
+					
+                }
+                if( width < 481 ){
+                    body_class = 'obandes-w-iphone';
+                }
+                if( width < 321 ){
+                    body_class = 'obandes-w-qvga';
+                }
+                if( width < 241 ){
+                    body_class = 'obandes-w-keitai';
+                }
+				if( width > 640 ){
+					if( !jQuery("#access").attr('style') ){
+					jQuery("#access").removeAttr('style').css({'display':'block'});
+					jQuery("#setting-for-responsive .widget_pages").removeAttr('style').css({'display':'none'});
+					window.reload();
+					}
+					
+                }
+
+                /* remove old width[0-9]+ class*/
+                var element = jQuery("body");
+                var classes = element.attr('class').split(/\s+/);
+
+                var pattern = /^obandes-w/;
+
+                for(var i = 0; i < classes.length; i++){
+                  var className = classes[i];
+
+                  if(className.match(pattern)){
+                    element.removeClass(className);
+                  }
+                }
+                jQuery('body').addClass( body_class );
+
+
+
+               
+    <?php
+    /**
+     * Check window size and mouse position
+     * Controll childlen menu show right or left side.
+     *
+     *
+     *
+     */
+     ?>
+                jQuery("#access").mousemove(function(e){
+                    var menu_item_position = e.pageX ;
+        <?php        // jQuery(".result:first").text(menu_item_position);
+                  //jQuery(".result-w").text(width);?>
+                    if( width - 200 < menu_item_position){
+                        jQuery('#access .children .children').addClass('left');
+                    }else if( width / 2 >  menu_item_position){
+                        jQuery('#access .children .children').removeClass('left');
+                    }
+                });
+            }
+		
+
+    <?php
+    /**
+     * .menu-header has not .page_item when remove element div.menu-header
+     *
+     *
+     *
+     *
+     */
+     ?>
+
+        if ( ! jQuery('#access ul li').is('li.page_item') ) {
+            jQuery('div#access').css("display","none");
+        }
+
+
+		obandes_Resize();
+		jQuery(window).resize( function () { 
+			obandes_Resize(); 
+		});
+
+
+        });
+        })(jQuery);
+        </script>
+        <?php
+    }
+}
 
 ?>
