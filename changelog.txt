@@ -1,4 +1,99 @@
 Changelog -----------------------------------
+version:1.10
+added
+    File page templates
+        archive.php
+        list-categories.php
+        list-page.php
+        list-posts.php
+        list-tags.php
+    Add template part file
+        for page navigation.
+        sidebar-2.php
+fixed
+    Delete function obandes_comment_prev_next
+        aleady defined.
+        comments.php
+
+modified
+    Append a header background color to footer.
+        footer.php
+    Change default page width from 950px fix layout to fluid layout.        const DOCUMENT_WIDTH from doc2 to doc3
+        const HEADER_IMAGE_WIDTH from 950 to 960
+            funcctions.php
+    Add action filter
+        add_action( 'after_setup_theme', 'obandes_theme_setup' );
+            functions.php
+    Add  transparent image where header background.
+        path theme directory/images/d1-head.png
+
+    Modified function obandes_add_body_clas()
+        Add window width class using DOM
+
+        class name:
+            if( empty( $header_image ) ){
+                       $classes[]  = 'header-image-none'
+            }
+
+            switch( obandes_get_condition('menu-position') ){
+              case( 'yui-t1' ):
+                        $classes[]  = 'col-left';
+                        $classes[]  = 'col-w-160';
+              break;
+              case( 'yui-t2' ):
+                        $classes[]  = 'col-left';
+                        $classes[]  = 'col-w-180';
+              break;
+              case( 'yui-t3' ):
+                        $classes[]  = 'col-left';
+                        $classes[]  = 'col-w-300';
+              break;
+              case( 'yui-t4' ):
+                        $classes[]  = 'col-right';
+                        $classes[]  = 'col-w-180';
+              break;
+              case( 'yui-t5' ):
+                        $classes[]  = 'col-right';
+                        $classes[]  = 'col-w-240';
+              break;
+              case( 'yui-t6' ):
+                        $classes[]  = 'col-right';
+                        $classes[]  = 'col-w-300';
+              break;
+            }
+
+
+    Modified add body class browser window size
+            using jQuery DOM.
+
+                    if( width < 1281 ){
+                        body_class = 'obandes-w-sxga';
+                    }
+                    if( width < 1025 ){
+                        body_class = 'obandes-w-xga';
+                    }
+                    if( width < 801 ){
+                        body_class = 'obandes-w-svga';
+                    }
+                    if( width < 641 ){
+                        body_class = 'obandes-w-vga';
+                    }
+                    if( width < 481 ){
+                        body_class = 'obandes-w-iphone';
+                    }
+                    if( width < 321 ){
+                        body_class = 'obandes-w-qvga';
+                    }
+                    if( width < 241 ){
+                        body_class = 'obandes-w-keitai';
+                    }
+
+    Modified lessphp v0.3.4-2 update
+    Modified style.css clean up and default color and background values was changed.
+made
+
+----------------------------------------------
+Changelog -----------------------------------
 version:1.00
 
 modified
