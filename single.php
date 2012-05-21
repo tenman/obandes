@@ -21,7 +21,7 @@ if(WP_DEBUG == true){
 
             if (!locate_template( array('formats/format-'.get_post_format().'.php'), true ) ) {
 ?>
-<article id="post-<?php echo $post->ID; ?>" <?php post_class('yui-b'); ?> style="margin-left:10px;">
+<article id="post-<?php echo $post->ID; ?>" <?php post_class('yui-b'); ?>>
 <?php obandes_prev_next_post();?>
 <h2 class="h2 title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>">
 <?php the_title(); ?>

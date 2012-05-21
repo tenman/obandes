@@ -1,4 +1,14 @@
 Changelog -----------------------------------
+version:1.11
+fixed
+    single.php display improperly
+        remove inline style ( Mixing of a test code ).
+    Cutom menu
+        Customized menu is not shown
+        comment out javascript code.
+            functions.php line from 2387 to 2391
+----------------------------------------------
+Changelog -----------------------------------
 version:1.10
 added
     File page templates
