@@ -1,18 +1,11 @@
 Changelog -----------------------------------
 version:1.20
     This version for support WordPress 3.4
-removed
-
-moved
 
 added
-
-fixed
-
-modified
-
-made
-
+    function obandes_customize_register()
+    function add_theme_support( 'custom-header', $args );
+    function add_theme_support( 'custom-background', $args );
 ----------------------------------------------
 Changelog -----------------------------------
 version:1.11

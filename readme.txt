@@ -132,4 +132,10 @@ Writing helpers:
         field name : less
         field value: @color-1:#555; p{background:@color-1;}
 
-
+ver 1.20
+        header image note:
+         when fixed layout image size
+            Smaller than page width image shows image width and position center.
+            Larger than page width image shows to the limit of page width.
+         when fluid layout image size
+            It displays to the limit of page width.
