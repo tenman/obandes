@@ -1,0 +1,32 @@
+/* CSS Document */
+.obandes-wp-native-style{
+position:relative;
+}
+.obandes-wp-native-style-settings-link a{
+text-align:center;border:1px solid #ccc;
+float:left;
+displat:inline-block;
+width:100px;
+height:22px;
+padding:39px 0;
+border-radius: 50px;
+margin:2px;background:#eee;
+}
+
+.obandes-wp-native-style-settings-link div{
+display:none;
+}
+
+.obandes-wp-native-style-settings-link:hover div{
+display:block;
+position:absolute;
+top:0;
+left:360px;
+}
+
+.obandes-wp-native-style-settings-link br{
+line-height:2;
+}
+.obandes-left-col-title{
+	font-weight:bold;vertical-align:middle;border-bottom:3px solid #fff;
+}
