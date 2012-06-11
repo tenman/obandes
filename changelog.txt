@@ -6,6 +6,7 @@ added
     function obandes_customize_register()
     function add_theme_support( 'custom-header', $args );
     function add_theme_support( 'custom-background', $args );
+    new file:   admin/admin-style.css
 ----------------------------------------------
 Changelog -----------------------------------
 version:1.11
