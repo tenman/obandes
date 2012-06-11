@@ -6,16 +6,16 @@
  *
  *
  */
-	$raindrops_check_wp_version = explode('-',$wp_version);
-	$raindrops_wp_version 		= $raindrops_check_wp_version[0];
+    $obandes_check_wp_version = explode('-',$wp_version);
+    $obandes_wp_version         = $obandes_check_wp_version[0];
 
-	if( !isset( $obandes_current_theme_name ) ){
-		if( $raindrops_wp_version >= '3.4' ){
-			$obandes_current_theme_name = wp_get_theme();
-		}else{
-			$obandes_current_theme_name = get_current_theme();
-		}
-	}
+    if( !isset( $obandes_current_theme_name ) ){
+        if( $obandes_wp_version >= '3.4' ){
+            $obandes_current_theme_name = wp_get_theme();
+        }else{
+            $obandes_current_theme_name = get_current_theme();
+        }
+    }
 
 /**
  *
@@ -24,85 +24,85 @@
  *
  *
  */
-	if( $raindrops_wp_version >= '3.4' ){
-		add_action( 'customize_register', 'obandes_customize_register' );
-	}
-	if( ! function_exists( 'obandes_customize_register' ) and $raindrops_wp_version >= '3.4'){
-		function obandes_customize_register( $wp_customize ) {
-		
-			$wp_customize->add_section( 'obandes_theme_setting'
-				, array(
-						'title' => __( 'obandes theme setting', 'obandes' )
-						, 'priority' => 10,
-					) 
-			);
-			
-			$wp_customize->add_setting( 'obandes_theme_settings[obandes_header_background_color]', array(
-				'default'        => 'cccccc',
-				'type'           => 'option',
-				'capability' 		=> 'edit_theme_options'
-			) );
-			
-			$wp_customize->add_setting( 'obandes_theme_settings[obandes_radio_options_navigation]', array(
-				'default'        => 't5',
-				'type'           => 'option',
-				'capability' 	=> 'edit_theme_options'
-			) );
-			$wp_customize->add_setting( 'obandes_theme_settings[obandes_radio_options_pagetype]', array(
-				'default'        => 'doc3',
-				'type'           => 'option',
-				'capability' 	=> 'edit_theme_options'
-			) );
-		
-			
-		/*	$wp_customize->add_control( 'obandes_header_background_color', array(
-				'label'      => __( 'header background color', 'obandes' ),
-				'section'    => 'obandes_theme_setting',
-				'settings'   => 'obandes_theme_settings[obandes_header_background_color]',
-				//'type'       => 'select',
-				//'choices'    => array_flip($native_color),
-				//'settings'   => 'themename_theme_options[link_color]',
-			) );*/
-			$wp_customize->add_control(	new WP_Customize_Color_Control( $wp_customize
-					, 'obandes_header_background_color'
-					, array(
-						'label'   => __( 'Header and footer background', 'obandes' )
-						, 'section' => 'obandes_theme_setting'
-						, 'settings'   => 'obandes_theme_settings[obandes_header_background_color]'
-						) 
-				) 
-			);
-			
-			$wp_customize->add_control( 'obandes_radio_options_navigation'
-				, array(
-					'label'      => __( 'Sidebar width and position', 'obandes' ),
-					'section'    => 'obandes_theme_setting',
-					'settings'   => 'obandes_theme_settings[obandes_radio_options_navigation]',
-					'type'       => 'radio',
-					'choices'    => array(    't1'=>   __( 'Left narrow' , 'obandes' )
-											, 't2' => __( 'Left middle', 'obandes' )
-											, 't3' => __( 'Left wide', 'obandes' )
-											, 't4' => __( 'Right narrow', 'obandes' )
-											, 't5' => __( 'Right middle', 'obandes' )
-											, 't6' => __( 'Right wide', 'obandes' )
-										)
-					) 
-			);
-			$wp_customize->add_control( 'obandes_radio_options_pagetype'
-				, array(
-					'label'      => __( 'Page width and type', 'obandes' ),
-					'section'    => 'obandes_theme_setting',
-					'settings'   => 'obandes_theme_settings[obandes_radio_options_pagetype]',
-					'type'       => 'radio',
-					'choices'    => array( 'doc3' => __( 'fluid', 'obandes' )
-											, 'doc2' => __( 'fix 950px','obandes' )
-											, 'doc4' => __( 'fix 974px', 'obandes' )
-											, 'doc' => __( 'fix 750px', 'obandes' )
-									   )
-					) 
-			);
-		}
-	}
+    if( $obandes_wp_version >= '3.4' ){
+        add_action( 'customize_register', 'obandes_customize_register' );
+    }
+    if( ! function_exists( 'obandes_customize_register' ) and $obandes_wp_version >= '3.4'){
+        function obandes_customize_register( $wp_customize ) {
+
+            $wp_customize->add_section( 'obandes_theme_setting'
+                , array(
+                        'title' => __( 'obandes theme setting', 'obandes' )
+                        , 'priority' => 10,
+                    )
+            );
+
+            $wp_customize->add_setting( 'obandes_theme_settings[obandes_header_background_color]', array(
+                'default'        => 'cccccc',
+                'type'           => 'option',
+                'capability'        => 'edit_theme_options'
+            ) );
+
+            $wp_customize->add_setting( 'obandes_theme_settings[obandes_radio_options_navigation]', array(
+                'default'        => 't5',
+                'type'           => 'option',
+                'capability'    => 'edit_theme_options'
+            ) );
+            $wp_customize->add_setting( 'obandes_theme_settings[obandes_radio_options_pagetype]', array(
+                'default'        => 'doc3',
+                'type'           => 'option',
+                'capability'    => 'edit_theme_options'
+            ) );
+
+
+        /*  $wp_customize->add_control( 'obandes_header_background_color', array(
+                'label'      => __( 'header background color', 'obandes' ),
+                'section'    => 'obandes_theme_setting',
+                'settings'   => 'obandes_theme_settings[obandes_header_background_color]',
+                //'type'       => 'select',
+                //'choices'    => array_flip($native_color),
+                //'settings'   => 'themename_theme_options[link_color]',
+            ) );*/
+            $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize
+                    , 'obandes_header_background_color'
+                    , array(
+                        'label'   => __( 'Header and footer background', 'obandes' )
+                        , 'section' => 'obandes_theme_setting'
+                        , 'settings'   => 'obandes_theme_settings[obandes_header_background_color]'
+                        )
+                )
+            );
+
+            $wp_customize->add_control( 'obandes_radio_options_navigation'
+                , array(
+                    'label'      => __( 'Sidebar width and position', 'obandes' ),
+                    'section'    => 'obandes_theme_setting',
+                    'settings'   => 'obandes_theme_settings[obandes_radio_options_navigation]',
+                    'type'       => 'radio',
+                    'choices'    => array(    't1'=>   __( 'Left narrow' , 'obandes' )
+                                            , 't2' => __( 'Left middle', 'obandes' )
+                                            , 't3' => __( 'Left wide', 'obandes' )
+                                            , 't4' => __( 'Right narrow', 'obandes' )
+                                            , 't5' => __( 'Right middle', 'obandes' )
+                                            , 't6' => __( 'Right wide', 'obandes' )
+                                        )
+                    )
+            );
+            $wp_customize->add_control( 'obandes_radio_options_pagetype'
+                , array(
+                    'label'      => __( 'Page width and type', 'obandes' ),
+                    'section'    => 'obandes_theme_setting',
+                    'settings'   => 'obandes_theme_settings[obandes_radio_options_pagetype]',
+                    'type'       => 'radio',
+                    'choices'    => array( 'doc3' => __( 'fluid', 'obandes' )
+                                            , 'doc2' => __( 'fix 950px','obandes' )
+                                            , 'doc4' => __( 'fix 974px', 'obandes' )
+                                            , 'doc' => __( 'fix 750px', 'obandes' )
+                                       )
+                    )
+            );
+        }
+    }
 /**
  * #doc - 750px centered (good for 800x600)
  * #doc2 - 950px centered (good for 1024x768)
@@ -160,25 +160,25 @@
     if( ! defined('OBANDES_USE_LIST_EXCERPT')){
         define( "OBANDES_USE_LIST_EXCERPT",false);
     }
-		
-	if( $raindrops_wp_version < '3.4' ){
-		
-		if( ! defined('NO_HEADER_TEXT')){
-			define('NO_HEADER_TEXT', false );
-		}
-		if( ! defined('HEADER_TEXTCOLOR')){
-			define('HEADER_TEXTCOLOR', 'ffffff');
-		}
-		if( ! defined('HEADER_IMAGE')){
-			define('HEADER_IMAGE', '%s/images/headers/wp3.jpg');
-		}
-		 if( ! defined('HEADER_IMAGE_WIDTH')){
-			define('HEADER_IMAGE_WIDTH', 960 );//auto or 999px
-		}
-		if( ! defined('HEADER_IMAGE_HEIGHT')){
-			define('HEADER_IMAGE_HEIGHT', 198);//auto or 999px
-		}
-	}
+
+    if( $obandes_wp_version < '3.4' ){
+
+        if( ! defined('NO_HEADER_TEXT')){
+            define('NO_HEADER_TEXT', false );
+        }
+        if( ! defined('HEADER_TEXTCOLOR')){
+            define('HEADER_TEXTCOLOR', 'ffffff');
+        }
+        if( ! defined('HEADER_IMAGE')){
+            define('HEADER_IMAGE', '%s/images/headers/wp3.jpg');
+        }
+         if( ! defined('HEADER_IMAGE_WIDTH')){
+            define('HEADER_IMAGE_WIDTH', 960 );//auto or 999px
+        }
+        if( ! defined('HEADER_IMAGE_HEIGHT')){
+            define('HEADER_IMAGE_HEIGHT', 198);//auto or 999px
+        }
+    }
 /**
  *
  *
@@ -189,7 +189,7 @@
 if ( ! function_exists( 'obandes_widgets_init' ) ){
     function obandes_widgets_init() {
         register_sidebars(
-		array (
+        array (
           'name' => __('Default Sidebar','obandes'),
           'id' => 'sidebar-1',
           'before_widget' => '<li class="widget default">',
@@ -199,7 +199,7 @@ if ( ! function_exists( 'obandes_widgets_init' ) ){
           'widget_id' => 'default',
           'widget_name' => 'default',
           'text' => "1"),
-		 array (
+         array (
           'name' => __('Page Sidebar','obandes'),
           'id' => 'sidebar-2',
           'before_widget' => '<li class="widget page-sidebar">',
@@ -209,7 +209,7 @@ if ( ! function_exists( 'obandes_widgets_init' ) ){
           'widget_id' => 'page-sidebar',
           'widget_name' => 'page sidebar',
           'text' => "2")
-		  );
+          );
     }
 }
 
@@ -245,17 +245,17 @@ if ( ! function_exists( 'obandes_widgets_init' ) ){
 
 if( !function_exists( 'obandes_theme_setup' ) ){
     function obandes_theme_setup(){
-		global $raindrops_wp_version;
-		load_textdomain( 'obandes', get_template_directory().'/languages/'.get_locale().'.mo' );
-	    add_action( 'widgets_init', 'obandes_widgets_init' );
-		add_action( 'wp_enqueue_scripts', 'obandes_enqueue_comment_reply' );
-		add_action('wp_footer','obandes_small_device_helper');
-		add_filter( 'use_default_gallery_style', '__return_false' );
-		add_filter('body_class','obandes_add_body_class');
-		add_action( "wp_head","obandes_embed_meta",'99');
+        global $obandes_wp_version;
+        load_textdomain( 'obandes', get_template_directory().'/languages/'.get_locale().'.mo' );
+        add_action( 'widgets_init', 'obandes_widgets_init' );
+        add_action( 'wp_enqueue_scripts', 'obandes_enqueue_comment_reply' );
+        add_action('wp_footer','obandes_small_device_helper');
+        add_filter( 'use_default_gallery_style', '__return_false' );
+        add_filter('body_class','obandes_add_body_class');
+        add_action( "wp_head","obandes_embed_meta",'99');
         add_filter( 'wp_page_menu_args', 'obandes_page_menu_args' );
-		add_filter('wp_title','obandes_wp_title',10,3);
-		add_filter('the_content','obandes_ie_height_expand_issue');
+        add_filter('wp_title','obandes_wp_title',10,3);
+        add_filter('the_content','obandes_ie_height_expand_issue');
 
 
 /**
@@ -265,37 +265,37 @@ if( !function_exists( 'obandes_theme_setup' ) ){
  *
  *
  */
-		if( $raindrops_wp_version >= '3.4' ){ // WordPress 3.4 check
-			$args = array(
-					'default-text-color' => 'fff'
-					, 'width' => apply_filters( 'obandes_header_image_width', '950' )
-					, 'flex-width' => true
-					, 'height' => apply_filters( 'obandes_header_image_height', '198' )
-					, 'flex-height' => true
-					, 'header-text' => true
-					, 'default-image' => '%s/images/headers/wp3.jpg'
-					, 'wp-head-callback' => 'obandes_embed_meta'
-					, 'admin-preview-callback' => 'obandes_admin_header_image'
-					, 'admin-head-callback' => 'obandes_admin_header_style'
-				);
-		
-			add_theme_support( 'custom-header', $args );
-			
-			$args = array('default-color' => '#ccc'
-						,'default-image' => ''
-					);
-			add_theme_support( 'custom-background', $args );
-		}
+        if( $obandes_wp_version >= '3.4' ){ // WordPress 3.4 check
+            $args = array(
+                    'default-text-color' => 'fff'
+                    , 'width' => apply_filters( 'obandes_header_image_width', '950' )
+                    , 'flex-width' => true
+                    , 'height' => apply_filters( 'obandes_header_image_height', '198' )
+                    , 'flex-height' => true
+                    , 'header-text' => true
+                    , 'default-image' => '%s/images/headers/wp3.jpg'
+                    , 'wp-head-callback' => 'obandes_embed_meta'
+                    , 'admin-preview-callback' => 'obandes_admin_header_image'
+                    , 'admin-head-callback' => 'obandes_admin_header_style'
+                );
 
-		
-		if( $raindrops_wp_version < '3.4' ){
-		
-			add_custom_image_header( 'obandes_header_style', 'obandes_admin_header_style','obandes_admin_header_image');
-			
-		 	add_custom_background();
-		
-		}
-	}
+            add_theme_support( 'custom-header', $args );
+
+            $args = array('default-color' => '#ccc'
+                        ,'default-image' => ''
+                    );
+            add_theme_support( 'custom-background', $args );
+        }
+
+
+        if( $obandes_wp_version < '3.4' ){
+
+            add_custom_image_header( 'obandes_header_style', 'obandes_admin_header_style','obandes_admin_header_image');
+
+            add_custom_background();
+
+        }
+    }
 }
 /**
  *
@@ -345,19 +345,19 @@ if ( ! function_exists( 'obandes_admin_header_style' ) ){
         #headimg #desc {
             color:#000;
         }
-		#headimg #access .menu > ul > li > a:hover,
+        #headimg #access .menu > ul > li > a:hover,
         #headimg #access a,
         #headimg #access .menu,
         #headimg #access {
             background:#000;
             color:#fff;
         }
-		#headimg #access,
-		#headimg #access .menu > ul,
-		#headimg #access .menu > ul > li > a,
-		#headimg #access .menu{
-			background:#999;
-		}
+        #headimg #access,
+        #headimg #access .menu > ul,
+        #headimg #access .menu > ul > li > a,
+        #headimg #access .menu{
+            background:#999;
+        }
 
         #headimg #access {
             display: block;
@@ -417,33 +417,33 @@ CSS;
 
         echo '<style type="text/css">'.obandes_compress_css($admin_header_style,WP_DEBUG).'</style>';
 
-	}
+    }
 }
 
 if ( ! function_exists( 'obandes_admin_header_image' ) ){
     function obandes_admin_header_image(){
         $obandes_header_image = get_header_image();
-		get_bloginfo( 'name' );
-		$obandes_header_style = 'style="color:#'.get_theme_mod( 'header_textcolor' ).'"';
+        get_bloginfo( 'name' );
+        $obandes_header_style = 'style="color:#'.get_theme_mod( 'header_textcolor' ).'"';
 ?>
     <div id="headimg">
                 <h1 <?php echo $obandes_header_style;?>><a id="name" onclick="return false;" href="<?php esc_url( home_url( '/' ) );?>"><?php bloginfo( 'name' ); ?></a></h1>
         <div id="site-description" <?php echo $obandes_header_style;?>><?php bloginfo( 'description' ); ?></div>
-		<?php
-		if(isset($obandes_header_image) and !empty($obandes_header_image)){
-		?>
-		 <div id="access" role="navigation" class="clearfix">
-		<?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
-				</div>
-		<?php
-			$obandes_header_image_format = '<div style="background:#999;overflow:visible"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
-					printf( $obandes_header_image_format,
-							$obandes_header_image,
-							HEADER_IMAGE_WIDTH,
-							HEADER_IMAGE_HEIGHT,
-							obandes_OBANDES_DOCUMENT_WIDTH()
-					);
-		}
+        <?php
+        if(isset($obandes_header_image) and !empty($obandes_header_image)){
+        ?>
+         <div id="access" role="navigation" class="clearfix">
+        <?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
+                </div>
+        <?php
+            $obandes_header_image_format = '<div style="background:#999;overflow:visible"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%spx;height:auto;" /></div>';
+                    printf( $obandes_header_image_format,
+                            $obandes_header_image,
+                            HEADER_IMAGE_WIDTH,
+                            HEADER_IMAGE_HEIGHT,
+                            obandes_OBANDES_DOCUMENT_WIDTH()
+                    );
+        }
 ?>
     </div>
     <?php
@@ -490,7 +490,7 @@ $obandes_css_preset =<<< CSS_PRESET
 
 /*============= style rules =============*/
 #commentform{
-	background:@commentform-background;
+    background:@commentform-background;
 }
 body {
     background:#efefef;
@@ -586,7 +586,7 @@ div.posted-in {
     a{
     color:@posted-color;
     }
-   
+
 }
 #commentform .form-submit {
     line-height:3;
@@ -597,10 +597,10 @@ div.posted-in {
     border:1px solid #999;
 }
 .home .sticky{
-	border-color:#c5d19b;
-	border-width: 2px;
-	border-style: dashed;
-	background:#fff;
+    border-color:#c5d19b;
+    border-width: 2px;
+    border-style: dashed;
+    background:#fff;
 
 }
 article .content blockquote {
@@ -668,8 +668,8 @@ section{}
 .index{}
 .index article{}
 .index article .title a{
-	color:@article-title-link-color;
-	font-family:@article-title-font-family;
+    color:@article-title-link-color;
+    font-family:@article-title-font-family;
 }
 .index article .posted-on{}
 .index article .posted-in{}
@@ -680,9 +680,9 @@ section{}
 .single-post{}
 .single article{}
 .single article .title{
-	color:@article-title-link-color;
-	font-family:@article-title-font-family;
-	}
+    color:@article-title-link-color;
+    font-family:@article-title-font-family;
+    }
 .single article .posted-on{}
 .single article .posted-in{}
 .single article .pagenate{}
@@ -755,9 +755,9 @@ if( ! isset($obandes_base_setting)){
  *
  *
  */
-	if( ! isset($obandes_query)){
-		$obandes_query =  'obandes_setting';
-	}
+    if( ! isset($obandes_query)){
+        $obandes_query =  'obandes_setting';
+    }
 /**
  *
  *
@@ -783,13 +783,14 @@ if( ! isset($obandes_base_setting)){
     }
         add_theme_support('automatic-feed-links');
         add_theme_support( 'post-thumbnails' );
-		
-	if( $raindrops_wp_version >= '3.4' ){
+
+    if( $obandes_wp_version >= '3.4' ){
         set_post_thumbnail_size( get_custom_header()->width, get_custom_header()->height, true );
-	}
+    }
 
     register_nav_menus( array(
         'primary' => __( 'Primary Navigation', 'obandes' ),
+        'responsive' => __( 'Archives Navigation', 'obandes' )
     ) );
     register_default_headers( array(
         'default' => array(
@@ -871,7 +872,7 @@ if( ! function_exists( "register_obandes_menus" ) ){
  */
 if ( ! function_exists('obandes_posted_on' ) ) {
     function obandes_posted_on( $display = true ) {
-	            $obandes_date_format = get_option('date_format'). ' '. get_option( 'time_format' );
+                $obandes_date_format = get_option('date_format'). ' '. get_option( 'time_format' );
         if (comments_open()){
             $obandes_comment_html = '<a href="%1$s" class="obandes-comment-link"><span class="obandes-comment-string">%3$s</span>%2$s</a>';
             if(get_comments_number() > 0 ){
@@ -900,11 +901,11 @@ if ( ! function_exists('obandes_posted_on' ) ) {
         ),
         sprintf($obandes_comment_html,get_comments_link(),$obandes_comment_number,$obandes_comment_string)
     );
-		if($display == false){
-			return $result;
-		}else{
-			echo $result;
-		}
+        if($display == false){
+            return $result;
+        }else{
+            echo $result;
+        }
     }
 }
 
@@ -989,9 +990,9 @@ if ( ! function_exists('obandes_init' ) ) {
         if ( ! is_admin() and !preg_match( "|^wp-login\.php|si",$page)) {
         wp_register_style('html5reset', 'http://html5resetcss.googlecode.com/files/html5-reset-1.4.css',false,$theme_data['Version']);
        wp_enqueue_style( 'html5reset');
-		
+
 wp_register_style('style', get_stylesheet_uri(), array( 'html5reset' ),$theme_data['Version']);
-       wp_enqueue_style( 'style' );	
+       wp_enqueue_style( 'style' );
         wp_register_script('yui-css','http://yui.yahooapis.com/2.8.0r4/build/yuiloader/yuiloader-min.js',false,'2.8.0r4');
         wp_enqueue_script('yui-css');
         wp_register_script('yui', get_template_directory_uri().'/yui.js', array('yui-css'), '0.1');
@@ -1011,7 +1012,7 @@ wp_register_style('style', get_stylesheet_uri(), array( 'html5reset' ),$theme_da
 }
 
 function obandes_insert_stylesheet(){
-	echo '	<link rel="stylesheet" href="'.get_stylesheet_uri().'" media="all" />';
+    echo '  <link rel="stylesheet" href="'.get_stylesheet_uri().'" media="all" />';
 }
 /**
  *
@@ -1061,43 +1062,43 @@ if ( ! function_exists('obandes_add_body_class' ) ) {
                 $classes[]  = 'unknown';
             break;
             }
-		if( obandes_get_condition('letter-width') == 'doc3' ){
+        if( obandes_get_condition('letter-width') == 'doc3' ){
                 $classes[]  = 'fluid';
-		}
-		$header_image = get_header_image();
-		if( empty( $header_image ) ){
+        }
+        $header_image = get_header_image();
+        if( empty( $header_image ) ){
                 $classes[]  = 'header-image-none';
-		
-		}
-		switch( obandes_get_condition('menu-position') ){
-			case( 'yui-t1' ):
+
+        }
+        switch( obandes_get_condition('menu-position') ){
+            case( 'yui-t1' ):
                 $classes[]  = 'col-left';
                 $classes[]  = 'col-w-160';
-			break;
-			case( 'yui-t2' ):
+            break;
+            case( 'yui-t2' ):
                 $classes[]  = 'col-left';
                 $classes[]  = 'col-w-180';
-			break;
-			case( 'yui-t3' ):
+            break;
+            case( 'yui-t3' ):
                 $classes[]  = 'col-left';
                 $classes[]  = 'col-w-300';
-			break;
-			case( 'yui-t4' ):
+            break;
+            case( 'yui-t4' ):
                 $classes[]  = 'col-right';
                 $classes[]  = 'col-w-180';
-			
-			break;
-			case( 'yui-t5' ):
+
+            break;
+            case( 'yui-t5' ):
                 $classes[]  = 'col-right';
                 $classes[]  = 'col-w-240';
-			
-			break;
-			case( 'yui-t6' ):
+
+            break;
+            case( 'yui-t6' ):
                 $classes[]  = 'col-right';
                 $classes[]  = 'col-w-300';
-			break;
-		}
-		
+            break;
+        }
+
         return $classes;
         }
 }
@@ -1151,7 +1152,7 @@ if( ! function_exists( "obandes_content_width" ) ){
             $obandes_content_width = $default;
         }
     }elseif(OBANDES_DOCUMENT_WIDTH == 'doc3'){
-		$w = 600;
+        $w = 600;
         if(OBANDES_SIDEBAR_WIDTH == 'yui-t1'){
             $obandes_content_width = $w - 160 - $adjust;
         }elseif(OBANDES_SIDEBAR_WIDTH == 'yui-t2'){
@@ -1167,7 +1168,7 @@ if( ! function_exists( "obandes_content_width" ) ){
         }else{
             $obandes_content_width = $default;
         }
-		
+
     }elseif(OBANDES_DOCUMENT_WIDTH == 'doc4'){
         $w = 974;
         $adjust = 16;
@@ -1333,47 +1334,47 @@ if( ! function_exists( "obandes_embed_meta" ) ){
     function obandes_embed_meta( $content ){
         $result = "";
         global $post,$content_width,$is_safari;
-		$header_background_color = obandes_get_condition('obandes_header_background_color');
-		$header_background_image = ' url('. get_template_directory_uri().'/images/d1-head.png )!important;';
+        $header_background_color = obandes_get_condition('obandes_header_background_color');
+        $header_background_image = ' url('. get_template_directory_uri().'/images/d1-head.png )!important;';
 
         $css = "/* obandes header style start */
         header h1,
-		header h1 a,
-		header #site-description,footer a,
-		footer,
-		.widget,
-		#site-generator a,
-		footer .widget_calendar{
-			color:#" .get_theme_mod( 'header_textcolor'  )
-		 .";}
-		footer {
-			background:" .obandes_get_condition('obandes_header_background_color') .";}
-		#obandes-page-header{
-			background-color:". strtolower( $header_background_color ).'!important;'
-		. ' background-image: '. $header_background_image
-		."}
-		/* obandes header style end */";
-		
- 		$css .= "\n/*obandes footer style start */
-		footer{background:".obandes_get_condition('obandes_header_background_color')
-		."!important;}\n/*obandes footer style end */";
-		
-//body background			
-		$body_background 			= get_theme_mod( "background_color" );
-		$body_background_image 		= get_theme_mod( "background_image" );
-		
-		$css .= '/*obandes footer style start */';		
-		if( !empty( $body_background ) and !empty( $body_background_image ) ){
-			$css .= "\nbody{background:#".$body_background.' url('. $body_background_image. ');}';
-		}elseif( !empty( $body_background ) ){
-			$css .= "\nbody{background:#".$body_background.';}';
-		}elseif( !empty( $body_background_image ) ){
-			$css .= "\nbody{background: url(". $body_background_image. ');}';
-		}
-		$css .= '/*obandes footer style end */';		
-		
-		$css .= obandes_embed_style();	
-		
+        header h1 a,
+        header #site-description,footer a,
+        footer,
+        .widget,
+        #site-generator a,
+        footer .widget_calendar{
+            color:#" .get_theme_mod( 'header_textcolor'  )
+         .";}
+        footer {
+            background:" .obandes_get_condition('obandes_header_background_color') .";}
+        #obandes-page-header{
+            background-color:". strtolower( $header_background_color ).'!important;'
+        . ' background-image: '. $header_background_image
+        ."}
+        /* obandes header style end */";
+
+        $css .= "\n/*obandes footer style start */
+        footer{background:".obandes_get_condition('obandes_header_background_color')
+        ."!important;}\n/*obandes footer style end */";
+
+//body background
+        $body_background            = get_theme_mod( "background_color" );
+        $body_background_image      = get_theme_mod( "background_image" );
+
+        $css .= '/*obandes footer style start */';
+        if( !empty( $body_background ) and !empty( $body_background_image ) ){
+            $css .= "\nbody{background:#".$body_background.' url('. $body_background_image. ');}';
+        }elseif( !empty( $body_background ) ){
+            $css .= "\nbody{background:#".$body_background.';}';
+        }elseif( !empty( $body_background_image ) ){
+            $css .= "\nbody{background: url(". $body_background_image. ');}';
+        }
+        $css .= '/*obandes footer style end */';
+
+        $css .= obandes_embed_style();
+
 /**
  *
  *
@@ -1381,11 +1382,11 @@ if( ! function_exists( "obandes_embed_meta" ) ){
  *
  *
  */
-	if ( 'blank' == get_theme_mod('header_textcolor') ){
-		add_filter( 'wp_page_menu_args', 'obandes_page_menu_args' );
-	}
-	
-		
+    if ( 'blank' == get_theme_mod('header_textcolor') ){
+        add_filter( 'wp_page_menu_args', 'obandes_page_menu_args' );
+    }
+
+
     /**
      * insert into embed style ,javascript script and embed tags from custom field
      */
@@ -1427,7 +1428,7 @@ if( ! function_exists( "obandes_embed_meta" ) ){
                 }
                 $result .= "\n/*]]>*/\n";
                 $result .= "</style>";
-		}
+        }
         echo $result;
         return $content;
     }
@@ -1478,21 +1479,21 @@ if( ! function_exists( "obandes_radio_options_pagetype_validate" ) ){
  */
 if( ! function_exists( "obandes_radio_options_navigation_validate" ) ){
     function obandes_radio_options_navigation_validate( $data ){
-	
-		//$option_name 	= 'obandes_radio_options_navigations';
-	 	//$new_settings 	= get_option('obandes_theme_settings');
-		
-		//if( preg_match('!t[1-5]!',$data,$regs) ){
-			
-	/*	  if($new_settings[$option_name] !== $data){
-			$new_settings[$option_name]   = $data;
-			update_option('obandes_theme_settings',$new_settings);
-		  }	
+
+        //$option_name  = 'obandes_radio_options_navigations';
+        //$new_settings     = get_option('obandes_theme_settings');
+
+        //if( preg_match('!t[1-5]!',$data,$regs) ){
+
+    /*    if($new_settings[$option_name] !== $data){
+            $new_settings[$option_name]   = $data;
+            update_option('obandes_theme_settings',$new_settings);
+          }
             return esc_html($regs[0]);*/
-		//}else{
-			//return $data;
-		
-		//}
+        //}else{
+            //return $data;
+
+        //}
     }
 }
 /**
@@ -1526,7 +1527,7 @@ if( ! function_exists( "obandes_first_only_msg" ) ){
             $query  = 'obandes_settings';
             $link   = get_site_url('', 'wp-admin/themes.php', 'admin') . '?page='.$obandes_query;
             $msg    = sprintf(__('Thank you for adopting the %s theme. It is necessary to set it to this theme. Please move to a set screen clicking this <a href="%s">obandes settings view</a>.','obandes'), $obandes_current_theme_name ,$link);
-        
+
 
             $msg    .= sprintf(__('     Note:Detected improperly option value. The value was corrected. ','obandes'));
         }
@@ -1585,12 +1586,13 @@ if( ! function_exists( "obandes_install_navigation" ) ){
  */
 if( ! function_exists( "obandes_admin_print_styles" ) ){
     function obandes_admin_print_styles() {
-      wp_enqueue_style( 'farbtastic' );
+        global $obandes_wp_version;
+        wp_enqueue_style( 'farbtastic' );
 
       $src      = get_stylesheet_directory_uri().'/admin/admin-style.css';
       $deps     = array();
 
-		if( $raindrops_wp_version >= '3.4' ){ // WordPress 3.4 check
+        if( $obandes_wp_version >= '3.4' ){ // WordPress 3.4 check
             $theme  = wp_get_theme( get_template_directory().'/style.css' );
         }else{
             $theme  = get_theme_data( get_template_directory().'/style.css' );
@@ -1647,21 +1649,21 @@ if( ! function_exists( "obandes_theme_options_add_page" ) ){
 if( ! function_exists( "obandes_options_page_view" ) ){
     function obandes_options_page_view() {
         $obandes_result_message = '';
-        global $select_options, $obandes_radio_options,$obandes_query, $obandes_current_theme_name;
-		
-		$obandes_navigation_list  = '<ul class="obandes-wp-native-style"><li class="obandes-customizer obandes-wp-native-style-settings-link"><a href="'.admin_url( 'customize.php' ).'">'.__( 'Customizor','obandes').'</a><div class="obandes_customizor_description">'.__('Preview with settings','obandes').'<br />'.__('The obandes Setting change of a theme can also be performed. ','obandes').'</div></li>';
-		$obandes_navigation_list  .= '<li class="obandes-wp-native-style-settings-link"><a href="'.admin_url( 'widgets.php' ).'">'.__( 'Widget','obandes').'</a><div class="obandes_customizor_description">'.__('Add Widgets Sidebar and Footer','obandes').'<br />'.__('The obandes theme supports 6 positions of widgets area','obandes').'</div></li>';
-		$obandes_navigation_list  .= '<li class="obandes-wp-native-style-settings-link"><a href="'.admin_url( 'theme-editor.php' ).'">'.__( 'Theme Editor','obandes').'</a><div class="obandes_customizor_description">'.__('Edit All Theme Files Manualy','obandes').'</div></li></ul>';		
-		
+        global $select_options, $obandes_radio_options,$obandes_query, $obandes_current_theme_name,$obandes_wp_version;
+
+        $obandes_navigation_list  = '<ul class="obandes-wp-native-style"><li class="obandes-customizer obandes-wp-native-style-settings-link"><a href="'.admin_url( 'customize.php' ).'">'.__( 'Customizor','obandes').'</a><div class="obandes_customizor_description">'.__('Preview with settings','obandes').'<br />'.__('The obandes Setting change of a theme can also be performed. ','obandes').'</div></li>';
+        $obandes_navigation_list  .= '<li class="obandes-wp-native-style-settings-link"><a href="'.admin_url( 'widgets.php' ).'">'.__( 'Widget','obandes').'</a><div class="obandes_customizor_description">'.__('Add Widgets Sidebar and Footer','obandes').'<br />'.__('The obandes theme supports 6 positions of widgets area','obandes').'</div></li>';
+        $obandes_navigation_list  .= '<li class="obandes-wp-native-style-settings-link"><a href="'.admin_url( 'theme-editor.php' ).'">'.__( 'Theme Editor','obandes').'</a><div class="obandes_customizor_description">'.__('Edit All Theme Files Manualy','obandes').'</div></li></ul>';
+
         echo '<div id="obandes-admin-settings">';
-			screen_icon();		
+            screen_icon();
             echo '<h2 style="float:left;">' . __( ' WordPress Native Design Options' ,'obandes') . '</h2>';
-			echo '<br style="clear:both;" />';
-			echo $obandes_navigation_list;
-			echo '<br style="clear:both;" />';
-			screen_icon();		
+            echo '<br style="clear:both;" />';
+            echo $obandes_navigation_list;
+            echo '<br style="clear:both;" />';
+            screen_icon();
             echo '<h2 style="float:left;">' . $obandes_current_theme_name . __( ' Options' ,'obandes') . '</h2>';
-			echo '<br style="clear:both;" />';
+            echo '<br style="clear:both;" />';
 
         /**
          * POSTGET
@@ -1669,9 +1671,9 @@ if( ! function_exists( "obandes_options_page_view" ) ){
          *
          */
         if (isset( $_POST['action'] ) == 'update' and isset($_POST['reset']) ){
-			remove_theme_mods();
-			$obandes_result_message = __( "Theme Customizer Options ,",'obandes');
-		}
+            remove_theme_mods();
+            $obandes_result_message = __( "Theme Customizer Options ,",'obandes');
+        }
         if (isset( $_POST['action'] ) == 'update' and isset($_POST['obandessettingcss'])){
             global $obandes_base_setting;
             $ok             = false;
@@ -1881,7 +1883,7 @@ if( ! function_exists( "obandes_options_page_view" ) ){
         echo '</div>';
         echo '</td>';
         echo '<td>';
-            if( $raindrops_wp_version >= '3.4' ){ // WordPress 3.4 check
+            if( $obandes_wp_version >= '3.4' ){ // WordPress 3.4 check
                 $obandes_wp_editor_settings = array(
                 'wpautop' => false,
                 'quicktags' => false,
@@ -2017,30 +2019,30 @@ if( ! function_exists( "obandes_prev_next_post" ) ){
  *
  */
 if( ! function_exists( "obandes_detect_option" ) ){
-	function obandes_detect_option($condition){
-		$obandes_current_settings       = get_option('obandes_theme_settings');
-		$config                 = $obandes_current_settings['obandes_css'];
-		preg_match( "!^$condition=(.+)$!mu",$config,$regs);
-		if(isset($regs[1])){
-			$result = strip_tags($regs[1]);
-			$result = str_replace(array( " ","\n","\r"),"",$result);
-			if( $result == 'narrow' or
-				$result == 'middle' or
-				$result == 'wide' or
-				$result == 'fix' or
-				$result == 'shrink' or
-				$result == 'fix' or
-				$result == 'left' or
-				$result == 'right' or
-				is_numeric($result)){
-				return $result;
-			}else{
-				return false;
-			}
-		}else{
-				return false;
-		}
-	}
+    function obandes_detect_option($condition){
+        $obandes_current_settings       = get_option('obandes_theme_settings');
+        $config                 = $obandes_current_settings['obandes_css'];
+        preg_match( "!^$condition=(.+)$!mu",$config,$regs);
+        if(isset($regs[1])){
+            $result = strip_tags($regs[1]);
+            $result = str_replace(array( " ","\n","\r"),"",$result);
+            if( $result == 'narrow' or
+                $result == 'middle' or
+                $result == 'wide' or
+                $result == 'fix' or
+                $result == 'shrink' or
+                $result == 'fix' or
+                $result == 'left' or
+                $result == 'right' or
+                is_numeric($result)){
+                return $result;
+            }else{
+                return false;
+            }
+        }else{
+                return false;
+        }
+    }
 }
 /**
  *
@@ -2246,9 +2248,9 @@ if( ! function_exists( "plugin_is_active" ) ){
 if( ! function_exists( "obandes_embed_style" ) ){
      function obandes_embed_style(){
      global $post;
-	if( ! class_exists( 'lessc' ) ){
+    if( ! class_exists( 'lessc' ) ){
         require get_template_directory().'/lib/lessc.inc.php';
-	}
+    }
         $less = new lessc();
         $embed_style = get_option('obandes_theme_settings');
 
@@ -2318,37 +2320,37 @@ if( ! function_exists( "obandes_compress_css" ) ){
  *
  *
  */
-if( ! function_exists( "obandes_get_header_image_renderer") and $raindrops_wp_version >= '3.4' ){
+if( ! function_exists( "obandes_get_header_image_renderer") and $obandes_wp_version >= '3.4' ){
     function obandes_get_header_image_renderer($obandes_image_uri = ''){
         global $post;
-		$marginally = false;
-		
+        $marginally = false;
+
         if(empty($obandes_image_uri)){
             $obandes_image_uri = get_header_image();
         }
-		
-			$image_data = get_theme_mod( 'header_image_data' );
-			$width 		= $image_data->width;
-			$height 	= $image_data->height;	
+
+            $image_data = get_theme_mod( 'header_image_data' );
+            $width      = $image_data->width;
+            $height     = $image_data->height;
 
         if( ! empty($obandes_image_uri)){
 
-	
-			if( has_post_thumbnail( $post->ID ) and is_singular()){
-				$marginally = '<div id="header-image" class="header-image-marginally-style">';
+
+            if( has_post_thumbnail( $post->ID ) and is_singular()){
+                $marginally = '<div id="header-image" class="header-image-marginally-style">';
                     $marginally .= get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
-			 	$marginally .= '</div>';
-				
-				return $marginally;
-			}
-			
+                $marginally .= '</div>';
+
+                return $marginally;
+            }
+
          $header_image_format = '<div id="header-image" class="%1$s"><img src="%2$s" width="%3$s" height="%4$s" alt="header image"  class="%5$s %6$s" /></div>';
 
                 switch(obandes_get_condition('letter-width')){
                     case( "doc"):
-					if( $width < 750){
-						$marginally = true;
-					}
+                    if( $width < 750){
+                        $marginally = true;
+                    }
                         $obandes_header_image_width = 'doc-header-image-width';
                         $obandes_header_image_height = 'auto-header-image-height';
                         $obandes_header_image_width_numeric = $width.'px';
@@ -2356,18 +2358,18 @@ if( ! function_exists( "obandes_get_header_image_renderer") and $raindrops_wp_ve
 
                     break;
                     case( "doc2"):
-					if( $width < 950){
-						$marginally = true;
-					}
-					
+                    if( $width < 950){
+                        $marginally = true;
+                    }
+
                         $obandes_header_image_width = 'doc2-header-image-width';
                         $obandes_header_image_height = 'auto-header-image-height';
                         $obandes_header_image_width_numeric = $width.'px';
                         $obandes_header_image_height_numeric = $height.'px';
 
                     break;
-				    default:
-						$marginally = false;
+                    default:
+                        $marginally = false;
                         $obandes_header_image_width = 'covered-header-image-width';
                         $obandes_header_image_height = 'auto-header-image-height';
                         $obandes_header_image_width_numeric = '100%';
@@ -2375,16 +2377,16 @@ if( ! function_exists( "obandes_get_header_image_renderer") and $raindrops_wp_ve
                     break;
 
                 }
-				if( $marginally == true ){
-				$class = 'header-image-marginally-style'; }else{$class = "background-none";}
+                if( $marginally == true ){
+                $class = 'header-image-marginally-style'; }else{$class = "background-none";}
                 return sprintf( $header_image_format,
                         $class,
                         $obandes_image_uri,
                         $obandes_header_image_width_numeric,
                         $obandes_header_image_height_numeric,
                         $obandes_header_image_width,
-						$obandes_header_image_height
-                );            
+                        $obandes_header_image_height
+                );
         }
     }
 }
@@ -2397,7 +2399,7 @@ if( ! function_exists( "obandes_get_header_image_renderer") and $raindrops_wp_ve
  *
  *
  */
-if( ! function_exists( "obandes_get_header_image_renderer") and $raindrops_wp_version < '3.4' ){
+if( ! function_exists( "obandes_get_header_image_renderer") and $obandes_wp_version < '3.4' ){
     function obandes_get_header_image_renderer($obandes_image_uri = ''){
         global $post;
         if(empty($obandes_image_uri)){
@@ -2411,13 +2413,13 @@ if( ! function_exists( "obandes_get_header_image_renderer") and $raindrops_wp_ve
                     and (  $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail' ) )
                     /*and $image[1] >= HEADER_IMAGE_WIDTH*/
             ){
-			if( $image[1] < HEADER_IMAGE_WIDTH ){
-			echo '<div id="header-image" style="background:#000;text-align:center;">';
-			}
+            if( $image[1] < HEADER_IMAGE_WIDTH ){
+            echo '<div id="header-image" style="background:#000;text-align:center;">';
+            }
                     echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
-			if( $image[1] < HEADER_IMAGE_WIDTH ){
-			echo '</div>';
-			}
+            if( $image[1] < HEADER_IMAGE_WIDTH ){
+            echo '</div>';
+            }
             }elseif( ! empty($obandes_image_uri)){
                 $header_image_format = '<div id="header-image" style="%s"><img src="%s" width="%s" height="%s" alt="header image"  style="width:%s;height:auto;" /></div>';
 
@@ -2494,9 +2496,9 @@ if( ! function_exists( "obandes_title_format" ) ){
 
 
 function obandes_enqueue_comment_reply() {
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+        wp_enqueue_script( 'comment-reply' );
+    }
 }
 
         function obandes_comment_prev_next($position = "comment-above"){ ?>
@@ -2527,7 +2529,7 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
         */
         ?>
             function obandes_Resize(){
-			
+
                 if( width < 1281 ){
                     body_class = 'obandes-w-sxga';
                 }
@@ -2539,10 +2541,10 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
                 }
                 if( width < 641 ){
                     body_class = 'obandes-w-vga';
-				
-					jQuery( "#access").css({'display':'none'});
-					jQuery( "#setting-for-responsive .widget_pages").css({'display':'block'});
-					
+
+                    jQuery( "#access").css({'display':'none'});
+                    jQuery( "#setting-for-responsive .widget_pages").css({'display':'block'});
+
                 }
                 if( width < 481 ){
                     body_class = 'obandes-w-iphone';
@@ -2553,13 +2555,13 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
                 if( width < 241 ){
                     body_class = 'obandes-w-keitai';
                 }
-				if( width > 640 ){
-				//	if( !jQuery( "#access").attr('style') ){
-					jQuery( "#access").removeAttr('style').css({'display':'block'});
-					jQuery( "#setting-for-responsive .widget_pages").removeAttr('style').css({'display':'none'});
-				//	window.reload();
-				//	}
-				//	
+                if( width > 640 ){
+                //  if( !jQuery( "#access").attr('style') ){
+                    jQuery( "#access").removeAttr('style').css({'display':'block'});
+                    jQuery( "#setting-for-responsive .widget_pages").removeAttr('style').css({'display':'none'});
+                //  window.reload();
+                //  }
+                //
                 }
 
                 /* remove old width[0-9]+ class*/
@@ -2579,7 +2581,7 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
 
 
 
-               
+
     <?php
     /**
      * Check window size and mouse position
@@ -2598,12 +2600,12 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
                     }
                 });
             }
-			
-			obandes_Resize();
-			jQuery(window).resize( function () { 
-				obandes_Resize(); 
-			});	
-     	});
+
+            obandes_Resize();
+            jQuery(window).resize( function () {
+                obandes_Resize();
+            });
+        });
         })(jQuery);
         </script>
         <?php
@@ -2618,10 +2620,10 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
  *
  */
 if ( ! function_exists( 'obandes_page_menu_args' ) ) {
-	function obandes_page_menu_args( $args ) {
-		$args['show_home'] = true;
-		return $args;
-	}
+    function obandes_page_menu_args( $args ) {
+        $args['show_home'] = true;
+        return $args;
+    }
 }
 
 ?>
