@@ -1,4 +1,20 @@
 Changelog -----------------------------------
+version:1.20
+    This version for support WordPress 3.4
+removed
+
+moved
+
+added
+
+fixed
+
+modified
+
+made
+
+----------------------------------------------
+Changelog -----------------------------------
 version:1.11
 fixed
     single.php display improperly
@@ -28,7 +44,7 @@ fixed
 modified
     Append a header background color to footer.
         footer.php
-    Change default page width from 950px fix layout to fluid layout.        const DOCUMENT_WIDTH from doc2 to doc3
+    Change default page width from 950px fix layout to fluid layout.        const OBANDES_DOCUMENT_WIDTH from doc2 to doc3
         const HEADER_IMAGE_WIDTH from 950 to 960
             funcctions.php
     Add action filter
@@ -513,9 +529,9 @@ fixed
     3.bug fix theme install preview not show (code change:sidebar index.php sidebar.php)
 modified
     1.default page width change 100% fluid (Install preview good for everybody)
-    const DOCUMENT_WIDTH 'doc3' old value 'doc2'
+    const OBANDES_DOCUMENT_WIDTH 'doc3' old value 'doc2'
     2.default column width change 300px (media embed easy width good for everybody)
-    const SIDEBAR_WIDTH 'yui-t6' old value 'yui-t5'
+    const OBANDES_SIDEBAR_WIDTH 'yui-t6' old value 'yui-t5'
     3.entry-title color change and add after add link image
 made
     changelog.txt

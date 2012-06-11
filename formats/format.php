@@ -7,6 +7,7 @@
  * @since obandes 0.41
  */
 ?><?php
+
     $cat = "default";
     if ( in_category( "blog" )){    $cat = "blog";      }
     if ( in_category( "gallery" )){ $cat = "gallery";   }

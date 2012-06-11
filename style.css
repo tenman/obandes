@@ -4,7 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description:lessphp (CSS preprocessor) support Where Theme option panel style editor. YUI(Yahoo User Inter face) Grid layout support.  2column fixed and fluid layout theme.Post format image support Zoom it API. This theme supply your happy blogging  From beginners to a specialist
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 1.11
+Version: 1.20
 Tags:two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -20,11 +20,22 @@ http://developer.yahoo.com/yui/fonts/
 22px = 167%    23px = 174%    24px = 182%    25px = 189%
 26px = 197%
 ------------------------------------------------------*/
-
+body h1{
+font-size:182%;
+}
+body h2{
+font-size:153%;
+}
+body h3{
+font-size:123.1%;
+}
 #access{
 	display:block;
 	width:100%;
 	margin:0;
+}
+#site-title{
+	font-size:197%;
 }
 
 #access .children{
@@ -272,15 +283,21 @@ http://developer.yahoo.com/yui/fonts/
 	top:3px;
 	z-index:2;
 }
-
-#site-title,header h1,header h1 a,header div.h1 a{
-	font-size:174%;
+#site-title{
+	margin-bottom:0;
+}
+article h1{
+	margin:0;
+}
+header h1 a,header div.h1 a,#site-title a{
 	left:0;
 	position:relative;
 	text-align:left;
 	text-decoration:none;
 	text-indent:10px;
 	top:0;
+	display:inline-block;
+	margin:25px 10px 0;
 }
 
 #site-title,header h1:hover,header h1 a:hover,header div.h1 a:hover{
@@ -361,7 +378,10 @@ http://developer.yahoo.com/yui/fonts/
 	float:right;
 	margin:0.5em;
 }
-
+.alignnone{
+	float:none;
+	boder:none;
+}
 .archive.author article .content{
 	margin:1em 1em 0 6em;
 }
@@ -501,13 +521,13 @@ http://developer.yahoo.com/yui/fonts/
 	font-size:161.6%;
 }
 
-.font22,nav h2,.page h2,h2,/*h2 a,*/
-.h2 a{
-	font-size:167%;
+.font22,nav h2,.page h2,h2,/*h2 a,
+.h2 a*/{
+	font-size:173%;
 }
 
 .font23{
-	font-size:174%;
+	font-size:173%;
 }
 
 .font24{
@@ -1020,7 +1040,7 @@ a:focus{
 
 a:hover{
 	border-bottom:1px solid #999;
-	color:#09C;
+/*	color:#09C;*/
 }
 
 abbr,h2,h3,h4,h5,h6,.h2,.h3,.h4,.h5,.h6{
@@ -1237,7 +1257,7 @@ footer{
 }
 
 h1 a,h2 a,h3 a,h4 a,h5 a,h6 a,.h2 a,.h3 a,.h4 a,.h5 a,.h6 a{
-	color:#000;
+	/*color:#000;*/
 }
 
 h2 a,h3 a,h4 a,h5 a,h6 a,.h2 a,.h3 a,.h4 a,.h5 a,.h6 a,.widget_tag_cloud a{
@@ -1266,15 +1286,14 @@ head{
 }
 
 header{
-	background-image:url(images/bg-1.png);
 	position:relative;
 	margin:0 auto;
 	padding:0;
 }
 
 header h1,header h2,header h3{
-	max-width:75%;
-	margin:0 10px;
+/*	max-width:75%;*/
+/*	margin:10px;*/
 }
 
 hr{
@@ -1293,7 +1312,7 @@ nav ul li ul li li,.wp-caption img,.chrome article .content .horizon-gallery .si
 
 html{
 	background:none repeat scroll 0 0 inherit;
-	color:#000;
+	/*color:#000;*/
 }
 
 html body{
@@ -1347,7 +1366,9 @@ li h2,nav ul > li,.wp-smiley,nav h3,nav .h3{
 .meta-prep-author{
 	margin-left:10px;
 }
-
+#searchform{
+	display:inline-block;
+}
 nav{
 	font-family:'Trebuchet MS', 'Lucida Grande', Verdana, 'Lucida, Geneva, Helvetica', Arial, sans-serif;
 	margin-top:5px!important;
@@ -1382,13 +1403,14 @@ nav h2{
 
 nav li a{
 	border-bottom:none!important;
-	display:inline-block;
+	/*display:inline-block;*/
+	display:block;
 	text-decoration:none;
 	padding:5px 5px 5px 0.5em;
 }
 
 nav li a:hover{
-	color:#09c;
+	/*color:#09c;*/
 	text-decoration:none;
 }
 
@@ -1498,3 +1520,79 @@ body.col-left article .title{
 	margin-left:0px;
 	margin-right:10px;
 }
+body.col-left nav.yui-b .nav-toggle{
+	margin-left:5px;
+}
+		footer .tagcloud{
+			background:none;
+		}
+		footer .widget_calendar td#today{
+			color:#000;
+		}
+	#header-image{
+		background:#555;
+	}
+	.background-none{
+		background:none;
+	}
+
+	.doc-header-image-width{
+		width:750px!important;
+	}
+	.doc2-header-image-width{
+		width:950px!important;
+	}
+	.covered-header-image-width{
+		background:#555;
+		padding:10px;
+		width:100%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box; 
+		-ms-box-sizing: border-box; 
+		box-sizing: border-box;
+	}
+
+	.ie6 .covered-header-image-width,
+	.ie7 .covered-header-image-width,
+	.ie8 .covered-header-image-width{
+		background:#555;
+		padding:.5%;
+		width:99%;
+	}
+
+	.auto-header-image-height{
+		width:auto;
+	}
+	.obandes-comment-avatar-wrapper{
+		width:48px;
+		float:left;
+		margin-top:6px;
+	}
+	.comment_author_block{
+		overflow:hidden;
+		padding-left:1em;
+	}
+	.ie6 .comment-meta,
+	.ie7 .comment-meta,
+	.ie8 .comment-meta,
+	.ie6 .obandes-awaiting-moderation-block,
+	.ie7 .obandes-awaiting-moderation-block,
+	.ie8 .obandes-awaiting-moderation-block,
+	.ie6 .comment_author_bloc,
+	.ie7 .comment_author_bloc,
+	.ie8 .comment_author_bloc{
+		width:100%;
+	}
+	.obandes-awaiting-moderation-block{
+		overflow:hidden;
+		padding-left:1em;
+	}
+	.comment-meta{
+		overflow:hidden;
+		padding-left:1em;
+	}
+	.header-image-marginally-style{
+		padding:10px;
+		background:#555;
+		text-align:center;
+	}
