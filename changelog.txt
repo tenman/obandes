@@ -1,5 +1,5 @@
 Changelog -----------------------------------
-version:1.20
+version:1.21
     This version for support WordPress 3.4
 
 added

@@ -790,7 +790,6 @@ if( ! isset($obandes_base_setting)){
 
     register_nav_menus( array(
         'primary' => __( 'Primary Navigation', 'obandes' ),
-        'responsive' => __( 'Archives Navigation', 'obandes' )
     ) );
     register_default_headers( array(
         'default' => array(
