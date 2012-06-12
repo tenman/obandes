@@ -1650,9 +1650,13 @@ if( ! function_exists( "obandes_options_page_view" ) ){
         $obandes_result_message = '';
         global $select_options, $obandes_radio_options,$obandes_query, $obandes_current_theme_name,$obandes_wp_version;
 
-        $obandes_navigation_list  = '<ul class="obandes-wp-native-style"><li class="obandes-customizer obandes-wp-native-style-settings-link"><a href="'.admin_url( 'customize.php' ).'">'.__( 'Customizor','obandes').'</a><div class="obandes_customizor_description">'.__('Preview with settings','obandes').'<br />'.__('The obandes Setting change of a theme can also be performed. ','obandes').'</div></li>';
-        $obandes_navigation_list  .= '<li class="obandes-wp-native-style-settings-link"><a href="'.admin_url( 'widgets.php' ).'">'.__( 'Widget','obandes').'</a><div class="obandes_customizor_description">'.__('Add Widgets Sidebar and Footer','obandes').'<br />'.__('The obandes theme supports 6 positions of widgets area','obandes').'</div></li>';
-        $obandes_navigation_list  .= '<li class="obandes-wp-native-style-settings-link"><a href="'.admin_url( 'theme-editor.php' ).'">'.__( 'Theme Editor','obandes').'</a><div class="obandes_customizor_description">'.__('Edit All Theme Files Manualy','obandes').'</div></li></ul>';
+    if( $obandes_wp_version >= '3.4' ){
+        $obandes_navigation_list  = '<ul class="obandes-wp-native-style"><li class="obandes-customizer obandes-wp-native-style-settings-link"><a href="'.admin_url( 'customize.php' ).'">'.__( 'Customizer','obandes').'</a><div class="obandes_customizer_description">'.__('Preview with settings','obandes').'<br />'.__('The obandes Setting change of a theme can also be performed. ','obandes').'</div></li>';
+    }
+        $obandes_navigation_list  .= '<li class="obandes-wp-native-style-settings-link"><a href="'.admin_url( 'widgets.php' ).'">'.__( 'Widget','obandes').'</a><div class="obandes_customizer_description">'.__('Add Widgets Sidebar and Footer','obandes').'<br />'.__('The obandes theme supports 6 positions of widgets area','obandes').'</div></li>';
+
+
+        $obandes_navigation_list  .= '<li class="obandes-wp-native-style-settings-link"><a href="'.admin_url( 'theme-editor.php' ).'">'.__( 'Theme Editor','obandes').'</a><div class="obandes_customizer_description">'.__('Edit All Theme Files Manualy','obandes').'</div></li></ul>';
 
         echo '<div id="obandes-admin-settings">';
             screen_icon();
