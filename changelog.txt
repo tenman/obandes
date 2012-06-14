@@ -1,4 +1,14 @@
 Changelog -----------------------------------
+version:1.24
+    This version for support WordPress 3.4
+Fixed
+    Miss coding
+    function obandes_radio_options_navigation_validate( $data )
+        Remove commentout code.
+            functions.php
+----------------------------------------------
+
+Changelog -----------------------------------
 version:1.23
     This version for support WordPress 3.4
 
