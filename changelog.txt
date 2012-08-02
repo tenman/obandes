@@ -1,4 +1,19 @@
 Changelog -----------------------------------
+version:1.25
+removed
+
+moved
+
+added
+
+fixed
+
+modified
+
+made
+
+----------------------------------------------
+Changelog -----------------------------------
 version:1.24
     This version for support WordPress 3.4
 Fixed

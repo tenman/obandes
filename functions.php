@@ -893,7 +893,7 @@ if ( ! function_exists('obandes_posted_on' ) ) {
             esc_attr( get_the_time( $obandes_date_format ) ),
             get_the_date( $obandes_date_format )
         ),
-        sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="vcard:url">%3$s</a></span>',
+        sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
             get_author_posts_url( get_the_author_meta( 'ID' ) ),
             sprintf( esc_attr__( 'View all posts by %s', 'obandes' ), get_the_author() ),
             get_the_author()
@@ -1251,6 +1251,16 @@ if ( ! function_exists( 'obandes_posted_in' ) ) {
             the_title_attribute( 'echo=0' )
         );
     }
+}
+add_filter( 'the_category' , 'obandes_remove_ref' );
+
+function obandes_remove_ref($content){
+
+if( preg_match( '!(.+)rel="[^"]+"(.+)!', $content, $regs ) ){
+
+return $regs[1].$regs[2];
+}
+
 }
 
 /**
@@ -2334,8 +2344,10 @@ if( ! function_exists( "obandes_get_header_image_renderer") and $obandes_wp_vers
         }
 
             $image_data = get_theme_mod( 'header_image_data' );
+			if(is_object()){
             $width      = $image_data->width;
             $height     = $image_data->height;
+			}
 
         if( ! empty($obandes_image_uri)){
 
@@ -2348,7 +2360,7 @@ if( ! function_exists( "obandes_get_header_image_renderer") and $obandes_wp_vers
                 return $marginally;
             }
 
-         $header_image_format = '<div id="header-image" class="%1$s"><img src="%2$s" width="%3$s" height="%4$s" alt="header image"  class="%5$s %6$s" /></div>';
+         $header_image_format = '<div id="header-image" class="%1$s"><img src="%2$s" style="width;%3$s; height:%4$s;" alt="header image"  class="%5$s %6$s" /></div>';
 
                 switch(obandes_get_condition('letter-width')){
                     case( "doc"):
@@ -2377,7 +2389,7 @@ if( ! function_exists( "obandes_get_header_image_renderer") and $obandes_wp_vers
                         $obandes_header_image_width = 'covered-header-image-width';
                         $obandes_header_image_height = 'auto-header-image-height';
                         $obandes_header_image_width_numeric = '100%';
-                        $obandes_header_image_height_numeric = '100%';
+                        $obandes_header_image_height_numeric = 'auto';
                     break;
 
                 }

@@ -72,14 +72,36 @@ if( width > 639 ){
 			jQuery('#yui-main article,ul.index.yui-b').addClass("expand");
 			jQuery('.nav-toggle').hide();
 			jQuery('#nav-toggle').text('2col');
+			localStorage['currentColumn'] = 'onecolumn';
 		},
 		function(){
 			jQuery('#yui-main article,ul.index.yui-b').removeClass("expand");
 			jQuery('.nav-toggle').show();
 			jQuery('#nav-toggle').text('1col');
+			localStorage['currentColumn'] = 'twocolumn';
+			
+			
+
 		}
 							  
 		);
+		
+		if(localStorage['currentColumn'] == 'onecolumn'){
+			jQuery('#yui-main article,ul.index.yui-b').addClass("expand");
+			jQuery('.nav-toggle').hide();
+			jQuery('#nav-toggle').text('2col').click(function(){
+				jQuery('#yui-main article,ul.index.yui-b').removeClass("expand");
+				jQuery('.nav-toggle').show();
+				jQuery('#nav-toggle').text('1col');
+				localStorage['currentColumn'] = 'twocolumn';
+															  
+			});
+		}else{
+			jQuery('#yui-main article,ul.index.yui-b').removeClass("expand");
+			jQuery('.nav-toggle').show();
+			jQuery('#nav-toggle').text('1col');			
 			
+			
+		}
 
 }
