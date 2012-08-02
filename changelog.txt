@@ -1,17 +1,12 @@
 Changelog -----------------------------------
+    This version for HTML valid
 version:1.25
-removed
-
-moved
-
-added
-
-fixed
-
 modified
-
+    remove  rel="vcard:url", rel="somethng"
+    Add javascript localStorage['currentColumn']
+        This maybe keep the column settings when it moves page or post.
 made
-
+    function obandes_remove_ref()
 ----------------------------------------------
 Changelog -----------------------------------
 version:1.24
