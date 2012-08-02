@@ -1576,16 +1576,56 @@ if( ! function_exists( "obandes_install_navigation" ) ){
 
         if(is_array($install) and !array_key_exists('install', $install)){
             delete_option('obandes_theme_settings');
-            add_action('admin_notices', create_function(null, 'echo obandes_first_only_msg(2);'));
+            add_action('admin_notices', 'obandes_first_only_msg_2' );
              obandes_theme_init();
         } elseif ( ! array_key_exists('install', $install)) {
-            add_action('admin_notices', create_function(null, 'echo obandes_first_only_msg(1);'));
+            add_action('admin_notices', 'obandes_first_only_msg_1' );
             obandes_theme_init();
         } else {
-            add_action('switch_theme', create_function(null, 'delete_option( "obandes_theme_settings");'));
+            add_action('switch_theme', 'obandes_uninstall' );
         }
     }
 }
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+
+if( ! function_exists( "obandes_first_only_msg_2" ) ){
+    function obandes_first_only_msg_2(){
+        echo obandes_first_only_msg(2);
+    }
+}
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+
+if( ! function_exists( "obandes_first_only_msg_1" ) ){
+    function obandes_first_only_msg_1(){
+        echo obandes_first_only_msg(1);
+    }
+}
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+
+if( ! function_exists( "obandes_uninstall" ) ){
+    function obandes_uninstall(){
+        delete_option( "obandes_theme_settings");
+    }
+}
+
 /**
  *
  *
@@ -2321,10 +2361,15 @@ if( ! function_exists( "obandes_compress_css" ) ){
             $rules          = str_replace(array( "\n","\r","\t"),array( " "," "," "),"$rules");
             }else{
             $rules          = str_replace(array(',','{','}',';'),array( ",\n","{\n","\n}\n",";\n"),$rules);
-            $rules          = preg_replace_callback( "|\([^\)]+\)|", create_function('$matches','return str_replace( "\n"," ",$matches[0]);'),$rules);
+            $rules          = preg_replace_callback( "|\([^\)]+\)|" , 'obandes_compress_callback' , $rules );
 
             }
             return $rules;
+    }
+}
+if( ! function_exists( "obandes_compress_callback") ){
+    function obandes_compress_callback( $matches ){
+        return str_replace( "\n"," ",$matches[0]);
     }
 }
 /**
@@ -2344,10 +2389,10 @@ if( ! function_exists( "obandes_get_header_image_renderer") and $obandes_wp_vers
         }
 
             $image_data = get_theme_mod( 'header_image_data' );
-			if(is_object()){
+            if(is_object()){
             $width      = $image_data->width;
             $height     = $image_data->height;
-			}
+            }
 
         if( ! empty($obandes_image_uri)){
 
