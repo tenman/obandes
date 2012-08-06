@@ -1252,6 +1252,7 @@ if ( ! function_exists( 'obandes_posted_in' ) ) {
         );
     }
 }
+/*
 add_filter( 'the_category' , 'obandes_remove_ref' );
 
 function obandes_remove_ref($content){
@@ -1262,7 +1263,7 @@ return $regs[1].$regs[2];
 }
 
 }
-
+*/
 /**
  *
  *

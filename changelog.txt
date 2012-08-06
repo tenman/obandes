@@ -1,4 +1,12 @@
 Changelog -----------------------------------
+    This version for Escape Bug
+    The Category List label not shows.
+version:1.27
+modified
+    Comment out add_filter( 'the_category' , 'obandes_remove_ref' );
+
+----------------------------------------------
+Changelog -----------------------------------
     This version for HTML valid
 version:1.26
 modified
