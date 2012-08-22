@@ -1009,9 +1009,11 @@ wp_register_style('style', get_stylesheet_uri(), array( 'html5reset' ),$theme_da
         }
     }
 }
+if ( ! function_exists('obandes_insert_stylesheet' ) ) {
 
 function obandes_insert_stylesheet(){
     echo '  <link rel="stylesheet" href="'.get_stylesheet_uri().'" media="all" />';
+}
 }
 /**
  *
@@ -1372,15 +1374,33 @@ if( ! function_exists( "obandes_embed_meta" ) ){
 //body background
         $body_background            = get_theme_mod( "background_color" );
         $body_background_image      = get_theme_mod( "background_image" );
+        $body_background_repeat         = get_theme_mod( "background_repeat" );
+        $body_background_position_x     = get_theme_mod( "background_position_x" );
+        $body_background_attachment     = get_theme_mod( "background_attachment" );
 
         $css .= '/*obandes footer style start */';
-        if( !empty( $body_background ) and !empty( $body_background_image ) ){
+        if( $body_background !== false and !empty( $body_background ) and !empty( $body_background_image ) ){
             $css .= "\nbody{background:#".$body_background.' url('. $body_background_image. ');}';
-        }elseif( !empty( $body_background ) ){
+        }elseif( $body_background !== false and !empty( $body_background ) ){
             $css .= "\nbody{background:#".$body_background.';}';
         }elseif( !empty( $body_background_image ) ){
             $css .= "\nbody{background: url(". $body_background_image. ');}';
         }
+
+        if( isset( $body_background_repeat ) and !empty( $body_background_repeat ) ){
+            $css                    .= "\nbody{background-repeat: ". $body_background_repeat. ';}';
+        }
+        if( isset( $body_background_position_x ) and !empty( $body_background_position_x ) ){
+            $css                    .= "\nbody{background-position:top ". $body_background_position_x. ';}';
+        }
+        if( isset( $body_background_attachment ) and !empty( $body_background_attachment ) ){
+            $css                    .= "\nbody{background-attachment: ". $body_background_attachment. ';}';
+        }
+
+
+
+
+
         $css .= '/*obandes footer style end */';
 
         $css .= obandes_embed_style();
@@ -2556,12 +2576,14 @@ if( ! function_exists( "obandes_title_format" ) ){
  *
  */
 
-
-function obandes_enqueue_comment_reply() {
-    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-        wp_enqueue_script( 'comment-reply' );
+if( ! function_exists( "obandes_enqueue_comment_reply" ) ){
+    function obandes_enqueue_comment_reply() {
+        if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+            wp_enqueue_script( 'comment-reply' );
+        }
     }
 }
+if( ! function_exists( "obandes_comment_prev_next" ) ){
 
         function obandes_comment_prev_next($position = "comment-above"){ ?>
 <div id="<?php echo $position;?>" class="navigation clearfix">
@@ -2569,6 +2591,7 @@ function obandes_enqueue_comment_reply() {
 <div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'obandes' ) ); ?></div>
 </div>
 <?php }
+}
 /**
  *
  *

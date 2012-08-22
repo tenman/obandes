@@ -1,4 +1,15 @@
 Changelog -----------------------------------
+version:1.28
+
+fixed
+    Theme Customizer works improperly.
+
+    Fixed Not Work.
+            Background Repeat,
+            Background Position,
+            Background Attachment
+----------------------------------------------
+Changelog -----------------------------------
     This version for Escape Bug
     The Category List label not shows.
 version:1.27
