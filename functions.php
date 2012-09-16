@@ -246,7 +246,7 @@ if ( ! function_exists( 'obandes_widgets_init' ) ){
 if( !function_exists( 'obandes_theme_setup' ) ){
     function obandes_theme_setup(){
         global $obandes_wp_version;
-        load_textdomain( 'obandes', get_template_directory().'/languages/'.get_locale().'.mo' );
+		load_theme_textdomain( 'obandes', get_template_directory() . '/languages' );
         add_action( 'widgets_init', 'obandes_widgets_init' );
         add_action( 'wp_enqueue_scripts', 'obandes_enqueue_comment_reply' );
         add_action('wp_footer','obandes_small_device_helper');
@@ -777,7 +777,7 @@ if( ! isset($obandes_base_setting)){
  */
     if( ! function_exists( "obandes_page_menu_args") ){
         function obandes_page_menu_args( $args ) {
-            $args['show_home'] = false;
+            $args['show_home'] = true;
             return $args;
         }
     }
@@ -986,34 +986,111 @@ if ( ! function_exists('obandes_init' ) ) {
         $page = basename($_SERVER['REQUEST_URI']);
         $theme_data = get_theme_data( get_theme_root() . '/' . $obandes_current_theme_name . '/style.css' );
 
+		$stylesheet_directory = get_stylesheet_directory_uri();
+$flag = false;
         if ( ! is_admin() and !preg_match( "|^wp-login\.php|si",$page)) {
-        wp_register_style('html5reset', 'http://html5resetcss.googlecode.com/files/html5-reset-1.4.css',false,$theme_data['Version']);
-       wp_enqueue_style( 'html5reset');
+		
+		$locate_file = locate_template( array('lib/css/reset/reset.css') );
 
-wp_register_style('style', get_stylesheet_uri(), array( 'html5reset' ),$theme_data['Version']);
-       wp_enqueue_style( 'style' );
-        wp_register_script('yui-css','http://yui.yahooapis.com/2.8.0r4/build/yuiloader/yuiloader-min.js',false,'2.8.0r4');
-        wp_enqueue_script('yui-css');
-        wp_register_script('yui', get_template_directory_uri().'/yui.js', array('yui-css'), '0.1');
-        wp_enqueue_script('yui');
-        wp_register_script('obandes', get_template_directory_uri().'/obandes.js', array('jquery'), '0.1');
+		if( file_exists( $locate_file ) ){
+			wp_register_style('html5reset', 
+			$stylesheet_directory.'/lib/css/reset/reset.css',
+			false,$theme_data['Version']);		
+		
+		}else{
+			wp_register_style('html5reset',
+			 'http://html5resetcss.googlecode.com/files/html5-reset-1.4.css',
+			 false,
+			 $theme_data['Version']
+			 );
+		}
+	    
+		wp_enqueue_style( 'html5reset');
+
+		
+		$locate_file = locate_template( array('lib/css/grids/grids.css') );
+
+		if( file_exists( $locate_file ) ){
+			wp_register_style('html5grids', 
+			$stylesheet_directory.'/lib/css/grids/grids.css',
+			false,$theme_data['Version']);		
+		
+		}else{
+			$flag = true;
+		}
+	    
+		wp_enqueue_style( 'html5grids');
+		
+		$locate_file = locate_template( array('lib/css/fonts/fonts.css') );
+
+		if( file_exists( $locate_file ) ){
+			wp_register_style('html5fonts', 
+			$stylesheet_directory.'/lib/css/fonts/fonts.css',
+			false,$theme_data['Version']);		
+		
+		}else{
+			$flag = true;
+		}
+	    
+		wp_enqueue_style( 'html5fonts');
+		
+			wp_register_style('style', 
+			get_stylesheet_uri(), 
+			array( 'html5reset' ),
+			$theme_data['Version']
+			);
+
+		wp_enqueue_style( 'style' );
+		
+
+		if($flag = true ){
+        	wp_register_script('yui-css',
+			'http://yui.yahooapis.com/2.8.0r4/build/yuiloader/yuiloader-min.js',
+			false,
+			$theme_data['Version']
+			);
+		}
+		wp_enqueue_script('yui-css');
+		
+			wp_register_script('yui', get_template_directory_uri().'/yui.js', array('yui-css'), $theme_data['Version']);
+	        wp_enqueue_script('yui');			
+
+        wp_register_script('obandes', 
+			get_template_directory_uri().'/obandes.js', 
+			array('jquery'), 
+			$theme_data['Version']
+			);
+		
         wp_enqueue_script('obandes');
-       /* wp_register_script('jquery-template', 'http://nje.github.com/jquery-tmpl/jquery.tmpl.js', array('jquery'), '0.1');
-        wp_enqueue_script('jquery-template');*/
+		
         }
 
         if($is_IE){
-        wp_register_script('html5shiv', 'http://html5shiv.googlecode.com/svn/trunk/html5.js', array(), '3', false);
-       wp_enqueue_script('html5shiv');
-
+		
+			$locate_file = locate_template('lib/html5shiv/html5shiv.js');
+			
+			if( empty( $locate_file ) ){
+				wp_register_script('html5shiv', 
+				$stylesheet_directory.'/lib/html5shiv/html5shiv.js', array(), '3', false );
+			}else{
+				wp_register_script('html5shiv', 'http://html5shiv.googlecode.com/svn/trunk/html5.js', array(), '3', false);
+			}
+			
+			wp_enqueue_script('html5shiv');
         }
     }
 }
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 if ( ! function_exists('obandes_insert_stylesheet' ) ) {
-
-function obandes_insert_stylesheet(){
-    echo '  <link rel="stylesheet" href="'.get_stylesheet_uri().'" media="all" />';
-}
+	function obandes_insert_stylesheet(){
+		echo '  <link rel="stylesheet" href="'.get_stylesheet_uri().'" media="all" />';
+	}
 }
 /**
  *
@@ -1110,8 +1187,6 @@ if ( ! function_exists('obandes_add_body_class' ) ) {
  *
  *
  */
-
-
 if( ! function_exists( "obandes_content_width" ) ){
     function obandes_content_width(){
         $adjust = 16;
@@ -1254,18 +1329,6 @@ if ( ! function_exists( 'obandes_posted_in' ) ) {
         );
     }
 }
-/*
-add_filter( 'the_category' , 'obandes_remove_ref' );
-
-function obandes_remove_ref($content){
-
-if( preg_match( '!(.+)rel="[^"]+"(.+)!', $content, $regs ) ){
-
-return $regs[1].$regs[2];
-}
-
-}
-*/
 /**
  *
  *
@@ -1396,15 +1459,8 @@ if( ! function_exists( "obandes_embed_meta" ) ){
         if( isset( $body_background_attachment ) and !empty( $body_background_attachment ) ){
             $css                    .= "\nbody{background-attachment: ". $body_background_attachment. ';}';
         }
-
-
-
-
-
         $css .= '/*obandes footer style end */';
-
         $css .= obandes_embed_style();
-
 /**
  *
  *
@@ -1415,8 +1471,6 @@ if( ! function_exists( "obandes_embed_meta" ) ){
     if ( 'blank' == get_theme_mod('header_textcolor') ){
         add_filter( 'wp_page_menu_args', 'obandes_page_menu_args' );
     }
-
-
     /**
      * insert into embed style ,javascript script and embed tags from custom field
      */
@@ -1879,7 +1933,7 @@ if( ! function_exists( "obandes_options_page_view" ) ){
             $checked = '';
         }
         $rows =substr_count($obandes_style, "\n") * 1.5 + 10;
-        echo '<p><input type="submit" value="'. __( 'Save Options' ,'obandes').'" class="button" />';
+        echo '<p><input type="submit" value="'. __( 'Save Options' ,'obandes').'" class="button" />&nbsp;';
         echo '<input type="submit" name="reset" value="'. __( 'Reset Customizer Options' ,'obandes').'" class="button" /></p>';
         echo '<table summary="stylesheet" class="form-table">';
         echo '<col class="highlight tablenav" />';
@@ -2323,10 +2377,16 @@ if( ! function_exists( "plugin_is_active" ) ){
 if( ! function_exists( "obandes_embed_style" ) ){
      function obandes_embed_style(){
      global $post;
-    if( ! class_exists( 'lessc' ) ){
-        require get_template_directory().'/lib/lessc.inc.php';
-    }
-        $less = new lessc();
+	$lessc_exists = locate_template( 'lib/lessc.ing.php' );
+	if( file_exists( $lessc_exists ) ){
+	
+		if( ! class_exists( 'lessc' ) ){
+			require get_template_directory().'/lib/lessc.inc.php';
+		}
+			$less = new lessc();
+		
+	}	
+		
         $embed_style = get_option('obandes_theme_settings');
 
         if(is_single()){
@@ -2354,11 +2414,14 @@ if( ! function_exists( "obandes_embed_style" ) ){
 
 
         $embed_style = obandes_compress_css($embed_style,WP_DEBUG);
-        try {
-            $embed_style            = $less->parse($embed_style);
-        } catch (exception $ex) {
-            exit('<div><h1>'.__('Style Rule ERROR',obandes).'</h1>'.$ex->getMessage().'</div>');
-        }
+		
+		if( isset( $less ) ){
+			try {
+				$embed_style            = $less->parse($embed_style);
+			} catch (exception $ex) {
+				exit('<div><h1>'.__('Style Rule ERROR',obandes).'</h1>'.$ex->getMessage().'</div>');
+			}
+		}
 
 
             $embed_style = str_replace(array('\&#039;','&#039;','\&quot;','&quot;'),array('\'','\'','"','"'),$embed_style);
@@ -2626,10 +2689,6 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
                 }
                 if( width < 641 ){
                     body_class = 'obandes-w-vga';
-
-                    jQuery( "#access").css({'display':'none'});
-                    jQuery( "#setting-for-responsive .widget_pages").css({'display':'block'});
-
                 }
                 if( width < 481 ){
                     body_class = 'obandes-w-iphone';
@@ -2641,12 +2700,6 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
                     body_class = 'obandes-w-keitai';
                 }
                 if( width > 640 ){
-                //  if( !jQuery( "#access").attr('style') ){
-                    jQuery( "#access").removeAttr('style').css({'display':'block'});
-                    jQuery( "#setting-for-responsive .widget_pages").removeAttr('style').css({'display':'none'});
-                //  window.reload();
-                //  }
-                //
                 }
 
                 /* remove old width[0-9]+ class*/
@@ -2694,20 +2747,6 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
         })(jQuery);
         </script>
         <?php
-    }
-}
-
-/**
- *
- *
- *
- *
- *
- */
-if ( ! function_exists( 'obandes_page_menu_args' ) ) {
-    function obandes_page_menu_args( $args ) {
-        $args['show_home'] = true;
-        return $args;
     }
 }
 

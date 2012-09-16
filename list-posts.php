@@ -25,7 +25,7 @@ query_posts( 'post_status=publish&posts_per_page='.$per_page.'&paged='.$query );
 
 <li ><span ><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></span><p>
 
-<?php       edit_post_link( __( 'Edit', 'Raindrops' ), '<span class="edit-link" style="display:inline-block;width:100px;text-align:center;background:#efefef;margin:1px;">', '</span>' ); ?></li>
+<?php       edit_post_link( __( 'Edit', 'obandes' ), '<span class="edit-link" style="display:inline-block;width:100px;text-align:center;background:#efefef;margin:1px;">', '</span>' ); ?></li>
 
 <?php 
 endwhile; 

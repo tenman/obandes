@@ -13,8 +13,10 @@
 <span id="nav-toggle">1col</span>
 </div>
 
-<ul class="nav-toggle"><li id="setting-for-responsive">
-<?php the_widget('WP_Widget_Pages', '', 'before_title=<h3 class="widget-title">&after_title=</h3>'); ?></li>
+<ul class="nav-toggle">
+<li id="setting-for-responsive">
+<?php wp_nav_menu( array( 'container_class' => 'widget_pages', 'theme_location' => 'primary' ) ); ?>
+</li>
 <?php if ( dynamic_sidebar('sidebar-1') ) : else : ?>
 <?php wp_list_pages('title_li=<h3 class="widget-title h3">'.__('Pages','obandes').'</h3>' ); ?>
 <li>

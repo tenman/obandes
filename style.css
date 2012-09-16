@@ -20,6 +20,11 @@ http://developer.yahoo.com/yui/fonts/
 22px = 167%    23px = 174%    24px = 182%    25px = 189%
 26px = 197%
 ------------------------------------------------------*/
+html body{
+/* Define your default font size when if you need */
+/*font-size:100%;*/
+
+}
 body h1{
 font-size:182%;
 }
@@ -29,6 +34,7 @@ font-size:153%;
 body h3{
 font-size:123.1%;
 }
+
 #access{
 	display:block;
 	width:100%;
@@ -111,9 +117,27 @@ font-size:123.1%;
 }
 /* test */
 /*for responsive setting */
-#setting-for-responsive .widget_pages{
-	display:none;
+@media screen and (min-width : 641px){
+	#setting-for-responsive .menu{
+		display:none;
+	}
+	#access{display:block;}
+
 }
+@media screen and (max-width : 640px){
+	#setting-for-responsive .menu .page_item a,
+	#setting-for-responsive .menu .page_item,
+	#setting-for-responsive .menu{
+		display:block!important;
+		width:80%;
+	}
+	#setting-for-responsive .menu .page_item{
+		margin-left:10px;
+	}
+	
+	#access{display:none;}
+}
+
 /* test end */
 #archives-title{
 	font-weight:700;
@@ -714,6 +738,7 @@ header h1 a,header div.h1 a,#site-title a{
 
 .ie8 h3#comments-title,.ie8 h3.widget-title{
 	padding:0px 3px;
+	clear:both;
 }
 
 .index article .posted-in,.single article .posted-in{
@@ -875,13 +900,15 @@ header h1 a,header div.h1 a,#site-title a{
 .h4 a,.ja h2,.ja .h2{
 	font-size:123.1%;
 }
-
+.ja h2,.ja .h2{
+	font-size:153%;
+}
 .search-results article .content{
 	margin:1em 1em 0 5em;
 }
 
 .single #nav-above{
-	margin:1em 0 0;
+	margin:1em 0 1em;
 }
 
 .single .category-blog .blog-profile,td.category-blog.col1{
@@ -906,6 +933,7 @@ header h1 a,header div.h1 a,#site-title a{
 
 .widget-title{
 	margin:4px 0;
+	clear:both;
 }
 
 .widget-title + ul li{
