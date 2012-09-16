@@ -1,4 +1,16 @@
+Changelog -----------------------------------
+version:1.29
+    This version for Localization Bug fix and modify
+modified
+    function change from load_textdomain() to load_theme_textdomain()
+    CSS and js files read from CDN to obandes/lib/css , obandes/lib/html5shiv/.
 
+    wp_nav_menu() displayed horizontal page top when browser width wider than 641px.
+    wp_nav_menu() displayed sidebar(horizontal menu is disappear) when browser width less than 640px.
+
+fixed
+    Fixed Wrong theme_textdomain where __() , _e().
+----------------------------------------------
 Changelog -----------------------------------
 version:1.28
 
