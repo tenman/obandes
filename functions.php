@@ -246,7 +246,7 @@ if ( ! function_exists( 'obandes_widgets_init' ) ){
 if( !function_exists( 'obandes_theme_setup' ) ){
     function obandes_theme_setup(){
         global $obandes_wp_version;
-		load_theme_textdomain( 'obandes', get_template_directory() . '/languages' );
+        load_theme_textdomain( 'obandes', get_template_directory() . '/languages' );
         add_action( 'widgets_init', 'obandes_widgets_init' );
         add_action( 'wp_enqueue_scripts', 'obandes_enqueue_comment_reply' );
         add_action('wp_footer','obandes_small_device_helper');
@@ -986,97 +986,97 @@ if ( ! function_exists('obandes_init' ) ) {
         $page = basename($_SERVER['REQUEST_URI']);
         $theme_data = get_theme_data( get_theme_root() . '/' . $obandes_current_theme_name . '/style.css' );
 
-		$stylesheet_directory = get_stylesheet_directory_uri();
+        $stylesheet_directory = get_stylesheet_directory_uri();
 $flag = false;
         if ( ! is_admin() and !preg_match( "|^wp-login\.php|si",$page)) {
-		
-		$locate_file = locate_template( array('lib/css/reset/reset.css') );
 
-		if( file_exists( $locate_file ) ){
-			wp_register_style('html5reset', 
-			$stylesheet_directory.'/lib/css/reset/reset.css',
-			false,$theme_data['Version']);		
-		
-		}else{
-			wp_register_style('html5reset',
-			 'http://html5resetcss.googlecode.com/files/html5-reset-1.4.css',
-			 false,
-			 $theme_data['Version']
-			 );
-		}
-	    
-		wp_enqueue_style( 'html5reset');
+        $locate_file = locate_template( array('lib/css/reset/reset.css') );
 
-		
-		$locate_file = locate_template( array('lib/css/grids/grids.css') );
+        if( file_exists( $locate_file ) ){
+            wp_register_style('html5reset',
+            $stylesheet_directory.'/lib/css/reset/reset.css',
+            false,$theme_data['Version']);
 
-		if( file_exists( $locate_file ) ){
-			wp_register_style('html5grids', 
-			$stylesheet_directory.'/lib/css/grids/grids.css',
-			false,$theme_data['Version']);		
-		
-		}else{
-			$flag = true;
-		}
-	    
-		wp_enqueue_style( 'html5grids');
-		
-		$locate_file = locate_template( array('lib/css/fonts/fonts.css') );
+        }else{
+            wp_register_style('html5reset',
+             'http://html5resetcss.googlecode.com/files/html5-reset-1.4.css',
+             false,
+             $theme_data['Version']
+             );
+        }
 
-		if( file_exists( $locate_file ) ){
-			wp_register_style('html5fonts', 
-			$stylesheet_directory.'/lib/css/fonts/fonts.css',
-			false,$theme_data['Version']);		
-		
-		}else{
-			$flag = true;
-		}
-	    
-		wp_enqueue_style( 'html5fonts');
-		
-			wp_register_style('style', 
-			get_stylesheet_uri(), 
-			array( 'html5reset' ),
-			$theme_data['Version']
-			);
+        wp_enqueue_style( 'html5reset');
 
-		wp_enqueue_style( 'style' );
-		
 
-		if($flag = true ){
-        	wp_register_script('yui-css',
-			'http://yui.yahooapis.com/2.8.0r4/build/yuiloader/yuiloader-min.js',
-			false,
-			$theme_data['Version']
-			);
-		}
-		wp_enqueue_script('yui-css');
-		
-			wp_register_script('yui', get_template_directory_uri().'/yui.js', array('yui-css'), $theme_data['Version']);
-	        wp_enqueue_script('yui');			
+        $locate_file = locate_template( array('lib/css/grids/grids.css') );
 
-        wp_register_script('obandes', 
-			get_template_directory_uri().'/obandes.js', 
-			array('jquery'), 
-			$theme_data['Version']
-			);
-		
+        if( file_exists( $locate_file ) ){
+            wp_register_style('html5grids',
+            $stylesheet_directory.'/lib/css/grids/grids.css',
+            false,$theme_data['Version']);
+
+        }else{
+            $flag = true;
+        }
+
+        wp_enqueue_style( 'html5grids');
+
+        $locate_file = locate_template( array('lib/css/fonts/fonts.css') );
+
+        if( file_exists( $locate_file ) ){
+            wp_register_style('html5fonts',
+            $stylesheet_directory.'/lib/css/fonts/fonts.css',
+            false,$theme_data['Version']);
+
+        }else{
+            $flag = true;
+        }
+
+        wp_enqueue_style( 'html5fonts');
+
+            wp_register_style('style',
+            get_stylesheet_uri(),
+            array( 'html5reset' ),
+            $theme_data['Version']
+            );
+
+        wp_enqueue_style( 'style' );
+
+
+        if($flag == true ){
+            wp_register_script('yui-css',
+            'http://yui.yahooapis.com/2.8.0r4/build/yuiloader/yuiloader-min.js',
+            false,
+            $theme_data['Version']
+            );
+        }
+        wp_enqueue_script('yui-css');
+
+            wp_register_script('yui', get_template_directory_uri().'/yui.js', array('yui-css'), $theme_data['Version']);
+            wp_enqueue_script('yui');
+
+        wp_register_script('obandes',
+            get_template_directory_uri().'/obandes.js',
+            array('jquery'),
+            $theme_data['Version']
+            );
+
         wp_enqueue_script('obandes');
-		
+
         }
 
         if($is_IE){
-		
-			$locate_file = locate_template('lib/html5shiv/html5shiv.js');
-			
-			if( empty( $locate_file ) ){
-				wp_register_script('html5shiv', 
-				$stylesheet_directory.'/lib/html5shiv/html5shiv.js', array(), '3', false );
-			}else{
-				wp_register_script('html5shiv', 'http://html5shiv.googlecode.com/svn/trunk/html5.js', array(), '3', false);
-			}
-			
-			wp_enqueue_script('html5shiv');
+
+            $locate_file = locate_template('lib/html5shiv/html5shiv.js');
+
+            if( empty( $locate_file ) ){
+                wp_register_script('html5shiv',
+                $stylesheet_directory.'/lib/html5shiv/html5shiv.js', array(), '3', false );
+            }else{
+                wp_register_script('html5shiv', 'http://html5shiv.googlecode.com/svn/trunk/html5.js', array(), '3', false);
+            }
+
+            wp_enqueue_script('html5shiv');
         }
     }
 }
@@ -1088,9 +1088,9 @@ $flag = false;
  *
  */
 if ( ! function_exists('obandes_insert_stylesheet' ) ) {
-	function obandes_insert_stylesheet(){
-		echo '  <link rel="stylesheet" href="'.get_stylesheet_uri().'" media="all" />';
-	}
+    function obandes_insert_stylesheet(){
+        echo '  <link rel="stylesheet" href="'.get_stylesheet_uri().'" media="all" />';
+    }
 }
 /**
  *
@@ -2377,16 +2377,16 @@ if( ! function_exists( "plugin_is_active" ) ){
 if( ! function_exists( "obandes_embed_style" ) ){
      function obandes_embed_style(){
      global $post;
-	$lessc_exists = locate_template( 'lib/lessc.ing.php' );
-	if( file_exists( $lessc_exists ) ){
-	
-		if( ! class_exists( 'lessc' ) ){
-			require get_template_directory().'/lib/lessc.inc.php';
-		}
-			$less = new lessc();
-		
-	}	
-		
+    $lessc_exists = locate_template( 'lib/lessc.ing.php' );
+    if( file_exists( $lessc_exists ) ){
+
+        if( ! class_exists( 'lessc' ) ){
+            require get_template_directory().'/lib/lessc.inc.php';
+        }
+            $less = new lessc();
+
+    }
+
         $embed_style = get_option('obandes_theme_settings');
 
         if(is_single()){
@@ -2414,14 +2414,14 @@ if( ! function_exists( "obandes_embed_style" ) ){
 
 
         $embed_style = obandes_compress_css($embed_style,WP_DEBUG);
-		
-		if( isset( $less ) ){
-			try {
-				$embed_style            = $less->parse($embed_style);
-			} catch (exception $ex) {
-				exit('<div><h1>'.__('Style Rule ERROR',obandes).'</h1>'.$ex->getMessage().'</div>');
-			}
-		}
+
+        if( isset( $less ) ){
+            try {
+                $embed_style            = $less->parse($embed_style);
+            } catch (exception $ex) {
+                exit('<div><h1>'.__('Style Rule ERROR',obandes).'</h1>'.$ex->getMessage().'</div>');
+            }
+        }
 
 
             $embed_style = str_replace(array('\&#039;','&#039;','\&quot;','&quot;'),array('\'','\'','"','"'),$embed_style);

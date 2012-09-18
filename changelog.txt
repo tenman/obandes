@@ -1,4 +1,13 @@
 Changelog -----------------------------------
+version:1.30
+modified
+    Change from compressed version to non-compressed version of the html5shiv script
+fixed
+    Fixed wrong code from  if( $flag = true ){   to if( $flag == true ){
+        functions.php line 1045
+
+----------------------------------------------
+Changelog -----------------------------------
 version:1.29
     This version for Localization Bug fix and modify
 modified
