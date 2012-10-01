@@ -2473,7 +2473,7 @@ if( ! function_exists( "obandes_get_header_image_renderer") and $obandes_wp_vers
         }
 
             $image_data = get_theme_mod( 'header_image_data' );
-            if(is_object()){
+            if(isset( $image_data ) and is_object($image_data) ){
             $width      = $image_data->width;
             $height     = $image_data->height;
             }

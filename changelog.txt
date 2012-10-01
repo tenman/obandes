@@ -1,4 +1,19 @@
 Changelog -----------------------------------
+version:1.31
+fixed
+    PHP Warning:  is_object() expects exactly 1 parameter, 0 given
+
+    functions.php line: 2476
+    Code change
+       from     if( is_object() ){
+       to     if(isset( $image_data ) and is_object($image_data) ){
+
+    Style rule
+
+    .yui-ge display improperly
+
+----------------------------------------------
+Changelog -----------------------------------
 version:1.30
 modified
     Change from compressed version to non-compressed version of the html5shiv script
