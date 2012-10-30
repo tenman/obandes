@@ -17,7 +17,12 @@
 <li id="setting-for-responsive">
 <?php wp_nav_menu( array( 'container_class' => 'widget_pages', 'theme_location' => 'primary' ) ); ?>
 </li>
-<?php if ( dynamic_sidebar('sidebar-2') ) : else : ?>
+<?php
+ if ( is_active_sidebar( 'sidebar-2' ) ){
+ 	dynamic_sidebar('sidebar-2');
+ }elseif( is_active_sidebar( 'sidebar-1' ) ){
+ 	dynamic_sidebar('sidebar-1');
+ }else{ ?>
 <?php wp_list_pages('title_li=<h3 class="widget-title h3">'.__('Pages','obandes').'</h3>' ); ?>
 <li>
 <h3 class="widget-title h3">Archives</h3>
@@ -39,6 +44,6 @@
 </ul>
 </li>
 <?php } ?>
-<?php endif; ?>
+<?php } ?>
 </ul>
 </nav>

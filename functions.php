@@ -179,39 +179,7 @@
             define('HEADER_IMAGE_HEIGHT', 198);//auto or 999px
         }
     }
-/**
- *
- *
- *
- *
- *
- */
-if ( ! function_exists( 'obandes_widgets_init' ) ){
-    function obandes_widgets_init() {
-        register_sidebars(
-        array (
-          'name' => __('Default Sidebar','obandes'),
-          'id' => 'sidebar-1',
-          'before_widget' => '<li class="widget default">',
-          'after_widget' => '</li>',
-          'before_title' => '<h2 class="widgettitle default h2">',
-          'after_title' => '</h2>',
-          'widget_id' => 'default',
-          'widget_name' => 'default',
-          'text' => "1"),
-         array (
-          'name' => __('Page Sidebar','obandes'),
-          'id' => 'sidebar-2',
-          'before_widget' => '<li class="widget page-sidebar">',
-          'after_widget' => '</li>',
-          'before_title' => '<h2 class="widgettitle page-sidebar h2">',
-          'after_title' => '</h2>',
-          'widget_id' => 'page-sidebar',
-          'widget_name' => 'page sidebar',
-          'text' => "2")
-          );
-    }
-}
+
 
 /**
  * post_formats
@@ -247,7 +215,6 @@ if( !function_exists( 'obandes_theme_setup' ) ){
     function obandes_theme_setup(){
         global $obandes_wp_version;
         load_theme_textdomain( 'obandes', get_template_directory() . '/languages' );
-        add_action( 'widgets_init', 'obandes_widgets_init' );
         add_action( 'wp_enqueue_scripts', 'obandes_enqueue_comment_reply' );
         add_action('wp_footer','obandes_small_device_helper');
         add_filter( 'use_default_gallery_style', '__return_false' );
@@ -854,6 +821,33 @@ if( ! function_exists( "register_obandes_menus" ) ){
         'name' => __( 'Fourth Footer Widget Area', 'obandes' ),
         'id' => 'fourth-footer-widget-area',
         'description' => __( 'The fourth footer widget area', 'obandes' ),
+        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+        'after_widget' => '</li>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name' => __( 'Page Sidebar Widget Area', 'obandes' ),
+        'id' => 'sidebar-2',
+        'description' => __( 'Page Sidebar Widget area', 'obandes' ),
+        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+        'after_widget' => '</li>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name' => __( 'Front Page Template Left Widget Area', 'obandes' ),
+        'id' => 'front-page-template-left-widget-area',
+        'description' => __( 'Front Page Template Left Wiget Area', 'obandes' ),
+        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+        'after_widget' => '</li>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name' => __( 'Front Page Template Right Widget Area', 'obandes' ),
+        'id' => 'front-page-template-right-widget-area',
+        'description' => __( 'Front Page Template right Wiget Area', 'obandes' ),
         'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
         'after_widget' => '</li>',
         'before_title' => '<h3 class="widget-title">',
@@ -2760,4 +2754,14 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
     }
 }
 
+add_action( 'wp_head', 'obandes_mobile_meta');
+
+function obandes_mobile_meta(){
+?>
+	<meta name="viewport" content="width=device-width" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style"      content="default">
+<?php
+
+}
 ?>

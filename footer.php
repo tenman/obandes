@@ -11,7 +11,7 @@
 <footer class="bar">
 <?php 
 	if(is_page() or is_single()){
-		printf('<a href="%s" class="go-page-top">PageTop</a>',esc_url(get_permalink($post->ID)));
+		printf('<a href="%s" class="go-page-top">PageTop</a>', '#' );
 	}else{
 		printf('<a href="%s" class="go-page-top">PageTop</a>',esc_url('//'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']));
 	}	 
