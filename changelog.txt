@@ -1,6 +1,14 @@
 Changelog -----------------------------------
 version:1.32
 fixed
+    Fixed lessphp not worked
+Add Templates
+    footer-front.php
+    header-front.php
+    page-templates/front-page.php
+    page-templates/full-width.php
+Move Templates
+    page-templates/onecolumn.php
 
 ----------------------------------------------
 Changelog -----------------------------------
