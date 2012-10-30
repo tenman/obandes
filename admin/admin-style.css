@@ -30,3 +30,9 @@ line-height:2;
 .obandes-left-col-title{
 	font-weight:bold;vertical-align:middle;border-bottom:3px solid #fff;
 }
+#mce_fullscreen_toolbargroup,
+#obandessettingcss_path_row,
+#obandessettingcss_toolbargroup{
+	display:none;
+}
+

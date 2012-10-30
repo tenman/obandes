@@ -1,4 +1,9 @@
 Changelog -----------------------------------
+version:1.32
+fixed
+
+----------------------------------------------
+Changelog -----------------------------------
 version:1.31
 fixed
     PHP Warning:  is_object() expects exactly 1 parameter, 0 given

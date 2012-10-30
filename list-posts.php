@@ -3,6 +3,7 @@
 Template Name: list of post
 */
 ////////////////////////////
+__('hello');
 $query = get_query_var('paged');
 $per_page = 20;
 if($query == 0){
@@ -49,5 +50,3 @@ endif;
   <div class="clear"></div>
 </section>
 <?php get_footer();?>
-
-

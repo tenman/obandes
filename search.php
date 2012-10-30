@@ -88,4 +88,3 @@ $i = 0;
 
 <?php get_sidebar('1'); ?>
 <?php get_footer(); ?>
-

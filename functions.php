@@ -713,7 +713,7 @@ if( ! isset($obandes_base_setting)){
         array('option_id' =>'css',
         'blog_id' => 0 ,
         'option_name' => "obandes_css",
-        'option_value' => "$obandes_css_preset\n",
+        'option_value' => wpautop($obandes_css_preset)."\n",
         'autoload'=>'yes',
         'title'=> __('Base Color for Automatic Arrangement','obandes'),
         'excerpt1'=>'',
@@ -986,7 +986,11 @@ if ( ! function_exists('obandes_init' ) ) {
         $page = basename($_SERVER['REQUEST_URI']);
         $theme_data = get_theme_data( get_theme_root() . '/' . $obandes_current_theme_name . '/style.css' );
 
-        $stylesheet_directory = get_stylesheet_directory_uri();
+		if( file_exists( get_stylesheet_directory() ) ){
+			$stylesheet_directory= get_stylesheet_directory_uri();
+		}else{
+			$stylesheet_directory= get_template_directory_uri();
+		}
 $flag = false;
         if ( ! is_admin() and !preg_match( "|^wp-login\.php|si",$page)) {
 
@@ -1538,6 +1542,7 @@ if( ! function_exists( "obandes_header_validate" ) ){
  */
 if( ! function_exists( "obandes_radio_options_pagetype_validate" ) ){
     function obandes_css_validate($css){
+	//$css = strip_tags( $css );
     $css = str_replace(array( "<script",'</script>','<'.'?'),"",$css);
             return $css;
     }
@@ -2010,18 +2015,22 @@ if( ! function_exists( "obandes_options_page_view" ) ){
                         'style="z-index: 100; background:#fff; border:1px solid #ccc; position:absolute; display:none;"'
                     );
         echo '</div>';
+		echo '<p>Full Size Edit: alt+shift+g</p>';
+		echo '<p>back to theme option: alt+shift+g</p>';
         echo '</td>';
         echo '<td>';
             if( $obandes_wp_version >= '3.4' ){ // WordPress 3.4 check
                 $obandes_wp_editor_settings = array(
-                'wpautop' => false,
+				'wpautop' => false, //not work?
                 'quicktags' => false,
                 'media_buttons' => true,
-                'textarea_rows' => get_option('default_post_edit_rows', 10) * 1.5
+                'textarea_rows' => get_option('default_post_edit_rows', 10) * 2,
+				'teeny' => true
                 );
-                $obandes_style = strip_tags($obandes_style);
-                $obandes_style = stripslashes( $obandes_style);
-
+				
+				$obandes_style = stripslashes( $obandes_style);
+                $obandes_style = html_entity_decode( $obandes_style );
+				
                 wp_editor( $obandes_style, 'obandessettingcss', $obandes_wp_editor_settings );
             }else{
                 echo '<textarea class="obandes-css-textarea" id="obandes_setting[obandes_css]" cols="50" rows="10" name="obandes_setting[obandes_css]"';
@@ -2150,7 +2159,7 @@ if( ! function_exists( "obandes_prev_next_post" ) ){
 if( ! function_exists( "obandes_detect_option" ) ){
     function obandes_detect_option($condition){
         $obandes_current_settings       = get_option('obandes_theme_settings');
-        $config                 = $obandes_current_settings['obandes_css'];
+        $config                 =  $obandes_current_settings['obandes_css'];
         preg_match( "!^$condition=(.+)$!mu",$config,$regs);
         if(isset($regs[1])){
             $result = strip_tags($regs[1]);
@@ -2377,7 +2386,7 @@ if( ! function_exists( "plugin_is_active" ) ){
 if( ! function_exists( "obandes_embed_style" ) ){
      function obandes_embed_style(){
      global $post;
-    $lessc_exists = locate_template( 'lib/lessc.ing.php' );
+    $lessc_exists = locate_template( 'lib/lessc.inc.php' );
     if( file_exists( $lessc_exists ) ){
 
         if( ! class_exists( 'lessc' ) ){
@@ -2390,7 +2399,7 @@ if( ! function_exists( "obandes_embed_style" ) ){
         $embed_style = get_option('obandes_theme_settings');
 
         if(is_single()){
-            $embed_style['obandes_css'] = $embed_style['obandes_css']. get_post_meta($post->ID, 'less', true);
+            $embed_style['obandes_css'] = $embed_style['obandes_css'] . get_post_meta($post->ID, 'less', true);
         }
 
         if($embed_style['obandes_css'] !== ""){
@@ -2411,7 +2420,8 @@ if( ! function_exists( "obandes_embed_style" ) ){
         $obandes_template_dir   = get_template_directory_uri();
 
         $embed_style = preg_replace('!(url\()([^(\)|:)]+)(\))!',"$1{$obandes_template_dir}/$2$3",$embed_style);
-
+		$embed_style = strip_tags( $embed_style );
+		
 
         $embed_style = obandes_compress_css($embed_style,WP_DEBUG);
 
@@ -2424,7 +2434,7 @@ if( ! function_exists( "obandes_embed_style" ) ){
         }
 
 
-            $embed_style = str_replace(array('\&#039;','&#039;','\&quot;','&quot;'),array('\'','\'','"','"'),$embed_style);
+            $embed_style = str_replace(array('\&#039;','&#039;','\&quot;','&quot;','&nbsp;'),array('\'','\'','"','"',"\n"),$embed_style);
 
         return  "\n/* obandes embed style start */\n".obandes_compress_css($embed_style, WP_DEBUG )."/* obandes embed style end */";
     }

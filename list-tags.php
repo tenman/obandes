@@ -17,6 +17,3 @@
   <div class="clear"></div>
 </section>
 <?php get_footer();?>
-
-
-
