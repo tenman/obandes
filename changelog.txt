@@ -1,4 +1,9 @@
 Changelog -----------------------------------
+version:1.34
+fixed
+    Fixed Child theme display improperly.
+----------------------------------------------
+Changelog -----------------------------------
 version:1.33
 fixed
     Fixed Style rule load twice.

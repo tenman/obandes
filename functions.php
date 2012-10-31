@@ -223,8 +223,8 @@ if( !function_exists( 'obandes_theme_setup' ) ){
         add_filter( 'wp_page_menu_args', 'obandes_page_menu_args' );
         add_filter('wp_title','obandes_wp_title',10,3);
         add_filter('the_content','obandes_ie_height_expand_issue');
-		//@since ver 1.32
-		add_action( 'wp_head', 'obandes_mobile_meta');
+        //@since ver 1.32
+        add_action( 'wp_head', 'obandes_mobile_meta');
 
 
 
@@ -983,11 +983,11 @@ if ( ! function_exists('obandes_init' ) ) {
         $page = basename($_SERVER['REQUEST_URI']);
         $theme_data = get_theme_data( get_theme_root() . '/' . $obandes_current_theme_name . '/style.css' );
 
-		if( file_exists( get_stylesheet_directory() ) ){
-			$stylesheet_directory= get_stylesheet_directory_uri();
-		}else{
-			$stylesheet_directory= get_template_directory_uri();
-		}
+        if( file_exists( get_stylesheet_directory().'/lib/' ) ){
+            $stylesheet_directory= get_stylesheet_directory_uri();
+        }else{
+            $stylesheet_directory= get_template_directory_uri();
+        }
 $flag = false;
         if ( ! is_admin() and !preg_match( "|^wp-login\.php|si",$page)) {
 
@@ -1539,7 +1539,7 @@ if( ! function_exists( "obandes_header_validate" ) ){
  */
 if( ! function_exists( "obandes_radio_options_pagetype_validate" ) ){
     function obandes_css_validate($css){
-	//$css = strip_tags( $css );
+    //$css = strip_tags( $css );
     $css = str_replace(array( "<script",'</script>','<'.'?'),"",$css);
             return $css;
     }
@@ -2012,22 +2012,22 @@ if( ! function_exists( "obandes_options_page_view" ) ){
                         'style="z-index: 100; background:#fff; border:1px solid #ccc; position:absolute; display:none;"'
                     );
         echo '</div>';
-		echo '<p>Full Size Edit: alt+shift+g</p>';
-		echo '<p>back to theme option: alt+shift+g</p>';
+        echo '<p>Full Size Edit: alt+shift+g</p>';
+        echo '<p>back to theme option: alt+shift+g</p>';
         echo '</td>';
         echo '<td>';
             if( $obandes_wp_version >= '3.4' ){ // WordPress 3.4 check
                 $obandes_wp_editor_settings = array(
-				'wpautop' => false, //not work?
+                'wpautop' => false, //not work?
                 'quicktags' => false,
                 'media_buttons' => true,
                 'textarea_rows' => get_option('default_post_edit_rows', 10) * 2,
-				'teeny' => true
+                'teeny' => true
                 );
-				
-				$obandes_style = stripslashes( $obandes_style);
+
+                $obandes_style = stripslashes( $obandes_style);
                 $obandes_style = html_entity_decode( $obandes_style );
-				
+
                 wp_editor( $obandes_style, 'obandessettingcss', $obandes_wp_editor_settings );
             }else{
                 echo '<textarea class="obandes-css-textarea" id="obandes_setting[obandes_css]" cols="50" rows="10" name="obandes_setting[obandes_css]"';
@@ -2417,8 +2417,8 @@ if( ! function_exists( "obandes_embed_style" ) ){
         $obandes_template_dir   = get_template_directory_uri();
 
         $embed_style = preg_replace('!(url\()([^(\)|:)]+)(\))!',"$1{$obandes_template_dir}/$2$3",$embed_style);
-		$embed_style = strip_tags( $embed_style );
-		
+        $embed_style = strip_tags( $embed_style );
+
 
         $embed_style = obandes_compress_css($embed_style,WP_DEBUG);
 
@@ -2764,14 +2764,14 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
  *
  */
 if( ! function_exists( 'obandes_mobile_meta' ) ){
-	function obandes_mobile_meta(){
-		if( wp_is_mobile() ){
-	?>
-		<meta name="viewport" content="width=device-width" />
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style"      content="default">
-	<?php
-		}
-	}
+    function obandes_mobile_meta(){
+        if( wp_is_mobile() ){
+    ?>
+        <meta name="viewport" content="width=device-width" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style"      content="default">
+    <?php
+        }
+    }
 }
 ?>
