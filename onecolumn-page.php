@@ -3,8 +3,6 @@
  * Template Name: One column
  * @since obandes 0.52
  */
-
-
 get_header();?>
 <?php if(WP_DEBUG == true){
     echo '<!--'.basename(__FILE__,'.php').'['.basename(dirname(__FILE__)).']-->';

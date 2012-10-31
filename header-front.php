@@ -24,5 +24,4 @@
 <?php }?>
 	<div id="access" role="navigation" class="clearfix">
 <?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?></div>
-
 </header>

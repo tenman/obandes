@@ -33,7 +33,5 @@ if(WP_DEBUG == true){
     <?php dynamic_sidebar('sidebar-1');?>
   </ul>
 </nav>
-
-
 <?php }?>
 <?php get_footer();?>

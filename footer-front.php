@@ -9,14 +9,7 @@
 ?>
 <br class="clear" />
 <footer class="bar">
-<?php 
-	if(is_page() or is_single()){
-		printf('<a href="%s" class="go-page-top">PageTop</a>',esc_url(get_permalink($post->ID)));
-	}else{
-		printf('<a href="%s" class="go-page-top">PageTop</a>',esc_url('//'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']));
-	}	 
-?>
-
+<?php printf('<a href="%s" class="go-page-top">PageTop</a>', '#' );?>
   <div id="colophon">
     <?php    get_sidebar('footer');?>
     <address>

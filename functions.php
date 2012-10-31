@@ -219,10 +219,13 @@ if( !function_exists( 'obandes_theme_setup' ) ){
         add_action('wp_footer','obandes_small_device_helper');
         add_filter( 'use_default_gallery_style', '__return_false' );
         add_filter('body_class','obandes_add_body_class');
-        add_action( "wp_head","obandes_embed_meta",'99');
+    //    add_action( "wp_head","obandes_embed_meta",'99');
         add_filter( 'wp_page_menu_args', 'obandes_page_menu_args' );
         add_filter('wp_title','obandes_wp_title',10,3);
         add_filter('the_content','obandes_ie_height_expand_issue');
+		//@since ver 1.32
+		add_action( 'wp_head', 'obandes_mobile_meta');
+
 
 
 /**
@@ -2754,14 +2757,21 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
     }
 }
 
-add_action( 'wp_head', 'obandes_mobile_meta');
-
-function obandes_mobile_meta(){
-?>
-	<meta name="viewport" content="width=device-width" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style"      content="default">
-<?php
-
+/**
+ *
+ *
+ *
+ *
+ */
+if( ! function_exists( 'obandes_mobile_meta' ) ){
+	function obandes_mobile_meta(){
+		if( wp_is_mobile() ){
+	?>
+		<meta name="viewport" content="width=device-width" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style"      content="default">
+	<?php
+		}
+	}
 }
 ?>

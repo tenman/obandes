@@ -62,7 +62,6 @@ echo '<ul class="index yui-b '.esc_attr($obandes_class_name).'">';
                 $obandes_page_title,
                 $obandes_page_title_c
         );
-
     }
 
     if ( $wp_query->max_num_pages > 1 ){

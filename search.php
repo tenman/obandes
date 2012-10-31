@@ -1,15 +1,6 @@
 <?php
 /**
- * The no seach result for obandes.
- *
- *
- * @package: obandes
- * @since obandes 0.52
- */
-?>
-<?php
-/**
- * search for our theme.
+ * search for obandes theme.
  *
  *
  *

@@ -13,7 +13,6 @@
  */
 ?>
 <?php
-
 /**
  * block comment when it is password entry.
  *
@@ -21,7 +20,6 @@
  *
  *
  */
-
     if ( post_password_required() ){
         printf( '<div id="comments"><p class="nopassword">%s</p></div>',
                 __( 'This post is password protected. Enter the password to view any comments.', 'obandes' )
@@ -30,7 +28,6 @@
     }else{
        echo '<div id="comments">&nbsp;</div>';
     }
-
 /**
  * Create comment view.
  *
@@ -38,7 +35,6 @@
  *
  *
  */
-
     if ( have_comments() ){
 
         $obandes_response_message = sprintf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'obandes' ),
@@ -64,8 +60,5 @@
         if ( ! comments_open() ){
             echo '<p class="nocomments">'.__( 'Comments are closed.', 'obandes' ).'</p>';
         }
-
     }
-
     comment_form();
-
