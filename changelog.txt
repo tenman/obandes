@@ -1,5 +1,5 @@
 Changelog -----------------------------------
-version:1.40
+version:1.41
 modified
     Support Responsive theme for fluid layout.
 ----------------------------------------------

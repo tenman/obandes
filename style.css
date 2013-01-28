@@ -4,7 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description:lessphp (CSS preprocessor) support Where Theme option panel style editor. YUI(Yahoo User Inter face) Grid layout support.  2column fixed and fluid layout theme.Post format image support Zoom it API. This theme supply your happy blogging  From beginners to a specialist
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 1.40
+Version: 1.41
 Tags:two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -1673,13 +1673,13 @@ article,
 		display:none!important;
 	}
 	#doc3 #access{display:block!important;}
-	#doc3 .raindrops-mobile-menu{
+	#doc3 .obandes-mobile-menu{
 		display:none!important;
 	}
 }
 
 @media screen and (max-width : 640px){
-	#doc3 .raindrops-mobile-menu{
+	#doc3 .obandes-mobile-menu{
 		display:block!important;
 	}
 	#doc3 #access{display:none!important;}
@@ -1693,20 +1693,20 @@ article,
 	.ie6 #doc3 #access:target{display:block!important;}
 	.ie7 #doc3 #access:target{display:block!important;}
 	.ie8 #doc3 #access:target{display:block!important;}
-	.raindrops-mobile-menu{
+	.obandes-mobile-menu{
 	 	position:relative;margin:0 10px;
 	}
-	#doc3 .raindrops-mobile-menu .open{
+	#doc3 .obandes-mobile-menu .open{
 	  position:absolute;top:0;left:0;
 	  font-size:153.9%;
 	  width:10%;
 	}	
-	#doc3 .raindrops-mobile-menu .close{
+	#doc3 .obandes-mobile-menu .close{
 	  position:absolute;top:2px;right:5%;
 	  font-size:153.9%;
 	  width:10%;
 	}
-	#doc3 .raindrops-mobile-menu .menu-text{
+	#doc3 .obandes-mobile-menu .menu-text{
 	  position:absolute;top:0;left:44%;
 	}
 	
@@ -1803,7 +1803,7 @@ article,
 		text-indent:2em;
 	}
 	
-	#doc3 .raindrops-mobile-menu{
+	#doc3 .obandes-mobile-menu{
 		display:inline-block;
 		height:1em;
 		text-align:right;
