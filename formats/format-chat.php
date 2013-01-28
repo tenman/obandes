@@ -6,38 +6,15 @@
  * @package: obandes
  * @since obandes 0.41
  */
-	add_filter("the_content","obandes_transform_chat");
-
-	function obandes_transform_chat($contents){
-		preg_match_all('|([^<>]+)?(\:)([^<>]+)?|si',$contents,$regs,PREG_SET_ORDER);
-		foreach($regs as $reg){
-		
-		if(strlen($reg[3]) < 50){
-			
-		$res = '<img src="http://chart.apis.google.com/chart?chst=d_bubble_texts_big&amp;chld=bb|008888|FFFF88|'.urlencode($reg[3]).'">';
-
-
-		}else{
-		$res = '<span style="display:block;margin:2em 0;background:#ccc;color:#333;padding:1em;">'.$reg[3].'</span>';		
-		
-		}
-
-		$contents = str_replace($reg[3].'<',$res.'<',$contents);
-			
-		}
-		
-		return $contents;
-	}
-
     if(WP_DEBUG == true){
-		echo '<!--format-chat.php-->'."\n";
+        echo '<!--format-chat.php-->'."\n";
     }
-	
-	printf('<article id="post-%s" %s>',	
-		$post->ID,
-		'class="yui-b '.implode(' ',get_post_class('clearfix')).'"');
-	
-	obandes_prev_next_post('nav-above');
+
+    printf('<article id="post-%s" %s>',
+        $post->ID,
+        'class="yui-b '.implode(' ',get_post_class('clearfix')).'"');
+
+    obandes_prev_next_post('nav-above');
 ?>
   <h2 class="h2 title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
   <div class="meta posted-on"><?php obandes_posted_on(); ?></div>

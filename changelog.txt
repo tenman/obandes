@@ -1,7 +1,9 @@
 Changelog -----------------------------------
-version:1.41
+version:1.42
 modified
     Support Responsive theme for fluid layout.
+    Remove Post format chat format.
+        Stop WEB service.
 ----------------------------------------------
 Changelog -----------------------------------
 version:1.34
