@@ -1,9 +1,10 @@
 Changelog -----------------------------------
-version:1.42
+version:1.43
 modified
     Support Responsive theme for fluid layout.
     Remove Post format chat format.
         Stop WEB service.
+    Gallery support 1-10 columns
 ----------------------------------------------
 Changelog -----------------------------------
 version:1.34
