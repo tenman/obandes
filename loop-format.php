@@ -8,7 +8,6 @@
  * @since obandes 0.1
  */
  ?>
-
 <div class="index yui-b">
   <?php if ( $wp_query->max_num_pages > 1 ){ ?>
   <div>
@@ -155,8 +154,6 @@ the_content();
  *
  */
 	case("image"):
-	
-	
 	$obandes_format_class 	= 'class="horizon-postformat-'.$obandes_format_name.obandes_format_add_class($obandes_format_count_image).'"';	
 	$obandes_format_count_image ++;		
 
@@ -225,7 +222,6 @@ the_content();
   </div>
   <?php
 	break;
-	
 /**
  *
  *
@@ -234,7 +230,6 @@ the_content();
  *
  */
 	case("aside"):
-
 	$obandes_format_class 	= 'class="horizon-postformat-'.$obandes_format_name.obandes_format_add_class($obandes_format_count_aside).'"';	
 	$obandes_format_count_aside ++;	
 ?>
@@ -261,8 +256,6 @@ the_content();
 	}//endif?>
   <?php
 }//endwhile ?>
-
-
 <?php if ( $wp_query->max_num_pages > 1 ){ ?>
 <div>
   <div id="nav-below" class="clearfix"> <span class="nav-previous">
@@ -274,7 +267,6 @@ the_content();
 <?php }//end nav below ?>
 </div>
 <?php
-
 	function obandes_format_add_class($num,$pitch = 3){
 	
 		if($num < $pitch){
@@ -290,7 +282,5 @@ the_content();
 		}elseif($num < $pitch * 6){
 			return 6;
 		}
-	
-	
 	}
 ?>

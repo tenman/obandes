@@ -53,16 +53,6 @@
                 'type'           => 'option',
                 'capability'    => 'edit_theme_options'
             ) );
-
-
-        /*  $wp_customize->add_control( 'obandes_header_background_color', array(
-                'label'      => __( 'header background color', 'obandes' ),
-                'section'    => 'obandes_theme_setting',
-                'settings'   => 'obandes_theme_settings[obandes_header_background_color]',
-                //'type'       => 'select',
-                //'choices'    => array_flip($native_color),
-                //'settings'   => 'themename_theme_options[link_color]',
-            ) );*/
             $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize
                     , 'obandes_header_background_color'
                     , array(
@@ -72,7 +62,6 @@
                         )
                 )
             );
-
             $wp_customize->add_control( 'obandes_radio_options_navigation'
                 , array(
                     'label'      => __( 'Sidebar width and position', 'obandes' ),
@@ -445,7 +434,7 @@ $obandes_css_preset =<<< CSS_PRESET
 /*============= lessphp =============*/
 @sidebar-background:#efefef;
 @article-background:inherit;
-@article-title-link-color:inherit;
+@article-title-link-color:#999999;
 @article-title-font-family:Georgia,Times New Roman,Times,serif;
 @primary-navigation-background:#444;
 @primary-navigation-background-color-hover: #333333;
@@ -460,49 +449,49 @@ $obandes_css_preset =<<< CSS_PRESET
 
 /*============= style rules =============*/
 #commentform{
-    background:@commentform-background;
+background:@commentform-background;
 }
 body {
-    background:#efefef;
+background:#efefef;
 }
 body > #doc,body > #doc2,body > #doc3,body > #doc4 {
-    -moz-border-radius:@page-radius;
-    -moz-box-shadow:0 0 15px rgba(0,0,0,1);
-    -webkit-border-radius:@page-radius;
-    -webkit-box-shadow:0 0 15px rgba(0,0,0,1);
-    background:@page-background;
-    border-radius:@page-radius;
-    box-shadow:0 0 15px rgba(0,0,0);
+-moz-border-radius:@page-radius;
+-moz-box-shadow:0 0 15px rgba(0,0,0,1);
+-webkit-border-radius:@page-radius;
+-webkit-box-shadow:0 0 15px rgba(0,0,0,1);
+background:@page-background;
+border-radius:@page-radius;
+box-shadow:0 0 15px rgba(0,0,0);
 }
 nav h3:before,
 h3.widget-title:before {
-  /*  content:url(images/sidebar-title.png);
-    margin-right:.5em;
-    position:relative;
-    top:3px;*/
+/* content:url(images/sidebar-title.png);
+margin-right:.5em;
+position:relative;
+top:3px;*/
 }
 .ie8 h3.widget-title:before {
-    top:0;
+top:0;
 }
 nav > ul {
-    background:@sidebar-background;
+background:@sidebar-background;
 }
 index article{
-    border:#eee 2px groove;
+border:#eee 2px groove;
 }
 .ie6 article,.ie7 article,.ie8 article,#footer-widget-area,#fourth,#third,#second,#first,article {
-    background:@article-background;
+background:@article-background;
 }
 #footer-widget-area h3{
-    background:#ccc;
-    margin-bottom:0;
-    color:#333;
+background:#ccc;
+margin-bottom:0;
+color:#333;
 }
 #access .menu,
 #access {
-    background:@primary-navigation-background;
+background:@primary-navigation-background;
 
-    color:@primary-navigation-color;
+color:@primary-navigation-color;
 }
 * html #access ul li.current-menu-ancestor a,
 * html #access ul li.current-menu-item a,
@@ -517,12 +506,12 @@ index article{
 #access ul li.current-menu-ancestor > a,
 #access ul li.current-menu-item > a,
 #access ul li.current-menu-parent > a {
-    color:@primary-navigation-color;
-    background:@primary-navigation-background;
+color:@primary-navigation-color;
+background:@primary-navigation-background;
 }
 #access ul li .children a{
-    background:#444;
-    color:#ddd;
+background:#444;
+color:#ddd;
 }
 .fragment_identifier a:hover,
 * html #access ul > li.current_page_item a,
@@ -531,7 +520,7 @@ index article{
 * html #access ul > li.current-menu-parent a:hover,
 * html #access ul > li a:hover,
 #access li:hover > a:hover,
-#access ul ul  > a:hover,
+#access ul ul > a:hover,
 #access a:hover,
 #access li > a:hover,
 #access ul ul > a ,
@@ -539,42 +528,39 @@ index article{
 #access ul li.current-menu-ancestor > a:hover,
 #access ul li.current-menu-item > a:hover,
 #access ul li.current-menu-parent > a:hover {
-    color: @primary-navigation-color-hover;
-    background:@primary-navigation-background-color-hover;
+color: @primary-navigation-color-hover;
+background:@primary-navigation-background-color-hover;
 }
 header img {
-    border-bottom:2px solid #000;
-    margin-bottom:-5px;
+border-bottom:2px solid #000;
+margin-bottom:-5px;
 }
 div.posted-on,
 div.posted-in {
-    border-bottom:1px solid lighten(@posted-background, 50);
-    border-top:1px solid lighten(@posted-background, 50);
-    background:@posted-background;
-    color:@posted-color!important;
-    span,
-    a{
-    color:@posted-color;
-    }
+border-bottom:1px solid lighten(@posted-background, 50);
+border-top:1px solid lighten(@posted-background, 50);
+background:@posted-background;
+color:@posted-color!important;
+span,
+a{
+color:@posted-color;
+}
 
 }
 #commentform .form-submit {
-    line-height:3;
-    margin-bottom:1em;
+line-height:3;
+margin-bottom:1em;
 }
 .commentlist > li,.byuser,.reply,div.tagcloud,.nopassword,.wp-caption,body.single-post .nocomments,.hentry th,.hentry td,.page-link,.bypostauthor
-.chrome article .content .size-thumbnail,.gecko article .content .size-thumbnail,.home .sticky,blockquote {
-    border:1px solid #999;
+.chrome article .content .size-thumbnail,.gecko article .content .size-thumbnail,.home ,blockquote {
+border:1px solid #999;
 }
 .home .sticky{
-    border-color:#c5d19b;
-    border-width: 2px;
-    border-style: dashed;
-    background:#fff;
+
 
 }
 article .content blockquote {
-    border-left:6px solid #777;
+border-left:6px solid #777;
 }
 .not-found,
 div.tagcloud,
@@ -583,81 +569,81 @@ footer,
 .pingback,
 .nocomments,
 article .content blockquote {
-    background:#eee;
-    background:saturate(@primary-navigation-color, 96%);
+background:#eee;
+background:saturate(@primary-navigation-color, 96%);
 }
 .h1,h1 {
-    font-family:@site-title-font-family;
+font-family:@site-title-font-family;
 /*font-size:2em;*/
 }
 .plate,.grad {
 }
 .widget-title,
 header {
-    -moz-border-radius-topleft:@page-radius;
-    -moz-border-radius-topright:@page-radius;
-    -webkit-border-top-left-radius:@page-radius;
-    -webkit-border-top-right-radius:@page-radius;
-    border-top-left-radius:@page-radius;
-    border-top-right-radius:@page-radius;
+-moz-border-radius-topleft:@page-radius;
+-moz-border-radius-topright:@page-radius;
+-webkit-border-top-left-radius:@page-radius;
+-webkit-border-top-right-radius:@page-radius;
+border-top-left-radius:@page-radius;
+border-top-right-radius:@page-radius;
 }
 .widget-title,
 footer {
-    -moz-border-radius-bottomleft:@page-radius;
-    -moz-border-radius-bottomright:@page-radius;
-    -webkit-border-bottom-left-radius:@page-radius;
-    -webkit-border-bottom-right-radius:@page-radius;
-    border-bottom-left-radius:@page-radius;
-    border-bottom-right-radius:@page-radius;
+-moz-border-radius-bottomleft:@page-radius;
+-moz-border-radius-bottomright:@page-radius;
+-webkit-border-bottom-left-radius:@page-radius;
+-webkit-border-bottom-right-radius:@page-radius;
+border-bottom-left-radius:@page-radius;
+border-bottom-right-radius:@page-radius;
 }
 #footer-widget-area h3 {
-    -moz-border-radius-bottomright:@page-radius;
-    -moz-border-radius-topleft:@page-radius;
-    -webkit-border-bottom-right-radius:@page-radius;
-    -webkit-border-top-left-radius:@page-radius;
-    border-bottom-right-radius:@page-radius;
-    border-top-left-radius:@page-radius;
+-moz-border-radius-bottomright:@page-radius;
+-moz-border-radius-topleft:@page-radius;
+-webkit-border-bottom-right-radius:@page-radius;
+-webkit-border-top-left-radius:@page-radius;
+border-bottom-right-radius:@page-radius;
+border-top-left-radius:@page-radius;
 }
 #wp-calendar th:nth-child(1),#wp-calendar th:nth-child(7) {
-    width:1em;
+width:1em;
 }
 #doc,#doc2,#doc3,#doc4,#custom-doc{
 }
 header{
 }
 /*
- *horizontal navigation
- *
+*horizontal navigation
+*
 */
 #access{
 }
 /*
- *loop.php
+*loop.php
 */
 section{}
 .index{}
 .index article{}
 .index article .title a{
-    color:@article-title-link-color;
-    font-family:@article-title-font-family;
+color:@article-title-link-color;
+font-family:@article-title-font-family;
 }
 .index article .posted-on{}
 .index article .posted-in{}
 .index article .pagenate{}
 /*
- *single.php
+*single.php
 */
 .single-post{}
 .single article{}
 .single article .title{
-    color:@article-title-link-color;
-    font-family:@article-title-font-family;
-    }
+color:@article-title-link-color;
+font-family:@article-title-font-family;
+}
 .single article .posted-on{}
 .single article .posted-in{}
 .single article .pagenate{}
 /*
- *footer.php
+*footer.php
 */
 footer{}
 #footer-widget-area{}
@@ -858,7 +844,6 @@ if( ! function_exists( "register_obandes_menus" ) ){
     ) );
     }
 }
-
 /**
  *
  *
@@ -904,7 +889,6 @@ if ( ! function_exists('obandes_posted_on' ) ) {
         }
     }
 }
-
 /**
  *
  *
@@ -912,10 +896,6 @@ if ( ! function_exists('obandes_posted_on' ) ) {
  *
  * since obandes 0.93
  */
-
-
-
-
     if ( ! function_exists( 'obandes_wp_title' ) ){
         function obandes_wp_title( $title, $sep = true, $seplocation = 'right' ){
             global $page, $paged;
@@ -1007,7 +987,6 @@ $flag = false;
         }
 
         wp_enqueue_style( 'html5reset');
-
 
         $locate_file = locate_template( array('lib/css/grids/grids.css') );
 
@@ -1670,7 +1649,6 @@ if( ! function_exists( "obandes_install_navigation" ) ){
  *
  *
  */
-
 if( ! function_exists( "obandes_first_only_msg_2" ) ){
     function obandes_first_only_msg_2(){
         echo obandes_first_only_msg(2);
@@ -1696,13 +1674,11 @@ if( ! function_exists( "obandes_first_only_msg_1" ) ){
  *
  *
  */
-
 if( ! function_exists( "obandes_uninstall" ) ){
     function obandes_uninstall(){
         delete_option( "obandes_theme_settings");
     }
 }
-
 /**
  *
  *
@@ -1714,8 +1690,11 @@ if( ! function_exists( "obandes_admin_print_styles" ) ){
     function obandes_admin_print_styles() {
         global $obandes_wp_version;
         wp_enqueue_style( 'farbtastic' );
-
-      $src      = get_stylesheet_directory_uri().'/admin/admin-style.css';
+      if( file_exists( get_stylesheet_directory_uri().'/admin/admin-style.css' ) ){
+      	$src      = get_stylesheet_directory_uri().'/admin/admin-style.css';
+	  }else{
+      	$src      = get_template_directory_uri().'/admin/admin-style.css';
+	  }
       $deps     = array();
 
         if( $obandes_wp_version >= '3.4' ){ // WordPress 3.4 check
@@ -2610,7 +2589,6 @@ if( ! function_exists( "obandes_header_image_renderer" ) ){
         echo apply_filters( 'obandes_header_image_renderer', obandes_get_header_image_renderer($obandes_image_uri));
     }
 }
-
 /**
  *
  *
@@ -2637,7 +2615,6 @@ if( ! function_exists( "obandes_title_format" ) ){
        echo apply_filters( 'obandes_title_format', obandes_get_title_format($heading_elememt));
     }
 }
-
 /**
  *
  *
@@ -2645,7 +2622,6 @@ if( ! function_exists( "obandes_title_format" ) ){
  *
  *
  */
-
 if( ! function_exists( "obandes_enqueue_comment_reply" ) ){
     function obandes_enqueue_comment_reply() {
         if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -2706,8 +2682,14 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
                 if( width < 241 ){
                     body_class = 'obandes-w-keitai';
                 }
-                if( width > 640 ){
-                }
+                if( width > 641 ){
+				
+		//		   jQuery('#footer-widget-area #first,#footer-widget-area #second,#footer-widget-area #third,#footer-widget-area #fourth').addClass( 'horizon-footer-widget' );
+                }else{
+				   
+				
+				
+				}
 
                 /* remove old width[0-9]+ class*/
                 var element = jQuery( "body");
@@ -2722,10 +2704,9 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
                     element.removeClass(className);
                   }
                 }
+								
                 jQuery('body').addClass( body_class );
-
-
-
+				
 
     <?php
     /**
@@ -2756,9 +2737,8 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
         <?php
     }
 }
-
 /**
- *
+ * 
  *
  *
  *

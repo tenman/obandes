@@ -75,7 +75,6 @@ if(WP_DEBUG == true){
         }
     }
 ?>
-
 </section>
 <?php get_sidebar('1');?>
 <?php get_footer();?>

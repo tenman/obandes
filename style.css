@@ -4,7 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description:lessphp (CSS preprocessor) support Where Theme option panel style editor. YUI(Yahoo User Inter face) Grid layout support.  2column fixed and fluid layout theme.Post format image support Zoom it API. This theme supply your happy blogging  From beginners to a specialist
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 1.34
+Version: 1.40
 Tags:two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -20,6 +20,35 @@ http://developer.yahoo.com/yui/fonts/
 22px = 167%    23px = 174%    24px = 182%    25px = 189%
 26px = 197%
 ------------------------------------------------------*/
+a{
+	outline:none;
+	text-decoration:none;
+}
+
+a.more-link{
+	display:block;
+	margin-bottom:1em;
+}
+
+a:active,a:focus{
+	border:none;
+	outline:none;
+}
+
+a:focus{
+	outline:none;
+}
+
+a:hover{
+	color:#069;	
+}
+a:visited{
+	
+}
+#site-title a{
+	color:inherit;
+}
+
 html body{
 /* Define your default font size when if you need */
 /*font-size:100%;*/
@@ -669,8 +698,13 @@ header h1 a,header div.h1 a,#site-title a{
 }
 
 .home .sticky{
-	background:#eef;
-	margin-bottom:2em;
+}
+.home .sticky:before{
+	content: 'Featured';
+	display:block;
+	margin-left:20px;
+	font-size:153.9%;
+	color:#66CCCC;
 }
 
 .home article .meta,.home .meta posted-in,#site-generator,#site-generator a,address a{
@@ -943,11 +977,11 @@ header h1 a,header div.h1 a,#site-title a{
 }
 
 .widget_rss ul li{
-	position:relative;
+	/*position:relative;*/
 }
 
 .widget_rss ul li .rss-date{
-	position:absolute;
+	/*position:absolute;*/
 	top:-5em;
 }
 
@@ -959,7 +993,7 @@ header h1 a,header div.h1 a,#site-title a{
 	display:block;
 	height:3em;
 	overflow:hidden;
-	position:absolute;
+	/*position:absolute;*/
 	top:-3.5em;
 }
 
@@ -1047,29 +1081,7 @@ header h1 a,header div.h1 a,#site-title a{
 	width:300px!important;
 }
 
-a{
-	outline:none;
-	text-decoration:none;
-}
 
-a.more-link{
-	display:block;
-	margin-bottom:1em;
-}
-
-a:active,a:focus{
-	border:none;
-	outline:none;
-}
-
-a:focus{
-	outline:none;
-}
-
-a:hover{
-	border-bottom:1px solid #999;
-/*	color:#09C;*/
-}
 
 abbr,h2,h3,h4,h5,h6,.h2,.h3,.h4,.h5,.h6{
 	font-family:"Times New Roman", Times, serif;
@@ -1192,7 +1204,7 @@ del{
 
 div#doc3{
 	max-width:960px;
-	min-width:480px;
+	min-width:320px;
 	margin:auto;
 }
 
@@ -1646,4 +1658,206 @@ article,
 .front-page-template img{
 		max-width:100%;
 		height:auto;
+}
+
+
+#doc3 .tagcloud{
+	background:inherit;
+}
+#doc3 #footer-widget-area .widget-title a{
+	color:#333;
+}
+
+@media screen and (min-width : 640px){
+	#doc3 .nav-menu-toggle{ 
+		display:none!important;
+	}
+	#doc3 #access{display:block!important;}
+	#doc3 .raindrops-mobile-menu{
+		display:none!important;
+	}
+}
+
+@media screen and (max-width : 640px){
+	#doc3 .raindrops-mobile-menu{
+		display:block!important;
+	}
+	#doc3 #access{display:none!important;}
+	#doc3 #access:target{
+		display:block!important;
+		/* target link position ajust */
+		padding-top:100px;
+        margin-top:-100px;
+	}
+	
+	.ie6 #doc3 #access:target{display:block!important;}
+	.ie7 #doc3 #access:target{display:block!important;}
+	.ie8 #doc3 #access:target{display:block!important;}
+	.raindrops-mobile-menu{
+	 	position:relative;margin:0 10px;
+	}
+	#doc3 .raindrops-mobile-menu .open{
+	  position:absolute;top:0;left:0;
+	  font-size:153.9%;
+	  width:10%;
+	}	
+	#doc3 .raindrops-mobile-menu .close{
+	  position:absolute;top:2px;right:5%;
+	  font-size:153.9%;
+	  width:10%;
+	}
+	#doc3 .raindrops-mobile-menu .menu-text{
+	  position:absolute;top:0;left:44%;
+	}
+	
+	#doc3 #access ul ul a,
+	#doc3 #access ul ul,
+	#doc3 #access ul,
+	#doc3 #access ul li,
+	#doc3 #yui-main .index,
+	#doc3 #toc,
+	#doc3.yui-t2 #yui-main div.yui-b,
+	#doc3 #yui-main > div.first,
+	#doc3 #yui-main > .yui-u,
+	#doc3 .footer-widget,
+	#doc3 #ft div.widget-wrapper>ul>li,
+	#doc3 #ft .widget-wrapper ul,
+	#doc3 #bd .yui-b,
+	#doc3 #yui-main {
+		float:none;
+		margin:0;
+		margin-left:0;
+		margin-right:0;
+		/*border:1px solid red;*/
+		display:block;
+		max-width:100%;
+		width:100%;
+		box-sizing: border-box;
+		clear:both;
+		background-repeat:no-repeat;
+		position:static;
+	}
+	#doc3 #access{
+		overflow:hidden;
+	}
+	#doc3 #toc{
+			width:100%!important;
+		}
+
+	div.post,
+	article{
+		margin:0 5px 0 10px!important;
+		box-sizing: border-box;
+	}
+	#doc3 .reply, #ft a, 
+	#doc3 .page .hentry .entry-title a,
+	#doc3 cite.fn, 
+	#doc3 cite a:link, 
+	#doc3 cite a:active, 
+	#doc3 cite a:visited, 
+	#doc3 cite a:hover, 
+	#doc3 div.comment-body blockquote, 
+	#doc3 div.comment-body *,
+	#doc3 div.comment-author, 
+	#doc3 div.comment-author-meta, 
+	#doc3 #site-description, 
+	 .home #doc3 .sticky a, 
+	 .home #doc3 .entry-meta a,
+	#doc3 .topsidebar ul li ul li a, 
+	#doc3 #bigbanner ul li ul li a, 
+	#doc3 .lsidebar ul li ul li a, 
+	#doc3 .rsidebar ul li ul li a,
+	#doc3 .lsidebar li.page_item a, 
+	#doc3 .lsidebar li.category_report a,
+	#doc3 .lsidebar .widget ul li a{
+		display:block;
+			background-repeat:no-repeat;
+			width:100%;
+			height:100%;
+			margin:0;
+			padding:0.5em;
+			box-sizing: border-box;
+			font-size:123%;
+	
+	}
+	#doc3 widget_tag_cloud{
+		display:inline;
+		padding:.5em;
+		
+	}
+	#doc3 .footer-widget h2,
+	#doc3 .rsidebar h2,
+	#doc3 .lsidebar h2, 
+	#doc3 .widgettitle h2, 
+	#doc3 h2.footer-content{	
+			background-repeat:no-repeat;
+			height:2em;
+			background:none;
+	}
+	#doc3 #access ul ul{
+		text-align:left;
+		text-indent:1em;
+	}
+	#doc3 #access ul ul ul{
+		text-align:left!important;
+		text-indent:2em;
+	}
+	
+	#doc3 .raindrops-mobile-menu{
+		display:inline-block;
+		height:1em;
+		text-align:right;
+		padding:1em;
+		font-size:138.5%;
+	}
+	#doc3 #access .children li{
+		border:none;
+	}
+	#nav-above,
+	#nav-below{
+		margin:0 10px;
+	}
+	#doc3 #header-image p{
+		font-size:123.1%;
+		font-weight:bold;
+	}
+	#doc3 nav ul{
+		margin:0;
+	}
+ .home #doc3 .hentry{
+		padding:0;
+	}
+#doc3 .meta-prep-author,
+#doc3 .posted-on,
+#doc3 .content,
+#doc3 h2.title a,
+#doc3 h2.title,
+#doc3 .widget-title,
+/*#doc3 .widget-container .tagcloud,*/ 
+#doc3 #footer-widget-area,
+#doc3 	div.post,
+#doc3	article{
+		margin:0!important;
+		box-sizing: border-box;
+		background:#ccc;
+		padding:0!important;
+		background:inherit;
+	}
+#doc3 .widget-container, 
+#doc3 #footer-widget-area li,
+#doc3 .index article{
+		margin:.5em 1em!important;
+		background:inherit;
+}
+#doc3 footer{
+		margin-top:-20px;
+}
+.home .sticky:before{
+	margin-left:0;
+}
+
+
+}
+.widget_rss{
+	display:block;
 }

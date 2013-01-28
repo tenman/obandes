@@ -15,11 +15,17 @@
     ){
         return;
     }
+	
+	/* horizon-footer-widget class display horizontal layout */
+	$raindrops_add_class = '';
+	if( obandes_get_condition('letter-width') !== 'doc3' ){ 
+		$raindrops_add_class = 'horizon-footer-widget';
+	}
 ?>
 
 <div id="footer-widget-area" role="complementary">
   <?php if ( is_active_sidebar( 'first-footer-widget-area' ) ){ ?>
-  <div id="first" class="horizon-footer-widget">
+  <div id="first" class="<?php echo $raindrops_add_class; ?>">
     <ul class="xoxo">
       <?php dynamic_sidebar( 'first-footer-widget-area' ); ?>
     </ul>
@@ -30,7 +36,7 @@ if(WP_DEBUG == true){
 }?>
   <?php } ?>
   <?php if ( is_active_sidebar( 'second-footer-widget-area' ) ){ ?>
-  <div id="second" class="horizon-footer-widget">
+  <div id="second" class="<?php echo $raindrops_add_class; ?>">
     <ul class="xoxo">
       <?php dynamic_sidebar( 'second-footer-widget-area' ); ?>
     </ul>
@@ -41,7 +47,7 @@ if(WP_DEBUG == true){
 }?>
   <?php } ?>
   <?php if ( is_active_sidebar( 'third-footer-widget-area' ) ){ ?>
-  <div id="third" class="horizon-footer-widget">
+  <div id="third" class="<?php echo $raindrops_add_class; ?>">
     <ul class="xoxo">
       <?php dynamic_sidebar( 'third-footer-widget-area' ); ?>
     </ul>
@@ -52,7 +58,7 @@ if(WP_DEBUG == true){
 }?>
   <?php } ?>
   <?php if ( is_active_sidebar( 'fourth-footer-widget-area' ) ){ ?>
-  <div id="fourth" class="horizon-footer-widget">
+  <div id="fourth" class="<?php echo $raindrops_add_class; ?>">
     <ul class="xoxo">
       <?php dynamic_sidebar( 'fourth-footer-widget-area' ); ?>
     </ul>

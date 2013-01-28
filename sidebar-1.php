@@ -9,10 +9,11 @@
  */
 ?>
 <nav class="yui-b" id="toc">
+<?php if( obandes_get_condition('letter-width') !== 'doc3' ){ ?>
 <div class="wrap-toggle">
 <span id="nav-toggle">1col</span>
 </div>
-
+<?php } ?>
 <ul class="nav-toggle">
 <li id="setting-for-responsive">
 <?php wp_nav_menu( array( 'container_class' => 'widget_pages', 'theme_location' => 'primary' ) ); ?>

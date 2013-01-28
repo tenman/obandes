@@ -72,10 +72,6 @@ $i = 0;
   </div>
 </article>
         <?php } ?>
-
-
-
 </section>
-
 <?php get_sidebar('1'); ?>
 <?php get_footer(); ?>

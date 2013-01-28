@@ -13,12 +13,9 @@ if(WP_DEBUG == true){
 }?>
 <section id="yui-main" class="clearfix">
 <?php
-
     if ( have_posts()) {
         while (have_posts()){
-
-        the_post();
-
+        	the_post();
             if (!locate_template( array('formats/format-'.get_post_format().'.php'), true ) ) {
 ?>
 <article id="post-<?php echo $post->ID; ?>" <?php post_class('yui-b'); ?>>
@@ -50,7 +47,6 @@ if(WP_DEBUG == true){
         }
     }
 ?>
-
 </section>
 <?php get_sidebar('1');?>
 <?php get_footer();?>
