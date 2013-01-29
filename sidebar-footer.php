@@ -15,12 +15,12 @@
     ){
         return;
     }
-	
-	/* horizon-footer-widget class display horizontal layout */
-	$raindrops_add_class = '';
-	if( obandes_get_condition('letter-width') !== 'doc3' ){ 
-		$raindrops_add_class = 'horizon-footer-widget';
-	}
+
+    /* horizon-footer-widget class display horizontal layout */
+    $raindrops_add_class = 'list-footer-widget';
+    if( obandes_get_condition('letter-width') !== 'doc3' ){
+        $raindrops_add_class = 'horizon-footer-widget';
+    }
 ?>
 
 <div id="footer-widget-area" role="complementary">
