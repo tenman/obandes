@@ -1,4 +1,17 @@
 Changelog -----------------------------------
+version:1.44
+removed
+    Deprecated functions
+        get_theme_data()
+        add_custom_image_header()
+        add_custom_background()
+fixed
+    Fixed Underfined index obandes_css
+        add isset()
+    Fixed use of underfined constant obandes
+        typo, change from obandes to 'obandes'
+----------------------------------------------
+Changelog -----------------------------------
 version:1.43
 modified
     Support Responsive theme for fluid layout.

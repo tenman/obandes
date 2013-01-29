@@ -4,7 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description:lessphp (CSS preprocessor) support Where Theme option panel style editor. YUI(Yahoo User Inter face) Grid layout support.  2column fixed and fluid layout theme.Post format image support Zoom it API. This theme supply your happy blogging  From beginners to a specialist
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 1.43
+Version: 1.44
 Tags:two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -1854,12 +1854,52 @@ article,
 		background:inherit;
 }
 #doc3 footer{
-		margin-top:-20px;
+		margin-top:-26px;
+		font-size:123.1%;
 }
 .home .sticky:before{
 	margin-left:0;
 }
+#doc3 nav,
+#doc3 footer{
+		font-size:123.1%;
+}
 
+
+#doc3 #access .children{
+	background:#eee;
+	color:#555;
+}
+
+#doc3 #access .children li:hover{
+	background:#ccc;
+}
+
+#doc3 #access .menu,
+#doc3 #access{
+	background:#eee;
+	color:#555;
+}
+#doc3 #access a{
+	color:#555;
+	background:#eee;
+	font-size:123.1%;
+}
+
+#doc3 #access ul > li.current_page_item a,
+#doc3 #access ul > li.current-menu-ancestor a:hover,
+#doc3 #access ul > li.current-menu-item a:hover,
+#doc3 #access ul > li.current-menu-parent a:hover,* html #access ul > li a:hover,
+#doc3 #access li:hover > a:hover,#access ul ul > a:hover,
+#doc3 #access a:hover,#access li > a:hover,#access ul ul > a,
+#doc3 #access ul li.current_page_item > a:hover,
+#doc3 #access ul li.current-menu-ancestor > a:hover,
+#doc3 #access ul li.current-menu-item > a:hover,#access ul li.current-menu-parent > a:hover{
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+	box-shadow:none;
+	color:#00CCFF;
+}
 
 }
 .widget_rss{
