@@ -9,7 +9,7 @@ get_header();?>
 <?php if(WP_DEBUG == true){
     echo '<!--'.basename(__FILE__,'.php').'['.basename(dirname(__FILE__)).']-->';
 }?>
-<section id="onecolumn">
+<div id="onecolumn">
   <?php while (have_posts()) : the_post(); ?>
   
   <article class="page hpage" id="post-<?php the_ID(); ?>">
@@ -28,5 +28,5 @@ get_header();?>
   </article>
   <?php endwhile; ?>
   <div class="clear"></div>
-</section>
+</div>
 <?php get_footer();?>

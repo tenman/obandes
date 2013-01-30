@@ -4,7 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description:lessphp (CSS preprocessor) support Where Theme option panel style editor. YUI(Yahoo User Inter face) Grid layout support.  2column fixed and fluid layout theme.Post format image support Zoom it API. This theme supply your happy blogging  From beginners to a specialist
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version: 1.45
+Version: 1.46
 Tags:two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -95,7 +95,6 @@ font-size:123.1%;
 }
 
 #access .menu-header ul#menu-responsive,div.menu ul#menu-responsive{
-	width:300px;
 	margin:auto;
 }
 
@@ -147,14 +146,14 @@ font-size:123.1%;
 /* test */
 /*for responsive setting */
 @media screen and (min-width : 641px){
-	#setting-for-responsive .menu{
+/*	#setting-for-responsive .menu{
 		display:none;
 	}
-	#access{display:block;}
+	#access{display:block;}*/
 
 }
 @media screen and (max-width : 640px){
-	#setting-for-responsive .menu .page_item a,
+/*	#setting-for-responsive .menu .page_item a,
 	#setting-for-responsive .menu .page_item,
 	#setting-for-responsive .menu{
 		display:block!important;
@@ -164,17 +163,22 @@ font-size:123.1%;
 		margin-left:10px;
 	}
 	
-	#access{display:none;}
+	#access{display:none;}*/
 }
 
-/* test end */
+#search-results-title,
 #archives-title{
 	font-weight:700;
 	font-family:"Times New Roman", Times, serif;
 	font-size:174%;
-	text-align:left;
-	height:85px;
-	padding:20px 0 0 40px;
+	text-align:center;
+	height:70px;
+	color:#444;
+	padding-top:10px;
+}
+
+#search-results-title{
+	background:url(images/search-results.png);
 }
 
 #author-infomation td.col1{
@@ -234,7 +238,7 @@ font-size:123.1%;
 	width:950px!important;
 }
 
-#doc2 form,#doc3 form,#doc4 form,#doc form,section img,article .content,table[class^=horizon],.single .category-blog .meta{
+#doc2 form,#doc3 form,#doc4 form,#doc form,div img,article .content,table[class^=horizon],.single .category-blog .meta{
 	max-width:100%;
 }
 
@@ -304,19 +308,29 @@ font-size:123.1%;
 }
 
 #onecolumn .page{
-	margin-top:0;
+
+}
+div#onecolumn .content{
+	/*margin:3% 5%;*/
+}
+.page-template-default article .title,
+.page-template-page-templatesfull-width-php article .title{
+	height:2em;
+	font-size:197%;
+}
+.index article .title,
+.archive article .title{
+	height:1.2em;
+}
+.page-template-page-templatesfull-width-php article.page article .title,
+.page-template-page-templatesfull-width-php article.page article .content{
+	margin:1%;
+}
+.page-template-page-templatesfull-width-php #onecolumn article.page,
+.page-template-page-templatesfull-width-php #onecolumn article{
+	margin:2.4%;
 }
 
-#onecolumn article.page,section#onecolumn article{
-	margin-left:0;
-}
-
-#search-results-title{
-	background:url(images/search-results.png);
-	font-size:182%;
-	height:75px;
-	margin-left:1em;
-}
 
 #site-description{
 	text-align:left;
@@ -461,9 +475,13 @@ header h1 a,header div.h1 a,#site-title a{
 	padding:12px;
 }
 
-.byuser,.bypostauthor,.commentlist > li,.reply,#commentform,.corner{
+.byuser,.bypostauthor,.commentlist > li,.reply,.corner{
 	line-height:1.7;
 	padding:12px 12px 0;
+}
+#commentform{
+	line-height:1.7;
+	padding:0;
 }
 
 .category-archives{
@@ -569,13 +587,12 @@ header h1 a,header div.h1 a,#site-title a{
 	font-size:153.9%;
 }
 
-.font21,.page h3,h3,/*h3 a,*/
+.font21,.page h3,h3,
 .h3 a{
 	font-size:161.6%;
 }
 
-.font22,nav h2,.page h2,h2,/*h2 a,
-.h2 a*/{
+.font22,nav h2,.page h2,h2{
 	font-size:173%;
 }
 
@@ -706,7 +723,6 @@ header h1 a,header div.h1 a,#site-title a{
 .home .sticky:before{
 	content: 'Featured';
 	display:block;
-	margin-left:20px;
 	font-size:153.9%;
 	color:#66CCCC;
 }
@@ -784,8 +800,9 @@ header h1 a,header div.h1 a,#site-title a{
 	margin:10px 10px 0;
 }
 
-.index article .posted-on,.single article .posted-on{
-	margin:10px;
+.index article .posted-on,
+.single article .posted-on{
+	/*margin:10px;*/
 }
 
 .ja h1,.ja .h1,.ja #site-title{
@@ -840,9 +857,8 @@ header h1 a,header div.h1 a,#site-title a{
 .page article{
 	margin-top:.8em;
 }
-
 .page article .content,.single article .content,.index article .content,.index article .title{
-	margin-left:20px;
+	/*margin-left:20px;*/
 }
 .page h5,h5,/*h5 a,*/
 .h5 a,.ja h3,.ja .h3{
@@ -944,6 +960,9 @@ header h1 a,header div.h1 a,#site-title a{
 .search-results article .content{
 	margin:1em 1em 0 5em;
 }
+.search-results{
+	margin:0;
+}
 
 .single #nav-above{
 	margin:1em 0 1em;
@@ -979,18 +998,8 @@ header h1 a,header div.h1 a,#site-title a{
 	background-position:0 -400px;
 	border-bottom:1px solid #D9EEF2;*/
 }
-
-.widget_rss ul li{
-	/*position:relative;*/
-}
-
-.widget_rss ul li .rss-date{
-	/*position:absolute;*/
-	top:-5em;
-}
-
 .widget_rss ul li .rssSummary{
-	margin:5em 5px 5px 20px;
+	margin:5px 5px 10px;
 }
 
 .widget_rss ul li .rsswidget{
@@ -999,6 +1008,21 @@ header h1 a,header div.h1 a,#site-title a{
 	overflow:hidden;
 	/*position:absolute;*/
 	top:-3.5em;
+	font-weight:bold;
+}
+.widget_rss ul li .rss-date{
+	background:#fff;
+	opacity:0.7;
+	display:block;
+	margin-right:5px;
+	top:-5em;
+	text-align:center;
+}
+.widget_rss ul li cite{
+	margin-bottom:10px;
+	display:block;
+	text-align:right;
+	margin-right:5px;
 }
 
 .wp-caption{
@@ -1020,7 +1044,7 @@ header h1 a,header div.h1 a,#site-title a{
 	padding:0 4px 5px;
 }
 
-.wp-post-image,header img,section .avatar,article .content img{
+.wp-post-image,header img,div .avatar,article .content img{
 	height:auto;
 	max-width:100%;
 }
@@ -1053,10 +1077,12 @@ header h1 a,header div.h1 a,#site-title a{
 	width:24%;
 }
 
-.yui-t1 article,.yui-t2 article,.yui-t3 article,#doc.yui-t4 nav ul,#doc.yui-t5 nav ul,#doc.yui-t6 nav ul{
+.yui-t1 article,.yui-t2 article,.yui-t3 article{
 	margin-right:1em;
 }
-
+#doc.yui-t4 nav ul,#doc.yui-t5 nav ul,#doc.yui-t6 nav ul{
+	
+}
 .yui-t1 nav{
 	width:160px!important;
 }
@@ -1147,9 +1173,9 @@ article .meta li,#comments ul li,.commentlist .children li{
 
 article .title{
 	max-width:100%;
-	word-break:beak-all;
-	word-wrap:break-word;
-	margin:0 10px;
+	/*word-break:beak-all;
+	word-wrap:break-word;*/
+	/*margin:0 10px;*/
 }
 
 article,aside,dialog,figure,footer,header,hgroup,menu,nav,section,#access ul li:hover > ul,input#author,input#email,input#url,.comment-form-comment label{
@@ -1316,7 +1342,7 @@ h2,h3,h4,h5,h6,.h2,.h3,.h4,.h5,.h6{
 
 h3#comments-title,h3.widget-title{
 	font-size:161.6%;
-	padding:0 0 0 1em;
+	padding:0 0 0 .4em;
 }
 
 h3#reply-title{
@@ -1408,7 +1434,7 @@ li h2,nav ul > li,.wp-smiley,nav h3,nav .h3{
 }
 
 .meta-prep-author{
-	margin-left:10px;
+	/*margin-left:10px;*/
 }
 #searchform{
 	display:inline-block;
@@ -1417,12 +1443,45 @@ nav{
 	font-family:'Trebuchet MS', 'Lucida Grande', Verdana, 'Lucida, Geneva, Helvetica', Arial, sans-serif;
 	margin-top:5px!important;
 }
-
-nav #searchform{
-	text-align:center;
-	margin:10px auto;
+#doc3 nav{
+	margin-top:0!important;
 }
 
+nav #searchform{
+	width:100%;
+	text-align:center;
+}
+nav #searchform input[type="text"]{
+	width:70%;
+}
+nav #searchform input[type="submit"]{
+	width:15%;
+}
+
+nav select{
+	width:96%;
+	max-width:96%;
+	margin:2%;
+	}
+nav img{
+	max-width:96%;
+	margin:auto;
+	height:auto;
+	padding:2%;
+	}
+nav #calendar_wrap,
+nav .textwidget{
+	width:96%;
+	padding:2%;
+	max-width:96%;
+}
+.col-w-180 #wp-calendar,
+.col-w-160 #wp-calendar{
+	font-size:65%;
+}
+nav #calendar_wrap caption{
+	text-align:center;
+}
 nav .recentcomments{
 	max-width:100%;
 	text-decoration:none;
@@ -1472,9 +1531,6 @@ pre,tt,kbd{
 	font-family:"Courier New", Courier, mono;
 }
 
-section#onecolumn .content{
-	margin:3% 5%;
-}
 
 table{
 	max-width:100%;
@@ -1671,7 +1727,11 @@ article,
 #doc3 #footer-widget-area .widget-title a{
 	color:#333;
 }
-
+#doc4 .obandes-mobile-menu,
+#doc2 .obandes-mobile-menu,
+#doc .obandes-mobile-menu{
+		display:none!important;
+}
 @media screen and (min-width : 640px){
 	#doc3 .nav-menu-toggle{ 
 		display:none!important;
@@ -1683,6 +1743,11 @@ article,
 }
 
 @media screen and (max-width : 640px){
+	#doc3 #setting-for-responsive .menu .page_item a,
+	#doc3 #setting-for-responsive .menu .page_item,
+	#doc3 #setting-for-responsive .menu{
+		display:none!important;
+	}
 	#doc3 .obandes-mobile-menu{
 		display:block!important;
 	}
@@ -1713,7 +1778,13 @@ article,
 	#doc3 .obandes-mobile-menu .menu-text{
 	  position:absolute;top:0;left:44%;
 	}
-	
+	#doc3 .obandes-mobile-menu a:first-child{
+		padding-top:5px;
+	}
+	#doc3 .obandes-mobile-menu span{
+		padding-top:12px;
+	}
+	#doc3 .commentlist,
 	#doc3 #access ul ul a,
 	#doc3 #access ul ul,
 	#doc3 #access ul,
@@ -1753,6 +1824,9 @@ article,
 		margin:0 5px 0 10px!important;
 		box-sizing: border-box;
 	}
+	#doc3 #access .menu-header, 
+	#doc3 div.menu,
+	.search-results #doc3 > #yui-main > .yui-b,
 	#doc3 .reply, #ft a, 
 	#doc3 .page .hentry .entry-title a,
 	#doc3 cite.fn, 
@@ -1761,7 +1835,7 @@ article,
 	#doc3 cite a:visited, 
 	#doc3 cite a:hover, 
 	#doc3 div.comment-body blockquote, 
-	#doc3 div.comment-body *,
+	/*#doc3 div.comment-body *,*/
 	#doc3 div.comment-author, 
 	#doc3 div.comment-author-meta, 
 	#doc3 #site-description, 
@@ -1782,6 +1856,7 @@ article,
 			padding:0.5em;
 			box-sizing: border-box;
 			font-size:123%;
+			margin-right:0;
 	
 	}
 	#doc3 widget_tag_cloud{
@@ -1847,9 +1922,9 @@ article,
 		padding:0!important;
 		background:inherit;
 	}
+#doc3 article,
 #doc3 .widget-container, 
-#doc3 #footer-widget-area li,
-#doc3 .index article{
+#doc3 #footer-widget-area li{
 		margin:.5em 1em!important;
 		background:inherit;
 }
@@ -1864,28 +1939,35 @@ article,
 #doc3 footer{
 		font-size:123.1%;
 }
-
-
 #doc3 #access .children{
 	background:#eee;
 	color:#555;
 }
-
 #doc3 #access .children li:hover{
 	background:#ccc;
 }
-
 #doc3 #access .menu,
 #doc3 #access{
-	background:#eee;
-	color:#555;
-}
-#doc3 #access a{
-	color:#555;
-	background:#eee;
-	font-size:123.1%;
 }
 
+#doc3 #access a{
+	color:#555;
+	background:#fff;
+	font-size:123.1%;
+	border-bottom:1px solid #eee;
+}
+
+#doc3 #access{
+	background:inherit!important;
+}
+
+#doc3 #access .menu-header{
+
+}
+#doc3 #access ul{
+	margin:0;
+	
+}
 #doc3 #access ul > li.current_page_item a,
 #doc3 #access ul > li.current-menu-ancestor a:hover,
 #doc3 #access ul > li.current-menu-item a:hover,
@@ -1900,7 +1982,57 @@ article,
 	box-shadow:none;
 	color:#00CCFF;
 }
+#doc3 h1,#doc3 h2,#doc3 h3,#doc3 h4{
+	font-weight:bold;
+}
+#doc3 .commentlist h1{
+	font-size:167%;
+	font-weight:bold;
+}
+#doc3 .commentlist h2{
+	font-size:138.5%;
+}
+#doc3 .commentlist h3{
+	font-size:108%;
+}
+#doc3 .commentlist h5{
+	font-size:93%;
+}
+#doc3 .commentlist h6{
+	font-size:77%;
+}
+blockquote{
+	border-left:1px solid #ccc;
+}
+blockquote:before{
+	content:'“';
+	font-family:serif;
+	font-weight:bold;
+	font-size:30px;
+	display:block;
+}
+blockquote:after{
+	content:'”';
+	font-family:serif;
+	font-weight:bold;
+	font-size:30px;
+	display:block;
+	text-align:right;
+	margin-top:.5em;
+	margin-bottom:-.5em;
+}
+#doc3 .commentlist .reply{
+	text-align:center;	
+}
+#doc3 .commentlist .reply a{
+	display:block;
+	width:100%;
+	height:100%;
+}
 
+#doc3 .commentlist>li{
+	border:none;
+}
 }
 .widget_rss{
 	display:block;

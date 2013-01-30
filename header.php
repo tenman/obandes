@@ -23,10 +23,12 @@ if( $obandes_text_color  !== 'blank' ){?>
     <?php   obandes_title_format();?>
     <div id="site-description"><?php bloginfo( 'description' ); ?></div>
     <div class="search-form"><?php get_search_form(); ?></div>
-<?php }?>
+<?php }else{
+	$obandes_text_color = '555';	
+}?>
 <p class="obandes-mobile-menu"><a href="#access" class="open" style="color:#<?php echo $obandes_text_color;?>">+</a><span class="menu-text" style="color:#<?php echo $obandes_text_color;?>">menu</span><a href="#<?php echo obandes_get_condition('letter-width'); ?>" class="close" style="color:#<?php echo $obandes_text_color;?>">-</a></p>
 
-    <div id="access" role="navigation" class="clearfix">
+<div id="access" role="navigation" class="clearfix">
 <?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?></div>
 <?php obandes_header_image_renderer();?>
 </header>

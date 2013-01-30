@@ -11,7 +11,7 @@
 if(WP_DEBUG == true){
     echo '<!--'.basename(__FILE__,'.php').'['.basename(dirname(__FILE__)).']-->'."\n";
 }?>
-<section id="yui-main" class="clearfix">
+<div id="yui-main" class="clearfix">
 <?php
 
     if ( have_posts()) {
@@ -75,6 +75,6 @@ if(WP_DEBUG == true){
         }
     }
 ?>
-</section>
+</div>
 <?php get_sidebar('1');?>
 <?php get_footer();?>

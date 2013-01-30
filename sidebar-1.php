@@ -15,9 +15,6 @@
 </div>
 <?php } ?>
 <ul class="nav-toggle">
-<li id="setting-for-responsive">
-<?php wp_nav_menu( array( 'container_class' => 'widget_pages', 'theme_location' => 'primary' ) ); ?>
-</li>
 <?php if ( dynamic_sidebar('sidebar-1') ) : else : ?>
 <?php wp_list_pages('title_li=<h3 class="widget-title h3">'.__('Pages','obandes').'</h3>' ); ?>
 <li>

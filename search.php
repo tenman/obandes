@@ -10,7 +10,7 @@
 $i = 0; 
 ?>
 <?php get_header("xhtml1"); ?>
-<section id="yui-main">
+<div id="yui-main">
   <?php if(WP_DEBUG == true){echo '<!--'.basename(__FILE__,'.php').'['.basename(dirname(__FILE__)).']-->';}?>
         <?php if (have_posts()){ ?>
 
@@ -72,6 +72,6 @@ $i = 0;
   </div>
 </article>
         <?php } ?>
-</section>
+</div>
 <?php get_sidebar('1'); ?>
 <?php get_footer(); ?>

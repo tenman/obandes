@@ -1,4 +1,9 @@
 Changelog -----------------------------------
+version:1.46
+removed
+fixed
+----------------------------------------------
+Changelog -----------------------------------
 version:1.45
 removed
     Deprecated functions

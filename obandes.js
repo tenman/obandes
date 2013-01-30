@@ -58,7 +58,9 @@ if( width > 639 ){
 				var target ="."+jQuery(this).attr("id");
 				jQuery(target).toggle("slow");
 		});
-
+		/*
+		 * jQuery duplicate.
+			http://bugs.jquery.com/ticket/7909
 		jQuery('#nav-toggle').toggle(
 			function(){
 				jQuery('#yui-main article,ul.index.yui-b').addClass("expand");
@@ -73,7 +75,29 @@ if( width > 639 ){
 				localStorage['currentColumn'] = 'twocolumn';
 			}
 		);
-		
+				*/
+		var handlers = [
+			function (){
+				jQuery('#yui-main article,ul.index.yui-b').addClass("expand");
+				jQuery('.nav-toggle').hide();
+				jQuery('#nav-toggle').text('2col');
+				localStorage['currentColumn'] = 'onecolumn';
+			},
+			function (){
+				jQuery('#yui-main article,ul.index.yui-b').removeClass("expand");
+				jQuery('.nav-toggle').show();
+				jQuery('#nav-toggle').text('1col');
+				localStorage['currentColumn'] = 'twocolumn';
+			}
+		];
+
+		var count = 0;
+		jQuery('#nav-toggle').click(function () {
+			var n = count;
+			count = (count + 1) % 2;
+			return handlers[n].apply(this, arguments);
+		});
+
 		if(localStorage['currentColumn'] == 'onecolumn'){
 			jQuery('#yui-main article,ul.index.yui-b').addClass("expand");
 			jQuery('.nav-toggle').hide();

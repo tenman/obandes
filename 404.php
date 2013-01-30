@@ -12,7 +12,7 @@
 if(WP_DEBUG == true){
     echo '<!--'.basename(__FILE__,'.php').'['.basename(dirname(__FILE__)).']-->'."\n";
 }?>
-<section id="yui-main">
+<div id="yui-main">
 <article id="post-0" class="post error404 not-found yui-b">
   <h2 class="title h2">
     <?php _e( 'Not Found', 'obandes' ); ?>
@@ -25,7 +25,7 @@ if(WP_DEBUG == true){
   </div>
 </article>
 <div class="clear"></div>	
-</section>
+</div>
 
 <?php if ( is_active_sidebar( 'sidebar-1' ) ){ ?>
 <nav class="yui-b" id="toc">
