@@ -167,7 +167,13 @@
         }
     }
 
-
+/**
+ *
+ *
+ *
+ *
+ */	
+	$obandes_header_blank_color = 'ffffff';
 /**
  * post_formats
  *
@@ -421,61 +427,11 @@ if( ! isset($obandes_header_background_color)){
 if( ! isset($obandes_css_preset)){
 $obandes_css_preset =<<< CSS_PRESET
 /*============= lessphp =============*/
-@sidebar-background:#efefef;
-@article-background:inherit;
-@article-title-link-color:#999999;
-@article-title-font-family:Georgia,Times New Roman,Times,serif;
 @primary-navigation-background:#444;
 @primary-navigation-background-color-hover: #333333;
 @primary-navigation-color:#ffffff;
 @primary-navigation-color-hover: #ffffff;
-@site-title-font-family:Georgia,Times New Roman,Times,serif;
-@page-radius:3px;
-@page-background:#fff;
-@posted-background:#fff;
-@posted-color:#333;
-@commentform-background:#fff;
-
 /*============= style rules =============*/
-#commentform{
-background:@commentform-background;
-}
-body {
-background:#efefef;
-}
-body > #doc,body > #doc2,body > #doc3,body > #doc4 {
--moz-border-radius:@page-radius;
--moz-box-shadow:0 0 15px rgba(0,0,0,1);
--webkit-border-radius:@page-radius;
--webkit-box-shadow:0 0 15px rgba(0,0,0,1);
-background:@page-background;
-border-radius:@page-radius;
-box-shadow:0 0 15px rgba(0,0,0);
-}
-nav h3:before,
-h3.widget-title:before {
-/* content:url(images/sidebar-title.png);
-margin-right:.5em;
-position:relative;
-top:3px;*/
-}
-.ie8 h3.widget-title:before {
-top:0;
-}
-nav > ul {
-background:@sidebar-background;
-}
-index article{
-border:#eee 2px groove;
-}
-.ie6 article,.ie7 article,.ie8 article,#footer-widget-area,#fourth,#third,#second,#first,article {
-background:@article-background;
-}
-#footer-widget-area h3{
-background:#ccc;
-margin-bottom:0;
-color:#333;
-}
 #access .menu,
 #access {
 background:@primary-navigation-background;
@@ -520,130 +476,6 @@ color:#ddd;
 color: @primary-navigation-color-hover;
 background:@primary-navigation-background-color-hover;
 }
-header img {
-border-bottom:2px solid #000;
-margin-bottom:-5px;
-}
-div.posted-on,
-div.posted-in {
-border-bottom:1px solid lighten(@posted-background, 50);
-border-top:1px solid lighten(@posted-background, 50);
-background:@posted-background;
-color:@posted-color!important;
-span,
-a{
-color:@posted-color;
-}
-
-}
-#commentform .form-submit {
-line-height:3;
-margin-bottom:1em;
-}
-.commentlist > li,.byuser,.reply,div.tagcloud,.nopassword,.wp-caption,body.single-post .nocomments,.hentry th,.hentry td,.page-link,.bypostauthor
-.chrome article .content .size-thumbnail,.gecko article .content .size-thumbnail,.home ,blockquote {
-border:1px solid #999;
-}
-.home .sticky{
-
-
-}
-article .content blockquote {
-border-left:6px solid #777;
-}
-.not-found,
-div.tagcloud,
-footer,
-.comment,
-.pingback,
-.nocomments,
-article .content blockquote {
-background:#eee;
-background:saturate(@primary-navigation-color, 96%);
-}
-.h1,h1 {
-font-family:@site-title-font-family;
-/*font-size:2em;*/
-}
-.plate,.grad {
-}
-.widget-title,
-header {
--moz-border-radius-topleft:@page-radius;
--moz-border-radius-topright:@page-radius;
--webkit-border-top-left-radius:@page-radius;
--webkit-border-top-right-radius:@page-radius;
-border-top-left-radius:@page-radius;
-border-top-right-radius:@page-radius;
-}
-.widget-title,
-footer {
--moz-border-radius-bottomleft:@page-radius;
--moz-border-radius-bottomright:@page-radius;
--webkit-border-bottom-left-radius:@page-radius;
--webkit-border-bottom-right-radius:@page-radius;
-border-bottom-left-radius:@page-radius;
-border-bottom-right-radius:@page-radius;
-}
-#footer-widget-area h3 {
--moz-border-radius-bottomright:@page-radius;
--moz-border-radius-topleft:@page-radius;
--webkit-border-bottom-right-radius:@page-radius;
--webkit-border-top-left-radius:@page-radius;
-border-bottom-right-radius:@page-radius;
-border-top-left-radius:@page-radius;
-}
-#wp-calendar th:nth-child(1),#wp-calendar th:nth-child(7) {
-width:1em;
-}
-#doc,#doc2,#doc3,#doc4,#custom-doc{
-}
-header{
-}
-/*
-*horizontal navigation
-*
-*/
-#access{
-}
-/*
-*loop.php
-*/
-section{}
-.index{}
-.index article{}
-.index article .title a{
-color:@article-title-link-color;
-font-family:@article-title-font-family;
-}
-.index article .posted-on{}
-.index article .posted-in{}
-.index article .pagenate{}
-/*
-*single.php
-*/
-.single-post{}
-.single article{}
-.single article .title{
-color:@article-title-link-color;
-font-family:@article-title-font-family;
-}
-.single article .posted-on{}
-.single article .posted-in{}
-.single article .pagenate{}
-/*
-*footer.php
-*/
-footer{}
-#footer-widget-area{}
-.horizontal-footer-widget{}
-#footer-widget-area #first{}
-#footer-widget-area #second{}
-#footer-widget-area #third{}
-#footer-widget-area #fourth{}
-footer address{}
-footer #site-genelator{}
-#access a:hover{border:none;}
 CSS_PRESET;
 }
 /**
@@ -1387,40 +1219,31 @@ if ( ! function_exists( 'obandes_comment' ) ) {
 if( ! function_exists( "obandes_embed_meta" ) ){
     function obandes_embed_meta( $content ){
         $result = "";
-        global $post,$content_width,$is_safari;
+        global $post,$content_width,$is_safari,$obandes_header_blank_color;
         $header_background_color = obandes_get_condition('obandes_header_background_color');
         $header_background_image = ' url('. get_template_directory_uri().'/images/d1-head.png )!important;';
+		
+		$header_text_color = get_theme_mod( 'header_textcolor'  );
 
         $css = "/* obandes header style start */
         header h1,
         header h1 a,
-        header #site-description,footer a,
-        footer,
-        .widget,
-        #site-generator a,
-        footer .widget_calendar{
-            color:#" .get_theme_mod( 'header_textcolor'  )
-         .";}
-        footer {
-            background:" .obandes_get_condition('obandes_header_background_color') .";}
+        header #site-description{
+            color:#" . $header_text_color .";}
         #obandes-page-header{
             background-color:". strtolower( $header_background_color ).'!important;'
         . ' background-image: '. $header_background_image
         ."}
         /* obandes header style end */";
 
-        $css .= "\n/*obandes footer style start */
-        footer{background:".obandes_get_condition('obandes_header_background_color')
-        ."!important;}\n/*obandes footer style end */";
-
 //body background
-        $body_background            = get_theme_mod( "background_color" );
-        $body_background_image      = get_theme_mod( "background_image" );
+        $body_background            	= get_theme_mod( "background_color" );
+        $body_background_image      	= get_theme_mod( "background_image" );
         $body_background_repeat         = get_theme_mod( "background_repeat" );
         $body_background_position_x     = get_theme_mod( "background_position_x" );
         $body_background_attachment     = get_theme_mod( "background_attachment" );
 
-        $css .= '/*obandes footer style start */';
+        $css .= '/*obandes body style start */';
         if( $body_background !== false and !empty( $body_background ) and !empty( $body_background_image ) ){
             $css .= "\nbody{background:#".$body_background.' url('. $body_background_image. ');}';
         }elseif( $body_background !== false and !empty( $body_background ) ){
@@ -1438,7 +1261,7 @@ if( ! function_exists( "obandes_embed_meta" ) ){
         if( isset( $body_background_attachment ) and !empty( $body_background_attachment ) ){
             $css                    .= "\nbody{background-attachment: ". $body_background_attachment. ';}';
         }
-        $css .= '/*obandes footer style end */';
+        $css .= '/*obandes body style end */';
         $css .= obandes_embed_style();
 /**
  *
@@ -2442,6 +2265,8 @@ if( ! function_exists( "obandes_compress_callback") ){
 if( ! function_exists( "obandes_get_header_image_renderer") and $obandes_wp_version >= '3.4' ){
     function obandes_get_header_image_renderer($obandes_image_uri = ''){
         global $post;
+		$width 	= 930;
+		$height = 178;
         $marginally = false;
 
         if(empty($obandes_image_uri)){
@@ -2450,9 +2275,13 @@ if( ! function_exists( "obandes_get_header_image_renderer") and $obandes_wp_vers
 
             $image_data = get_theme_mod( 'header_image_data' );
             if(isset( $image_data ) and is_object($image_data) ){
-            $width      = $image_data->width;
-            $height     = $image_data->height;
+				$width      = $image_data->width;
+				$height     = $image_data->height;
             }
+			if(isset( $image_data ) and is_array($image_data) ){
+				$width      = $image_data['width'];
+				$height     = $image_data['height'];
+			}
 
         if( ! empty($obandes_image_uri)){
 
@@ -2469,26 +2298,50 @@ if( ! function_exists( "obandes_get_header_image_renderer") and $obandes_wp_vers
 
                 switch(obandes_get_condition('letter-width')){
                     case( "doc"):
-                    if( $width < 750){
+                    if( $width < 750 ){
                         $marginally = true;
-                    }
                         $obandes_header_image_width = 'doc-header-image-width';
                         $obandes_header_image_height = 'auto-header-image-height';
                         $obandes_header_image_width_numeric = $width.'px';
                         $obandes_header_image_height_numeric = $height.'px';
+					}else{
+					    $obandes_header_image_width = 'covered-header-image-width';
+                        $obandes_header_image_height = 'auto-header-image-height';
+                        $obandes_header_image_width_numeric = '100%';
+                        $obandes_header_image_height_numeric = 'auto';
+					}
 
                     break;
                     case( "doc2"):
                     if( $width < 950){
                         $marginally = true;
-                    }
-
                         $obandes_header_image_width = 'doc2-header-image-width';
                         $obandes_header_image_height = 'auto-header-image-height';
                         $obandes_header_image_width_numeric = $width.'px';
                         $obandes_header_image_height_numeric = $height.'px';
+					}else{
+					    $obandes_header_image_width = 'covered-header-image-width';
+                        $obandes_header_image_height = 'auto-header-image-height';
+                        $obandes_header_image_width_numeric = '100%';
+                        $obandes_header_image_height_numeric = 'auto';
+					}
+                    break;
+					case( "doc4"):
+                    if( $width < 974){
+                        $marginally = true;
+                        $obandes_header_image_width = 'doc2-header-image-width';
+                        $obandes_header_image_height = 'auto-header-image-height';
+                        $obandes_header_image_width_numeric = $width.'px';
+                        $obandes_header_image_height_numeric = $height.'px';
+					}else{
+					    $obandes_header_image_width = 'covered-header-image-width';
+                        $obandes_header_image_height = 'auto-header-image-height';
+                        $obandes_header_image_width_numeric = '100%';
+                        $obandes_header_image_height_numeric = 'auto';
+					}
 
                     break;
+
                     default:
                         $marginally = false;
                         $obandes_header_image_width = 'covered-header-image-width';
@@ -2674,12 +2527,7 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
                 }
                 if( width > 641 ){
 				
-		//		   jQuery('#footer-widget-area #first,#footer-widget-area #second,#footer-widget-area #third,#footer-widget-area #fourth').addClass( 'horizon-footer-widget' );
-                }else{
-				   
-				
-				
-				}
+                }
 
                 /* remove old width[0-9]+ class*/
                 var element = jQuery( "body");
@@ -2710,9 +2558,11 @@ if ( ! function_exists( 'obandes_small_device_helper' ) ) {
                 jQuery( "#access").mousemove(function(e){
                     var menu_item_position = e.pageX ;
                     if( width - 200 < menu_item_position){
-                        jQuery('#access .children .children').addClass('left');
+                       // jQuery('#access .children .children').addClass('left');
+                        jQuery('#access ul ul ul').addClass('left');
                     }else if( width / 2 >  menu_item_position){
-                        jQuery('#access .children .children').removeClass('left');
+                      //  jQuery('#access .children .children').removeClass('left');
+                        jQuery('#access ul ul ul').removeClass('left');
                     }
                 });
             }

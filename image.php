@@ -25,9 +25,10 @@ if(WP_DEBUG == true){
 <?php obandes_prev_next_post();?>
 <p class="parent-entry">
 </p>
-<h2 class="h2 title"><?php _e("Entry : ",'obandes');?>
-              <a href="<?php echo get_permalink($post->post_parent); ?>" rev="attachment"><?php echo get_the_title($post->post_parent); ?></a>&nbsp;<span style="display:block;font-size:100%!important;text-align:right;"><?php _e("Attachment : ",'obandes');?>&nbsp;<?php the_title(); ?></span></h2>
-			
+<h2 class="h2 title">
+	<span class="entry-title-label"><?php _e("Entry : ",'obandes');?></span>
+	<a class="entry-title-link" href="<?php echo get_permalink($post->post_parent); ?>" rev="attachment"><?php echo get_the_title($post->post_parent); ?></a>&nbsp;
+	<span class="attachment-name"><span class="attachment-label"><?php _e("Attachment : ",'obandes');?></span><span class="attachment-name-val">&nbsp;<?php the_title(); ?></span></h2>
 <div class="meta posted-on">
 <?php obandes_posted_on(); ?>
 <?php //echo sprintf( __( '<span class="time-diff">(Published for %s)</span>', 'obandes' ), human_time_diff(get_the_time('U'),time()) );?> </div>

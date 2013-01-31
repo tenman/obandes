@@ -1,7 +1,17 @@
 Changelog -----------------------------------
-version:1.46
-removed
+version:1.48
+modified
 fixed
+----------------------------------------------
+Changelog -----------------------------------
+version:1.47
+modified
+    html element change from section to div
+    jQuery duplicate function toggle() comment out.
+    New jQuery function add
+    New screenshot
+fixed
+    Fixed display improperly issues.
 ----------------------------------------------
 Changelog -----------------------------------
 version:1.45
