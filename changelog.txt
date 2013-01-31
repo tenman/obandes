@@ -1,7 +1,10 @@
 Changelog -----------------------------------
 version:1.48
 modified
-fixed
+    style.css modified.
+        footer background color.
+Fixed
+    fixed custom header image display improperly.
 ----------------------------------------------
 Changelog -----------------------------------
 version:1.47
