@@ -1,5 +1,5 @@
 Changelog -----------------------------------
-version:1.49
+version:1.50
 Fixed
     Fixed After activation: Warning: array_key_exists()
     Fixed add_theme_support() hooked to after_setup_theme action.
