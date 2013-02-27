@@ -69,6 +69,7 @@ get_author_posts_url( get_the_author_meta( 'ID' ) ), get_the_author() );?>
 </div>
 </div>
 <div class="clear"></div>
+<?php wp_link_pages( array( 'before' => '<div class="pagenate">' . __( 'Pages:', 'obandes' ), 'after' => '</div>' ,'link_before'=>'<span>','link_after'=>'</span>') );?>
 <?php
 	break;
 
@@ -84,15 +85,16 @@ get_author_posts_url( get_the_author_meta( 'ID' ) ), get_the_author() );?>
 	
 	$module =<<<LAYOUT
 
-	  <h2 class="title h2"><a href="%s" title="%s" rel="bookmark">%s</a></h2>
+	  <h2 class="title h2"><a href="%1$s" title="%2$s" rel="bookmark">%3$s</a></h2>
 	  <div class="meta posted-on">%s
 	  </div>
-	  <div class="content">%s
+	  <div class="content">%4$s
 		<div class="horizon-gallery">
-		  %s
+		  %5$s
 		  <div class="clear"></div>
 		</div>
 		<div class="clear"></div>
+		%6$s
 LAYOUT;
 
 	$obandes_content = get_the_content(__('Read the rest of this entry &raquo;', 'obandes'));
@@ -107,7 +109,8 @@ LAYOUT;
 		the_title('','',false),
 		obandes_posted_on(false),
 		obandes_gallery_list(),
-		$obandes_content
+		$obandes_content,
+		wp_link_pages( array( 'before' => '<div class="pagenate">' . __( 'Pages:', 'obandes' ), 'after' => '</div>' ,'link_before'=>'<span>','link_after'=>'</span>', 'echo' => 0) )
 	);
 
 	
@@ -125,10 +128,11 @@ LAYOUT;
 	
 	$module =<<<LAYOUT
 <div>
-<h2 class="h2 title"><a href="%s" title="%s" rel="bookmark">%s</a></h2>
-<div class="meta posted-on">%s</div>
-<div class="content clearfix">%s<div class="clear"></div></div>
+<h2 class="h2 title"><a href="%1$s" title="%2$s" rel="bookmark">%3$s</a></h2>
+<div class="meta posted-on">%4$s</div>
+<div class="content clearfix">%5$s<div class="clear"></div></div>
 <div class="clear"></div>
+%6$s
 LAYOUT;
 
 	$obandes_content = get_the_content( __( 'Continue&nbsp;reading&nbsp;<span class="meta-nav">&rarr;</span>', 'obandes' ) );
@@ -142,13 +146,14 @@ LAYOUT;
 		),
 		the_title('','',false),
 		obandes_posted_on(false),
-		$obandes_content
+		$obandes_content,
+		wp_link_pages( array( 'before' => '<div class="pagenate">' . __( 'Pages:', 'obandes' ), 'after' => '</div>' ,'link_before'=>'<span>','link_after'=>'</span>', 'echo' => 0) )
 	);
 
 	break;
  }
 ?>
-<?php wp_link_pages( array( 'before' => '<div class="pagenate">' . __( 'Pages:', 'obandes' ), 'after' => '</div>' ,'link_before'=>'<span>','link_after'=>'</span>') );?>
+ 
 
 <div class="meta posted-in"><?php obandes_posted_in();?>
 <?php edit_post_link( __( 'Edit', 'obandes' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>

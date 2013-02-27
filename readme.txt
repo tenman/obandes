@@ -139,3 +139,8 @@ ver 1.20
             Larger than page width image shows to the limit of page width.
          when fluid layout image size
             It displays to the limit of page width.
+
+ver 1.49
+        obandes1.49 is lessphp. It stopped being attached.
+        The user who uses now is http://leafo.net/lessphp/
+        Please download and set lessc.inc.php to a lib directory.

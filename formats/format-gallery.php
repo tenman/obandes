@@ -36,6 +36,7 @@
     </div>
   </div>
   <div class="clear"></div>
+  <?php wp_link_pages( array( 'before' => '<div class="pagenate">' . __( 'Pages:', 'obandes' ), 'after' => '</div>' ,'link_before'=>'<span>','link_after'=>'</span>') );?>
 </div>
   <?php obandes_prev_next_post('nav-below');?>
   <?php comments_template( '', true ); ?>

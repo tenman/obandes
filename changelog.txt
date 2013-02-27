@@ -1,4 +1,26 @@
 Changelog -----------------------------------
+version:1.49
+Fixed
+    Fixed After activation: Warning: array_key_exists()
+    Fixed add_theme_support() hooked to after_setup_theme action.
+    Fixed set_post_thumbnail_size() hooked to after_setup_theme action.
+    Fixed Function rename from register_obandes_menus()
+                        to obandes_register_menus().
+    Fixed obandes_register_menus() hooked to the action widgets_init()
+    Fixed obandes_init() hooked to the action wp_enqueue_scripts
+    Fixed Function rename from front_header_image
+                            to obandes_front_header_image
+    Fixed Unescaped home_url in searchform.php escaped
+
+Removed
+    lib/lessc.inc.php
+        obandes1.49 is lessphp. It stopped being attached.
+        The user who uses now is http://leafo.net/lessphp/
+        Please download and set lessc.inc.php to a lib directory.
+Modified
+    style.css
+----------------------------------------------
+Changelog -----------------------------------
 version:1.48
 modified
     style.css modified.

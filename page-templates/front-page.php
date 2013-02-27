@@ -14,9 +14,9 @@
         and is_active_sidebar( 'front-page-template-right-widget-area' ) ){
 	
 		/* Remove header image background color */
-		add_filter( 'obandes_header_image_renderer', 'front_header_image' );
+		add_filter( 'obandes_header_image_renderer', 'obandes_front_header_image' );
 		
-		function front_header_image($content){
+		function obandes_front_header_image($content){
 			return preg_replace( '!id\s*=\s*"[^"]+"!','',$content);
 		}
 	
