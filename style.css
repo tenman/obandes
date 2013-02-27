@@ -4,7 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description: YUI(Yahoo User Inter face) Grid layout support.  2column fixed and fluid layout theme.Post format image support Zoom it API. This theme supply your happy blogging  From beginners to a specialist
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version:1.51
+Version:1.52
 Tags:two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -1391,11 +1391,11 @@ iframe{
 #searchform input[type=submit]{
 	background: url(images/search.png) 0 2px no-repeat;
 	background-size:cover;
-	width:22px;
-	height:22px;
+	width:20px;
+	height:20px;
 	margin-left:-2px;
 	position:relative;
-	top:-2px;
+	top:0;
 }
 nav #searchform{
 	width:100%;
@@ -2068,8 +2068,20 @@ footer {
 		box-shadow:none;
 		color:#00CCFF;
 	}
+	#doc3 #site-title a{
+		font-weight:normal;
+		padding-top:14px;
+	}
 	#doc3 h1,#doc3 h2,#doc3 h3,#doc3 h4{
 		font-weight:bold;
+	}
+	#doc3 select{
+		max-width:100%;
+	}
+	#doc3 #searchform{
+		display:block;
+		max-width:100%;
+		text-align:center;
 	}
 	#doc3 .commentlist h1{
 		font-size:167%;

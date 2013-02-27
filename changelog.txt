@@ -1,4 +1,10 @@
 Changelog -----------------------------------
+version:1.52
+    Fixed Wrong hook name from widget_init to widgets_init
+Modified
+    style.css
+----------------------------------------------
+Changelog -----------------------------------
 version:1.51
     Removed lib/lessc.inc.php
 ----------------------------------------------

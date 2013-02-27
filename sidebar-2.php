@@ -31,7 +31,6 @@
 </li>
 <?php wp_list_categories('show_count=0&title_li=<h3 class="widget-title h3">'.__('Categories','obandes').'</h3>'); ?>
 <?php /* If this is the frontpage */ if ( is_home() || is_page() ) { ?>
-<?php wp_list_bookmarks(); ?>
 <li>
 <h3 class="widget-title h3"><?php _e("Meta",'obandes');?></h3>
 <ul>

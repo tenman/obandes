@@ -270,7 +270,7 @@ if( !function_exists( 'obandes_theme_setup' ) ){
         )
     ) );
 	
-	add_action( 'widget_init', 'obandes_register_menus' );
+	add_action( 'widgets_init', 'obandes_register_menus' );
 
 
     }
