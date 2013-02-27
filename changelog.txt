@@ -19,6 +19,9 @@ Removed
         Please download and set lessc.inc.php to a lib directory.
 Modified
     style.css
+    formats/format.php
+    formats/format-gallery.php
+        add wp_link_pages()
 ----------------------------------------------
 Changelog -----------------------------------
 version:1.48
