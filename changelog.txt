@@ -3,6 +3,9 @@ version:1.52
     Fixed Wrong hook name from widget_init to widgets_init
 Modified
     style.css
+Removed
+    Removed wp_list_bookmarks()
+         sidebar-1.php, sidebar-2.php
 ----------------------------------------------
 Changelog -----------------------------------
 version:1.51
