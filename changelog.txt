@@ -1,4 +1,8 @@
 Changelog -----------------------------------
+version:1.51
+    Removed lib/lessc.inc.php
+----------------------------------------------
+Changelog -----------------------------------
 version:1.50
 Fixed
     Fixed After activation: Warning: array_key_exists()
