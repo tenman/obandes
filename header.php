@@ -22,10 +22,11 @@ global $obandes_header_blank_color;
 $obandes_text_color = get_header_textcolor();
 if( $obandes_text_color  !== 'blank' ){?>
     <?php   obandes_title_format();?>
-    <div id="site-description"><?php bloginfo( 'description' ); ?></div>
-    <div class="search-form"><?php get_search_form(); ?></div>
+    <div id="site-description" style="color:#<?php echo $obandes_text_color;?>"><?php bloginfo( 'description' ); ?></div>
+    <div class="search-form" ><?php get_search_form(); ?></div>
 <?php }else{
-	$obandes_text_color = $obandes_header_blank_color;	
+	$obandes_text_color = $obandes_header_blank_color;
+	
 }?>
 <p class="obandes-mobile-menu"><a href="#access" class="open" style="color:#<?php echo $obandes_text_color;?>">+</a><span class="menu-text" style="color:#<?php echo $obandes_text_color;?>">menu</span><a href="#<?php echo obandes_get_condition('letter-width'); ?>" class="close" style="color:#<?php echo $obandes_text_color;?>">-</a></p>
 

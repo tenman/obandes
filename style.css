@@ -4,7 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description: YUI(Yahoo User Inter face) Grid layout support.  2column fixed and fluid layout theme.Post format image support Zoom it API. This theme supply your happy blogging  From beginners to a specialist
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version:1.52
+Version:1.53
 Tags:two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -50,6 +50,10 @@ a:visited{
 html body{
 	/* Define your default font size when if you need */
 
+}
+img{
+max-width:100%;
+height:auto;
 }
 body h1{
 	font-size:182%;
@@ -294,10 +298,15 @@ div#onecolumn .content{
 	height:2em;
 	font-size:197%;
 }
-.index article .title,
-.archive article .title{
-
+.index article .title a:hover,
+.archive article .title a:hover{
+	color:#000;
 }
+.index article .title a:visited,
+.archive article .title a:visited{
+	color:#666;
+}
+
 .page-template-page-templatesfull-width-php article.page article .title,
 .page-template-page-templatesfull-width-php article.page article .content{
 	margin:1%;
@@ -387,9 +396,9 @@ header h1 a,header div.h1 a,#site-title a{
 }
 
 * html #access ul > li.current_page_item a,* html #access ul > li.current-menu-ancestor a:hover,* html #access ul > li.current-menu-item a:hover,* html #access ul > li.current-menu-parent a:hover,* html #access ul > li a:hover,#access li:hover > a:hover,#access ul ul > a:hover,#access a:hover,#access li > a:hover,#access ul ul > a,#access ul li.current_page_item > a:hover,#access ul li.current-menu-ancestor > a:hover,#access ul li.current-menu-item > a:hover,#access ul li.current-menu-parent > a:hover{
-	background:#fff;
+	background:#444;
 	box-shadow:0 0 15px rgba(52,52,52);
-	color:#333;
+	color:#fff;
 }
 
 * html #access ul li.current-menu-ancestor a,* html #access ul li.current-menu-item a,* html #access ul li.current-menu-parent a,* html #access ul li a:hover,#access li:hover > a,#access ul ul :hover > a,#access a,#access li > a,#access ul ul > a,#access ul li.current_page_item > a,#access ul li.current-menu-ancestor > a,#access ul li.current-menu-item > a,#access ul li.current-menu-parent > a{
@@ -1009,6 +1018,7 @@ header h1 a,header div.h1 a,#site-title a{
 	max-width:99%;
 	margin:0;
 	padding:0;
+	height:auto;
 }
 
 .wp-caption p.wp-caption-text{
@@ -1296,6 +1306,7 @@ dt{
 footer{
 	margin:5px 0 6px;
 	background:#efefef;
+	background:rgba(222,222,222,0.2);
 }
 
 h1 a,h2 a,h3 a,h4 a,h5 a,h6 a,.h2 a,.h3 a,.h4 a,.h5 a,.h6 a{
@@ -1713,6 +1724,7 @@ body > #doc,body > #doc2,body > #doc3,body > #doc4 {
 }
 nav > ul {
 	background:#efefef;
+	background:rgba(222,222,222,0.2);
 }
 index article{
 	border:#eee 2px groove;
@@ -1724,6 +1736,7 @@ index article{
 }
 #footer-widget-area h3{
 	background:#ccc;
+	background:rgba(222,222,222,0.2);
 	margin-bottom:0;
 	color:#333;
 }
@@ -1739,7 +1752,7 @@ div.posted-in {
 	color:#333!important;
 }
 span,a{
-	color:#333;
+	/*color:#333;*/
 }
 #commentform .form-submit {
 	line-height:3;
@@ -1794,6 +1807,48 @@ footer {
 .widget_rss{
 	display:block;
 }
+#access .children li,
+#access .sub-menu li{
+	border-bottom:1px solid #444;
+}
+/* post format */
+.format-aside,
+.format-audio,
+.format-link,
+.format-video,
+.format-gallery,
+.format-link,
+.format-status,
+.format-image,
+.format-quote{
+}
+.format-standard{
+}
+.post-format-link a{
+	font-weight:bold;
+	color:gray;
+}
+
+.post-format-content{
+	margin:48px 0;
+	text-align:center;
+	width:100%;
+	max-width:100%;
+}
+
+.post-format-content blockquote{
+	text-align:left;
+}
+
+.format-link .entry-content a{
+	display:block;
+	text-align:center;
+	margin:64px 0 0;
+}
+.post-format-content .gallery{
+	margin:auto;	
+}
+
 
 /* responsive */
 
@@ -1951,7 +2006,7 @@ footer {
 	}
 	#doc3 #access ul ul{
 		text-align:left;
-		text-indent:1em;
+		/*text-indent:1em;*/
 	}
 	#doc3 #access ul ul ul{
 		text-align:left!important;
@@ -2037,10 +2092,11 @@ footer {
 	}
 	
 	#doc3 #access a{
-		color:#555;
-		background:#fff;
+		color:#ccc;
+		background:#777;
 		font-size:123.1%;
-		border-bottom:1px solid #eee;
+		border-bottom:1px solid #555;
+		border-bottom:1px solid rgba(200,200,200,0.2);
 	}
 
 	#doc3 #access{
@@ -2066,7 +2122,7 @@ footer {
 		-moz-box-shadow:none;
 		-webkit-box-shadow:none;
 		box-shadow:none;
-		color:#00CCFF;
+		color:#fff;
 	}
 	#doc3 #site-title a{
 		font-weight:normal;

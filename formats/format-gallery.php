@@ -26,8 +26,8 @@
 <div class="meta posted-on">
   <?php obandes_posted_on(); ?>
 </div>
-<div class="content"> <?php echo obandes_gallery_list();?>
-  <div class="horizon-gallery">
+<div class="content">
+  <div>
     <?php the_content( '' ); ?>
     <div class="clear"></div>
     <div class="meta posted-in">

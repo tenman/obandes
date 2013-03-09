@@ -1,5 +1,5 @@
 Changelog -----------------------------------
-version:1.52
+version:1.53
     Fixed Wrong hook name from widget_init to widgets_init
 Modified
     style.css

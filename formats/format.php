@@ -88,13 +88,13 @@ get_author_posts_url( get_the_author_meta( 'ID' ) ), get_the_author() );?>
 	  <h2 class="title h2"><a href="%1$s" title="%2$s" rel="bookmark">%3$s</a></h2>
 	  <div class="meta posted-on">%s
 	  </div>
-	  <div class="content">%4$s
-		<div class="horizon-gallery">
-		  %5$s
+	  <div class="content">
+		<div>
+		  %4$s
 		  <div class="clear"></div>
 		</div>
 		<div class="clear"></div>
-		%6$s
+		%5$s
 LAYOUT;
 
 	$obandes_content = get_the_content(__('Read the rest of this entry &raquo;', 'obandes'));
@@ -108,7 +108,6 @@ LAYOUT;
 		),
 		the_title('','',false),
 		obandes_posted_on(false),
-		obandes_gallery_list(),
 		$obandes_content,
 		wp_link_pages( array( 'before' => '<div class="pagenate">' . __( 'Pages:', 'obandes' ), 'after' => '</div>' ,'link_before'=>'<span>','link_after'=>'</span>', 'echo' => 0) )
 	);
