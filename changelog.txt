@@ -1,5 +1,5 @@
 Changelog -----------------------------------
-version:1.53
+version:1.54
     Fixed Warning:[function.md5-file]: failed to open stream: No such file or directory in
     functions.php on line 16
 ----------------------------------------------
