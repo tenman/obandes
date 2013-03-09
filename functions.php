@@ -21,16 +21,16 @@
 
     if ( $obandes_wp_version >= '3.4' ) {
 
-        $theme_data = wp_get_theme();
+        $obandes_theme_data = wp_get_theme();
 
-        $obandes_theme_uri          = $theme_data->ThemeURI;
-        $obandes_author_uri         = $theme_data->Author_URI;
-        $obandes_version            = $theme_data->Version;
-        $obandes_current_theme_name = $theme_data->Name;
-        $obandes_description        = $theme_data->Description;
-        $obandes_author             = $theme_data->Author;
-        $obandes_template           = $theme_data->Template;
-        $obandes_tags               = $theme_data->Tags;
+        $obandes_theme_uri          = $obandes_theme_data->ThemeURI;
+        $obandes_author_uri         = $obandes_theme_data->Author_URI;
+        $obandes_version            = $obandes_theme_data->Version;
+        $obandes_current_theme_name = $obandes_theme_data->Name;
+        $obandes_description        = $obandes_theme_data->Description;
+        $obandes_author             = $obandes_theme_data->Author;
+        $obandes_template           = $obandes_theme_data->Template;
+        $obandes_tags               = $obandes_theme_data->Tags;
         $obandes_tags               = implode(',',$obandes_tags);
 
     } else {
