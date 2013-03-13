@@ -2336,13 +2336,22 @@ if( ! function_exists( "obandes_get_header_image_renderer") ){
         $height                 = 178;
         $marginally             = false;
         $image_data             = get_custom_header( );
+		
+		$url        = get_theme_mod( 'header_image' );
 
-        if ( empty($obandes_image_uri ) ) {
+		if( empty( $url ) ){ //When child theme $url empty
+			$url    = get_header_image();
+		}
+
+		if( $url == 'random-uploaded-image'){
+			$url = get_random_header_image();
+		}
+
+        if ( empty($obandes_image_uri ) and $url !== 'remove-header' ) {
             $obandes_image_uri  = $image_data -> url;
             $width              = $image_data -> width;
             $height             = $image_data -> height;
         }
-
         if( ! empty( $obandes_image_uri ) ) {
 
             if( has_post_thumbnail( $post->ID ) and is_singular()){
