@@ -1,10 +1,12 @@
 Changelog -----------------------------------
 version:1.56
-----------------------------------------------
-Changelog -----------------------------------
-version:1.55
     Fixed Can not remove Custom Header Image.
         functions.php
+    Fixed printf() [function.printf]: Too few arguments
+        change from
+        printf( __('Theme: %s', 'obandes'), 'obandes' );
+        to
+        printf( __('Theme: %1$s', 'obandes'), 'obandes' );
 ----------------------------------------------
 Changelog -----------------------------------
 version:1.54
