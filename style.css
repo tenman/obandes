@@ -4,7 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description: YUI(Yahoo User Inter face) Grid layout support.  2column fixed and fluid layout theme.Post format image support Zoom it API. This theme supply your happy blogging  From beginners to a specialist
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version:1.55
+Version:1.56
 Tags:two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -56,11 +56,11 @@ max-width:100%;
 height:auto;
 }
 body h1{
-	font-size:182%;
+	font-size:197%;
 	line-height:1.2;
 }
 body h2{
-	font-size:153%;
+	font-size:174%;
 }
 body h3{
 	font-size:123.1%;
@@ -74,12 +74,12 @@ body h3{
 #site-title{
 	font-size:197%;
 }
-
+#access .sub-menu,
 #access .children{
 	background:rgba(0,0,0,0.9);
 	color:#ddd;
 }
-
+#access .sub-menu li:hover,
 #access .children li:hover{
 	background:#666;
 }
@@ -517,6 +517,7 @@ header h1 a,header div.h1 a,#site-title a{
 	border-bottom:2px groove #eee;
 }
 
+.commentlist .depth-1 > div,.commentlist .depth-1 > ul.sub-menu,
 .commentlist .depth-1 > div,.commentlist .depth-1 > ul.children{
 	margin-right:0;
 	padding:1em;
@@ -1151,6 +1152,7 @@ article .meta{
 	margin:0 0 1em;
 }
 
+article .meta li,#comments ul li,.commentlist .sub-menu li,
 article .meta li,#comments ul li,.commentlist .children li{
 	list-style:none;
 }
@@ -1426,8 +1428,11 @@ ins,article .meta a:hover,article .posted-in a:hover,#wp-calendar a{
 	text-decoration:underline;
 }
 
-li h2,nav ul > li,.wp-smiley,nav h3,nav .h3{
+li h2,nav ul > li,.wp-smiley{
 	margin:0;
+}
+nav h3,nav .h3{
+	margin:.5em;
 }
 
 .meta-prep-author{
@@ -1498,6 +1503,7 @@ nav li a{
 
 nav li li{
 	border-bottom:1px solid #ccc;
+	border-bottom:1px solid rgba(222,222,222,.5);
 }
 
 nav li a:hover{
@@ -1576,6 +1582,7 @@ ul.index{
 	margin:0 0 0 .2em;
 }
 
+#access .menu-header ul,div.menu ul,#footer-widget-area .sub-menu li,
 #access .menu-header ul,div.menu ul,#footer-widget-area .children li{
 	list-style:none;
 	margin:0;
@@ -1807,6 +1814,7 @@ footer {
 .widget_rss{
 	display:block;
 }
+
 #access .children li,
 #access .sub-menu li{
 	border-bottom:1px solid #444;
@@ -2020,6 +2028,7 @@ footer {
 		padding:1em;
 		font-size:138.5%;
 	}
+	#doc3 #access .sub-menu li,
 	#doc3 #access .children li{
 		border:none;
 	}
@@ -2080,10 +2089,12 @@ footer {
 	#doc3 footer{
 			font-size:123.1%;
 	}
+	#doc3 #access .sub-menu,
 	#doc3 #access .children{
 		background:#eee;
 		color:#555;
 	}
+	#doc3 #access .sub-menu li:hover,
 	#doc3 #access .children li:hover{
 		background:#ccc;
 	}
