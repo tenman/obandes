@@ -23,14 +23,14 @@
 
         $obandes_theme_data = wp_get_theme();
 
-        $obandes_theme_uri          = $obandes_theme_data->ThemeURI;
-        $obandes_author_uri         = $obandes_theme_data->Author_URI;
-        $obandes_version            = $obandes_theme_data->Version;
-        $obandes_current_theme_name = $obandes_theme_data->Name;
-        $obandes_description        = $obandes_theme_data->Description;
-        $obandes_author             = $obandes_theme_data->Author;
-        $obandes_template           = $obandes_theme_data->Template;
-        $obandes_tags               = $obandes_theme_data->Tags;
+        $obandes_theme_uri          = $obandes_theme_data->get( 'ThemeURI' );
+        $obandes_author_uri         = $obandes_theme_data->get( 'Author_URI' );
+        $obandes_version            = $obandes_theme_data->get( 'Version' );
+        $obandes_current_theme_name = $obandes_theme_data->get( 'Name' );
+        $obandes_description        = $obandes_theme_data->get( 'Description' );
+        $obandes_author             = $obandes_theme_data->get( 'Author' );
+        $obandes_template           = $obandes_theme_data->get( 'Template' );
+        $obandes_tags               = $obandes_theme_data->get( 'Tags' );
         $obandes_tags               = implode(',',$obandes_tags);
 
     } else {
@@ -225,6 +225,7 @@ if( !function_exists( 'obandes_theme_setup' ) ){
         add_filter( 'wp_page_menu_args', 'obandes_page_menu_args' );
         add_filter('wp_title','obandes_wp_title',10,3);
         add_filter('the_content','obandes_ie_height_expand_issue');
+        add_filter('widget_text','obandes_ie_height_expand_issue');
         //@since ver 1.32
         add_action( 'wp_head', 'obandes_mobile_meta');
 /**
@@ -995,7 +996,7 @@ if ( ! function_exists('obandes_add_body_class' ) ) {
                 $classes[] = 'gecko';
             break;
             case($is_IE):
-                preg_match( " |(MSIE )([0-9])(\.)|si",$_SERVER['HTTP_USER_AGENT'],$regs);
+                preg_match( " |(MSIE )([0-9]{1,2})(\.)|si",$_SERVER['HTTP_USER_AGENT'],$regs);
                 $classes[] = 'ie'.$regs[2];
             break;
             case($is_opera):
@@ -2160,9 +2161,9 @@ if( ! function_exists( "obandes_get_condition" ) ){
 
 if( ! function_exists( "obandes_ie_height_expand_issue" ) ){
            function obandes_ie_height_expand_issue( $content ) {
-            global $is_IE, $content_width;
+                        global $is_IE, $content_width;
             if ( $is_IE) {
-                preg_match_all( '#(<img )([^>]+)(height|width)(=" )([0-9]+)"([^>]+)(height|width)(=" )([0-9]+)"([^>]*)>#', $content, $images,PREG_SET_ORDER);
+                preg_match_all( '#(<img)([^>]+)(height|width)(=")([0-9]+)"([^>]+)(height|width)(=")([0-9]+)"([^>]*)>#', $content, $images,PREG_SET_ORDER);
                 foreach( $images as $image) {
                     if (( $image[3] == "width" and $image[5] > $content_width) or ( $image[7] == "width" and $image[9] > $content_width) ) {
                         $content = str_replace( $image[0], $image[1].$image[2].$image[6].$image[10].'>', $content );
@@ -2356,7 +2357,7 @@ if( ! function_exists( "obandes_get_header_image_renderer") ){
 
             if( has_post_thumbnail( $post->ID ) and is_singular()){
                 $marginally = '<div id="header-image" class="header-image-marginally-style">';
-                    $marginally .= get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
+                    $marginally .= get_the_post_thumbnail( $post->ID, 'full' );
                 $marginally .= '</div>';
 
                 return $marginally;
@@ -2615,4 +2616,84 @@ if( ! function_exists( 'obandes_mobile_meta' ) ){
         }
     }
 }
+
+/**
+ *
+ *
+ *
+ *
+ * @since 1.57
+ */
+
+    add_filter( 'the_content', 'obandes_chat_filter' );
+
+	if ( ! function_exists( 'obandes_chat_filter' ) ) {
+	
+		function obandes_chat_filter($contents){
+	
+	
+			if ( ! has_post_format( 'chat' ) ){
+			
+				return $contents;
+			}else{
+			
+				/* chat notation use : remove protocol from url */
+				$contents = str_replace( array( 'http:', 'https:'), '', $contents );
+			}
+
+			$new_contents   = explode( '<p>', $contents);
+
+			if( count ( $new_contents ) == 2 ){
+			
+				return $contents;
+			}
+	
+			$result         = '';
+			$prev_author_id = '';
+			$html           = '<dt class="obandes-chat obandes-chat-author-%1$s">%2$s</dt>
+				<dd class="obandes-chat-text obandes-chat-author-text-%1$s">%3$s</dd>';
+	
+			foreach( $new_contents as $key=>$new ){
+
+				preg_match( '|([^\:]+)(\:)(.+)|si', $new, $regs );
+
+				if( isset( $regs[1] ) and !empty( $regs[1] ) ){
+				
+					$regs[1] = strip_tags( $regs[1] );
+				}
+				if(isset( $regs[1] ) and ! preg_match('!(http|https|ftp)!',$regs[1]) and !empty($regs[1])){
+
+					$result .= sprintf( $html,
+								esc_attr( obandes_chat_author_id( $regs[1] ) ),
+								esc_html( $regs[1] ),
+								$regs[3]
+							  );
+				}else{
+					$result .= '<dd>'.$new. '</dd>';
+				}
+			}
+			
+			return sprintf( '<dl class="obandes-post-format-chat">%1$s</dl>', $result );
+		}
+	}
+/**
+ *
+ *
+ *
+ *
+ * @since 1.57 
+ */
+
+    if ( ! function_exists( 'obandes_chat_author_id' ) ) {
+	
+        function obandes_chat_author_id( $author ){
+		
+            static $obandes_chat_author_id   = array( );
+            $obandes_chat_author_id[]        = $author;
+            $obandes_chat_author_id          = array_unique( $obandes_chat_author_id );
+
+            return array_search( $author, $obandes_chat_author_id );
+        }
+    }
+
 ?>

@@ -1,4 +1,9 @@
 Changelog -----------------------------------
+version:1.57
+    Modified
+
+----------------------------------------------
+Changelog -----------------------------------
 version:1.56
     Fixed Can not remove Custom Header Image.
         functions.php

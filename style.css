@@ -4,7 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description: YUI(Yahoo User Inter face) Grid layout support.  2column fixed and fluid layout theme.Post format image support Zoom it API. This theme supply your happy blogging  From beginners to a specialist
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version:1.56
+Version:1.57
 Tags:two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -1535,7 +1535,35 @@ table[id^=horizon]{
 	max-width:100%;
 	width:100%;
 }
+/* @since 1.57 */
 
+table {
+	display:table;
+	box-sizing:border-box;
+	table-layout:fixed;
+}
+table.auto {
+	table-layout:auto;
+}
+table.center .left,
+table.left td,
+table td.left{
+	text-align:left;
+}
+table.center td,
+table td.center{
+	text-align:center;
+}
+table td.right{
+	text-align:right;
+}
+
+tr,
+th,
+td {
+	max-width:100%;
+}
+/* @since 1.57 */
 td a,#nav-above a,#nav-below a
 #nav-above a:hover,#nav-below a:hover,.nav-next,.nav-previous a:hover,article .meta a,article .posted-in a{
 	text-decoration:none;
@@ -1856,10 +1884,24 @@ footer {
 .post-format-content .gallery{
 	margin:auto;	
 }
-
+.ie6 #searchsubmit,
+.ie7 #searchsubmit,
+.ie8 #searchsubmit{
+	top:5px!important;
+}
+.ie8 .widget_text .wp-caption a{
+	display:block;
+	width:100%;
+	height:auto;
+	text-align:center;
+}
 
 /* responsive */
-
+.ie6 #doc3 .obandes-mobile-menu,
+.ie7 #doc3 .obandes-mobile-menu,
+.ie8 #doc3 .obandes-mobile-menu{ 
+	display:none; 
+}
 #doc3 .tagcloud{
 	background:inherit;
 }
