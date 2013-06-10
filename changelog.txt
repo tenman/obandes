@@ -1,7 +1,10 @@
 Changelog -----------------------------------
 version:1.57
-    Modified
-
+    Add
+        function obandes_chat_filter()
+        function obandes_chat_author_id()
+    Fixed
+        Not works $obandes_theme_data
 ----------------------------------------------
 Changelog -----------------------------------
 version:1.56
