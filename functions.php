@@ -1065,6 +1065,7 @@ if ( ! function_exists('obandes_add_body_class' ) ) {
  *
  *
  */
+
 if( ! function_exists( "obandes_content_width" ) ){
     function obandes_content_width(){
         $adjust = 16;
@@ -1106,22 +1107,9 @@ if( ! function_exists( "obandes_content_width" ) ){
             $obandes_content_width = $default;
         }
     }elseif(OBANDES_DOCUMENT_WIDTH == 'doc3'){
-        $w = 600;
-        if(OBANDES_SIDEBAR_WIDTH == 'yui-t1'){
-            $obandes_content_width = $w - 160 - $adjust;
-        }elseif(OBANDES_SIDEBAR_WIDTH == 'yui-t2'){
-            $obandes_content_width = $w - 180 - $adjust;
-        }elseif(OBANDES_SIDEBAR_WIDTH == 'yui-t3'){
-            $obandes_content_width = $w - 300 - $adjust;
-        }elseif(OBANDES_SIDEBAR_WIDTH == 'yui-t4'){
-            $obandes_content_width = $w - 180 - $adjust;
-        }elseif(OBANDES_SIDEBAR_WIDTH == 'yui-t5'){
-            $obandes_content_width = $w - 240 - $adjust;
-        }elseif(OBANDES_SIDEBAR_WIDTH == 'yui-t6'){
-            $obandes_content_width = $w - 300 - $adjust;
-        }else{
-            $obandes_content_width = $default;
-        }
+	
+		//responsive layout can not calc
+       	$obandes_content_width = 640;
 
     }elseif(OBANDES_DOCUMENT_WIDTH == 'doc4'){
         $w = 974;
@@ -2695,5 +2683,72 @@ if( ! function_exists( 'obandes_mobile_meta' ) ){
             return array_search( $author, $obandes_chat_author_id );
         }
     }
+
+/**
+ * Entry title none breaking text breakable
+ *
+ *
+ * test filter.
+ * @since 1.119
+ */
+	add_filter( 'the_title','obandes_non_breaking_title' );
+	
+    if ( ! function_exists( 'obandes_non_breaking_title' ) ) {
+
+		function obandes_non_breaking_title( $title ){
+		
+		
+			//Floccinaucinihilipilification
+			
+			if ( ! is_admin( ) ) {
+			
+				if ( preg_match("/[\x20-\x7E]{30,}/", strip_tags( $title ) ) and preg_match('!([A-Z])!', $title ) ) {
+				
+					return preg_replace( '!([A-Z])!','<wbr>$1', $title );
+				} elseif ( preg_match("/[\x20-\x7E]{30,}/", strip_tags( $title ) ) ){
+				
+					return preg_replace( '!([^a-z])!','$1<wbr>', $title );
+				}
+			}
+			
+			return $title;
+		}
+	}
+/**
+ * Entry content none breaking text ( url ) breakable
+ *
+ *
+ * test filter.
+ * 
+ */
+	add_filter( 'the_content','obandes_non_breaking_content', 11 );
+	
+    if ( ! function_exists( 'obandes_non_breaking_content' ) ) {
+
+		function obandes_non_breaking_content( $content ){
+		
+		
+			//long url link text breakable
+			
+			if ( ! is_admin( ) ) {
+			
+				return preg_replace_callback("|>([-_.!˜*()a-zA-Z0-9;\/?:@&=+$,%#]{30,})<|", 'obandes_add_wbr_content_long_text', $content );
+				
+			}
+			
+			return $content;
+		}
+	}
+
+if ( ! function_exists( 'obandes_add_wbr_content_long_text' ) ) {
+
+	function obandes_add_wbr_content_long_text( $matches ){
+	
+		foreach( $matches as $match ){
+			return preg_replace( '!([/])!','$1<wbr>', $match );
+		}	
+	}
+}
+	
 
 ?>

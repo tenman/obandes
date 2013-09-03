@@ -18,16 +18,6 @@ $i = 0;
   <div class="yui-b">
         <h2 class="pagetitle h1" id="search-results-title">Search Results</h2>  
         <ul class="search-results">
-		<li>		
-        <?php
-	 	if ( $wp_query->max_num_pages > 1 ){ ?>
-        <div id="nav-above" class="clearfix"> <span class="nav-previous">
-          <?php 	next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'obandes' ) ); ?>
-          </span><span class="nav-next">
-          <?php 	previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'obandes' ) ); ?>
-          </span></div>
-        <?php 	}?>
-		</li>
       <?php while (have_posts()){ the_post(); ?>
           <li>
             <article id="post-<?php echo $post->ID; ?>" <?php post_class(); ?>>

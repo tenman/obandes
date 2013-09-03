@@ -1,4 +1,13 @@
 Changelog -----------------------------------
+version:1.58
+    Add
+        function obandes_non_breaking_content(
+        function obandes_non_breaking_title()
+    Modified
+        Change regex template format-image
+
+----------------------------------------------
+Changelog -----------------------------------
 version:1.57
     Add
         function obandes_chat_filter()

@@ -19,7 +19,6 @@
 		$post->ID,
 		'class="yui-b '.implode(' ',get_post_class('clearfix')).'"');
 	
-	obandes_prev_next_post('nav-above');
 
 	switch($cat){
 /**

@@ -17,7 +17,6 @@
 		$post->ID,
 		'class="yui-b '.implode(' ',get_post_class('clearfix')).'"');
 	
-	obandes_prev_next_post('nav-above');
 ?>
 
 <h2 class="title h2"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'obandes' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
