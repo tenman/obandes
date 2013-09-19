@@ -64,16 +64,8 @@ echo '<ul class="index yui-b '.esc_attr($obandes_class_name).'">';
         );
     }
 
-    if ( $wp_query->max_num_pages > 1 ){
-// Display navigation to next/previous pages when applicable  ?>
-<li><div id="nav-above" class="clearfix"> <span class="nav-previous">
-<?php next_posts_link( __( '<span class="button"><span class="meta-nav">&larr;</span> Older posts</span>', 'obandes' ) ); ?>
-</span> <span class="nav-next">
-<?php previous_posts_link( __( '<span class="button">Newer posts <span class="meta-nav">&rarr;</span></span>', 'obandes' ) ); ?>
-</span> </div></li>
 
-<?php } //end #nav-above?>
-<?php while (have_posts()){ the_post(); ?>
+ while (have_posts()){ the_post(); ?>
 <li>
 <article id="post-<?php echo $post->ID; ?>" <?php post_class(); ?>>
 <h2 class="h2 title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">

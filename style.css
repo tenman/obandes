@@ -4,7 +4,7 @@ Theme URI: http://www.tenman.info/wp3/obandes/
 Description: YUI(Yahoo User Inter face) Grid layout support.  2column fixed and fluid layout theme.Post format image support Zoom it API. This theme supply your happy blogging  From beginners to a specialist
 Author: tenman
 Author URI: http://www.tenman.info/wp3/
-Version:1.57
+Version:1.58
 Tags:two-columns,right-sidebar ,fixed-width ,custom-header, custom-background, flexible-width, custom-menu, threaded-comments, sticky-post, translation-ready
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -297,6 +297,7 @@ div#onecolumn .content{
 .page-template-page-templatesfull-width-php article .title{
 	height:2em;
 	font-size:197%;
+	margin:10px;
 }
 .index article .title a:hover,
 .archive article .title a:hover{
@@ -783,9 +784,9 @@ header h1 a,header div.h1 a,#site-title a{
 	margin:10px 10px 0;
 }
 
-.index article .posted-on,
+/*.index article .posted-on,*/
 .single article .posted-on{
-	/*margin:10px;*/
+	margin:10px;
 }
 
 .ja h1,.ja .h1,.ja #site-title{
@@ -812,10 +813,16 @@ header h1 a,header div.h1 a,#site-title a{
 	content:url("images/next.png");
 	margin-left:3px;
 	margin-right:5px;
+	word-break:break-all;
+	word-wrap:break-word;
+
 }
 
 .nav-previous{
 	float:left;
+	word-break:break-all;
+	word-wrap:break-word;
+	
 }
 
 .nav-previous a:before{
@@ -842,6 +849,9 @@ header h1 a,header div.h1 a,#site-title a{
 }
 .page article .content,.single article .content,.index article .content,.index article .title{
 	/*margin-left:20px;*/
+}
+.page article .content, .single article .content{
+	margin-left:10px;
 }
 .page h5,h5,/*h5 a,*/
 .h5 a,.ja h3,.ja .h3{
@@ -1837,6 +1847,7 @@ footer {
 .single article .title{
 	color:#999999;
 	font-family:Georgia,Times New Roman,Times,serif;;
+	margin:10px;
 }
 #access a:hover{border:none;}
 .widget_rss{

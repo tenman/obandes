@@ -9,15 +9,7 @@
  */
  ?>
 <div class="index yui-b">
-  <?php if ( $wp_query->max_num_pages > 1 ){ ?>
-  <div>
-    <div id="nav-above" class="clearfix"> <span class="nav-previous">
-      <?php next_posts_link( __( '<span class="button"><span class="meta-nav">&larr;</span> Older posts</span>', 'obandes' ) ); ?>
-      </span> <span class="nav-next">
-      <?php previous_posts_link( __( '<span class="button">Newer posts <span class="meta-nav">&rarr;</span></span>', 'obandes' ) ); ?>
-      </span> </div>
-  </div>
-  <?php 	} //end #nav-above	
+	
   	$obandes_format_count_link 		= 0;
 	$obandes_format_count_image 	= 0;
 	$obandes_format_count_quote 	= 0;

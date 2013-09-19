@@ -1,4 +1,17 @@
 Changelog -----------------------------------
+version:1.58
+    Add
+        function obandes_non_breaking_content()
+        function obandes_non_breaking_title()
+    Modified
+        Change regex template format-image.php
+        Change regex template format-link.php
+
+        Remove nav-above next prev post link
+        Change obandes_content_width value( 640 ) when responsive layout
+
+----------------------------------------------
+Changelog -----------------------------------
 version:1.57
 test
 ----------------------------------------------

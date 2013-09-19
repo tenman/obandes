@@ -22,7 +22,6 @@ if(WP_DEBUG == true){
             if (!locate_template( array('formats/format-'.get_post_format().'.php'), true ) ) {
 ?>
 <article id="post-<?php echo $post->ID; ?>" <?php post_class('yui-b'); ?>>
-<?php obandes_prev_next_post();?>
 <p class="parent-entry">
 </p>
 <h2 class="h2 title">
