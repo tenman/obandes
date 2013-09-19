@@ -1,9 +1,5 @@
 Changelog -----------------------------------
 version:1.57
-	update test2
-----------------------------------------------
-Changelog -----------------------------------
-version:1.57
     Add
         function obandes_chat_filter()
         function obandes_chat_author_id()
